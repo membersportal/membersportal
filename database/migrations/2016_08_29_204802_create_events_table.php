@@ -16,6 +16,7 @@ class CreateEventsTable extends Migration
             $table->increments('id');
             $table->integer('company_id')->unsigned();
             $table->string('title', 75)->nullable();
+            $table->string('desc', 1000)->nullable();
             $table->date('from_date')->nullable();
             $table->date('to_date')->nullable();
             $table->boolean('invite_only')->nullable();
