@@ -76,7 +76,8 @@ class CarouselsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $carousel = Carousel::findOrFail($id);
+      return $this->validateAndSave($carousel, $request);
     }
 
     /**
@@ -87,7 +88,9 @@ class CarouselsController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $carousel = Carousel::findOrFail($id);
+      $carousel->delete();
+      return redirect()->action('admin.dashboard');
     }
 
     private function validateAndSave(Carousel $Carousel, Request $request){

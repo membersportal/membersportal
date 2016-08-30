@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use App\User;
+use App\Company;
 
 
 class UsersController extends Controller
@@ -20,7 +21,8 @@ class UsersController extends Controller
      */
     public function index()
     {
-        // $data = compact('');
+        $newestMember = 
+        $data = compact('newestMember');
         return view('home');
     }
 
