@@ -20,19 +20,24 @@ Route::post('auth/register', 'Auth\AuthController@postRegister');
 
 // Users
 Route::get('/', 'UsersController@index');
-Route::get('users/{user}', 'UsersController@show');
-Route::get('users/{user}/edit', 'UsersController@editAccountLogin');
+Route::get('users/{user}/edit', 'UsersController@edit');
 Route::put('users/{user}', 'UsersController@update');
 Route::delete('users/{user}', 'UsersController@destroy');
 Route::get('users/search', 'UsersController@searchMembers');
-Route::get('users/{user}/dashboard', 'UsersController@dashboard');
-Route::get('users/{user}/connections', 'UsersController@viewConnections');
 
 // Companies
-Route::resource('companies', 'CompaniesController');
+Route::get('companies/create', 'CompaniesController@create');
+Route::get('companies/{company}', 'CompaniesController@show');
+Route::get('companies/{company}/edit', 'CompaniesController@edit');
+Route::put('companies/{company}', 'CompaniesController@update');
+Route::delete('companies/{company}', 'CompaniesController@destroy');
+Route::get('companies/{company}/dashboard', 'CompaniesController@dashboard');
+Route::get('companies/{company}/connections', 'CompaniesController@viewConnections');
 
 // Contacts
-Route::resource('contacts', 'ContactsController');
+Route::get('contacts/{contact}/edit', 'ContactsController@edit');
+Route::put('contacts/{contact}', 'ContactsController@update');
+Route::delete('contacts/{contact}', 'ContactsController@destroy');
 
 // Events
 Route::resource('events', 'EventsController');
