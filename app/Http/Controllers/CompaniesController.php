@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Industry;
 
 
 class CompaniesController extends Controller
@@ -83,6 +84,7 @@ class CompaniesController extends Controller
     public function edit($id)
     {
         $company = Company::findOrFail($id);
+        $industry = Industry::all();
         $data = compact('company');
         return view('companies.edit_account_company')->with($data);
     }

@@ -14,6 +14,8 @@ class DatabaseSeeder extends Seeder
     {
         Model::unguard();
 
+        DB::table('carousels')->delete();
+        $this->call(CarouselsTableSeeder::class);
         // $this->call(UserTableSeeder::class);
 
         Model::reguard();
