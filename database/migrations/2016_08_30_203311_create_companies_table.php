@@ -24,6 +24,7 @@ class CreateCompaniesTable extends Migration
             $table->boolean('female_owned')->nullable();
             $table->boolean('freelance')->nullable();
             $table->boolean('organization')->nullable();
+            $table->date('date_established')->nullable();
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('industry_id')->references('id')->on('industries');

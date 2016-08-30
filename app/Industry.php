@@ -3,7 +3,7 @@
 namespace App;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
-use App\Company
+use App\Company;
 
 class Industry extends Model
 {

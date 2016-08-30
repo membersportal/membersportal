@@ -13,11 +13,19 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         Model::unguard();
-
+        DB::table('leaders')->delete();
+        DB::table('rfps')->delete();
+        DB::table('events')->delete();
+        DB::table('contacts')->delete();
+        DB::table('connections')->delete();
+        DB::table('companies')->delete();
         DB::table('carousels')->delete();
+        DB::table('industries')->delete();
+        DB::table('users')->delete();
+        DB::table('carousels')->delete();
+        $this->call(IndustriesTableSeeder::class);
         $this->call(CarouselsTableSeeder::class);
         // $this->call(UserTableSeeder::class);
-
         Model::reguard();
     }
 }
