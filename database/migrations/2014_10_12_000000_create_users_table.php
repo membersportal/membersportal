@@ -11,8 +11,7 @@ class CreateUsersTable extends Migration
      * @return void
      */
     public function up()
-    {
-        
+    { 
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('first_name', 100)->nullable();
@@ -24,7 +23,6 @@ class CreateUsersTable extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
-
     }
 
     /**

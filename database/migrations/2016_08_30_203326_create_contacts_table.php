@@ -30,7 +30,7 @@ class CreateContactsTable extends Migration
             $table->string('linkedin', 20)->nullable();
             $table->string('google_plus', 20)->nullable();
             $table->timestamps();
-            $table->foreign('company_id')->references('id')->on('company');
+            $table->foreign('company_id')->references('id')->on('companies');
             $table->foreign('user_id')->references('id')->on('users');
             $table->softDeletes();
         });

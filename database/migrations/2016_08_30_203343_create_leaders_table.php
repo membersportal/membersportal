@@ -20,7 +20,7 @@ class CreateLeadersTable extends Migration
             $table->string('img')->nullable();
             $table->string('linkedin_url')->nullable();
             $table->timestamps();
-            $table->foreign('company_id')->references('id')->on('company');
+            $table->foreign('company_id')->references('id')->on('companies');
             $table->softDeletes();
         });
     }
