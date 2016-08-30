@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class LeadersController extends Controller
 {
@@ -26,7 +27,7 @@ class LeadersController extends Controller
      */
     public function create()
     {
-        //
+        return view('');
     }
 
     /**
@@ -37,7 +38,8 @@ class LeadersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $leader = new Leader();
+        return $this->validateAndSave($leader, $request);
     }
 
     /**
@@ -48,7 +50,14 @@ class LeadersController extends Controller
      */
     public function show($id)
     {
-        //
+      $leader = Leader::findOrFail($id);
+      $leader = $company->contacts;
+      $leader = $company->rfps;
+      $leader = $company->events;
+      $leader = $company->leaders;
+      $connection = $company->connections;
+      $data = compact('company', 'contact', 'rfp', 'event', 'leader', 'connection');
+      return view('')->with($data);
     }
 
     /**
@@ -59,7 +68,9 @@ class LeadersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $leader = Leader::findOrFail($id);
+        $data = compact('leader');
+        return view('')->with($data);
     }
 
     /**
@@ -71,7 +82,8 @@ class LeadersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $leader = Leader::findOrFail($id);
+        return $this->validateAndSave($leader, $request);
     }
 
     /**
@@ -82,6 +94,22 @@ class LeadersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $leader = Leader::findOrFail($id);
+        $leader->delete();
+        $message = 'Leader deleted';
+        $request->session()->flash('sucessMessage', $message);
+        return redirect()->action('companies.view_profile');
     }
+    
+    private function validateAndSave(Leader $rfp, Request $request){
+        // $leader = new Auth::user()->id;    
+        $request->session()->flash('ERROR_MESSAGE', 'Leader was not created successfully'); //set error message if not saved
+        $this->validate($request, Leader::$rules); //validate that alll fields are filled out correctly
+        $request->session()->forget('ERROR_MESSAGE'); // if validated, tell to forget the error message
+        $leader->company_id = $company_id //can use $post->title = $request->input('title') alternatively
+        $leader->full_name = $request->full_name;
+        $leader->title = $request->title;
+        $leader->image = $request->image;
+        $leader->linkedin_url = $request->linkedin_url;
+        $rfp->save();
 }
