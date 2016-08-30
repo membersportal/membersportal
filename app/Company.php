@@ -32,6 +32,11 @@ class Company extends Model
 		return $this->hasMany(Leader::class, 'id');
 	}
 
+	public static function newestMember()
+	{
+		return Company::orderBy('created_at', 'desc')->first();
+	}
+	
 	public static $rules = [
      'name' => 'required|max:120',
      'industry_id' => 'required|integer',
