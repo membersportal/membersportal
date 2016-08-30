@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class CarouselsController extends Controller
 {
@@ -27,7 +28,7 @@ class CarouselsController extends Controller
      */
     public function create()
     {
-        //
+      return view('admin.create_carousel');
     }
 
     /**
@@ -38,7 +39,8 @@ class CarouselsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $carousel = new Carousel();
+      return $this->validateAndSave($carousel, $request);
     }
 
     /**
@@ -60,7 +62,9 @@ class CarouselsController extends Controller
      */
     public function edit($id)
     {
-        //
+      $carousel = Carousel::findOrFail($id);
+      $data = compact('carousel');
+      return view('admin.edit_carousel')->with($data);
     }
 
     /**
@@ -84,5 +88,19 @@ class CarouselsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    private function validateAndSave(Carousel $Carousel, Request $request){
+        $request->session()->flash('ERROR_MESSAGE', 'Carousel was not created successfully'); //set error message if not saved
+        $this->validate($request, Carousel::$rules); //validate that alll fields are filled out correctly
+        $request->session()->forget('ERROR_MESSAGE'); // if validated, tell to forget the error message
+        $carousel->title = $request->title; //can use $post->title = $request->input('title') alternatively
+        $carousel->desc = $request->desc;
+        $carousel->img = $request->img;
+        $carousel->url = $request->url;
+        $carousel->save(); //save when submited
+        // Log::info('User successfully creates post', $request->all()); // create custom log when post is created
+        $request->session()->flash('message', 'Carousel item successfully saved!'); // flash success message when saved
+        return redirect()->action('admin.dashboard'); //redirect to the index page
     }
 }
