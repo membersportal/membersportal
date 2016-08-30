@@ -9,12 +9,16 @@ use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Company;
+use App\Contact;
+use App\Connection;
 
 class User extends Model implements AuthenticatableContract,
                                     AuthorizableContract,
                                     CanResetPasswordContract
 {
-    use Authenticatable, Authorizable, CanResetPassword;
+    use Authenticatable, Authorizable, CanResetPassword, SoftDeletes;
 
     /**
      * The database table used by the model.
@@ -36,4 +40,28 @@ class User extends Model implements AuthenticatableContract,
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+
+    public function companies()
+    {
+        return $this->hasOne(Company::class, 'user_id');
+    }
+
+    public function contacts()
+    {
+        return $this->hasOne(Contact::class, 'user_id');
+    }
+
+    public function connections()
+    {
+        return $this->hasManyThrough(User::class, Connection::class, 'user1_id', 'user2_id');
+    }
+
+    public static $rules = [
+     'first_name' => 'required|max:100',
+     'last_name' => 'required|max:100',
+     'username' => 'required|max:32',
+     'email'   => 'required|email',
+     'password' => 'required|max:100'
+    ];
+
 }

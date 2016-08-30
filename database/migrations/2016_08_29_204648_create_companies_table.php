@@ -16,6 +16,7 @@ class CreateCompaniesTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->string('name', 120)->unique();
+            $table->integer('industry_id')->unsigned();
             $table->string('profile_img')->nullable();
             $table->string('header_img')->nullable();
             $table->string('desc', 2000)->nullable();
@@ -24,6 +25,7 @@ class CreateCompaniesTable extends Migration
             $table->boolean('organization')->nullable();
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('industry_id')->references('id')->on('industries');
             $table->softDeletes();
         });
     }
