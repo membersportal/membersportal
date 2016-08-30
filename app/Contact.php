@@ -34,7 +34,7 @@ class Contact extends Model
      'twitter'  => 'nullable|max:32',
      'facebook' => 'nullable|max:32',
      'instagram' => 'nullable|max:32',
-     'google+' => 'nullable|max:32'
+     'google_plus' => 'nullable|max:32'
    	];
     //
 }
