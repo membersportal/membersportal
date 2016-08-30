@@ -35,9 +35,9 @@ class Company extends Model
 	public static $rules = [
      'name' => 'required|max:120',
      'industry_id' => 'required|integer',
-     'profile_img' => 'required|image',
-     'header_img' => 'required|image',
-     'desc' => 'required|filled',
+     'profile_img' => 'nullable|image',
+     'header_img' => 'nullable|image',
+     'desc' => 'nullable|filled',
      'female_owned' => 'required|boolean',
      'freelance' => 'required|boolean',
      'organization' => 'required|boolean'

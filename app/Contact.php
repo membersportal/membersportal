@@ -30,11 +30,11 @@ class Contact extends Model
      'state' => 'required|max:2',
      'zip' => 'required|integer',
      'country' => 'required|max:15',
-     'website' => 'required|url',
+     'website' => 'nullable|url',
      'twitter'  => 'nullable|max:32',
      'facebook' => 'nullable|max:32',
      'instagram' => 'nullable|max:32',
-     'google+' => 'nullable|max:32'
+     'google_plus' => 'nullable|max:32'
    	];
     //
 }

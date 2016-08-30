@@ -30,20 +30,6 @@ class UsersController extends Controller
         return view('search');
     }
 
-    public function dashboard($id)
-    {
-        $user = User::find($id);
-        $data = compact('user');
-        return view('users.dashboard')->with($data);
-    }
-
-    public function viewConnections($id)
-    {
-        $user = User::find($id);
-        $data = compact('user');
-        return view('users.connections')->with($data);
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -75,25 +61,18 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function editAccountLogin($id)
+    public function edit($id)
     {
         $user = User::find($id);
         $data = compact('user');
         return view('users.edit_account_login')->with($data);
     }
 
-    public function editAccountCompany($user_id)
-    {
-        $company = Company::find($id);
-        $data = compact('company');
-        return view('users.edit_account_company')->with($data); 
-    }
-
     public function editAccountContact($user_id)
     {
         $contact = Contact::find($id);
         $data = compact('contact');
-        return view('users.edit_account_contact')->with($data); 
+        return view('users.edit_account_contact')->with($data);
     }
 
     /**
@@ -120,6 +99,7 @@ class UsersController extends Controller
     }
 
     private function validateAndSave(User $user, Request $request){
+        $is_admin = Auth::user()->is_admin;
         $request->session()->flash('ERROR_MESSAGE', 'User was not created successfully'); //set error message if not saved
         $this->validate($request, User::$rules); //validate that alll fields are filled out correctly
         $request->session()->forget('ERROR_MESSAGE'); // if validated, tell to forget the error message
@@ -130,7 +110,12 @@ class UsersController extends Controller
         $user->password = Hash::make($request->password);
         $user->save(); //save when submited
         // Log::info('User successfully creates post', $request->all()); // create custom log when post is created
-        $request->session()->flash('message', 'User was successfully created'); // flash success message when saved
-        return redirect()->action(''); //redirect to the index page
+        if($is_admin){
+          $request->session()->flash('message', 'User was successfully created!'); // flash success message when saved
+          return redirect()->action(''); //redirect to the index page
+        } else {
+          $request->session()->flash('message', 'User information successfully updated!'); // flash success message when saved
+          return redirect()->action('');
+        }
     }
 }
