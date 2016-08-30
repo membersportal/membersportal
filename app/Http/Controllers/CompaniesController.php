@@ -48,7 +48,14 @@ class CompaniesController extends Controller
      */
     public function show($id)
     {
-        //
+      $company = Company::findOrFail($id);
+      $contact = $company->contacts;
+      $rfp = $company->rfps;
+      $event = $company->events;
+      $leader = $company->leaders;
+      $connection = $company->connections;
+      $data = compact('company', 'contact', 'rfp', 'event', 'leader', 'connection');
+      return view('companies.view_profile')->with($data);
     }
 
     /**
@@ -59,7 +66,10 @@ class CompaniesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $company = Company::findOrFail($id);
+        $data = compact('company');
+        return view('companies.manage_account_company')->with($user);
+
     }
 
     /**

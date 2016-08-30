@@ -17,6 +17,11 @@ class Company extends Model
 		return $this->hasOne(User::class, 'id');
 	}
 
+	public function events()
+	{
+		return $this->hasMany(Event::class, 'company_id');
+	}
+
 	public function industries()
 	{
 		return $this->belongsTo(Industry::class, 'id');
