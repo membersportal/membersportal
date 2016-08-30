@@ -73,9 +73,25 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function editAccountLogin($id)
     {
-        return view('users.edit_account_login')->with($user);
+        $user = User::find($id);
+        $data = compact('user');
+        return view('users.edit_account_login')->with($data);
+    }
+
+    public function editAccountCompany($user_id)
+    {
+        $company = Company::find($id);
+        $data = compact('company');
+        return view('users.edit_account_company')->with($data); 
+    }
+
+    public function editAccountContact($user_id)
+    {
+        $contact = Contact::find($id);
+        $data = compact('contact');
+        return view('users.edit_account_contact')->with($data); 
     }
 
     /**

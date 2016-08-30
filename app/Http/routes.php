@@ -21,7 +21,7 @@ Route::post('auth/register', 'Auth\AuthController@postRegister');
 // Users
 Route::get('/', 'UsersController@index');
 Route::get('users/{user}', 'UsersController@show');
-Route::get('users/{user}/edit', 'UsersController@edit');
+Route::get('users/{user}/edit', 'UsersController@editAccountLogin');
 Route::put('users/{user}', 'UsersController@update');
 Route::delete('users/{user}', 'UsersController@destroy');
 Route::get('users/search', 'UsersController@searchMembers');

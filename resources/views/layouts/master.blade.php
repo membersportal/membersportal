@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Cruddit</title>
+	<title>Members Portal</title>
 	<link href="/css/bootstrap/bootstrap.css" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Rokkitt|Source+Sans+Pro" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab|Source+Sans+Pro" rel="stylesheet">
 	<link href="/css/site.css" rel="stylesheet">
 </head>
 <body>
@@ -16,7 +16,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="{{ action('UsersController@index') }}">Business Connect</a>
+				<a class="navbar-brand" href="{{ action('UsersController@index') }}">Members<span class="brand">Portal</span></a>
 			</div>
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
@@ -29,14 +29,13 @@
 					@else
 					<img src="http://placekitten.com/35/35" class="user_avatar">
 					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->username }} <span class="caret"></span></a>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->username }}<span class="caret"></span></a>
 						<ul class="dropdown-menu">
-						<li>
-							<a href="{{ action('UsersController@show', ['id' => Auth::user()->id] }}">View Profile</a></li>
+						<li><a href="{{ action('UsersController@show', ['id' => Auth::user()->id]) }}">View Profile</a></li>
 						<li><a href="{{ action('UsersController@dashboard', ['id' => Auth::user()->id]) }}">My Dashboard</a></li>
 						<li><a href="{{ action('UsersController@viewConnections', ['id' => Auth::user()->id]) }}">My Connections</a></li>
 						<li role="separator" class="divider"></li>
-						<li><a href="#">My Account</a></li>
+						<li><a href="{{ action('UsersController@editAccountLogin', ['id' => Auth::user()->id]) }}">My Account</a></li>
 						</ul>
 					</li>
 					@endif
@@ -44,8 +43,9 @@
 			</div><!-- /.navbar-collapse -->
 		</div><!-- /.container-fluid -->
 	</nav>
-
-	@yield('content')
+	<div class="container">
+		@yield('content')
+	</div>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="/js/bootstrap/bootstrap.min.js"></script>
