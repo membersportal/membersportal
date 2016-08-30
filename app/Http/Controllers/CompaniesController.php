@@ -26,7 +26,7 @@ class CompaniesController extends Controller
      */
     public function create()
     {
-        //
+        return view('companies.')
     }
 
     /**
@@ -68,7 +68,7 @@ class CompaniesController extends Controller
     {
         $company = Company::findOrFail($id);
         $data = compact('company');
-        return view('companies.manage_account_company')->with($user);
+        return view('companies.edit_account_company')->with($user);
 
     }
 
@@ -81,7 +81,8 @@ class CompaniesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $company = Company::findOrFail($id);
+        return $this->validateAndSave($company, $request);
     }
 
     /**
