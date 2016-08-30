@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+
 
 class CompaniesController extends Controller
 {
@@ -26,7 +28,7 @@ class CompaniesController extends Controller
      */
     public function create()
     {
-        return view('companies.')
+        return view('admin.create_account_company')
     }
 
     /**
@@ -37,7 +39,8 @@ class CompaniesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $company = new Company();
+        return $this->validateAndSave($company, $request);
     }
 
     /**
@@ -46,6 +49,19 @@ class CompaniesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+     public function dashboard($id)
+     {
+         $user = User::find($id);
+         $data = compact('user');
+         return view('companies.dashboard')->with($data);
+     }
+
+     public function viewConnections($id)
+     {
+         $user = User::find($id);
+         $data = compact('user');
+         return view('companies.connections')->with($data);
+     }
     public function show($id)
     {
       $company = Company::findOrFail($id);
@@ -68,8 +84,7 @@ class CompaniesController extends Controller
     {
         $company = Company::findOrFail($id);
         $data = compact('company');
-        return view('companies.edit_account_company')->with($user);
-
+        return view('companies.edit_account_company')->with($data);
     }
 
     /**
@@ -93,6 +108,31 @@ class CompaniesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $company = Company::findOrFail($id);
+        $company->delete();
+        return redirect()->action('ContactsController@destroy');
+    }
+
+    private function validateAndSave(Company $company, Request $request){
+        $is_admin = Auth::user()->is_admin;
+        $request->session()->flash('ERROR_MESSAGE', 'Company was not created successfully'); //set error message if not saved
+        $this->validate($request, Company::$rules); //validate that alll fields are filled out correctly
+        $request->session()->forget('ERROR_MESSAGE'); // if validated, tell to forget the error message
+        $company->name = $request->name; //can use $post->title = $request->input('title') alternatively
+        $company->industry_id = $request->industry_id;
+        $company->profile_img = $request->profile_img;
+        $company->desc = $request->desc;
+        $company->female_owned = $request->female_owned;
+        $company->freelance = $request->freelance;
+        $company->organization = $request->organization;
+        $company->save(); //save when submited
+        // Log::info('User successfully creates post', $request->all()); // create custom log when post is created
+        if($is_admin){
+          $request->session()->flash('message', 'Company was successfully created!'); // flash success message when saved
+          return redirect()->action('ContactsController@create'); //redirect to the index page
+        } else {
+          $request->session()->flash('message', 'Company information was successfully updated!'); // flash success message when saved
+          return redirect()->action('companies.view_profile');
+        }
     }
 }
