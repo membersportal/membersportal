@@ -19,7 +19,6 @@ class DatabaseSeeder extends Seeder
         DB::table('contacts')->delete();
         DB::table('connections')->delete();
         DB::table('companies')->delete();
-        DB::table('carousels')->delete();
         DB::table('industries')->delete();
         DB::table('users')->delete();
         DB::table('carousels')->delete();

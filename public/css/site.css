@@ -10,15 +10,15 @@ body, body#login {
 
 body#login {
 	position: absolute;
-	min-width: 500px;
+	min-width: 550px;
 	height: auto;
 	left: 50%;
-	transform: translate(-50%, 45%);
+	transform: translate(-50%, 48%);
 }
 
 div.login {
 	background-color: #eb6e44;
-	padding: 75px;
+	padding: 50px 75px;
 }
 
 /*Navbar*/
@@ -139,6 +139,7 @@ button.btn.btn-primary.pull-right.login {
 	text-shadow: 0 0 0 #237666;
 	color: #fff;
 	font-size: 1.15em;
+	margin-bottom: 10px;
 }
 
 /*Forms*/
@@ -146,8 +147,9 @@ p.form_label_small {
 	
 }
 
-label {
-	
+label.login {
+	color: white;
+	font-weight: 400;
 }
 
 input.login {
@@ -156,34 +158,54 @@ input.login {
 	text-align: center;
 }
 
+input.login_checkbox {
+	border-radius: 0;
+}
+
 ::-webkit-input-placeholder{
 	color: #514e43;
-	opacity: 0.7;
+	opacity: 0.8;
 	letter-spacing: .5px;
+	font-size: 1.1em;
 }
 
 :-moz-placeholder {
 	color: #514e43;
-	opacity: 0.7;
+	opacity: 0.8;
 	letter-spacing: .5px;
+	font-size: 1.1em;
 } 
 
 ::-moz-placeholder {
 	color: #514e43;
-	opacity: 0.7;
+	opacity: 0.8;
 	letter-spacing: .5px;
+	font-size: 1.1em;
 } 
 
 :-ms-input-placeholder {
 	color: #514e43;
-	opacity: 0.7;
+	opacity: 0.8;
 	letter-spacing: .5px;
+	font-size: 1.1em;
 }
 
 .checkbox_login {
 	width: 100%;
-	margin-left: 50px;
-	margin-bottom: 10px;
+	display: block;
+	text-align: center;
+	margin-bottom: 7px;
+}
+
+a.forgot_password {
+	color: #fff5c3;
+	text-decoration: none;
+	display: block;
+	text-align: center;
+}
+
+a.forgot_password:hover, a.forgot_password:active, a.forgot_password:visited {
+	color: #fff;
 }
 
 /*gray: #7c786a;
