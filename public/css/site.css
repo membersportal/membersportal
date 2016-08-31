@@ -1,10 +1,26 @@
-/* @override 
-	http://membersportal.dev/css/site.css */
-
-/*Divs*/
+/*Divs and Page Structure*/
 .container {
 	width: 80%;
+	position: relative;
 }
+
+body, body#login {
+	background-color: #fffef4;
+}
+
+body#login {
+	position: absolute;
+	min-width: 500px;
+	height: auto;
+	left: 50%;
+	transform: translate(-50%, 45%);
+}
+
+div.login {
+	background-color: #eb6e44;
+	padding: 75px;
+}
+
 /*Navbar*/
 nav.navbar.navbar-default {
 	border-color: #d5633e;
@@ -73,7 +89,16 @@ ul.nav.navbar-nav > li:hover:after{
 /*Text*/
 body {
 	font-family: 'Source Sans Pro', sans-serif;
-	background-color: #fffef4;
+}
+
+h3.login {
+	font: 1.25em 'Roboto Slab', serif;
+	color: #fff5c3;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	padding-top: 0;
+	margin-top: 0;
+	margin-bottom: 15px;
 }
 
 h1, h2, h3, h4 {
@@ -103,14 +128,64 @@ h4 {
 	margin-top: 7px;
 }
 
-/*Forms*/
-p.dropdown_label {
-
+/*Buttons*/
+button.btn.btn-primary.pull-right.login {
+	background-color: #8dcdc1;
+	border-style: none;
+	border-color: #fff5c3;
+	border-radius: 0;
+	width: 100%;
+	text-transform: uppercase;
+	text-shadow: 0 0 0 #237666;
+	color: #fff;
+	font-size: 1.15em;
 }
 
-p.form_label {
+/*Forms*/
+p.form_label_small {
 	
 }
+
+label {
+	
+}
+
+input.login {
+	border-style: none;
+	border-radius: 0;
+	text-align: center;
+}
+
+::-webkit-input-placeholder{
+	color: #514e43;
+	opacity: 0.7;
+	letter-spacing: .5px;
+}
+
+:-moz-placeholder {
+	color: #514e43;
+	opacity: 0.7;
+	letter-spacing: .5px;
+} 
+
+::-moz-placeholder {
+	color: #514e43;
+	opacity: 0.7;
+	letter-spacing: .5px;
+} 
+
+:-ms-input-placeholder {
+	color: #514e43;
+	opacity: 0.7;
+	letter-spacing: .5px;
+}
+
+.checkbox_login {
+	width: 100%;
+	margin-left: 50px;
+	margin-bottom: 10px;
+}
+
 /*gray: #7c786a;
 dark gray (text): #514e43;
 blue: #8dcdc1;
