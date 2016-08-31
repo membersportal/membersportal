@@ -37,6 +37,37 @@ class Company extends Model
 		return Company::orderBy('created_at', 'desc')->first();
 	}
 
+	public static function searchMembers($request)
+	{
+		$query = Company::;
+		$first = TRUE;
+
+		if($request->input('searchField')){
+			$query .= searchCompanyName($request);
+		}
+
+		if($request->)
+
+		return $query;
+	}
+
+
+
+	public static function searchCompanyName($request)
+	{
+		return where('name', "$request->input('searchField')")->orWhere('desc', 'like',"%$request->input('searchField')%");
+	}
+
+	public static function searchIndustry($request)
+	{
+		return where()$select('option_value')
+	};
+
+	public static function searchCharcteristics($request)
+	{
+
+	};
+
 	public static $rules = [
      'name' => 'required|max:120',
      'industry_id' => 'required|integer',
