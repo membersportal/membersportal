@@ -24,6 +24,7 @@ Route::get('users/{user}/edit', 'UsersController@edit');
 Route::put('users/{user}', 'UsersController@update');
 Route::delete('users/{user}', 'UsersController@destroy');
 Route::get('users/search', 'UsersController@searchMembers');
+Route::get('/admin/dashboard', 'UsersController@getAdminDashboard');
 
 // Companies
 Route::get('companies/create', 'CompaniesController@create');

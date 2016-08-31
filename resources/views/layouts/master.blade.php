@@ -21,25 +21,27 @@
 			</div>
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="{{ action('EventsController@index') }}">Events <span class="sr-only">Events</span></a></li>
-					<li><a href="{{ action('UsersController@searchMembers') }}">Search Members</a></li>
+					<li class="active triangle"><a href="{{ action('EventsController@index') }}">Events <span class="sr-only">Events</span></a></li>
+					<li class="triangle"><a href="{{ action('UsersController@searchMembers') }}">Search Members</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					@if (!Auth::check())
-					<li><a href="{{ action('Auth\AuthController@getLogin') }}">Log In</a></li>
-					@else
-					<img src="http://placekitten.com/35/35" class="user_avatar">
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->username }}<span class="caret"></span></a>
 						<ul class="dropdown-menu">
-						<li><a href="{{ action('UsersController@show', ['id' => Auth::user()->id]) }}">View Profile</a></li>
-						<li><a href="{{ action('UsersController@dashboard', ['id' => Auth::user()->id]) }}">My Dashboard</a></li>
-						<li><a href="{{ action('UsersController@viewConnections', ['id' => Auth::user()->id]) }}">My Connections</a></li>
-						<li role="separator" class="divider"></li>
-						<li><a href="{{ action('UsersController@editAccountLogin', ['id' => Auth::user()->id]) }}">My Account</a></li>
+							@if (Auth::user()->is_admin)
+								<li><a href="{{ action('Auth\AuthController@getLogout') }}">Admin Dashboard</a></li>
+							@endif
+							@if (!Auth::user()->is_admin)
+								<li><a href="{{ action('CompaniesController@show', ['id' => Auth::user()->id]) }}">View Profile</a></li>
+								<li><a href="{{ action('CompaniesController@dashboard', ['id' => Auth::user()->id]) }}">My Dashboard</a></li>
+								<li><a href="{{ action('CompaniesController@viewConnections', ['id' => Auth::user()->id]) }}">My Connections</a></li>
+								<li role="separator" class="divider"></li>
+							@endif
+							<li><a href="{{ action('UsersController@edit', ['id' => Auth::user()->id]) }}">My Account</a></li>
+							<li><a href="{{ action('Auth\AuthController@getLogout') }}">Log Out</a></li>
 						</ul>
+					<li><img src="http://placekitten.com/35/35" class="user_avatar"></li>
 					</li>
-					@endif
 				</ul>
 			</div><!-- /.navbar-collapse -->
 		</div><!-- /.container-fluid -->
