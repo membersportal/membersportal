@@ -8,3 +8,8 @@
 	<input type="password" class="form-control" name="password" maxlength="60" required>
 	@include ('partials.error', ['value' => 'password'])
 </div>
+<div class="checkbox">
+	<label>
+		<input type="checkbox"> Remember Me
+	</label>
+</div>

@@ -21,6 +21,10 @@ class UsersController extends Controller
      */
     public function index()
     {
+        if (!Auth::check()) {
+            return view('auth.login');
+        }
+        
         $newestMember = Company::newestMember();
         $data = compact('newestMember');
         return view('home');

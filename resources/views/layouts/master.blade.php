@@ -7,6 +7,7 @@
 	<link href="/css/site.css" rel="stylesheet">
 </head>
 <body>
+	@if (Auth::check())
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -43,6 +44,7 @@
 			</div><!-- /.navbar-collapse -->
 		</div><!-- /.container-fluid -->
 	</nav>
+	@endif
 	<div class="container">
 		@yield('content')
 	</div>
