@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Industry;
+use App\Contact;
 
 
 class CompaniesController extends Controller
@@ -34,10 +35,14 @@ class CompaniesController extends Controller
 
     public function searchMembers(Request $request)
     {
+      $results = Company::searchMembers($request);
 
-      Company::searchMembers($request);
-        return view('search');
+      $locations = App\Contact::searchLocations($results);
+
+      $data = compact('results', 'locations');
+        return view('search')->with($data);
     }
+    
     /**
      * Store a newly created resource in storage.
      *
