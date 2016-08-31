@@ -25,7 +25,7 @@ class UsersController extends Controller
         if (!Auth::check()) {
             return view('auth.login');
         }
-        
+
         $newestMember = Company::newestMember();
         $carousels = Carousel::pullCarousels();
         $data = compact('newestMember', 'carousels');
@@ -68,6 +68,13 @@ class UsersController extends Controller
         $user = User::find($id);
         $data = compact('user');
         return view('users.edit_account_login')->with($data);
+    }
+
+    public function searchUser(Request $request)
+    {
+      $result = User::searchUser($request);
+      $data = compact('results');
+      return view('')->with($data);
     }
 
     public function editAccountContact($user_id)

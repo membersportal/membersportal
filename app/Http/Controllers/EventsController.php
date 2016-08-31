@@ -22,6 +22,14 @@ class EventsController extends Controller
         return view('events.all');
     }
 
+    public function searchEvents(Request $request)
+    {
+      $results = Event::searchEvents($request);
+
+      $data = compact('results');
+        return view('search')->with($data);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

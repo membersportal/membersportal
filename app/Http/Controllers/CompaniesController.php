@@ -42,7 +42,7 @@ class CompaniesController extends Controller
       $data = compact('results', 'locations');
         return view('search')->with($data);
     }
-    
+
     /**
      * Store a newly created resource in storage.
      *
