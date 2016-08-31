@@ -21,6 +21,12 @@ class Contact extends Model
 		return $this->hasOne(User::class, 'id');
 	}
 
+	public static function searchLocations($results)
+	{
+		$array = $results->id;
+		return Contact::whereIn('company_id', $array)->get();
+	}
+
 	public static $rules = [
      'phone_no' => 'required|integer',
      'address_line_1' => 'required|max:100',
