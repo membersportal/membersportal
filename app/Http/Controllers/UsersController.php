@@ -28,7 +28,7 @@ class UsersController extends Controller
 
     public function searchMembers()
     {
-      $
+      
         return view('search');
     }
 
