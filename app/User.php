@@ -56,6 +56,14 @@ class User extends Model implements AuthenticatableContract,
         return $this->hasManyThrough(User::class, Connection::class, 'user1_id', 'user2_id');
     }
 
+    public static function searchUser($request)
+    {
+      $query = User::where('email', "$$request->searchField");
+      //(get_class_methods(get_class($query)));
+      // echo $query->getQuery()->toSql();
+      return $query->get();
+    }
+
     public static $rules = [
      'first_name' => 'required|max:100',
      'last_name' => 'required|max:100',
