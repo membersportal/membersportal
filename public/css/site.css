@@ -19,6 +19,7 @@ body#login {
 div.login {
 	background-color: #eb6e44;
 	padding: 50px 75px;
+	position: relative;
 }
 
 /*Navbar*/
@@ -142,6 +143,10 @@ button.btn.btn-primary.pull-right.login {
 	margin-bottom: 10px;
 }
 
+button.btn.btn-primary.pull-right.login:hover {
+	background-color: #82bab0;
+}
+
 /*Forms*/
 p.form_label_small {
 	
@@ -204,7 +209,19 @@ a.forgot_password {
 	text-align: center;
 }
 
-a.forgot_password:hover, a.forgot_password:active, a.forgot_password:visited {
+div.login > a.forgot_password:hover:after {
+	content: "";
+	position: absolute;
+	bottom: 52px;
+	right: 143px;
+	display: inline-block;
+	background: transparent url('/img/arrow.png') no-repeat;
+	height: 11px;
+	color: #fff5c3;
+	width: 10px;	
+}
+
+a.forgot_password:active, a.forgot_password:visited {
 	color: #fff;
 }
 

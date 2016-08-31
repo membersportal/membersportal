@@ -1,4 +1,4 @@
-<div id="login" class="form-group">
+<div class="form-group">
 	<input type="text" class="form-control login" name="username" value="{{ old('username') }}" maxlength="32" placeholder="username" required>
 	@include ('partials.error', ['value' => 'username'])
 </div>
