@@ -32,6 +32,12 @@ class CompaniesController extends Controller
         return view('admin.create_account_company')
     }
 
+    public function searchMembers(Request $request)
+    {
+
+      Company::searchMembers($request);
+        return view('search');
+    }
     /**
      * Store a newly created resource in storage.
      *

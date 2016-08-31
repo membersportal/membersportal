@@ -26,12 +26,6 @@ class UsersController extends Controller
         return view('home');
     }
 
-    public function searchMembers()
-    {
-      
-        return view('search');
-    }
-
     /**
      * Store a newly created resource in storage.
      *
