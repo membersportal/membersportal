@@ -21,6 +21,10 @@ class UsersController extends Controller
      */
     public function index()
     {
+        if (!Auth::check()) {
+            return view('auth.login');
+        }
+        
         $newestMember = Company::newestMember();
         $data = compact('newestMember');
         return view('home');
@@ -44,12 +48,12 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        $user = User::findOrFail($id);
-        $data = compact('user');
-        return view('companies.view_profile')->with($data);
-    }
+    // public function show($id)
+    // {
+    //     $user = User::findOrFail($id);
+    //     $data = compact('user');
+    //     return view('users.edit_account_login')->with($data);
+    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -81,6 +85,13 @@ class UsersController extends Controller
     public function update(Request $request, $id)
     {
         //
+    }
+
+    public function getAdminDashboard()
+    {
+        $user = User::find(Auth::user()->id);
+        $data = compact('user');
+        return view('admin.dashboard')->with($data);
     }
 
     /**
