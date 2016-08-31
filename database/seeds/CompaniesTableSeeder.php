@@ -23,11 +23,14 @@ class CompaniesTableSeeder extends Seeder
         ['user_id' => '9', 'name' =>	'Brightbean', 'industry_id' =>	'9', 'profile_img' =>	'', 'header_img' => '', 'desc' => '', 'size' => 'more_than_500', 'woman_owned' =>	True, 'contractor' =>	True, 'family_owned' =>	True, 'organization' =>	True, 'date_established' =>	'2015-12-25']
       ];
 
+    //s$industries = App\Industry::all();
+    //$totalIndustries = $industries->count();
+    //$i = 0;
     foreach ($companies as $company) {
         $new_company = new App\Company();
         $new_company->user_id = $company['user_id'];
         $new_company->name = $company['name'];
-        $new_company->industry_id = $company['industry_id'];
+        $new_company->industry_id = $company['industry_id'];// $industries[$i]->id;
         $new_company->profile_img = $company['profile_img'];
         $new_company->header_img = $company['header_img'];
         $new_company->desc = $company['desc'];
@@ -38,6 +41,7 @@ class CompaniesTableSeeder extends Seeder
         $new_company->organization = $company['organization'];
         $new_company->date_established = $company['date_established'];
         $new_company->save();
+        // $i = $i % $totalIndustries;
       }
     }
 }

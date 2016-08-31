@@ -19,13 +19,12 @@ class DatabaseSeeder extends Seeder
         DB::table('contacts')->delete();
         DB::table('connections')->delete();
         DB::table('companies')->delete();
-        DB::table('carousels')->delete();
-        DB::table('industries')->delete();
         DB::table('users')->delete();
+        DB::table('industries')->delete();
         DB::table('carousels')->delete();
         $this->call(CarouselsTableSeeder::class);
-        $this->call(UsersTableSeeder::class);
         $this->call(IndustriesTableSeeder::class);
+        $this->call(UsersTableSeeder::class);
         $this->call(CompaniesTableSeeder::class);
         $this->call(ContactsTableSeeder::class);
 
