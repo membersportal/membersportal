@@ -50,14 +50,7 @@ class LeadersController extends Controller
      */
     public function show($id)
     {
-      $leader = Leader::findOrFail($id);
-      $leader = $company->contacts;
-      $leader = $company->rfps;
-      $leader = $company->events;
-      $leader = $company->leaders;
-      $connection = $company->connections;
-      $data = compact('company', 'contact', 'rfp', 'event', 'leader', 'connection');
-      return view('')->with($data);
+    
     }
 
     /**
@@ -102,7 +95,7 @@ class LeadersController extends Controller
     }
     
     private function validateAndSave(Leader $rfp, Request $request){
-        // $leader = new Auth::user()->id;    
+        $company_id = new Auth::user()->id;    
         $request->session()->flash('ERROR_MESSAGE', 'Leader was not created successfully'); //set error message if not saved
         $this->validate($request, Leader::$rules); //validate that alll fields are filled out correctly
         $request->session()->forget('ERROR_MESSAGE'); // if validated, tell to forget the error message
@@ -111,5 +104,7 @@ class LeadersController extends Controller
         $leader->title = $request->title;
         $leader->image = $request->image;
         $leader->linkedin_url = $request->linkedin_url;
-        $rfp->save();
+        $leader->save();
+        $request->session()->flash('message', 'Leader saved');
+        return redirect()->action('companies.view_profile');
 }
