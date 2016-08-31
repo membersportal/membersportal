@@ -70,9 +70,7 @@ class Company extends Model
 		return $query->get();
 	}
 
-
-
-	public static function searchCompanyName($request->searchField)
+	public static function searchCompanyName($request)
 	{
 		return Company::where('name', 'like', "%$request->searchField%")->orWhere('desc', 'like',"%$request->searchField%");
 	}
