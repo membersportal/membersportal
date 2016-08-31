@@ -44,7 +44,10 @@ Route::delete('contacts/{contact}', 'ContactsController@destroy');
 Route::resource('events', 'EventsController');
 
 // Carousels
-Route::resource('carousels', 'CarouselsController');
+Route::get('carousels/create', 'CarouselsController@create');
+Route::get('carousels/{carousel}/edit', 'CarouselsController@edit');
+Route::put('carousels/{carousel}', 'CarouselsController@update');
+Route::delete('carousels/{carousel}', 'CarouselsController@destroy');
 
 // Leaders
 Route::resource('leaders', 'LeadersController');

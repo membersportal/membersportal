@@ -12,6 +12,11 @@ class Carousel extends Model
      'img' => 'required|image',
      'url' => 'required|url'
    	];
-    //
+    
+    public static function pullCarousels()
+    {
+    	$carousels = Carousel::orderBy('created_at', 'desc')->take(2)->get();
+    	return $carousels;
+    }
 }
 

@@ -1,5 +1,6 @@
 <label for="state">State<span class="required">*</span></label>
 <select class="form-control" name="state" required>
+	<option value="0">Select</option>
 	<option value="AL" {{ $contact->state == "AL" ? 'selected' : '' }}>Alabama</option>
 	<option value="AK" {{ $contact->state == "AK" ? 'selected' : '' }}>Alaska</option>
 	<option value="AZ" {{ $contact->state == "AZ" ? 'selected' : '' }}>Arizona</option>
