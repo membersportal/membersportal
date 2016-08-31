@@ -21,7 +21,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $newestMember = 
+        $newestMember = Company::newestMember();
         $data = compact('newestMember');
         return view('home');
     }
