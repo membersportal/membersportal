@@ -36,15 +36,16 @@ class Company extends Model
 	{
 		return Company::orderBy('created_at', 'desc')->first();
 	}
-	
+
 	public static $rules = [
      'name' => 'required|max:120',
      'industry_id' => 'required|integer',
      'profile_img' => 'nullable|image',
      'header_img' => 'nullable|image',
      'desc' => 'nullable|filled',
-     'female_owned' => 'required|boolean',
-     'freelance' => 'required|boolean',
+     'woman_owned' => 'required|boolean',
+		 'family_owned' => 'required|boolean',
+     'contractor' => 'required|boolean',
      'organization' => 'required|boolean'
    	];
     //

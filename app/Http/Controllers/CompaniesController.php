@@ -124,8 +124,9 @@ class CompaniesController extends Controller
         $company->industry_id = $request->industry_id;
         $company->profile_img = $request->profile_img;
         $company->desc = $request->desc;
-        $company->female_owned = $request->female_owned;
-        $company->freelance = $request->freelance;
+        $company->woman_owned = $request->woman_owned;
+        $company->contractor = $request->contactor;
+        $company->family_owned = $request->family_owned;
         $company->organization = $request->organization;
         $company->save(); //save when submited
         // Log::info('User successfully creates post', $request->all()); // create custom log when post is created

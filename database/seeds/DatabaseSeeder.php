@@ -23,8 +23,11 @@ class DatabaseSeeder extends Seeder
         DB::table('industries')->delete();
         DB::table('users')->delete();
         DB::table('carousels')->delete();
-        $this->call(IndustriesTableSeeder::class);
         $this->call(CarouselsTableSeeder::class);
+        $this->call(UsersTableSeeder::class);
+        $this->call(IndustriesTableSeeder::class);
+        $this->call(CompaniesTableSeeder::class);
+
         // $this->call(UserTableSeeder::class);
         Model::reguard();
     }

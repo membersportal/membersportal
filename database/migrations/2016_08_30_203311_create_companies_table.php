@@ -21,8 +21,9 @@ class CreateCompaniesTable extends Migration
             $table->string('header_img')->nullable();
             $table->string('desc', 2000)->nullable();
             $table->string('size', 20)->nullable();
-            $table->boolean('female_owned')->nullable();
-            $table->boolean('freelance')->nullable();
+            $table->boolean('woman_owned')->nullable();
+            $table->boolean('contractor')->nullable();
+            $table->boolean('family_owned')->nullable();
             $table->boolean('organization')->nullable();
             $table->date('date_established')->nullable();
             $table->timestamps();
