@@ -22,6 +22,7 @@ class CreateEventsTable extends Migration
             $table->boolean('invite_only')->nullable();
             $table->boolean('rsvp_required')->nullable();
             $table->string('url')->nullable();
+            $table->string('img');
             $table->timestamps();
             $table->foreign('company_id')->references('id')->on('companies');
             $table->softDeletes();
