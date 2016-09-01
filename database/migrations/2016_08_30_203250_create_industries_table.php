@@ -16,6 +16,7 @@ class CreateIndustriesTable extends Migration
             $table->increments('id');
             $table->string('industry', 100);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

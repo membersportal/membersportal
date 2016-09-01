@@ -10,9 +10,9 @@ class Event extends Model
 {
 	use SoftDeletes;
 
-	public function companies()
+	public function company()
 	{
-		return $this->belongsTo(Event::class, 'company_id');
+		return $this->belongsTo(Event::class, 'id');
 	}
 
 	public static function searchEvents($request)

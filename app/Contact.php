@@ -11,12 +11,12 @@ class Contact extends Model
 {
 	use SoftDeletes;
 
-	public function companies()
+	public function company()
 	{
 		return $this->hasOne(Company::class, 'id');
 	}
 
-	public function users()
+	public function user()
 	{
 		return $this->hasOne(User::class, 'id');
 	}
