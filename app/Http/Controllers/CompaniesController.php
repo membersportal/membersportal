@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Industry;
 use App\Contact;
 use App\Company;
+use App\Connect;
 
 
 class CompaniesController extends Controller
@@ -82,7 +83,7 @@ class CompaniesController extends Controller
       $rfp = $company->rfps;
       $event = $company->events;
       $leader = $company->leaders;
-      $connection = $company->connections;
+      $connection = Connection::viewConnections($id)->take(3)->get();
       $data = compact('company', 'contact', 'rfp', 'event', 'leader', 'connection');
       return view('companies.view_profile')->with($data);
     }

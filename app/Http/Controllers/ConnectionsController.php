@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Connection;
+use App\Company;
 
 
 class ConnectionsController extends Controller
@@ -58,8 +59,8 @@ class ConnectionsController extends Controller
     public function show($id)
     {
       $connections = Connection::viewConnections($id)->paginate(10);
-      
-      $data = compact('connections');
+      $companies = Company::($connections);
+      $data = compact('companies');
       return view('')->with($data);
     }
 
