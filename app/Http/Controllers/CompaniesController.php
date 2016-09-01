@@ -39,7 +39,7 @@ class CompaniesController extends Controller
     {
       $results = Company::searchMembers($request)->paginate(6);
 
-      $locations = App\Contact::searchLocations($results);
+      $locations = Contact::searchLocations($results);
 
       $data = compact('results', 'locations');
         return view('search')->with($data);
