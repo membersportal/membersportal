@@ -49,8 +49,13 @@ class Company extends Model
 
 	public static function searchLocations($connections)
 	{
-		$companies = $connections->user2_id;
-		return Company::whereIn('company_id', $companies)->get();
+		$companies = [];
+		foreach($connections as $connection) {
+			$company = $connection->company2_id;
+			$companyies[] = $company;
+		}
+		
+		return Company::whereIn('company_id', $companies);
 	}
 
 	public static function searchMembers($request)
