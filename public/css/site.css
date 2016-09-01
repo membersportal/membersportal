@@ -23,6 +23,13 @@ div.login {
 	position: relative;
 }
 
+div#newest_member {
+	background-color: #fff;
+	padding-bottom: 10px;
+	border: 1px solid #d3e397;
+	padding-top: 3px;
+}
+
 /*Navbar*/
 nav.navbar.navbar-default {
 	border-color: #d5633e;
@@ -161,7 +168,7 @@ h2 {
 h3 {
 	font-size: 1.3em;
 	color: #66a498;
-	margin-bottom: 15px;
+	margin-bottom: 20px;
 }
 
 h4 {
@@ -172,6 +179,27 @@ p.company_name {
 	color: #c65c39;
 	font-weight: bold;
 	font-size: 1.25em;
+	margin-bottom: 0;
+	margin-top: 15px;
+}
+
+p.industry_name_home {
+	font-size: .9em;
+	margin-bottom: 5px;
+}
+
+p.company_desc_home {
+	font-size: .85em;
+	line-height: 1.25em;
+}
+
+span.industry_name_home{
+	font-weight: bold;
+	color: #66a498;
+}
+
+span.strong {
+	font-weight: bold;
 }
 
 /*Images*/
