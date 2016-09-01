@@ -26,9 +26,9 @@ class UsersController extends Controller
             return view('auth.login');
         }
 
-        $newestMember = Company::newestMember();
+        $newest_member = Company::newestMember();
         $carousels = Carousel::pullCarousels();
-        $data = compact('newestMember', 'carousels');
+        $data = compact('newest_member', 'carousels');
         return view('home')->with($data);
     }
 
