@@ -68,27 +68,28 @@ class Company extends Model
 
 		if($request->input('industry_id') != 0 && !$request->searchField){
 			$query = $query->where('industry_id', $request->input('industry_id'));
-		} else {
+		} elseif($request->input('industry_id') != 0) {
 			$query = $query->orWhere('industry_id', $request->input('industry_id'));
 		}
 
-		if($request->woman_owned){
-			$query = $query->where('woman_owned', 1);
-			// dd($query->getQuery()->toSql());
-		}
+		if(!$request->searchField){
+			if($request->woman_owned){
+				$query = $query->where('woman_owned', 1);
+				// dd($query->getQuery()->toSql());
+			}
 
-		if($request->contractor){
-			$query = $query->where('contractor', 1);
-		}
+			if($request->contractor){
+				$query = $query->where('contractor', 1);
+			}
 
-		if($request->family_owned){
-			$query = $query->where('family_owned', 1);
-		}
+			if($request->family_owned){
+				$query = $query->where('family_owned', 1);
+			}
 
-		if($request->organization){
-			$query = $query->where('organization', 1);
+			if($request->organization){
+				$query = $query->where('organization', 1);
+			}
 		}
-
 
 		//var_dump(get_class_methods(get_class($query)));
 		// echo $query->getQuery()->toSql();
