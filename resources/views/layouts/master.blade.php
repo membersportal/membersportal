@@ -26,7 +26,7 @@
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li class="active triangle"><a href="{{ action('EventsController@index') }}">Events <span class="sr-only">Events</span></a></li>
-					<li class="triangle"><a href="{{ action('UsersController@searchMembers') }}">Search Members</a></li>
+					<li class="triangle"><a href="{{ action('CompaniesController@searchMembers') }}">Search Members</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li class="dropdown">
