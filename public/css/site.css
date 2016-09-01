@@ -4,6 +4,11 @@
 	position: relative;
 }
 
+html {
+	min-height: 100%;
+	position: relative;
+}
+
 .footer.container {
 	width: 60%;
 }
@@ -11,7 +16,6 @@
 body {
 	background-color: #fffef4;
 	color: #514e43;
-	position: relative;
 	padding-bottom: 225px;
 }
 
