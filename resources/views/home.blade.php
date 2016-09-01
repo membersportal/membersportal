@@ -4,9 +4,10 @@
 
 	<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 left_home">
 		<h3 class="text-center">Newest Member</h3>
+		{{ dd($newestMember->industry) }}
 		<img class="img-thumbnail img-responsive center-block profile_photo_home" src="/img/profile_photo_template.png">
 		<p class="company_name text-center">{{ $newestMember->name }}</p>
-		<p class="industry_name_home">{{ $newestMember->industries->industry }}</p>
+		<p class="industry_name_home">{{ $newestMember->industry->industry }}</p>
 	</div>
 
 	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 center_home">
