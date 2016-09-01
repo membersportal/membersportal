@@ -38,10 +38,10 @@ class CompaniesController extends Controller
     public function searchMembers(Request $request)
     {
       $industries = Industry::all();
-      $all_companies = Company::all()->paginate(10);
+      $all_companies = Company::paginate(10);
       $results = Company::searchMembers($request)->paginate(10);
       $locations = Contact::searchLocations($results);
-      $data = compact('results', 'locations', 'industries');
+      $data = compact('results', 'locations', 'industries', 'all_companies');
         return view('search')->with($data);
     }
 
