@@ -10,8 +10,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Industry;
 use App\Contact;
 use App\Company;
-use App\Connect;
-
+use App\Rfp;
+use App\Event;
 
 class CompaniesController extends Controller
 {
@@ -37,11 +37,11 @@ class CompaniesController extends Controller
 
     public function searchMembers(Request $request)
     {
-      $results = Company::searchMembers($request)->paginate(6);
-
-      $locations = App\Contact::searchLocations($results);
-
-      $data = compact('results', 'locations');
+      $industries = Industry::all();
+      $all_companies = Company::paginate(10);
+      $results = Company::searchMembers($request)->paginate(10);
+      $locations = Contact::searchLocations($results);
+      $data = compact('results', 'locations', 'industries', 'all_companies');
         return view('search')->with($data);
     }
 
@@ -65,8 +65,11 @@ class CompaniesController extends Controller
      */
      public function dashboard($id)
      {
-         $user = User::find($id);
-         $data = compact('user');
+         $company = Company::find($id);
+         $connections = $company->connections;
+         $feedContent = $this->buildFeed($connections);
+
+         $data = compact('feedContent');
          return view('companies.dashboard')->with($data);
      }
 
@@ -128,12 +131,13 @@ class CompaniesController extends Controller
         return redirect()->action('ContactsController@destroy');
     }
 
-    private function validateAndSave(Company $company, Request $request){
+    private function validateAndSave(Company $company, Request $request)
+    {
         $is_admin = Auth::user()->is_admin;
-        $request->session()->flash('ERROR_MESSAGE', 'Company was not created successfully'); //set error message if not saved
-        $this->validate($request, Company::$rules); //validate that alll fields are filled out correctly
-        $request->session()->forget('ERROR_MESSAGE'); // if validated, tell to forget the error message
-        $company->name = $request->name; //can use $post->title = $request->input('title') alternatively
+        $request->session()->flash('ERROR_MESSAGE', 'Company was not created successfully');
+        $this->validate($request, Company::$rules);
+        $request->session()->forget('ERROR_MESSAGE');
+        $company->name = $request->name;
         $company->industry_id = $request->industry_id;
         $company->profile_img = $request->profile_img;
         $company->desc = $request->desc;
@@ -141,14 +145,35 @@ class CompaniesController extends Controller
         $company->contractor = $request->contactor;
         $company->family_owned = $request->family_owned;
         $company->organization = $request->organization;
-        $company->save(); //save when submited
-        // Log::info('User successfully creates post', $request->all()); // create custom log when post is created
+        $company->save();
         if($is_admin){
-          $request->session()->flash('message', 'Company was successfully created!'); // flash success message when saved
-          return redirect()->action('ContactsController@create'); //redirect to the index page
+          $request->session()->flash('message', 'Company was successfully created!');
+          return redirect()->action('ContactsController@create');
         } else {
-          $request->session()->flash('message', 'Company information was successfully updated!'); // flash success message when saved
+          $request->session()->flash('message', 'Company information was successfully updated!');
           return redirect()->action('companies.view_profile');
         }
+    }
+
+    private function buildFeed($connections)
+    {
+      $collection = [];
+      $dashboardEvents = Event::dashboardEvents($connections);
+      $dashboardRfps = RFP::dashboardRfps($connections);
+      $dashboardConnections = Connection::dashboardConnections($connections);
+
+      foreach($dashboardEvents as $dashboardEvent){
+        $collection[] = $dashboardEvent;
+      }
+
+      foreach($dashboardRfps as $dashboardRfp){
+        $collection[] = $dashboardRfp;
+      }
+
+      foreach ($dashboardConnections as $dashboardConnection) {
+        $collection[] = $dashboardConnection;
+      }
+
+      return $collection->sortBy('created_at');
     }
 }

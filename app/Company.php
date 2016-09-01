@@ -17,6 +17,11 @@ class Company extends Model
 		return $this->hasOne(User::class, 'id');
 	}
 
+	public function contact()
+	{
+		return $this->hasOne(Contact::class);
+	}
+
 	public function events()
 	{
 		return $this->hasMany(Event::class, 'company_id');
@@ -44,8 +49,13 @@ class Company extends Model
 
 	public static function searchLocations($connections)
 	{
-		$companies = $connections->user2_id;
-		return Company::whereIn('company_id', $companies)->get();
+		$companies = [];
+		foreach($connections as $connection) {
+			$company = $connection->company2_id;
+			$companyies[] = $company;
+		}
+		
+		return Company::whereIn('company_id', $companies);
 	}
 
 	public static function searchMembers($request)
@@ -56,7 +66,7 @@ class Company extends Model
 			(isset($query)) ? $query->where('name', 'like', "%$$request->searchField%")->orWhere('desc', 'like', "%$request->searchField%") : $query = Company::searchCompanyName($request->searchField);
 		}
 
-		if($request->option('industry_id') != 0){
+		if($request->option !== 0){
 			(isset($query)) ? $query->orWhere('industry_id', $request->industry_id) : $query = Company::where('industry_id', $request->industry_id);
 		}
 
@@ -78,7 +88,7 @@ class Company extends Model
 		//var_dump(get_class_methods(get_class($query)));
 		// echo $query->getQuery()->toSql();
 
-		return $query->get();
+		return $query;
 	}
 
 	public static function searchCompanyName($request)

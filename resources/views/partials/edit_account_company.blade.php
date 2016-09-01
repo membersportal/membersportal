@@ -9,6 +9,7 @@
 	<option value="0">Select</option>
 @foreach ($industries as $industry)
 	<option value="{{ $industry->id }}" {{ $company->industry_id == '$industry->id' ? 'selected' : '' }}>{{ $industry }}</option>
+@endforeach
 </select>
 <div class="form-group">
 	<label for="desc">About</label>
@@ -33,7 +34,7 @@
 <label for="business_type">Business Type<span class="required">*</span></label>
 <select class="form-control" id="business_type" name="business_type" required>
 	<option value="0">Select</option>
-	<option value="freelance" {{ $company->freelance ?  'selected' : ''}}>Freelance</option>
+	<option value="contractor" {{ $company->contractor ?  'selected' : ''}}>Contractor</option>
 	<option value="organization" {{ $company->organization ? 'selected'  : ''}}>Organization</option>
 </select>
 <label for="size">Number of Employees</label>
