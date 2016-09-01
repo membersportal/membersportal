@@ -39,9 +39,7 @@ class CompaniesController extends Controller
     {
       $industries = Industry::all();
       $results = Company::searchMembers($request)->paginate(6);
-
       $locations = Contact::searchLocations($results);
-
       $data = compact('results', 'locations', 'industries');
         return view('search')->with($data);
     }
@@ -131,10 +129,10 @@ class CompaniesController extends Controller
 
     private function validateAndSave(Company $company, Request $request){
         $is_admin = Auth::user()->is_admin;
-        $request->session()->flash('ERROR_MESSAGE', 'Company was not created successfully'); //set error message if not saved
-        $this->validate($request, Company::$rules); //validate that alll fields are filled out correctly
-        $request->session()->forget('ERROR_MESSAGE'); // if validated, tell to forget the error message
-        $company->name = $request->name; //can use $post->title = $request->input('title') alternatively
+        $request->session()->flash('ERROR_MESSAGE', 'Company was not created successfully');
+        $this->validate($request, Company::$rules);
+        $request->session()->forget('ERROR_MESSAGE');
+        $company->name = $request->name;
         $company->industry_id = $request->industry_id;
         $company->profile_img = $request->profile_img;
         $company->desc = $request->desc;
@@ -142,13 +140,12 @@ class CompaniesController extends Controller
         $company->contractor = $request->contactor;
         $company->family_owned = $request->family_owned;
         $company->organization = $request->organization;
-        $company->save(); //save when submited
-        // Log::info('User successfully creates post', $request->all()); // create custom log when post is created
+        $company->save();
         if($is_admin){
-          $request->session()->flash('message', 'Company was successfully created!'); // flash success message when saved
-          return redirect()->action('ContactsController@create'); //redirect to the index page
+          $request->session()->flash('message', 'Company was successfully created!');
+          return redirect()->action('ContactsController@create');
         } else {
-          $request->session()->flash('message', 'Company information was successfully updated!'); // flash success message when saved
+          $request->session()->flash('message', 'Company information was successfully updated!');
           return redirect()->action('companies.view_profile');
         }
     }
