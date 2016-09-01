@@ -12,7 +12,17 @@ class Event extends Model
 
 	public function company()
 	{
-		return $this->belongsTo(Event::class, 'id');
+		return $this->belongsTo(Company::class);
+	}
+
+	public function getTitleAttribute($value)
+	{
+		return ucwords($value);
+	}
+
+	public function setTitleAttribute($value)
+	{
+		$this->attributes['title'] = ucwords($value);
 	}
 
 	public static function searchEvents($request)
