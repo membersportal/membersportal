@@ -98,12 +98,15 @@
 			</div>
 		</div>
 	</div>
-
 	<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 right_home">
 		<h3 class="text-center">Events</h3>
 			@foreach ($admin_events as $event)
 				<div class="row">
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+						<p class="event_title_home"><a href="{{ $event->url }}" target="_blank">{{ $event->title }}</a></p>
+						<p class="event_company_home">{{ str_limit($event->desc, 100) }}</p>
+						<p class="event_dates">{{ $event->from_date }} - {{ $event->to_date }}</p>
+					</div>
 				</div>
 			@endforeach
 		<a class="twitter-timeline" href="https://twitter.com/search?q=from%3A{{ $admin_user->contact->twitter }}" data-widget-id="771057747718582272" data-screen-name="{{ $admin_user->contact->twitter }}">Tweets about </a>
