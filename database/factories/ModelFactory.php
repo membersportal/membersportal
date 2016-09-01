@@ -19,3 +19,16 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(App\Event::class, function (Faker\Generator $faker) {
+    return [
+        'company_id' => $faker->numberBetween($min = 1, $max = 9),
+        'title' => $faker->words(6, true),
+        'desc' => $faker->sentence(1000),
+        'from_date' => $faker->date($format = 'Y-m-d', $max = 'to_date'),
+        'to_date' => $faker->date($format = 'Y-m-d', $max = 'now'),
+        'invite_only' => $faker->boolean,
+        'rsvp_required' => $faker->boolean,
+        'url' => $faker->url,
+    ];
+});

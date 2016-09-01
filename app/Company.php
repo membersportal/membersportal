@@ -61,9 +61,15 @@ class Company extends Model
 	public static function searchMembers($request)
 	{
 		$query = Company::orderBy('created_at');
+		$search = $request->searchField;
+		$industry = $request->input('industry_id');
+		$woman = $request->woman_owned;
+		$contractor = $request->contractor;
+		$family = $request->family_owned;
+		$org = $request->organization;
 
-		if($request->searchField){
-			$query = $query->where('name', 'like', "%$request->searchField%")->orWhere('desc', 'like', "%$request->searchField%");
+		if($search) {
+			$query = $query->where('name', 'like', "%$search%")->orWhere('desc', 'like', "%$search%");
 		}
 
 		if($request->input('industry_id') != 0 && !$request->searchField){
@@ -89,18 +95,12 @@ class Company extends Model
 			if($request->organization){
 				$query = $query->where('organization', 1);
 			}
+
 		}
+		// dd($query->getQuery()->toSql());
 
 		//var_dump(get_class_methods(get_class($query)));
 		// echo $query->getQuery()->toSql();
-
-
-		// $search = $request->searchField;
-		// $industry = $request->input('industry_id');
-		// $woman = $request->woman_owned;
-		// $contractor = $request->contractor;
-		// $family = $request->family_owned;
-		// $org = $request->organization;
 
 
 		// $query = Company::orderBy('created_at');
@@ -142,14 +142,8 @@ class Company extends Model
 		// 	$request ? $query->where('organization', 1) : $query = Company::where('organization', 1);
 		// }
 		// var_dump(get_class_methods(get_class($query)));
-		// echo $query->getQuery()->toSql();
 		// dd($query);
 		return $query;
-	}
-
-	public static function searchCompanyName($request)
-	{
-		return Company::where('name', 'like', "%$request->searchField%")->orWhere('desc', 'like',"%$request->searchField%");
 	}
 
 	public static $rules = [
