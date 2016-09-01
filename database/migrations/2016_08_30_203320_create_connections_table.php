@@ -14,11 +14,11 @@ class CreateConnectionsTable extends Migration
     {
         Schema::create('connections', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user1_id')->unsigned();
-            $table->integer('user2_id')->unsigned();
+            $table->integer('company1_id')->unsigned();
+            $table->integer('company2_id')->unsigned();
             $table->timestamps();
-            $table->foreign('user1_id')->references('id')->on('users');
-            $table->foreign('user2_id')->references('id')->on('users');
+            $table->foreign('company1_id')->references('id')->on('companies');
+            $table->foreign('company2_id')->references('id')->on('companies');
             $table->softDeletes();
         });
     }

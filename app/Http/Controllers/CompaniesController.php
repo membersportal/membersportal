@@ -36,7 +36,7 @@ class CompaniesController extends Controller
 
     public function searchMembers(Request $request)
     {
-      $results = Company::searchMembers($request);
+      $results = Company::searchMembers($request)->paginate(6);
 
       $locations = App\Contact::searchLocations($results);
 

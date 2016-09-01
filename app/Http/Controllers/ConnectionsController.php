@@ -19,7 +19,7 @@ class ConnectionsController extends Controller
      */
     public function index()
     {
-        //
+      //
     }
 
     /**
@@ -57,7 +57,10 @@ class ConnectionsController extends Controller
      */
     public function show($id)
     {
-        //
+      $connections = Connection::viewConnections($id)->paginate(10);
+      
+      $data = compact('connections');
+      return view('')->with($data);
     }
 
     /**
