@@ -10,8 +10,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Industry;
 use App\Contact;
 use App\Company;
-use App\Connect;
-
+use App\Rfp;
+use App\Event;
 
 class CompaniesController extends Controller
 {
@@ -65,8 +65,11 @@ class CompaniesController extends Controller
      */
      public function dashboard($id)
      {
-         $user = User::find($id);
-         $data = compact('user');
+         $company = Company::find($id);
+         $connections = $company->connections;
+         $feedContent = $this->buildFeed($connections);
+
+         $data = compact('feedContent');
          return view('companies.dashboard')->with($data);
      }
 
@@ -128,7 +131,8 @@ class CompaniesController extends Controller
         return redirect()->action('ContactsController@destroy');
     }
 
-    private function validateAndSave(Company $company, Request $request){
+    private function validateAndSave(Company $company, Request $request)
+    {
         $is_admin = Auth::user()->is_admin;
         $request->session()->flash('ERROR_MESSAGE', 'Company was not created successfully');
         $this->validate($request, Company::$rules);
@@ -149,5 +153,27 @@ class CompaniesController extends Controller
           $request->session()->flash('message', 'Company information was successfully updated!');
           return redirect()->action('companies.view_profile');
         }
+    }
+
+    private function buildFeed($connections)
+    {
+      $collection = [];
+      $dashboardEvents = Event::dashboardEvents($connections);
+      $dashboardRfps = RFP::dashboardRfps($connections);
+      $dashboardConnections = Connection::dashboardConnections($connections);
+
+      foreach($dashboardEvents as $dashboardEvent){
+        $collection[] = $dashboardEvent;
+      }
+
+      foreach($dashboardRfps as $dashboardRfp){
+        $collection[] = $dashboardRfp;
+      }
+
+      foreach ($dashboardConnections as $dashboardConnection) {
+        $collection[] = $dashboardConnection;
+      }
+
+      return $collection->sortBy('created_at');
     }
 }

@@ -37,6 +37,18 @@ class Event extends Model
 	{
 		return Event::where('name', 'like', "%$request->searchField%")->orWhere('title', 'like',"%$request->searchField%");
 	}
+
+	public static function dashboardEvents($connections)
+	{
+		$companies = [];
+
+		foreach($connections as $connection){
+			$company = $connection->company_id;
+			$companies[] = $company;
+		}
+		return Event::whereIn('company_id', $companies)->orderBy('created_at');
+	}
+
 	public static $rules = [
      'title' => 'required|max:75',
      'desc' => 'required|filled',
