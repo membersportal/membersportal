@@ -11,20 +11,25 @@ class Contact extends Model
 {
 	use SoftDeletes;
 
-	public function companies()
+	public function company()
 	{
 		return $this->hasOne(Company::class, 'id');
 	}
 
-	public function users()
+	public function user()
 	{
 		return $this->hasOne(User::class, 'id');
 	}
 
 	public static function searchLocations($results)
 	{
-		$array = $results->id;
-		return Contact::whereIn('company_id', $array)->get();
+		$contacts = [];
+		foreach ($results as $company) {
+			$contact = $company->contact;
+			$contacts[] = $contact;
+		}
+
+		return Contact::whereIn('company_id', $contacts)->get();
 	}
 
 	public static $rules = [

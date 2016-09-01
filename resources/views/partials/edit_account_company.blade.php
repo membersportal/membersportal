@@ -6,8 +6,10 @@
 </div>
 <label for="industry_id">Industry<span class="required">*</span></label>
 <select class="form-control" name="industry_id" required>
+	<option value="0">Select</option>
 @foreach ($industries as $industry)
 	<option value="{{ $industry->id }}" {{ $company->industry_id == '$industry->id' ? 'selected' : '' }}>{{ $industry }}</option>
+@endforeach
 </select>
 <div class="form-group">
 	<label for="desc">About</label>
@@ -31,11 +33,13 @@
 <!-- Type, Size, Date Established -->
 <label for="business_type">Business Type<span class="required">*</span></label>
 <select class="form-control" id="business_type" name="business_type" required>
-	<option value="freelance" {{ $company->freelance ?  'selected' : ''}}>Freelance</option>
+	<option value="0">Select</option>
+	<option value="contractor" {{ $company->contractor ?  'selected' : ''}}>Contractor</option>
 	<option value="organization" {{ $company->organization ? 'selected'  : ''}}>Organization</option>
 </select>
 <label for="size">Number of Employees</label>
 <select class="form-control" id="size" name="size" disabled>
+	<option value="0">Select</option>
 	<option value="fewer_than_10" {{ ($company->size == 'fewer_than_10') ? 'selected' : ''}}>Fewer Than 10</option>
 	<option value="11-25" {{ ($company->size == '11-25') ? 'selected' : ''}}>11-25</option>
 	<option value="26-50" {{ ($company->size == '26-50') ? 'selected' : ''}}>26-50</option>

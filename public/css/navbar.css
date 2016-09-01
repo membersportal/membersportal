@@ -1,0 +1,105 @@
+/*Navbar*/
+nav.navbar.navbar-default {
+	border-color: #d5633e;
+}
+
+.navbar-header > a.navbar-brand {
+	font: 1.2em 'Roboto Slab', serif;
+	color: #fff5c3;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	background-color: #c65c39;
+	padding-top: 13px;
+}
+
+.navbar-header > a.navbar-brand:hover {
+	background-color: #c65c39;
+	color: #fff5c3;
+}
+
+a.navbar-brand > span.brand {
+	font-weight: 700;
+	color: #fcf8e6;
+}
+
+.navbar.navbar-default {
+	background-color: #eb6e44;
+	border-radius: 0;
+	border-top-style: none;
+	border-right-style: none;
+	border-left-style: none;
+	border-bottom: 1px solid #c65c39;
+}
+
+ul.nav.navbar-nav > li > a, ul.nav.navbar-nav > li > a:visited {
+	color: #fff5c3;
+	font-size: 1.1em;
+	display: inline-block;
+	padding-right: 0;
+	margin-right: 5px;
+}
+
+ul.nav.navbar-nav > li.active > a,
+ul.nav.navbar-nav > li > a:hover,
+ul.nav.navbar-nav > li.active > a:hover {
+	background-color: #eb6e44;
+	color: #fff5c3;
+}
+
+ul.nav.navbar-nav > li.active > a {
+	font-weight: bold;
+}
+
+ul.nav.navbar-nav > li.triangle:after{
+	content: "";
+	display: inline-block;
+	background: transparent url('/img/arrow_red.png') no-repeat;
+	height: 11px;
+	width: 10px;
+	margin-bottom: -3px;
+}
+
+ul.nav.navbar-nav > li.triangle:hover:after{
+	content: "";
+	display: inline-block;
+	background: transparent url('/img/arrow.png') no-repeat;
+	height: 11px;
+	color: #fff5c3;
+	width: 10px;
+	margin-bottom: -3px;
+}
+
+.navbar-toggle.collapsed, .navbar-toggle.collapsed:hover, .navbar-toggle.collapsed:active, .navbar-toggle.collapsed:focus, .navbar-toggle.collapsed:focus:hover {
+	background-color: #c65c39;
+	border-style: none;
+}
+
+span.icon-bar {
+	border: 1px solid #fff5c3;
+}
+
+li.dropdown {
+	padding-right: 10px;
+}
+
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+	background-color: #eb6e44;
+	color: #fff5c3;
+}
+
+.dropdown-menu {
+	-moz-box-shadow: 0 0 0;
+	box-shadow: 0 0 0;
+	text-align: right;
+	background-color: #8dcdc1;
+	border-color: #66a498;
+	min-width: 0;
+}
+
+.dropdown-menu > li > a {
+	color: #514e43;
+}
+
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:active, .dropdown-menu > li > a:visited {
+	background-color: #66a498;
+}Í

@@ -1,12 +1,32 @@
 /*Divs and Page Structure*/
 .container {
-	width: 80%;
+	width: 90%;
 	position: relative;
+}
+
+html {
+	min-height: 100%;
+	position: relative;
+}
+
+.footer.container {
+	width: 60%;
 }
 
 body {
 	background-color: #fffef4;
 	color: #514e43;
+	padding-bottom: 225px;
+}
+
+footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 175px;
+	background-color: #7c786a;
+	padding-top: 23px;
+	padding-bottom: 15px;
 }
 
 div#login {
@@ -23,110 +43,11 @@ div.login {
 	position: relative;
 }
 
-/*Navbar*/
-nav.navbar.navbar-default {
-	border-color: #d5633e;
-}
-
-.navbar-header > a.navbar-brand {
-	font: 1.2em 'Roboto Slab', serif;
-	color: #fff5c3;
-	text-transform: uppercase;
-	letter-spacing: 1px;
-	background-color: #c65c39;
-	padding-top: 13px;
-}
-
-.navbar-header > a.navbar-brand:hover {
-	background-color: #c65c39;
-	color: #fff5c3;
-}
-
-a.navbar-brand > span.brand {
-	font-weight: 700;
-	color: #fcf8e6;
-}
-
-.navbar.navbar-default {
-	background-color: #eb6e44;
-	border-radius: 0;
-	border-top-style: none;
-	border-right-style: none;
-	border-left-style: none;
-	border-bottom: 1px solid #c65c39;
-}
-
-ul.nav.navbar-nav > li > a, ul.nav.navbar-nav > li > a:visited {
-	color: #fff5c3;
-	font-size: 1.1em;
-	display: inline-block;
-	padding-right: 0;
-	margin-right: 5px;
-}
-
-ul.nav.navbar-nav > li.active > a,
-ul.nav.navbar-nav > li > a:hover,
-ul.nav.navbar-nav > li.active > a:hover {
-	background-color: #eb6e44;
-	color: #fff5c3;
-}
-
-ul.nav.navbar-nav > li.active > a {
-	font-weight: bold;
-}
-
-ul.nav.navbar-nav > li.triangle:after{
-	content: "";
-	display: inline-block;
-	background: transparent url('/img/arrow_red.png') no-repeat;
-	height: 11px;
-	width: 10px;
-	margin-bottom: -3px;
-}
-
-ul.nav.navbar-nav > li.triangle:hover:after{
-	content: "";
-	display: inline-block;
-	background: transparent url('/img/arrow.png') no-repeat;
-	height: 11px;
-	color: #fff5c3;
-	width: 10px;
-	margin-bottom: -3px;
-}
-
-.navbar-toggle.collapsed, .navbar-toggle.collapsed:hover, .navbar-toggle.collapsed:active, .navbar-toggle.collapsed:focus, .navbar-toggle.collapsed:focus:hover {
-	background-color: #c65c39;
-	border-style: none;
-}
-
-span.icon-bar {
-	border: 1px solid #fff5c3;
-}
-
-li.dropdown {
-	padding-right: 10px;
-}
-
-.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
-	background-color: #eb6e44;
-	color: #fff5c3;
-}
-
-.dropdown-menu {
-	-moz-box-shadow: 0 0 0;
-	box-shadow: 0 0 0;
-	text-align: right;
-	background-color: #8dcdc1;
-	border-color: #66a498;
-	min-width: 0;
-}
-
-.dropdown-menu > li > a {
-	color: #514e43;
-}
-
-.dropdown-menu > li > a:hover, .dropdown-menu > li > a:active, .dropdown-menu > li > a:visited {
-	background-color: #66a498;
+div#newest_member {
+	background-color: #fff;
+	padding-bottom: 10px;
+	border: 1px solid #d3e397;
+	padding-top: 3px;
 }
 
 /*Text*/
@@ -160,16 +81,110 @@ h2 {
 
 h3 {
 	font-size: 1.3em;
+	color: #66a498;
+	margin-bottom: 20px;
 }
 
 h4 {
 	font-size: 1.1em;
 }
 
+h4.footer {
+	color: #d3e397;
+}
+
+p.company_name {
+	color: #c65c39;
+	font-weight: bold;
+	font-size: 1.25em;
+	margin-bottom: 0;
+	margin-top: 15px;
+}
+
+p.industry_name_home {
+	font-size: .9em;
+	margin-bottom: 5px;
+}
+
+p.company_desc_home {
+	font-size: .85em;
+	line-height: 1.25em;
+}
+
+span.industry_name_home{
+	font-weight: bold;
+	color: #66a498;
+}
+
+span.strong {
+	font-weight: bold;
+}
+
+.footer_text {
+	line-height: .5em;
+	color: #dad6c7;
+}
+
+.footer_head {
+	margin-bottom: 5px;
+	font-weight: 700;
+	color: #dad6c7;
+}
+
+ul.footer {
+	list-style: none;
+	padding-left: 0;
+}
+
+a, a:hover, a:visited, a:active {
+	text-decoration: none;
+}
+
+a.footer {
+	color: #dad6c7;
+}
+
+ul.footer > li > a.footer_triangle {
+	color: #fff;
+}
+
+ul.footer > li > a.footer_triangle:after{
+	content: "";
+	display: inline-block;
+	background: transparent url('/img/arrow_gray.png') no-repeat;
+	height: 11px;
+	width: 10px;
+	margin-bottom: -3px;
+	margin-left: 5px;
+}
+
+ul.footer > li > a.footer_triangle:hover:after{
+	content: "";
+	background: transparent url('/img/arrow.png') no-repeat;
+	height: 11px;
+	color: #fff5c3;
+	width: 10px;
+	margin-bottom: -3px;
+	margin-left: 5px;
+}
+
 /*Images*/
+.logo {
+	width: 60px;
+	margin-right: 20px;
+}
+
+.logo.randi {
+	width: 45px;
+}
+
 .user_avatar {
 	margin-top: 7px;
 	border: 1px solid #514e43;
+}
+
+.profile_photo_home {
+	margin-bottom: 5px;
 }
 
 /*Buttons*/
@@ -266,6 +281,86 @@ div.login > a.forgot_password:hover:after {
 
 a.forgot_password:active, a.forgot_password:visited {
 	color: #fff;
+}
+
+/*Carousel*/
+
+/* Carousel base class */
+.carousel {
+  height: 500px;
+  margin-bottom: 60px;
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+  z-index: 10;
+}
+
+/* Declare heights because of positioning of img element */
+.carousel .item {
+  height: 500px;
+  background-color: #777;
+}
+.carousel-inner > .item > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  height: 500px;
+}
+
+/* Featurettes
+------------------------- */
+
+.featurette-divider {
+  margin: 80px 0; /* Space out the Bootstrap <hr> more */
+}
+
+/* Thin out the marketing headings */
+.featurette-heading {
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+
+/* RESPONSIVE CSS
+-------------------------------------------------- */
+
+@media (min-width: 768px) {
+  /* Navbar positioning foo */
+  .navbar-wrapper {
+    margin-top: 20px;
+  }
+  .navbar-wrapper .container {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  .navbar-wrapper .navbar {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  /* The navbar becomes detached from the top, so we round the corners */
+  .navbar-wrapper .navbar {
+    border-radius: 4px;
+  }
+
+  /* Bump up size of carousel content */
+  .carousel-caption p {
+    margin-bottom: 20px;
+    font-size: 21px;
+    line-height: 1.4;
+  }
+
+  .featurette-heading {
+    font-size: 50px;
+  }
+}
+
+@media (min-width: 992px) {
+  .featurette-heading {
+    margin-top: 120px;
+  }
 }
 
 /*gray: #7c786a;

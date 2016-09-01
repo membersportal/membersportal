@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use App\User;
 use App\Company;
+use App\Carousel;
 
 
 class UsersController extends Controller
@@ -25,9 +26,10 @@ class UsersController extends Controller
             return view('auth.login');
         }
 
-        $newestMember = Company::newestMember();
-        $data = compact('newestMember');
-        return view('home');
+        $newest_member = Company::newestMember();
+        $carousels = Carousel::pullCarousels();
+        $data = compact('newest_member', 'carousels');
+        return view('home')->with($data);
     }
 
     /**

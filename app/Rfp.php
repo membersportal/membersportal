@@ -10,9 +10,20 @@ class Rfp extends Model
 {
 	use SoftDeletes;
 
-	public function companies()
+	public function company()
 	{
-		return $this->belongsTo(Company::class, 'company_id');
+		return $this->belongsTo(Company::class, 'id');
+	}
+
+	public static function dashboardRfps($connections)
+	{
+		$companies = [];
+
+		foreach($connections as $connection){
+			$company = $connection->company_id;
+			$companies[] = $company;
+		}
+		return Rfp::whereIn('company_id', $companies)->orderBy('created_at');
 	}
 
 	public static $rules = [
