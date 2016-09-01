@@ -29,6 +29,7 @@ Route::get('/admin/dashboard', 'UsersController@getAdminDashboard');
 // Companies
 Route::get('companies/create', 'CompaniesController@create');
 Route::get('companies/{company}', 'CompaniesController@show');
+Route::post('companies/{company}', 'CompaniesController@store');
 Route::get('companies/{company}/edit', 'CompaniesController@edit');
 Route::put('companies/{company}', 'CompaniesController@update');
 Route::delete('companies/{company}', 'CompaniesController@destroy');
@@ -39,6 +40,9 @@ Route::get('companies/{company}/connections', 'CompaniesController@viewConnectio
 Route::get('contacts/{contact}/edit', 'ContactsController@edit');
 Route::put('contacts/{contact}', 'ContactsController@update');
 Route::delete('contacts/{contact}', 'ContactsController@destroy');
+
+// connections
+Route::post('connections/{user}', 'ConnectionsController@store');
 
 // Events
 Route::resource('events', 'EventsController');

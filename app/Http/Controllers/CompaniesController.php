@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Industry;
 use App\Contact;
+use App\Company;
 
 
 class CompaniesController extends Controller
@@ -30,7 +31,7 @@ class CompaniesController extends Controller
      */
     public function create()
     {
-        return view('admin.create_account_company')
+        return view('admin.create_account_company');
     }
 
     public function searchMembers(Request $request)
