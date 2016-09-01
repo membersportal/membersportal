@@ -85,7 +85,7 @@ class CompaniesController extends Controller
     public function show($id)
     {
       $company = Company::findOrFail($id);
-      $contact = $company->contacts;
+      $contact = $company->contact;
       $rfp = $company->rfps;
       $event = $company->events;
       $leader = $company->leaders;
