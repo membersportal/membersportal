@@ -23,8 +23,13 @@ class Contact extends Model
 
 	public static function searchLocations($results)
 	{
-		$array = $results->id;
-		return Contact::whereIn('company_id', $array)->get();
+		$contacts = [];
+		foreach ($results as $company) {
+			$contact = $company->contact;
+			$contacts[] = $contact;
+		}
+
+		return Contact::whereIn('company_id', $contacts)->get();
 	}
 
 	public static $rules = [
