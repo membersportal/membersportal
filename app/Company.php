@@ -54,7 +54,7 @@ class Company extends Model
 			$company = $connection->company2_id;
 			$companyies[] = $company;
 		}
-		
+
 		return Company::whereIn('company_id', $companies);
 	}
 
@@ -63,7 +63,7 @@ class Company extends Model
 		$query = Company::orderBy('created_at');
 
 		if($request->searchField != ''){
-			(isset($query)) ? $query->where('name', 'like', "%$$request->searchField%")->orWhere('desc', 'like', "%$request->searchField%") : $query = Company::searchCompanyName($request->searchField);
+			(isset($query)) ? $query->where('name', 'like', "%$request->searchField%")->orWhere('desc', 'like', "%$request->searchField%") : $query = Company::searchCompanyName($request->searchField);
 		}
 
 		if($request->option !== 0){
