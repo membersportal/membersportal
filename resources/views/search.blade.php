@@ -41,5 +41,31 @@
 	  			</form>
 			</div>
 		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xl-8 col-xs-offset-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2 col-xl-offset-2">
+			<div class="row">
+			@foreach ($all_companies as $company)
+				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+					<div class="row">
+						<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+							<a href="{{ action('CompaniesController@show', $company->id) }}">
+								<img class="img-circle center-block img-responsive" src="/img/profile_photo_template.png">
+							</a>
+						</div>
+						<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xl-8">
+							<p class="company_name">{{ $company->name }}</p>
+							<p class="industry_name">{{ $company->industry->industry }}</p>
+							<p class="company_desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+						</div>
+					</div>
+				</div>
+			@endforeach
+			</div>
+		</div>
+	</div>
 	<div id="map"></div>
+	<div class="text-center">
+		{!! $all_companies->render() !!}
+	</div>
 @stop
