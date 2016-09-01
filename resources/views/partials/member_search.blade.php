@@ -1,6 +1,7 @@
 
 <div>
-	<div style="height:300px;width:600px;"></div>
+	<div style="height:300px;width:600px;">
+	</div>
 		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2OJukM41NiEP_KnDGkx4mQ6HSucCuhwI"></script>
 		<script>
 			(function() {
