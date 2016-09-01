@@ -42,6 +42,12 @@ class Company extends Model
 		return Company::orderBy('created_at', 'desc')->first();
 	}
 
+	public static function searchLocations($connections)
+	{
+		$companies = $connections->user2_id;
+		return Company::whereIn('company_id', $companies)->get();
+	}
+
 	public static function searchMembers($request)
 	{
 		$query = Company::orderBy('created_at');
