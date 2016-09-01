@@ -3,10 +3,15 @@
 <div class="row">
 
 	<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 left_home">
-		<h3 class="text-center">Newest Member</h3>
-		<img class="img-thumbnail img-responsive center-block profile_photo_home" src="/img/profile_photo_template.png">
-		<p class="company_name text-center">{{ $newestMember->name }}</p>
-		<p class="industry_name_home">{{ $newestMember->industries->industry }}</p>
+		<div id="newest_member">
+			<h3 class="text-center">Newest Member</h3>
+			<a href="{{ action('CompaniesController@show', $newest_member->id) }}" alt="New Member">
+				<img class="img-thumbnail img-responsive center-block profile_photo_home" src="/img/profile_photo_template.png">
+			</a>
+			<p class="company_name text-center">{{ $newest_member->name }}</p>
+			<p class="industry_name_home text-center"><span class="industry_name_home">Industry:</span> {{ $newest_member->industry->industry }}</p>
+			<p class="text-center company_desc_home">Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+		</div>
 	</div>
 
 	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 center_home">
