@@ -10,9 +10,9 @@
 		  				<input type="text" name="searchField" class="form-control" placeholder="Company name, description or keywords">
 					</div>
 					@include ('partials.error', ['value' => 'searchField'])
-					<label for="industry_id">Industry<span class="required">*</span></label>
-					<select class="form-control" name="industry_id" required>
-						<option value="0">Select</option>
+					<label for="industry_id">Industry</label>
+					<select class="form-control" name="industry_id">
+						<option disabled selected label="Select"></option>
 						@foreach ($industries as $industry)
 							<option value="{{ $industry->id }}">{{ $industry->industry }}</option>
 						@endforeach

@@ -42,7 +42,6 @@ class CompaniesController extends Controller
       $industries = Industry::all();
       // $all_companies = Company::paginate(10);
       $results = Company::searchMembers($request)->paginate(10);
-      $admin_user = User::find(1);
       // dd($results);
       $locations = Contact::searchLocations($results);
       $data = compact('results', 'locations', 'industries', 'admin_user');
