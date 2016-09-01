@@ -12,6 +12,7 @@ use App\Contact;
 use App\Company;
 use App\Rfp;
 use App\Event;
+use App\User;
 
 class CompaniesController extends Controller
 {
