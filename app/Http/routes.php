@@ -23,13 +23,13 @@ Route::get('/', 'UsersController@index');
 Route::get('users/{user}/edit', 'UsersController@edit');
 Route::put('users/{user}', 'UsersController@update');
 Route::delete('users/{user}', 'UsersController@destroy');
-Route::get('users/search', 'UsersController@searchMembers');
 Route::get('/admin/dashboard', 'UsersController@getAdminDashboard');
 
 // Companies
 Route::get('companies/create', 'CompaniesController@create');
 Route::get('companies/{company}', 'CompaniesController@show');
 Route::post('companies/{company}', 'CompaniesController@store');
+Route::get('search', 'CompaniesController@searchMembers');
 Route::get('companies/{company}/edit', 'CompaniesController@edit');
 Route::put('companies/{company}', 'CompaniesController@update');
 Route::delete('companies/{company}', 'CompaniesController@destroy');
