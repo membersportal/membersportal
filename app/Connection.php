@@ -10,7 +10,7 @@ class Connection extends Model
 
     public static function viewConnections($id)
     {
-      $connections = Connection::where('company_id', $id);
+      $connections = Connection::where('company1_id', $id);
       return $connections;
     }
 }
