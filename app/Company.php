@@ -56,7 +56,7 @@ class Company extends Model
 			(isset($query)) ? $query->where('name', 'like', "%$$request->searchField%")->orWhere('desc', 'like', "%$request->searchField%") : $query = Company::searchCompanyName($request->searchField);
 		}
 
-		if($request->option('industry_id') != 0){
+		if($request->option !== 0){
 			(isset($query)) ? $query->orWhere('industry_id', $request->industry_id) : $query = Company::where('industry_id', $request->industry_id);
 		}
 
