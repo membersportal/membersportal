@@ -9,6 +9,7 @@
 	<option value="0">Select</option>
 @foreach ($industries as $industry)
 	<option value="{{ $industry->id }}" {{ $company->industry_id == '$industry->id' ? 'selected' : '' }}>{{ $industry }}</option>
+@endforeach
 </select>
 <div class="form-group">
 	<label for="desc">About</label>
