@@ -13,6 +13,7 @@ use App\Company;
 use App\Rfp;
 use App\Event;
 use App\User;
+use App\Connection;
 
 class CompaniesController extends Controller
 {

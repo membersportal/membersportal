@@ -65,15 +65,16 @@ class Company extends Model
 		if($request->searchField){
 			$query = $query->where('name', 'like', "%$request->searchField%")->orWhere('desc', 'like', "%$request->searchField%");
 		}
+
 		if($request->input('industry_id') != 0 && !$request->searchField){
 			$query = $query->where('industry_id', $request->input('industry_id'));
 		} else {
 			$query = $query->orWhere('industry_id', $request->input('industry_id'));
 		}
 
-		// dd($request->woman_owned);
 		if($request->woman_owned){
 			$query = $query->where('woman_owned', 1);
+			// dd($query->getQuery()->toSql());
 		}
 
 		if($request->contractor){
