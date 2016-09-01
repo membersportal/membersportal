@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use App\User;
 use App\Company;
+use App\Carousel;
 
 
 class UsersController extends Controller
@@ -24,10 +25,11 @@ class UsersController extends Controller
         if (!Auth::check()) {
             return view('auth.login');
         }
-        
-        $newestMember = Company::newestMember();
-        $data = compact('newestMember');
-        return view('home');
+
+        $newest_member = Company::newestMember();
+        $carousels = Carousel::pullCarousels();
+        $data = compact('newest_member', 'carousels');
+        return view('home')->with($data);
     }
 
     /**
@@ -66,6 +68,13 @@ class UsersController extends Controller
         $user = User::find($id);
         $data = compact('user');
         return view('users.edit_account_login')->with($data);
+    }
+
+    public function searchUser(Request $request)
+    {
+      $result = User::searchUser($request);
+      $data = compact('results');
+      return view('')->with($data);
     }
 
     public function editAccountContact($user_id)

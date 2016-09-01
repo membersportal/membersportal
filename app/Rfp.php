@@ -10,9 +10,9 @@ class Rfp extends Model
 {
 	use SoftDeletes;
 
-	public function companies()
+	public function company()
 	{
-		return $this->belongsTo(Company::class, 'company_id');
+		return $this->belongsTo(Company::class, 'id');
 	}
 
 	public static $rules = [

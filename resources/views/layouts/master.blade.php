@@ -2,7 +2,11 @@
 <html lang="en">
 <head>
 	<title>Members Portal</title>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="/css/bootstrap/bootstrap.css" rel="stylesheet">
+	<link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab|Source+Sans+Pro" rel="stylesheet">
 	<link href="/css/site.css" rel="stylesheet">
 </head>
@@ -22,7 +26,7 @@
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li class="active triangle"><a href="{{ action('EventsController@index') }}">Events <span class="sr-only">Events</span></a></li>
-					<li class="triangle"><a href="{{ action('UsersController@searchMembers') }}">Search Members</a></li>
+					<li class="triangle"><a href="{{ action('CompaniesController@searchMembers') }}">Search Members</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li class="dropdown">
@@ -40,7 +44,7 @@
 							<li><a href="{{ action('UsersController@edit', ['id' => Auth::user()->id]) }}">My Account</a></li>
 							<li><a href="{{ action('Auth\AuthController@getLogout') }}">Log Out</a></li>
 						</ul>
-					<li><img src="http://placekitten.com/35/35" class="user_avatar"></li>
+					<li><img src="http://placekitten.com/35/35" class="user_avatar img-circle"></li>
 					</li>
 				</ul>
 			</div><!-- /.navbar-collapse -->
@@ -53,5 +57,6 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="/js/bootstrap/bootstrap.min.js"></script>
+	<script src="../../assets/js/ie-emulation-modes-warning.js"></script>
 </body>
 </html>

@@ -23,12 +23,13 @@ Route::get('/', 'UsersController@index');
 Route::get('users/{user}/edit', 'UsersController@edit');
 Route::put('users/{user}', 'UsersController@update');
 Route::delete('users/{user}', 'UsersController@destroy');
-Route::get('users/search', 'UsersController@searchMembers');
 Route::get('/admin/dashboard', 'UsersController@getAdminDashboard');
 
 // Companies
 Route::get('companies/create', 'CompaniesController@create');
 Route::get('companies/{company}', 'CompaniesController@show');
+Route::post('companies/{company}', 'CompaniesController@store');
+Route::get('search', 'CompaniesController@searchMembers');
 Route::get('companies/{company}/edit', 'CompaniesController@edit');
 Route::put('companies/{company}', 'CompaniesController@update');
 Route::delete('companies/{company}', 'CompaniesController@destroy');
@@ -40,11 +41,17 @@ Route::get('contacts/{contact}/edit', 'ContactsController@edit');
 Route::put('contacts/{contact}', 'ContactsController@update');
 Route::delete('contacts/{contact}', 'ContactsController@destroy');
 
+// connections
+Route::post('connections/{user}', 'ConnectionsController@store');
+
 // Events
 Route::resource('events', 'EventsController');
 
 // Carousels
-Route::resource('carousels', 'CarouselsController');
+Route::get('carousels/create', 'CarouselsController@create');
+Route::get('carousels/{carousel}/edit', 'CarouselsController@edit');
+Route::put('carousels/{carousel}', 'CarouselsController@update');
+Route::delete('carousels/{carousel}', 'CarouselsController@destroy');
 
 // Leaders
 Route::resource('leaders', 'LeadersController');

@@ -12,9 +12,14 @@ class Company extends Model
 {
 	use SoftDeletes;
 
-	public function users()
+	public function user()
 	{
 		return $this->hasOne(User::class, 'id');
+	}
+
+	public function contact()
+	{
+		return $this->hasOne(Contact::class);
 	}
 
 	public function events()
@@ -22,9 +27,9 @@ class Company extends Model
 		return $this->hasMany(Event::class, 'company_id');
 	}
 
-	public function industries()
+	public function industry()
 	{
-		return $this->belongsTo(Industry::class, 'id');
+		return $this->belongsTo(Industry::class, 'industry_id');
 	}
 
 	public function leaders()
@@ -32,44 +37,63 @@ class Company extends Model
 		return $this->hasMany(Leader::class, 'id');
 	}
 
+	public function connections()
+	{
+			return $this->hasManyThrough(Company::class, Connection::class, 'company1_id', 'company2_id');
+	}
+
 	public static function newestMember()
 	{
 		return Company::orderBy('created_at', 'desc')->first();
 	}
 
-	public static function searchMembers($searchField = null, $name = '')
+	public static function searchLocations($connections)
+	{
+		$companies = [];
+		foreach($connections as $connection) {
+			$company = $connection->company2_id;
+			$companyies[] = $company;
+		}
+		
+		return Company::whereIn('company_id', $companies);
+	}
+
+	public static function searchMembers($request)
 	{
 		$query = Company::orderBy('created_at');
-		$first = TRUE;
 
-		if($searchField){
-			$query = Company::searchCompanyName($searchField);
+		if($request->searchField != ''){
+			(isset($query)) ? $query->where('name', 'like', "%$$request->searchField%")->orWhere('desc', 'like', "%$request->searchField%") : $query = Company::searchCompanyName($request->searchField);
 		}
 
-		if($name != ''){
-			$query->orWhere('industry_id', $name);
+		if($request->option !== 0){
+			(isset($query)) ? $query->orWhere('industry_id', $request->industry_id) : $query = Company::where('industry_id', $request->industry_id);
+		}
+
+		if($request->woman_owned){
+			(isset($query)) ? $query->where('woman_owned', 1) : $query = Company::where('woman_owned', 1);
+		}
+
+		if($request->contractor){
+			(isset($query)) ? $query->where('contractor', 1) : $query = Company::where('contractor', 1);
+		}
+
+		if($request->family_owned){
+			(isset($query)) ? $query->where('family_owned', 1) : $query = Company::where('family_owned', 1);
+		}
+
+		if($request->organization){
+			(isset($query)) ? $query->where('organization', 1) : $query = Company::where('organization', 1);
 		}
 		//var_dump(get_class_methods(get_class($query)));
-		echo $query->getQuery()->toSql();
+		// echo $query->getQuery()->toSql();
 
-		return $query->get();
+		return $query;
 	}
 
-
-
-	public static function searchCompanyName($searchField)
+	public static function searchCompanyName($request)
 	{
-		return Company::orWhere('name', $searchField)->orWhere('desc', 'like',"%$searchField%");
-	}
-
-	public static function searchIndustry($request)
-	{
-		//return Company::where()$select('option_value')
-	}
-
-	public static function searchCharacteristics($request)
-	{
-
+		return Company::where('name', 'like', "%$request->searchField%")->orWhere('desc', 'like',"%$request->searchField%");
 	}
 
 	public static $rules = [

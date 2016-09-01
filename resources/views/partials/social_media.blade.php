@@ -1,6 +1,7 @@
 <label for="social_media">Social Media</label>
 @foreach ($social_media as $site => $account)
 <select class="form-control" name="social_media">
+	<option value="0">Select</option>
 	<option value="twitter" {{ $social_media->twitter ? 'selected' : '' }}>Twitter</option>
 	<option value="facebook" {{ $social_media->facebook ? 'selected' : '' }}>Facebook</option>
 	<option value="instagram" {{ $social_media->instagram ? 'selected' : '' }}>Instagram</option>

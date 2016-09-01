@@ -41,19 +41,22 @@ class User extends Model implements AuthenticatableContract,
      */
     protected $hidden = ['password', 'remember_token'];
 
-    public function companies()
+    public function company()
     {
         return $this->hasOne(Company::class, 'user_id');
     }
 
-    public function contacts()
+    public function contact()
     {
         return $this->hasOne(Contact::class, 'user_id');
     }
 
-    public function connections()
+    public static function searchUser($request)
     {
-        return $this->hasManyThrough(User::class, Connection::class, 'user1_id', 'user2_id');
+      $query = User::where('email', "$$request->searchField");
+      //(get_class_methods(get_class($query)));
+      // echo $query->getQuery()->toSql();
+      return $query->get();
     }
 
     public static $rules = [
