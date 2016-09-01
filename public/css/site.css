@@ -1,6 +1,6 @@
 /*Divs and Page Structure*/
 .container {
-	width: 80%;
+	width: 90%;
 	position: relative;
 }
 
@@ -160,16 +160,28 @@ h2 {
 
 h3 {
 	font-size: 1.3em;
+	color: #66a498;
+	margin-bottom: 15px;
 }
 
 h4 {
 	font-size: 1.1em;
 }
 
+p.company_name {
+	color: #c65c39;
+	font-weight: bold;
+	font-size: 1.25em;
+}
+
 /*Images*/
 .user_avatar {
 	margin-top: 7px;
 	border: 1px solid #514e43;
+}
+
+.profile_photo_home {
+	margin-bottom: 5px;
 }
 
 /*Buttons*/

@@ -44,7 +44,7 @@
 							<li><a href="{{ action('UsersController@edit', ['id' => Auth::user()->id]) }}">My Account</a></li>
 							<li><a href="{{ action('Auth\AuthController@getLogout') }}">Log Out</a></li>
 						</ul>
-					<li><img src="http://placekitten.com/35/35" class="user_avatar"></li>
+					<li><img src="http://placekitten.com/35/35" class="user_avatar img-circle"></li>
 					</li>
 				</ul>
 			</div><!-- /.navbar-collapse -->
