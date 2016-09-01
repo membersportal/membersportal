@@ -27,8 +27,9 @@ class UsersController extends Controller
         }
 
         $newest_member = Company::newestMember();
+        $admin_user = User::find(1);
         $carousels = Carousel::pullCarousels();
-        $data = compact('newest_member', 'carousels');
+        $data = compact('newest_member', 'carousels', 'admin_user');
         return view('home')->with($data);
     }
 
