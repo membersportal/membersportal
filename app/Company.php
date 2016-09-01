@@ -12,7 +12,7 @@ class Company extends Model
 {
 	use SoftDeletes;
 
-	public function users()
+	public function user()
 	{
 		return $this->hasOne(User::class, 'id');
 	}
@@ -22,14 +22,19 @@ class Company extends Model
 		return $this->hasMany(Event::class, 'company_id');
 	}
 
-	public function industries()
+	public function industry()
 	{
-		return $this->belongsTo(Industry::class, 'id');
+		return $this->belongsTo(Industry::class, 'industry_id');
 	}
 
 	public function leaders()
 	{
 		return $this->hasMany(Leader::class, 'id');
+	}
+
+	public function connections()
+	{
+			return $this->hasManyThrough(Company::class, Connection::class, 'company1_id', 'company2_id');
 	}
 
 	public static function newestMember()
