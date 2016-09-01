@@ -17,6 +17,11 @@ class Company extends Model
 		return $this->hasOne(User::class, 'id');
 	}
 
+	public function contact()
+	{
+		return $this->hasOne(Contact::class);
+	}
+
 	public function events()
 	{
 		return $this->hasMany(Event::class, 'company_id');
@@ -78,7 +83,7 @@ class Company extends Model
 		//var_dump(get_class_methods(get_class($query)));
 		// echo $query->getQuery()->toSql();
 
-		return $query->get();
+		return $query;
 	}
 
 	public static function searchCompanyName($request)
