@@ -5,12 +5,12 @@
 	<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 left_home">
 		<div class="home_panel">
 			<h3 class="text-center">Navigation</h3>
-			<a href="{{ action('UsersController@edit, $users->id) }}" alt="Manage User">Manage Users</a>
-			<a href="{{ action('AuthController@create) }}" alt="Create User">Create User</a>
-			<a href="{{ action('CarouselsController@create) }}" alt="Add Carousel">Add Carousel</a>
-			<a href="{{ action('CarouselsController@edit, $carousels->id) }}" alt="Edit Carousel">Edit Carousel</a>
-			<a href="{{ action('EventsController@create) }}" alt="Add Event">Add Event</a>
-			<a href="{{ action('EventsController@edit, $events->id) }}" alt="Edit Event">Edit Event</a>		
+			<a href="{{ action('UsersController@edit', ['id' => $user->id]) }}" alt="Manage User">Manage Users</a>
+			<a href="{{ action('AuthController@getRegister') }}" alt="Create User">Create User</a>
+			<a href="{{ action('CarouselsController@create') }}" alt="Add Carousel">Add Carousel</a>
+			
+			<a href="{{ action('EventsController@create') }}" alt="Add Event">Add Event</a>
+					
 		</div>
 	</div>
 	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 center_home">
