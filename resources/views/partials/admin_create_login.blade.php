@@ -25,7 +25,7 @@
 	@include ('partials.error', ['value' => 'password'])
 </div>
 <div class="form-group">
-	<label for="password_confirmation">Password<span class="required">*</span></label>
+	<label for="password_confirmation">Confirm Password<span class="required">*</span></label>
 	<input type="text" class="form-control" name="password_confirmation" maxlength="32" required>
 	@include ('partials.error', ['value' => 'password_confirmation'])
 </div>

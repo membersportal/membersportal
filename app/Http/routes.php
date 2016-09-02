@@ -15,8 +15,7 @@
 Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('auth/login', 'Auth\AuthController@postLogin');
 Route::get('auth/logout', 'Auth\AuthController@getLogout');
-Route::get('auth/register', 'Auth\AuthController@getRegister');
-Route::post('auth/register', 'Auth\AuthController@postRegister');
+
 
 // Users
 Route::get('/', 'UsersController@index');
@@ -62,7 +61,7 @@ Route::resource('rfps', 'RFPsController');
 
 //Admin
 Route::get('admin/{user}/edit', 'UsersController@edit');
-Route::get('admin/create', 'AuthController@create');
+Route::get('auth/register', 'AuthController@getRegister');
 Route::get('admin/event/create', 'EventController@create');
 Route::get('admin/event/{event}/edit', 'EventController@edit');
 
