@@ -59,3 +59,10 @@ Route::resource('leaders', 'LeadersController');
 
 // RFPs
 Route::resource('rfps', 'RFPsController');
+
+//Admin
+Route::get('admin/{user}/edit', 'UsersController@edit');
+Route::get('admin/create', 'AuthController@create');
+Route::get('admin/event/create', 'EventController@create');
+Route::get('admin/event/{event}/edit', 'EventController@edit');
+
