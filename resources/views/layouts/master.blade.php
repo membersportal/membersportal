@@ -53,7 +53,7 @@
 		</div><!-- /.container-fluid -->
 	</nav>
 	@endif
-	<div class="container">
+	<div class="container expand">
 		@yield('content')
 	</div>
 	@if (Auth::check())
