@@ -20,7 +20,7 @@ class CarouselsTableSeeder extends Seeder
       $carousel1->save();
 
       $carousel2 = new Carousel();
-      $carousel2->title = "Crowdfun or Bootstrap Your New Business";
+      $carousel2->title = "Crowdfund or Bootstrap Your New Business";
       $carousel2->desc = "Some startups begin with a following while others take on the task of buidling their own. Which approach is best for you?";
       $carousel2->img = "carousel2.jpg";
       $carousel2->url = "https://www.entrepreneur.com/article/279987";

@@ -1,12 +1,16 @@
 /*Divs and Page Structure*/
 .container {
 	width: 90%;
-	height: auto;
 	margin-bottom: 30px;
 }
 
-html {
+.container.expand {
+	height: auto;
+}
+
+html, body {
 	height: 100%;
+	margin: 0;
 }
 
 .footer.container {
@@ -19,6 +23,7 @@ body {
 	background-color: #fffef4;
 	color: #514e43;
 	height: 100%;
+	width: 100%;
 	display: table;
 }
 
@@ -58,6 +63,11 @@ div.carousel_bar {
 	height: 100%;
 }
 
+div#map {
+	height: 300px;
+	width: 300px;
+	margin: 25px 0;
+}
 /*Text*/
 body {
 	font-family: 'Source Sans Pro', sans-serif;
