@@ -2,7 +2,7 @@
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2OJukM41NiEP_KnDGkx4mQ6HSucCuhwI"></script>
 	<script>
 		(function() {
-			"use strict";				
+			"use strict";
 			var mapOptions = {
 				zoom: 10,
 				center: {
@@ -14,15 +14,14 @@
 			var map = new google.maps.Map(document.getElementById("map"), mapOptions);
 			var geocoder = new google.maps.Geocoder();
 			var businesses = {{ $locations->toJson() }}
-			
 
 			businesses.forEach(function (element) {
 
 				geocoder.geocode({ "address": element.address }, function (results, status) {
 					if (status == google.maps.GeocoderStatus.OK) {
 						var marker = new google.maps.Marker({
-							position: results[0].geometry.location, 
-							map: map, 
+							position: results[0].geometry.location,
+							map: map,
 							animation: google.maps.Animation.DROP
 						});
 						var infoWindow = new google.maps.InfoWindow({
@@ -34,8 +33,8 @@
     					});
 					} else {
 						alert("Geocoding was not successful - STATUS: " + status);
-					} 
-					
+					}
+
 					var marker = new google.maps.Marker({
 						position: location,
 						map: map,
@@ -49,7 +48,7 @@
 					map.setZoom(13);
 					map.setCenter(location);
 					infowindow.open(map, marker);
-					})	
+					})
 				})
 			})
 		})();

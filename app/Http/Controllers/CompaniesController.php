@@ -42,7 +42,7 @@ class CompaniesController extends Controller
 		$industries = Industry::all();
 		$results = Company::searchMembers($request)->paginate(10);
 		$locations = Contact::searchLocations($results);
-		$current_user = User::find(Auth::user()->id);
+		$current_user = Auth::user()->contact;
 		$data = compact('industries', 'results', 'locations', 'current_user');
 		return view('search')->with($data);
 	}

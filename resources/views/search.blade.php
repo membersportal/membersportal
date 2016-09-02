@@ -3,9 +3,9 @@
 	<h1 class="text-center">Search Members</h1>
 	<div class="row">
 		<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xl-8 col-xs-offset-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2 col-xl-offset-2">
-			<div id="map">
+		<div id="map">
 			@include('partials.member_search')
-			</div>
+		</div>
 			<div id="search_filter">
 				<form method="GET" action="{{ action('CompaniesController@searchMembers') }}">
 					<div class="form-group">
