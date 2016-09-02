@@ -12,7 +12,7 @@ class Rfp extends Model
 
 	public function company()
 	{
-		return $this->belongsTo(Company::class, 'id');
+		return $this->belongsTo(Company::class);
 	}
 
 	public static function dashboardRfps($connections)

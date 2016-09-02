@@ -24,24 +24,14 @@
 				</div>
 
 				<div class="home_panel">
-					<h3 class="text-center">Events</h3>
-					{{ dd($rfp) }}
-					@foreach ($rfp as $key => $job)
-						@if ($key < 3)
-						<div id="accordion" role="tablist" aria-multiselectable="false">
-							<div class="panel panel-default">
-								<div class="panel-heading" role="tab" id="heading{{$key+1}}">
-									<h4 class="panel-title">
-									<a data-toggle="collapse" data-parent="#accordion" href="#collapse{{$key+1}}" aria-expanded="false" aria-controls="collapse{{$key+1}}">{{ $rfp->title }}
-									</a>
-									</h4>
-									<p class="event_date_home">{{ $rfp->from_date->format('F j') }} - {{ $rfp->to_date->format('F j') }}</p>
-								</div>
-							<div id="collapse{{$key+1}}" class="panel-collapse collapse event_desc_home" role="tabpanel" aria-labelledby="heading{{$key+1}}">
-							{{ str_limit($rfp->desc, 100) }}<a href="#">see RFP</a>
-							</div>
-							</div>
-						</div>
+					<h3 class="text-center">Request for Proposals</h3>
+					@foreach ($rfps as $key => $rfp)
+						@if ($rfp->deadline > '2015-01-01')
+						<ul>
+							<li>
+								<a href="#">{{ $rfp->project_title }}</a>
+							</li>
+						</ul>
 						@endif
 					@endforeach
 				</div>
@@ -80,26 +70,26 @@
 		</div>
 		<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 right_home">
 			<div class="social_media">
-				<a href="http://www.facebook.com/{{ $contact->facebook }}"><img src="facebook-dreamstale25.png" alt="facebook" /></a>
-				<a href="http://www.instagram.com/{{ $contact->instagram }}"><img src="instagram-dreamstale43.png" alt="instagram" /></a>
-				<a href="http://www.linkedin.com/in/{{ $contact->linkedin }}"><img src="linkedin-dreamstale45.png" alt="linkedin" /></a>
-				<a href="http://plus.google.com/{{ $contact->google_plus }}"><img src="google+-dreamstale37.png" alt="google+" /></a>
+				<a href="http://www.facebook.com/{{ $contact->facebook }}"><img  class="social_media_icon" src="/facebook-dreamstale25.png" alt="facebook" /></a>
+				<a href="http://www.instagram.com/{{ $contact->instagram }}"><img class="social_media_icon" src="/instagram-dreamstale43.png" alt="instagram" /></a>
+				<a href="http://www.linkedin.com/in/{{ $contact->linkedin }}"><img class="social_media_icon" src="/linkedin-dreamstale45.png" alt="linkedin" /></a>
+				<a href="http://plus.google.com/{{ $contact->google_plus }}"><img class="social_media_icon" src="/google+-dreamstale37.png" alt="google+" /></a>
 			</div>
 			<div class="home_panel">
 				<h3 class="text-center">Events</h3>
-				@foreach ($event as $key => $party)
+				@foreach ($events as $key => $event)
 					@if ($key < 3)
 					<div id="accordion" role="tablist" aria-multiselectable="false">
 						<div class="panel panel-default">
 							<div class="panel-heading" role="tab" id="heading{{$key+1}}">
 								<h4 class="panel-title">
-								<a data-toggle="collapse" data-parent="#accordion" href="#collapse{{$key+1}}" aria-expanded="false" aria-controls="collapse{{$key+1}}">{{ $party->title }}
+								<a data-toggle="collapse" data-parent="#accordion" href="#collapse{{$key+1}}" aria-expanded="false" aria-controls="collapse{{$key+1}}">{{ $event->title }}
 								</a>
 								</h4>
-								<p class="event_date_home">{{ $party->from_date->format('F j') }} - {{ $party->to_date->format('F j') }}</p>
+								<p class="event_date_home">{{ $event->from_date->format('F j') }} - {{ $event->to_date->format('F j') }}</p>
 							</div>
 						<div id="collapse{{$key+1}}" class="panel-collapse collapse event_desc_home" role="tabpanel" aria-labelledby="heading{{$key+1}}">
-						{{ str_limit($party->desc, 100) }}<a href="#">see event</a>
+						{{ str_limit($event->desc, 100) }}<a href="#">see event</a>
 						</div>
 						</div>
 					</div>
@@ -112,12 +102,12 @@
 						<a href="https://twitter.com/{{ $contact->twitter }}" class=" twitter-follow-button" data-show-count="false">Follow @{{ $contact-> }}</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 				</div>
 
-					<div class="connections">
+				<div class="home_panel">
 						<h3 class="text-center">Connections</h3>
-						@foreach($connection as $member)
-						<h4>{{ $member->company2_id }}</h4>
+						@foreach($profileConnections as $connection)
+							<a href="{{ action('CompaniesController@show', $connection->id) }}"><img src="{{ $connection->profile_img }}" alt="{{ $connection->name }}" /></a>
 						@endforeach
-					</div>
+				</div>
 
 		</div>
 

@@ -21,4 +21,5 @@ class Connection extends Model
       }
       return Connection::whereIn('company1_id', $companies)->orderBy('created_at');
     }
+
 }
