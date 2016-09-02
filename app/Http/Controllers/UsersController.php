@@ -28,7 +28,7 @@ class UsersController extends Controller
 
         $newest_member = Company::newestMember();
         $admin_user = User::find(1);
-        $admin_events = $admin_user->events;
+        $admin_events = $admin_user->company->events;
         $carousels = Carousel::pullCarousels();
         $data = compact('newest_member', 'carousels', 'admin_user', 'admin_events');
         return view('home')->with($data);
