@@ -32,3 +32,17 @@ $factory->define(App\Event::class, function (Faker\Generator $faker) {
         'url' => $faker->url,
     ];
 });
+
+$factory->define(App\Rfp::class, function (Faker\Generator $faker) {
+    return [
+        'company_id' => $faker->numberBetween($min = 1, $max = 9),
+        'project_title' => $faker->words(4, true),
+        'deadline' => $faker->dateTimeThisMonth($max = 'now'),
+        'contact_name' => $faker->name,
+        'contact_department' => $faker->words(2, true),
+        'contact_no' => $faker->phoneNumber,
+        'project_scope' => $faker->sentences(4, true),
+        'contract_from_date' => $faker->dateTimeThisMonth($max = 'now'),
+        'contract_to_date' => $faker->dateTimeThisMonth($max = 'now'),
+    ];
+});
