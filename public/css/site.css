@@ -5,8 +5,9 @@
 	margin-bottom: 30px;
 }
 
-html {
+html, body {
 	height: 100%;
+	margin: 0;
 }
 
 .footer.container {
@@ -18,8 +19,6 @@ html {
 body {
 	background-color: #fffef4;
 	color: #514e43;
-	height: 100%;
-	display: table;
 }
 
 footer {
