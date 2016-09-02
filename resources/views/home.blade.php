@@ -12,6 +12,19 @@
 			<p class="industry_name_home text-center"><span class="industry_name_home">Industry:</span> {{ $newest_member->industry->industry }}</p>
 			<p class="text-center company_desc_home">Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
 		</div>
+
+		<!-- <div class="home_panel">
+			<h3 class="text-center">Request for Proposals</h3>
+			@foreach ($rfps as $key => $rfp)
+				@if ($rfp->deadline > '2015-01-01')
+				<ul>
+					<li>
+						<a href="#">{{ $rfp->project_title }}</a>
+					</li>
+				</ul>
+				@endif
+			@endforeach
+		</div> -->
 	</div>
 
 	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 center_home">
