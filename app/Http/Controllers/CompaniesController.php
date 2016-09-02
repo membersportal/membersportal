@@ -40,11 +40,21 @@ class CompaniesController extends Controller
 	public function searchMembers(Request $request)
 	{
 		$industries = Industry::all();
-		$results = Company::searchMembers($request)->paginate(10);
-		$locations = Contact::searchLocations($results);
-		$current_user = Auth::user()->contact;
-		$data = compact('industries', 'results', 'locations', 'current_user');
+		$current_user_address = Auth::user()->company->contact->address_line_1 . ' ' . Auth::user()->company->contact->city;
+		$data = compact('industries', 'current_user_address', 'results');
 		return view('search')->with($data);
+	}
+
+	public function getSearchedCompanies(Request $request)
+	{
+		$data = [];
+		$data['results'] = Company::searchMembers($request)->get();
+		foreach($data['results'] as &$result) {
+			$result->url = action('CompaniesController@show', $result->id);
+			$result->industry = $result->industry->industry;
+		}
+		$data['locations'] = Contact::searchLocations($data['results']);
+		return $data;
 	}
 
 	/**
@@ -67,30 +77,31 @@ class CompaniesController extends Controller
 	 */
 	 public function dashboard($id)
 	 {
-		 $company = Company::find($id);
-		 $connections = $company->connections;
-		 $feedContent = $this->buildFeed($connections);
+		$company = Company::find($id);
+		$connections = $company->connections;
+		$feedContent = $this->buildFeed($connections);
 
-		 $data = compact('feedContent');
-		 return view('companies.dashboard')->with($data);
+		$data = compact('feedContent');
+		return view('companies.dashboard')->with($data);
 	 }
 
-	 public function viewConnections($id)
-	 {
-		 $user = User::find($id);
-		 $data = compact('user');
-		 return view('companies.connections')->with($data);
-	 }
+	public function viewConnections($id)
+	{
+		$user = User::find($id);
+		$data = compact('user');
+		return view('companies.connections')->with($data);
+	}
+
 	public function show($id)
 	{
-	  $company = Company::findOrFail($id);
-	  $contact = $company->contact;
-	  $rfp = $company->rfps;
-	  $event = $company->events;
-	  $leader = $company->leaders;
-	  $connection = Connection::viewConnections($id)->take(3)->get();
-	  $data = compact('company', 'contact', 'rfp', 'event', 'leader', 'connection');
-	  return view('companies.view_profile')->with($data);
+		$company = Company::findOrFail($id);
+		$contact = $company->contact;
+		$rfp = $company->rfps;
+		$event = $company->events;
+		$leader = $company->leaders;
+		$connection = Connection::viewConnections($id)->take(3)->get();
+		$data = compact('company', 'contact', 'rfp', 'event', 'leader', 'connection');
+		return view('companies.view_profile')->with($data);
 	}
 
 	/**
