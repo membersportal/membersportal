@@ -73,14 +73,6 @@
 					});
 
 							
-							// <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
-							// <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
-						 //  </ul>
-
-						 //  <!-- Tab panes -->
-						 //  <div class="tab-content">
-							// <div role="tabpanel" class="tab-pane active" id="home">...</div>
-						 //  </div>
 							
 
 							$('#results').html("");
@@ -91,8 +83,15 @@
 							var paginate = Math.ceil(search_results.length/10);
 							
 							for (var i = 0; i < paginate; i++) {
-								$('#nav_tabs').append("")
+								$('#nav_tabs').append("<li role=\"presentation\" class=\"active\"><a href=\"#i\" aria-controls=\"home\" role=\"tab\" data-toggle=\"tab\">i</a></li>");
+								$('#tab_content').append("")
 							}
+							
+
+						  <!-- Tab panes -->
+						  <div class="tab-content">
+							<div role="tabpanel" class="tab-pane active" id="home">...</div>
+						  </div>
 				});
 		}
 

@@ -1,9 +1,9 @@
 @extends('layouts.master')
-
 @section('content')
 
-<form method="POST" action="{{ action('AuthController@store') }}">
-@include(admin_create_login.blade.php)
+<form method="POST" action="{{ action('UsersController@store') }}">
+	{!!csrf_field()!!}
+	@include('partials.admin_create_login')
 <button type="submit">Submit</button>
 </form>
 
