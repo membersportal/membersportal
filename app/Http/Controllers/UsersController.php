@@ -34,19 +34,9 @@ class UsersController extends Controller
         return view('home')->with($data);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        $user = new User();
-        return $this->validateAndSave($user, $request);
-    }
+    /*
 
-    /**
+
      * Display the specified resource.
      *
      * @param  int  $id

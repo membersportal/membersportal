@@ -35,7 +35,7 @@
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->username }}<span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							@if (Auth::user()->is_admin)
-								<li><a href="{{ action('Auth\AuthController@getLogout') }}">Admin Dashboard</a></li>
+								<li><a href="{{ action('UsersController@getAdminDashboard', ['id' => Auth::user()->id]) }}">Admin Dashboard</a></li>
 							@endif
 							@if (!Auth::user()->is_admin)
 								<li><a href="{{ action('CompaniesController@show', ['id' => Auth::user()->id]) }}">View Profile</a></li>
