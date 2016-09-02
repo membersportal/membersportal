@@ -39,7 +39,7 @@ class Company extends Model
 
 	public function connections()
 	{
-			return $this->hasManyThrough(Company::class, Connection::class, 'company1_id', 'company2_id');
+		return $this->hasManyThrough(Company::class, Connection::class, 'company1_id', 'company2_id');
 	}
 
 	public static function newestMember()
@@ -74,7 +74,6 @@ class Company extends Model
 
 		if($industry != 0 && $search){
 			$query = $query->orWhere('industry_id', $industry);
-			// dd($query->getQuery()->toSql());
 		} elseif($industry != 0){
 			$query = $query->where('industry_id', $industry);
 		}
@@ -113,10 +112,6 @@ class Company extends Model
 			}
 		}
 
-		// dd($query->getQuery()->toSql());
-
-		//var_dump(get_class_methods(get_class($query)));
-
 		return $query;
 	}
 
@@ -131,5 +126,4 @@ class Company extends Model
      'contractor' => 'required|boolean',
      'organization' => 'required|boolean'
    	];
-    //
 }

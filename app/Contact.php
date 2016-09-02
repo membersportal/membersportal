@@ -29,8 +29,6 @@ class Contact extends Model
 			$contacts[] = $contact;
 		}
 		return $contacts;
-
-		// return Contact::whereIn('company_id', $contacts)->get();
 	}
 
 	public static $rules = [
@@ -48,5 +46,4 @@ class Contact extends Model
      'instagram' => 'nullable|max:32',
      'google_plus' => 'nullable|max:32'
    	];
-    //
 }
