@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use App\User;
 use App\Industry;
 use App\Leader;
+use App\Rfp;
 
 class Company extends Model
 {
@@ -37,6 +38,11 @@ class Company extends Model
 		return $this->hasMany(Leader::class, 'id');
 	}
 
+	public function rfps()
+	{
+		return $this->hasMany(Rfp::class, 'company_id');
+	}
+
 	public function connections()
 	{
 		return $this->hasManyThrough(Company::class, Connection::class, 'company1_id', 'company2_id');
@@ -56,6 +62,16 @@ class Company extends Model
 		}
 
 		return Company::whereIn('company_id', $companies);
+	}
+
+	public static function profileConnections($connections){
+		$companies = [];
+
+		foreach($connections as $connection){
+			$company = $connection->company2_id;
+			$companies[] = $company;
+		}
+		return Company::whereIn('id', $companies)->orderBy('created_at');
 	}
 
 	public static function searchMembers($request)
