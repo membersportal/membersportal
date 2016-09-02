@@ -8,7 +8,6 @@
 			</div>
 			<div id="search_filter">
 				<form method="GET" action="{{ action('CompaniesController@searchMembers') }}">
-					{!! csrf_field() !!}
 					<div class="form-group">
 		  				<input type="text" name="searchField" class="form-control" placeholder="Search company name, description or keywords">
 					</div>
