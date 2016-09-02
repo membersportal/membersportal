@@ -18,16 +18,6 @@ use App\Connection;
 class CompaniesController extends Controller
 {
 	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
-	public function index()
-	{
-		//
-	}
-
-	/**
 	 * Show the form for creating a new resource.
 	 *
 	 * @return \Illuminate\Http\Response
@@ -35,26 +25,6 @@ class CompaniesController extends Controller
 	public function create()
 	{
 		return view('admin.create_account_company');
-	}
-
-	public function searchMembers(Request $request)
-	{
-		$industries = Industry::all();
-		$current_user_address = Auth::user()->company->contact->address_line_1 . ' ' . Auth::user()->company->contact->city;
-		$data = compact('industries', 'current_user_address', 'results');
-		return view('search')->with($data);
-	}
-
-	public function getSearchedCompanies(Request $request)
-	{
-		$data = [];
-		$data['results'] = Company::searchMembers($request)->get();
-		foreach($data['results'] as &$result) {
-			$result->url = action('CompaniesController@show', $result->id);
-			$result->industry = $result->industry->industry;
-		}
-		$data['locations'] = Contact::searchLocations($data['results']);
-		return $data;
 	}
 
 	/**
@@ -67,42 +37,6 @@ class CompaniesController extends Controller
 	{
 		$company = new Company();
 		return $this->validateAndSave($company, $request);
-	}
-
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return \Illuminate\Http\Response
-	 */
-	 public function dashboard($id)
-	 {
-		$company = Company::find($id);
-		$connections = $company->connections;
-		$feedContent = $this->buildFeed($connections);
-
-		$data = compact('feedContent');
-		return view('companies.dashboard')->with($data);
-	 }
-
-	public function viewConnections($id)
-	{
-		$user = User::find($id);
-		$data = compact('user');
-		return view('companies.connections')->with($data);
-	}
-
-	public function show($id)
-	{
-		$company = Company::findOrFail($id);
-		$contact = $company->contact;
-		$rfps = $company->rfps;
-		$events = $company->events;
-		$leader = $company->leaders;
-		$connections = Connection::viewConnections($id)->take(3)->get();
-		$profileConnections = Company::profileConnections($connections)->get();
-		$data = compact('company', 'contact', 'rfps', 'events', 'leader', 'profileConnections');
-		return view('companies.view_profile')->with($data);
 	}
 
 	/**
@@ -145,27 +79,82 @@ class CompaniesController extends Controller
 		return redirect()->action('ContactsController@destroy');
 	}
 
+	public function searchMembers(Request $request)
+	{
+		$industries = Industry::all();
+		$current_user_address = Auth::user()->company->contact->address_line_1 . ' ' . Auth::user()->company->contact->city;
+		$data = compact('industries', 'current_user_address', 'results');
+		return view('search')->with($data);
+	}
+
+	public function getSearchedCompanies(Request $request)
+	{
+		$data = [];
+		$data['results'] = Company::searchMembers($request)->get();
+		foreach($data['results'] as &$result) {
+			$result->url = action('CompaniesController@show', $result->id);
+			$result->industry = $result->industry->industry;
+		}
+		$data['locations'] = Contact::searchLocations($data['results']);
+		return $data;
+	}
+
+	public function dashboard($id)
+	{
+		$company = Company::find($id);
+		$connections = $company->connections;
+		$feedContent = $this->buildFeed($connections);
+		$data = compact('feedContent');
+		return view('companies.dashboard')->with($data);
+	 }
+
+	public function viewConnections($id)
+	{
+		$user = User::find($id);
+		$data = compact('user');
+		return view('companies.connections')->with($data);
+	}
+
+	public function show($id)
+	{
+		$company = Company::findOrFail($id);
+		$contact = $company->contact;
+		$rfps = $company->rfps;
+		$events = $company->events;
+		$leader = $company->leaders;
+		$connections = Connection::viewConnections($id)->take(3)->get();
+		$profileConnections = Company::profileConnections($connections)->get();
+		$data = compact('company', 'contact', 'rfps', 'events', 'leader', 'profileConnections');
+		return view('companies.view_profile')->with($data);
+	}
+
 	private function validateAndSave(Company $company, Request $request)
 	{
-		$is_admin = Auth::user()->is_admin;
 		$request->session()->flash('ERROR_MESSAGE', 'Company was not created successfully');
 		$this->validate($request, Company::$rules);
 		$request->session()->forget('ERROR_MESSAGE');
+
 		$company->name = $request->name;
 		$company->industry_id = $request->industry_id;
 		$company->profile_img = $request->profile_img;
+		$company->profile_img = $request->header_img;
 		$company->desc = $request->desc;
+		$company->size = $request->size;
 		$company->woman_owned = $request->woman_owned;
 		$company->contractor = $request->contactor;
 		$company->family_owned = $request->family_owned;
 		$company->organization = $request->organization;
+		$company->date_established = $request->date_established;
 		$company->save();
+
+		$is_admin = Auth::user()->is_admin;
+
 		if($is_admin){
-		  $request->session()->flash('message', 'Company was successfully created!');
-		  return redirect()->action('ContactsController@create');
+			$request->session()->flash('message', 'Company successfully created, please enter contact information.');
+			return redirect()->action('ContactsController@create');
 		} else {
-		  $request->session()->flash('message', 'Company information was successfully updated!');
-		  return redirect()->action('companies.view_profile');
+			$request->session()->flash('message', 'Company information successfully updated.');
+			return redirect()->action('UsersController@edit', ['id' => Auth::user()->id]);
 		}
 	}
 
