@@ -3,7 +3,7 @@
 @section('content')
 
 <form method="POST" action="{{ action('EventsController@store') }}">
-@include(admin_create_login.blade.php)
+@include(create.event.blade.php)
 <button type="submit">Submit</button>
 </form>
 
