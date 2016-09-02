@@ -63,6 +63,11 @@ div.carousel_bar {
 	height: 100%;
 }
 
+div#map {
+	height: 300px;
+	width: 100%;
+	margin: 25px 0;
+}
 /*Text*/
 body {
 	font-family: 'Source Sans Pro', sans-serif;
