@@ -1,0 +1,49 @@
+/*Carousel*/
+
+/* Carousel base class */
+.carousel {
+	height: 400px;
+	margin-bottom: 60px;
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+	z-index: 10;
+}
+
+/* Declare heights because of positioning of img element */
+.carousel .item {
+	height: 400px;
+	background-color: #777;
+}
+
+.carousel-inner > .item > img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	min-width: 100%;
+	height: 500px;
+}
+
+div.carousel-caption {
+	padding: 0 28px 10px 28px;
+	background-color: rgba(102, 164, 152, 0.92);
+	width: 100%;
+	left: 0;
+	bottom: 0;
+}
+.carousel-inner > .item > img {
+	object-fit: cover;
+}
+
+h3.carousel_head {
+	color: #d3e397;
+	margin-bottom: 10px;
+}
+
+.carousel-control.right {
+	background-image: none;
+}
+
+.carousel-control.left {
+	background-image: none;
+}
