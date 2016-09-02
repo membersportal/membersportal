@@ -72,77 +72,51 @@ class Company extends Model
 			$query = $query->where('name', 'like', "%$search%")->orWhere('desc', 'like', "%$search%");
 		}
 
-		if($industry != '' && !$search){
-			$query = $query->where('industry_id', $industry);
-		} else {
+		if($industry != 0 && $search){
 			$query = $query->orWhere('industry_id', $industry);
-		}
-
-		// dd($request->input('industry_id') == true);
-		// dd($industry);
-		if($woman && !$search || !$industry) {
-			$query = $query->where('woman_owned', 1);
 			// dd($query->getQuery()->toSql());
+		} elseif($industry != 0){
+			$query = $query->where('industry_id', $industry);
 		}
 
-		if($contractor) {
-			$query = $query->where('contractor', 1);
+		if($search || $industry !=0) {
+			if($woman){
+				$query = $query->orWhere('woman_owned', 1);
+			}
+
+			if($contractor){
+				$query = $query->orWhere('contractor', 1);
+			}
+
+			if($family){
+				$query = $query->orWhere('family_owned', 1);
+			}
+
+			if($org){
+				$query = $query->orWhere('organization', 1);
+			}
+		} else {
+			if($woman){
+				$query = $query->where('woman_owned', 1);
+			}
+
+			if($contractor){
+				$query = $query->where('contractor', 1);
+			}
+
+			if($family){
+				$query = $query->where('family_owned', 1);
+			}
+
+			if($org){
+				$query = $query->where('organization', 1);
+			}
 		}
 
-		if($family) {
-			$query = $query->where('family_owned', 1);
-		}
-
-		if($org) {
-			$query = $query->where('organization', 1);
-		}
 		// dd($query->getQuery()->toSql());
 
-
 		//var_dump(get_class_methods(get_class($query)));
-		// echo $query->getQuery()->toSql();
 
-
-		// $query = Company::orderBy('created_at');
-
-		// do {
-		// 	switch ($request) {
-		// 		case ($search !== ''):
-		// 			$results = Company::searchCompanyName($search);
-		// 			break;
-		// 		case ($industry != 0):
-		// 			$results = Company::where('industry_id', $industry);
-		// 			break;
-		// 		case ($woman):
-		// 			$results = Company::where('woman_owned', 1);
-		// 			break;
-		// 		case ($contractor):
-		// 	}
-		// } while ();
-
-		// $checkboxes = ["woman_owned", "contractor", "family_owned", "organization"];
-
-		// foreach ($checkboxes as $checkbox) {
-		// 	$query = Company::where('$checkbox', 1);
-		// }
-
-		// if{
-		// 	$request ? $query->where('woman_owned', 1) : $query = Company::where('woman_owned', 1);
-		// }
-
-		// if($request->contractor){
-		// 	$request ? $query->where('contractor', 1) : $query = Company::where('contractor', 1);
-		// }
-
-		// if($request->family_owned){
-		// 	$request ? $query->where('family_owned', 1) : $query = Company::where('family_owned', 1);
-		// }
-
-		// if($request->organization){
-		// 	$request ? $query->where('organization', 1) : $query = Company::where('organization', 1);
-		// }
-		// var_dump(get_class_methods(get_class($query)));
-		// dd($query);
 		return $query;
 	}
 

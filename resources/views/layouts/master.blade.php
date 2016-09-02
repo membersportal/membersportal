@@ -6,10 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="/css/bootstrap/bootstrap.css" rel="stylesheet">
-	<link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab|Source+Sans+Pro" rel="stylesheet">
 	<link href="/css/site.css" rel="stylesheet">
 	<link href="/css/navbar.css" rel="stylesheet">
+	<link href="/css/event_home.css" rel="stylesheet">
+	<link href="/css/carousel.css" rel="stylesheet">
 </head>
 <body>
 	@if (Auth::check())
@@ -52,7 +53,7 @@
 		</div><!-- /.container-fluid -->
 	</nav>
 	@endif
-	<div class="container">
+	<div class="container expand">
 		@yield('content')
 	</div>
 	@if (Auth::check())
@@ -89,6 +90,5 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="/js/bootstrap/bootstrap.min.js"></script>
-	<script src="../../assets/js/ie-emulation-modes-warning.js"></script>
 </body>
 </html>

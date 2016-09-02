@@ -3,11 +3,13 @@
 	<h1 class="text-center">Search Members</h1>
 	<div class="row">
 		<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xl-8 col-xs-offset-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2 col-xl-offset-2">
+			<div id="map">
+			@include('partials.member_search')
+			</div>
 			<div id="search_filter">
 				<form method="GET" action="{{ action('CompaniesController@searchMembers') }}">
-					{!! csrf_field() !!}
 					<div class="form-group">
-		  				<input type="text" name="searchField" class="form-control" placeholder="Company name, description or keywords">
+		  				<input type="text" name="searchField" class="form-control" placeholder="Search company name, description or keywords">
 					</div>
 					@include ('partials.error', ['value' => 'searchField'])
 					<label for="industry_id">Industry</label>
@@ -37,7 +39,7 @@
 						<input type="checkbox" name="woman_owned" value="woman_owned"> Woman-Owned
 						</label>
 					</div>
-					<button type="submit" class="btn btn-default">Submit</button>
+					<button type="submit" class="btn btn-default">Map It!</button>
 	  			</form>
 			</div>
 		</div>
