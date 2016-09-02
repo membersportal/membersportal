@@ -36,20 +36,20 @@
 						alert("Geocoding was not successful - STATUS: " + status);
 					} 
 					
-					// var marker = new google.maps.Marker({
-					// 	position: location,
-					// 	map: map,
-					// 	animation: google.maps.Animation.DROP
-					// })
-					// var infowindow = new google.maps.InfoWindow({
-					// 	content: address.content
-					// })
+					var marker = new google.maps.Marker({
+						position: location,
+						map: map,
+						animation: google.maps.Animation.DROP
+					})
+					var infowindow = new google.maps.InfoWindow({
+						content: address.content
+					})
 
-					// marker.addListener('click', function() {
-					// map.setZoom(13);
-					// map.setCenter(location);
-					// infowindow.open(map, marker);
-					// })	
+					marker.addListener('click', function() {
+					map.setZoom(13);
+					map.setCenter(location);
+					infowindow.open(map, marker);
+					})	
 				})
 			})
 		})();
