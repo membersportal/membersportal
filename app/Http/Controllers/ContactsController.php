@@ -40,10 +40,8 @@ class ContactsController extends Controller
      */
     public function edit($id)
     {
-        $user = Auth::user();
         $contact = Contact::findOrFail($id);
-        $data = compact('user', 'contact')
-        return view('companies.edit_account_contact')->with($data);
+        return view('contacts.edit_account_contact')->with('contact', $contact);
     }
 
     /**
