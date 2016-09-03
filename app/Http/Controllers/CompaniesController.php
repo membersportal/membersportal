@@ -51,6 +51,7 @@ class CompaniesController extends Controller
 		$company = Company::findOrFail($id);
 		$industry = Industry::all();
 		$data = compact('company', 'industry', 'user');
+		
 		if($user->id != 1) {
 		return view('companies.edit_account_company')->with($data);
 		} else {
@@ -109,7 +110,9 @@ class CompaniesController extends Controller
 		$company = Company::find($id);
 		$connections = $company->connections;
 		$feedContent = $this->buildFeed($connections);
-		$data = compact('feedContent');
+		$usersRfps = $company->rfps;
+		$usersEvents = $company->events;
+		$data = compact('feedContent', 'usersRfps', 'usersEvents');
 		return view('companies.dashboard')->with($data);
 	 }
 

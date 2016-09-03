@@ -5,7 +5,7 @@
 </div>
 <div class="form-group">
 	<label for="desc">Description<span class="required">*</span></label>
-	<textarea name="desc" maxlength="150" rows="2" required>{{ old('desc') }}</textarea>
+	<textarea class="form-control" name="desc" maxlength="150" rows="2" required>{{ old('desc') }}</textarea>
 	@include ('partials.error', ['value' => 'desc'])
 </div>
 <div class="form-group">
