@@ -20,6 +20,16 @@ class Event extends Model
 		return ucwords($value);
 	}
 
+	public function setFromDateAttribute($value)
+	{
+		$this->attribute['from_date'] = $value->format('Y-m-d');
+	}
+
+	public function setToDateAttribute($value)
+	{
+		$this->attribute['to_date'] = $value->format('Y-m-d');
+	}
+
 	public static function searchEvents($request)
 	{
 		$query = Event::orderBy('created_at');
@@ -60,13 +70,14 @@ class Event extends Model
 	];
 
 	public static $rules = [
-	 'title' => 'required|max:75',
-	 'desc' => 'required|filled',
-	 'from_date' => 'required|date',
-	 'to_date' => 'required|date',
-	 'invite_only' => 'required|boolean',
-	 'rsvp_required' => 'required|boolean',
-	 'url' => 'required|url'
+		'title' => 'required|max:75',
+		'desc' => 'required|filled',
+		'from_date' => 'required|date',
+		'to_date' => 'required|date',
+		'invite_only' => 'required|boolean',
+		'rsvp_required' => 'required|boolean',
+		'url' => 'required|url',
+		'img' => 'required|image'
 	];
 	//
 }

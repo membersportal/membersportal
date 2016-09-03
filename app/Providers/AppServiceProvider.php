@@ -13,7 +13,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        view()->composer('partials.footer', function($view) {
+            $view->with('admin', \App\User::find(1));
+        });
     }
 
     /**

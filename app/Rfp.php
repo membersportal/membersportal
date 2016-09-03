@@ -15,6 +15,21 @@ class Rfp extends Model
 		return $this->belongsTo(Company::class);
 	}
 
+	public function setDeadlineAttribute($value)
+	{
+		$this->attribute['deadline'] = $value->format('Y-m-d');
+	}
+
+	public function setContractFromDateAttribute($value)
+	{
+		$this->attribute['contract_from_date'] = $value->format('Y-m-d');
+	}
+
+	public function setContractToDateAttribute($value)
+	{
+		$this->attribute['contract_to_date'] = $value->format('Y-m-d');
+	}
+
 	public function getProjectTitleAttribute($value)
 	{
 		return ucwords($value);

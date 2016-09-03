@@ -142,14 +142,15 @@ class Company extends Model
 	}
 
 	public static $rules = [
-     'name' => 'required|max:120',
-     'industry_id' => 'required|integer',
-     'profile_img' => 'nullable|image',
-     'header_img' => 'nullable|image',
-     'desc' => 'nullable|filled',
-     'woman_owned' => 'required|boolean',
-		 'family_owned' => 'required|boolean',
-     'contractor' => 'required|boolean',
-     'organization' => 'required|boolean'
-   	];
+		'name' => 'required|max:120',
+		'industry_id' => 'required|integer',
+		'profile_img' => 'nullable|image',
+		'header_img' => 'nullable|image',
+		'desc' => 'required|2000',
+		'size' => 'nullable|20'
+		'woman_owned' => 'nullable|boolean',
+		'family_owned' => 'nullable|boolean',
+		'contractor' => 'required|boolean',
+		'organization' => 'required|boolean'
+	];
 }

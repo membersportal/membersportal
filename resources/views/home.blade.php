@@ -31,7 +31,7 @@
 				@endforeach
 		</div>
 		<div class="panel_green">
-			<a class="green_bg" href="{{ action('CompaniesController@searchMembers') }}" alt="View All Events">Find New Connections</a>
+			<a class="green_bg" href="#" alt="View All Events">Browse All RFPs</a>
 		</div>
 	</div>
 
@@ -69,7 +69,7 @@
 
 	<div class="row">
 		<div class="col-xs-3">
-			<img src="" alt="">
+			<img src="/img/news_1.jpg">
 		</div>
 		<div class="col-xs-9">
 			<p>

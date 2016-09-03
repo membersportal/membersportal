@@ -178,10 +178,6 @@ ul.footer {
 	padding-left: 0;
 }
 
-a, a:hover, a:visited, a:active {
-	text-decoration: none;
-}
-
 div.panel_green > a.green_bg:after, div.panel_green > a.green_bg:hover:after, ul.footer > li > a.footer_triangle:after, ul.footer > li > a.footer_triangle:hover:after, div.login > a.forgot_password:hover:after, a.forgot_password:after {
 	content: "";
 	display: inline-block;
@@ -211,15 +207,11 @@ ul.footer > li > a.footer_triangle:hover {
 	color: #fff5c3;
 }
 
-a.green_bg {
-	color: #fff5c3;
+a.green_bg, a.green_bg:visited, a.green_bg:active, a.green_bg:hover {
+	color: #7c786a;
 	font-size: 1.15em;
 	padding-bottom: -10px;
 	margin-left: 10px;
-}
-
-a.green_bg:visited, a.green_bg:active, a.redbg:hover:after {
-	color: #7c786a;
 }
 
 a.red_link {
@@ -243,6 +235,10 @@ a.forgot_password {
 
 a.forgot_password:active, a.forgot_password:visited {
 	color: #fff;
+}
+
+a, a:hover, a:visited, a:active {
+	text-decoration: none;
 }
 
 /*Images*/
