@@ -36,9 +36,12 @@ class UsersController extends Controller
         return view('home')->with($data);
     }
 
-    public function editUsers()
+    public function editUsers(Request $request)
     {
-        return view('admin.edit_users');
+        $searchedUser = User::searchUser($request);
+        $searchedUserCompany = $searchedUser->company;
+        $data = compact('searchedUserCompany');
+        return view('admin.edit_users')->with($data);
     }
 
     public function create()
