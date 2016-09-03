@@ -40,4 +40,12 @@
 	<input type="url" class="form-control" name="website" value="{{ $contact->website }}" placeholder="http://www.example.com">
 	@include ('partials.error', ['value' => 'website'])
 </div>
-@include ('partials.social_media', ['social_media' => $social_media])
+<div class="form-group">
+	<label for="social_media">Social Media</label>
+	<p>Please enter your username.</p>
+	<input type="text" name="twitter" value="{{ $contact->twitter }}">
+	<input type="text" name="facebook" value="{{ $contact->facebook }}">
+	<input type="text" name="instagram" value="{{ $contact->instagram }}">
+	<input type="text" name="linkedin" value="{{ $contact->linkedin }}">
+	<input type="text" name="google_plus" value="{{ $contact->google_plus }}">
+</div>
