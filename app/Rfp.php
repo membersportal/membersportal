@@ -15,6 +15,21 @@ class Rfp extends Model
 		return $this->belongsTo(Company::class);
 	}
 
+	public function getProjectTitleAttribute($value)
+	{
+		return ucwords($value);
+	}
+
+	public function getContactNameAttribute($value)
+	{
+		return ucwords($value);
+	}
+
+	public function getContactDepartmentAttribute($value)
+	{
+		return ucwords($value);
+	}
+
 	public static function dashboardRfps($connections)
 	{
 		$companies = [];

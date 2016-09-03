@@ -15,56 +15,66 @@ use App\Contact;
 use App\Connection;
 
 class User extends Model implements AuthenticatableContract,
-                                    AuthorizableContract,
-                                    CanResetPasswordContract
+									AuthorizableContract,
+									CanResetPasswordContract
 {
-    use Authenticatable, Authorizable, CanResetPassword, SoftDeletes;
+	use Authenticatable, Authorizable, CanResetPassword, SoftDeletes;
 
-    /**
-     * The database table used by the model.
-     *
-     * @var string
-     */
-    protected $table = 'users';
+	/**
+	 * The database table used by the model.
+	 *
+	 * @var string
+	 */
+	protected $table = 'users';
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = ['name', 'email', 'password'];
+	/**
+	 * The attributes that are mass assignable.
+	 *
+	 * @var array
+	 */
+	protected $fillable = ['name', 'email', 'password'];
 
-    /**
-     * The attributes excluded from the model's JSON form.
-     *
-     * @var array
-     */
-    protected $hidden = ['password', 'remember_token'];
+	/**
+	 * The attributes excluded from the model's JSON form.
+	 *
+	 * @var array
+	 */
+	protected $hidden = ['password', 'remember_token'];
 
-    public function company()
-    {
-        return $this->hasOne(Company::class, 'user_id');
-    }
+	public function company()
+	{
+		return $this->hasOne(Company::class, 'user_id');
+	}
 
-    public function contact()
-    {
-        return $this->hasOne(Contact::class, 'user_id');
-    }
+	public function contact()
+	{
+		return $this->hasOne(Contact::class, 'user_id');
+	}
 
-    public static function searchUser($request)
-    {
-      $query = User::where('email', "$$request->searchField");
-      //(get_class_methods(get_class($query)));
-      // echo $query->getQuery()->toSql();
-      return $query->get();
-    }
+	public function getFirstNameAttribute($value)
+	{
+		return ucwords($value);
+	}
 
-    public static $rules = [
-     'first_name' => 'required|max:100',
-     'last_name' => 'required|max:100',
-     'username' => 'required|max:32',
-     'email'   => 'required|email',
-     'password' => 'required|max:100'
-    ];
+	public function getLastNameAttribute($value)
+	{
+		return ucwords($value);
+	}
+
+	public static function searchUser($request)
+	{
+		$query = User::where('email', "$$request->searchField");
+		//(get_class_methods(get_class($query)));
+		// echo $query->getQuery()->toSql();
+		return $query->get();
+	}
+
+	public static $rules = [
+		'first_name' => 'required|max:100',
+		'last_name' => 'required|max:100',
+		'username' => 'required|max:32',
+		'email'   => 'required|email',
+		'password' => 'required|max:100'
+	];
 
 }
