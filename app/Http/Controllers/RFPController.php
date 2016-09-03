@@ -27,7 +27,9 @@ class RFPController extends Controller
      */
     public function create()
     {
-        return view('');
+        $user = Auth::user();
+        $data = compact('user');
+        return view('rfps.create')->with($data);
     }
 
     /**
@@ -64,8 +66,9 @@ class RFPController extends Controller
      */
     public function edit($id)
     {
+        $user = Auth::user();
         $rfp = Rfp::findOrFail($id);
-        $data = compact('contact');
+        $data = compact('contact', 'user');
         return view('companies.edit_account_contact')->with($data);
     }
 
@@ -116,7 +119,7 @@ class RFPController extends Controller
 
         if ($is_admin) {
             $request->session()->flash('message', 'RFP was successful'); // flash success message when saved
-            return redirect()->action('admin.dashboard'); //redirect to the index page    
+            return redirect()->action('admin.dashboard'); //redirect to the index page
         } else {
             $request->session()->flash('message', 'RFP was successful');
         }
