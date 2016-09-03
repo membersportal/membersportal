@@ -127,4 +127,5 @@ class EventsController extends Controller
           $request->session()->flash('message', 'Event was successfully created!'); // flash success message when saved
           return redirect()->action('companies.view_profile');
         }
+    }
 }
