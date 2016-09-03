@@ -2,9 +2,9 @@
 
 @section('content')
 
-<form method="POST" action="{{ action('EventsController@store') }}">
+<form method="POST" action="{{ action('AuthController@store') }}">
 	{!!csrf_field()!!}
-@include(create.event.blade.php)
+@include(edit_account_contact.blade.php)
 <button type="submit">Submit</button>
 </form>
 
