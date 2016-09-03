@@ -12,7 +12,37 @@ class Rfp extends Model
 
 	public function company()
 	{
-		return $this->belongsTo(Company::class, 'id');
+		return $this->belongsTo(Company::class);
+	}
+
+	public function getProjectTitleAttribute($value)
+	{
+		return ucwords($value);
+	}
+
+	public function getContactNameAttribute($value)
+	{
+		return ucwords($value);
+	}
+
+	public function getContactDepartmentAttribute($value)
+	{
+		return ucwords($value);
+	}
+
+	public static function dashboardRfps($connections)
+	{
+		$companies = [];
+
+		foreach($connections as $connection){
+			$company = $connection->company_id;
+			$companies[] = $company;
+		}
+		return Rfp::whereIn('company_id', $companies)->orderBy('created_at');
+	}
+
+	public static function homeRfps(){
+		return Rfp::where('company_id', 1)->orderBy('deadline', 'desc')->get();
 	}
 
 	public static $rules = [

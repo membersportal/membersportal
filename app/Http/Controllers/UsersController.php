@@ -9,8 +9,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use App\User;
+use App\Article;
 use App\Company;
 use App\Carousel;
+use App\Rfp;
 
 
 class UsersController extends Controller
@@ -27,9 +29,26 @@ class UsersController extends Controller
         }
 
         $newest_member = Company::newestMember();
+        $admin_user = User::find(1);
+        $admin_events = $admin_user->company->events;
         $carousels = Carousel::pullCarousels();
-        $data = compact('newest_member', 'carousels');
+        $admin_rfps = Rfp::homeRfps();
+        $articles = Article::homeArticles();
+        $data = compact('newest_member', 'carousels', 'admin_user', 'admin_events', 'admin_rfps', 'articles');
         return view('home')->with($data);
+    }
+
+    public function editUsers(Request $request)
+    {
+        $searchedUser = User::searchUser($request);
+        $searchedUserCompany = $searchedUser->company;
+        $data = compact('searchedUserCompany');
+        return view('admin.edit_users')->with($data);
+    }
+
+    public function create()
+    {
+        return view('admin.create_account_login');
     }
 
     /**
@@ -45,19 +64,6 @@ class UsersController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    // public function show($id)
-    // {
-    //     $user = User::findOrFail($id);
-    //     $data = compact('user');
-    //     return view('users.edit_account_login')->with($data);
-    // }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -67,21 +73,7 @@ class UsersController extends Controller
     {
         $user = User::find($id);
         $data = compact('user');
-        return view('users.edit_account_login')->with($data);
-    }
-
-    public function searchUser(Request $request)
-    {
-      $result = User::searchUser($request);
-      $data = compact('results');
-      return view('')->with($data);
-    }
-
-    public function editAccountContact($user_id)
-    {
-        $contact = Contact::find($id);
-        $data = compact('contact');
-        return view('users.edit_account_contact')->with($data);
+        return view('users.edit_account_login')->with('user', $user);
     }
 
     /**
@@ -93,14 +85,8 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-    }
-
-    public function getAdminDashboard()
-    {
-        $user = User::find(Auth::user()->id);
-        $data = compact('user');
-        return view('admin.dashboard')->with($data);
+        $user = User::findOrFail($id);
+        return $this->validateAndSave($user, $request);
     }
 
     /**
@@ -111,27 +97,43 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->delete();
+        return redirect()->action('CompaniesController@destroy');
+    }
+
+    public function adminSearchUser(Request $request)
+    {
+        $user = User::searchUser($request);
+        return view('admin.edit_users')->with('user', $user);
+    }
+
+    public function getAdminDashboard()
+    {
+        $user = User::find(Auth::user()->id);
+        return view('admin.dashboard')->with('user', $user);
     }
 
     private function validateAndSave(User $user, Request $request){
-        $is_admin = Auth::user()->is_admin;
-        $request->session()->flash('ERROR_MESSAGE', 'User was not created successfully'); //set error message if not saved
-        $this->validate($request, User::$rules); //validate that alll fields are filled out correctly
-        $request->session()->forget('ERROR_MESSAGE'); // if validated, tell to forget the error message
-        $user->first_name = $request->first_name; //can use $post->title = $request->input('title') alternatively
+        $request->session()->flash('ERROR_MESSAGE', 'User was not created successfully');
+        $this->validate($request, User::$rules);
+        $request->session()->forget('ERROR_MESSAGE');
+
+        $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
         $user->email = $request->email;
         $user->username = $request->username;
         $user->password = Hash::make($request->password);
-        $user->save(); //save when submited
-        // Log::info('User successfully creates post', $request->all()); // create custom log when post is created
-        if($is_admin){
-          $request->session()->flash('message', 'User was successfully created!'); // flash success message when saved
-          return redirect()->action(''); //redirect to the index page
+        $user->save();
+
+        $is_admin = Auth::user()->is_admin;
+
+        if ($is_admin) {
+            $request->session()->flash('message', 'User successfully created, please enter company information.');
+            return redirect()->action('CompaniesController@create');
         } else {
-          $request->session()->flash('message', 'User information successfully updated!'); // flash success message when saved
-          return redirect()->action('');
+            $request->session()->flash('message', 'User login information successfully updated.');
+            return redirect()->action('UsersController@edit', ['id' => Auth::user()->id]);
         }
     }
 }

@@ -12,7 +12,12 @@ class Event extends Model
 
 	public function company()
 	{
-		return $this->belongsTo(Event::class, 'id');
+		return $this->belongsTo(Company::class);
+	}
+
+	public function getTitleAttribute($value)
+	{
+		return ucwords($value);
 	}
 
 	public static function searchEvents($request)
@@ -37,14 +42,32 @@ class Event extends Model
 	{
 		return Event::where('name', 'like', "%$request->searchField%")->orWhere('title', 'like',"%$request->searchField%");
 	}
+
+	public static function dashboardEvents($connections)
+	{
+		$companies = [];
+
+		foreach($connections as $connection){
+			$company = $connection->company_id;
+			$companies[] = $company;
+		}
+		return Event::whereIn('company_id', $companies)->orderBy('created_at');
+	}
+
+	protected $dates = [
+		'from_date',
+		'to_date'
+	];
+
 	public static $rules = [
-     'title' => 'required|max:75',
-     'desc' => 'required|filled',
-     'from_date' => 'required|date',
-     'to_date' => 'required|date',
-     'invite_only' => 'required|boolean',
-     'rsvp_required' => 'required|boolean',
-     'url' => 'required|url'
-   	];
-    //
+		'title' => 'required|max:75',
+		'desc' => 'required|filled',
+		'from_date' => 'required|date',
+		'to_date' => 'required|date',
+		'invite_only' => 'required|boolean',
+		'rsvp_required' => 'required|boolean',
+		'url' => 'required|url',
+		'img' => 'required|image'
+	];
+	//
 }

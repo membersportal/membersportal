@@ -23,7 +23,7 @@
 </div>
 <div class="checkbox-inline">
 	<label for="rsvp_required">
-	<input type="checkbox" name="rsvp_required" value="$event->rsvp_required" required> RSVP Required?<span class="required">*</span>
+	<input type="checkbox" name="rsvp_required" value="{{ $event->rsvp_required }}" required> RSVP Required?<span class="required">*</span>
 	</label>
 </div>
 <div class="form-group">

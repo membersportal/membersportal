@@ -6,9 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="/css/bootstrap/bootstrap.css" rel="stylesheet">
-	<link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab|Source+Sans+Pro" rel="stylesheet">
 	<link href="/css/site.css" rel="stylesheet">
+	<link href="/css/navbar.css" rel="stylesheet">
+	<link href="/css/event_home.css" rel="stylesheet">
+	<link href="/css/carousel.css" rel="stylesheet">
 </head>
 <body>
 	@if (Auth::check())
@@ -33,7 +35,7 @@
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->username }}<span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							@if (Auth::user()->is_admin)
-								<li><a href="{{ action('Auth\AuthController@getLogout') }}">Admin Dashboard</a></li>
+								<li><a href="{{ action('UsersController@getAdminDashboard') }}">Admin Dashboard</a></li>
 							@endif
 							@if (!Auth::user()->is_admin)
 								<li><a href="{{ action('CompaniesController@show', ['id' => Auth::user()->id]) }}">View Profile</a></li>
@@ -51,12 +53,15 @@
 		</div><!-- /.container-fluid -->
 	</nav>
 	@endif
-	<div class="container">
+	<div class="container expand">
 		@yield('content')
 	</div>
+	@if (Auth::check())
+		@include('partials.footer')
+	@endif
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="/js/bootstrap/bootstrap.min.js"></script>
-	<script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+	@yield('bottom-script')
 </body>
 </html>

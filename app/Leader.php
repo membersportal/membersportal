@@ -15,6 +15,16 @@ class Leader extends Model
 		return $this->belongsTo(Company::class, 'id');
 	}
 
+	public function getFullNameAttribute($value)
+	{
+		return ucwords($value);
+	}
+
+	public function getTitleAttribute($value)
+	{
+		return ucwords($value);
+	}
+
 	public static $rules = [
      'full_name' => 'required|max:100',
      'title' => 'required|max:100',

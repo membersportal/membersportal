@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use App\User;
 use App\Industry;
 use App\Leader;
+use App\Rfp;
 
 class Company extends Model
 {
@@ -37,9 +38,14 @@ class Company extends Model
 		return $this->hasMany(Leader::class, 'id');
 	}
 
+	public function rfps()
+	{
+		return $this->hasMany(Rfp::class, 'company_id');
+	}
+
 	public function connections()
 	{
-			return $this->hasManyThrough(Company::class, Connection::class, 'company1_id', 'company2_id');
+		return $this->hasManyThrough(Company::class, Connection::class, 'company1_id', 'company2_id');
 	}
 
 	public static function newestMember()
@@ -54,58 +60,97 @@ class Company extends Model
 			$company = $connection->company2_id;
 			$companyies[] = $company;
 		}
-		
+
 		return Company::whereIn('company_id', $companies);
+	}
+
+	public static function profileConnections($connections){
+		$companies = [];
+
+		foreach($connections as $connection){
+			$company = $connection->company2_id;
+			$companies[] = $company;
+		}
+		return Company::whereIn('id', $companies)->orderBy('created_at');
 	}
 
 	public static function searchMembers($request)
 	{
 		$query = Company::orderBy('created_at');
+		$search = $request->searchField;
+		$industry = $request->input('industry_id');
+		$woman = $request->woman_owned;
+		$contractor = $request->contractor;
+		$family = $request->family_owned;
+		$org = $request->organization;
 
-		if($request->searchField != ''){
-			(isset($query)) ? $query->where('name', 'like', "%$$request->searchField%")->orWhere('desc', 'like', "%$request->searchField%") : $query = Company::searchCompanyName($request->searchField);
+		if($search) {
+			$query = $query->where('name', 'like', "%$search%")->orWhere('desc', 'like', "%$search%");
 		}
 
-		if($request->option !== 0){
-			(isset($query)) ? $query->orWhere('industry_id', $request->industry_id) : $query = Company::where('industry_id', $request->industry_id);
+		if($industry != 0 && $search){
+			$query = $query->orWhere('industry_id', $industry);
+		} elseif($industry != 0){
+			$query = $query->where('industry_id', $industry);
 		}
 
-		if($request->woman_owned){
-			(isset($query)) ? $query->where('woman_owned', 1) : $query = Company::where('woman_owned', 1);
-		}
+		if($search || $industry !=0) {
+			if($woman){
+				$query = $query->orWhere('woman_owned', 1);
+			}
 
-		if($request->contractor){
-			(isset($query)) ? $query->where('contractor', 1) : $query = Company::where('contractor', 1);
-		}
+			if($contractor){
+				$query = $query->orWhere('contractor', 1);
+			}
 
-		if($request->family_owned){
-			(isset($query)) ? $query->where('family_owned', 1) : $query = Company::where('family_owned', 1);
-		}
+			if($family){
+				$query = $query->orWhere('family_owned', 1);
+			}
 
-		if($request->organization){
-			(isset($query)) ? $query->where('organization', 1) : $query = Company::where('organization', 1);
+			if($org){
+				$query = $query->orWhere('organization', 1);
+			}
+		} else {
+			if($woman){
+				$query = $query->where('woman_owned', 1);
+			}
+
+			if($contractor){
+				$query = $query->where('contractor', 1);
+			}
+
+			if($family){
+				$query = $query->where('family_owned', 1);
+			}
+
+			if($org){
+				$query = $query->where('organization', 1);
+			}
 		}
-		//var_dump(get_class_methods(get_class($query)));
-		// echo $query->getQuery()->toSql();
 
 		return $query;
 	}
 
-	public static function searchCompanyName($request)
+	public function getNameAttribute($value)
 	{
-		return Company::where('name', 'like', "%$request->searchField%")->orWhere('desc', 'like',"%$request->searchField%");
+		return ucwords($value);
+	}
+
+	public function getDescAttribute($value)
+	{
+		return ucwords($value);
 	}
 
 	public static $rules = [
-     'name' => 'required|max:120',
-     'industry_id' => 'required|integer',
-     'profile_img' => 'nullable|image',
-     'header_img' => 'nullable|image',
-     'desc' => 'nullable|filled',
-     'woman_owned' => 'required|boolean',
-		 'family_owned' => 'required|boolean',
-     'contractor' => 'required|boolean',
-     'organization' => 'required|boolean'
-   	];
-    //
+		'name' => 'required|max:120',
+		'industry_id' => 'required|integer',
+		'profile_img' => 'nullable|image',
+		'header_img' => 'nullable|image',
+		'desc' => 'required|2000',
+		'size' => 'nullable|20',
+		'woman_owned' => 'nullable|boolean',
+		'family_owned' => 'nullable|boolean',
+		'contractor' => 'required|boolean',
+		'organization' => 'required|boolean'
+	];
 }

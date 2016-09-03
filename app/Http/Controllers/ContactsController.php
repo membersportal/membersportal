@@ -11,16 +11,6 @@ use Illuminate\Support\Facades\Auth;
 class ContactsController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -43,17 +33,6 @@ class ContactsController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -62,8 +41,7 @@ class ContactsController extends Controller
     public function edit($id)
     {
         $contact = Contact::findOrFail($id);
-        $data = compact('contact');
-        return view('companies.edit_account_contact')->with($data);
+        return view('contacts.edit_account_contact')->with('contact', $contact);
     }
 
     /**
@@ -89,19 +67,16 @@ class ContactsController extends Controller
     {
         $contact = Contact::findOrFail($id);
         $contact->delete();
-        $message = 'Company, Contact, and User deleted';
-        $request->session()->flash('sucessMessage', $message);
+        $request->session()->flash('successMessage', 'User deleted successfully');
         return redirect()->action('admin.dashboard');
-
-
     }
 
     private function validateAndSave(Contact $contact, Request $request){
-        $is_admin = Auth::user()->is_admin;
-        $request->session()->flash('ERROR_MESSAGE', 'Contact was not created successfully'); //set error message if not saved
-        $this->validate($request, Contact::$rules); //validate that alll fields are filled out correctly
-        $request->session()->forget('ERROR_MESSAGE'); // if validated, tell to forget the error message
-        $contact->phone_no = $request->phone_no; //can use $post->title = $request->input('title') alternatively
+        $request->session()->flash('ERROR_MESSAGE', 'Contact was not created successfully');
+        $this->validate($request, Contact::$rules);
+        $request->session()->forget('ERROR_MESSAGE');
+
+        $contact->phone_no = $request->phone_no;
         $contact->address_line_1 = $request->address_line_1;
         $contact->address_line_2 = $request->address_line_2;
         $contact->address_line_3 = $request->address_line_3;
@@ -113,15 +88,18 @@ class ContactsController extends Controller
         $contact->twitter = $request->twitter;
         $contact->facebook = $request->facebook;
         $contact->instagram = $request->instagram;
+        $contact->linkedin = $request->linkedin;
         $contact->google_plus = $request->google_plus;
-        $contact->save(); //save when submited
-        // Log::info('User successfully creates post', $request->all()); // create custom log when post is created
+        $contact->save();
+
+        $is_admin = Auth::user()->is_admin;
+
         if ($is_admin) {
-            $request->session()->flash('message', 'Contact was successful'); // flash success message when saved
-            return redirect()->action('admin.dashboard'); //redirect to the index page    
+            $request->session()->flash('message', 'Contact successfully created. New user complete.');
+            return redirect()->action('admin.dashboard');
         } else {
-            $request->session()->flash('message', 'Contact was successful');
+            $request->session()->flash('message', 'Contact information successfully updated.');
+            return redirect()->action('UsersController@edit', ['id' => Auth::user()->id]);
         }
-        
     }
 }
