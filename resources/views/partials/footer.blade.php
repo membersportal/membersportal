@@ -27,7 +27,7 @@
 			<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
 				<h4 class="footer">Design &amp; Development By:</h4>
 				<a href="http://randimariedesigns.com" alt="Randi Mays Developer Designer"><img class="logo randi" src="/img/R_Logo2.png" alt="Randi Mays"></a>
-				<a href="http://objectant.co" alt="Anthony the Great"><img class="logo" src="/img/Logo.jpg" alt="Anthony Martinez"></a>
+				<a href="http://objectant.co" alt="Anthony the Great"><img class="logo" src="/img/Logo2.png" alt="Anthony Martinez"></a>
 				<a class="footer" href="http://jaynichols.info" alt="Jay Nichols">JayNichols</a>
 			</div>
 		</div>

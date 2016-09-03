@@ -20,16 +20,6 @@ class Event extends Model
 		return ucwords($value);
 	}
 
-	public function setFromDateAttribute($value)
-	{
-		$this->attribute['from_date'] = $value->format('Y-m-d');
-	}
-
-	public function setToDateAttribute($value)
-	{
-		$this->attribute['to_date'] = $value->format('Y-m-d');
-	}
-
 	public static function searchEvents($request)
 	{
 		$query = Event::orderBy('created_at');
