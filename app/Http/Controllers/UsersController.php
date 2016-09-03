@@ -27,10 +27,6 @@ class UsersController extends Controller
             return view('auth.login');
         }
 
-        if (Auth::user()->is_admin) {
-            return redirect()->action('UsersController@getAdminDashboard');
-        }
-
         $newest_member = Company::newestMember();
         $admin_user = User::find(1);
         $admin_events = $admin_user->company->events;
