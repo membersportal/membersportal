@@ -13,7 +13,7 @@
 					<a href="{{ action('CompaniesController@edit', [$id = 1]) }}" alt="Manage Admin Company">Manage Admin Company</a>
 				</li>
 				<li>
-					<a href="{{ action('CompaniesController@edit', [$id = 1]) }}" alt="Manage Admin Contact">Manage Admin Contact</a>
+					<a href="{{ action('ContactsController@edit', [$id = 1]) }}" alt="Manage Admin Contact">Manage Admin Contact</a>
 				</li>
 				<li>
 					<a href="{{ action('UsersController@create') }}" alt="Create User">Create User</a>
