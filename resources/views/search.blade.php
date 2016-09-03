@@ -44,11 +44,10 @@
 			</div>
 		</div>
 	</div>
-	<ul id="nav_tabs" class="nav nav-tabs" role="tablist"></ul>
-	<div id="tab_content" class="tab-content"></div>
-
 	<div class="row">
 		<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xl-8 col-xs-offset-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2 col-xl-offset-2">
+			<ul id="nav_tabs" class="nav nav-tabs" role="tablist"></ul>
+			<div id="tab_content" class="tab-content"></div>
 			<div id="results" class="row"></div>
 		</div>
 	</div>
