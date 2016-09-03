@@ -147,7 +147,7 @@ class Company extends Model
 		'profile_img' => 'nullable|image',
 		'header_img' => 'nullable|image',
 		'desc' => 'required|2000',
-		'size' => 'nullable|20'
+		'size' => 'nullable|20',
 		'woman_owned' => 'nullable|boolean',
 		'family_owned' => 'nullable|boolean',
 		'contractor' => 'required|boolean',
