@@ -35,7 +35,7 @@ class Event extends Model
 		$query = Event::orderBy('created_at');
 
 		if($request->searchField != ''){
-			(isset($query)) ? $query->where('company_id', "%$$request->searchField%")->orWhere('title', 'like', "%$request->searchField%") : $query = Event::searchCompanyName($request->searchField);
+			(isset($query)) ? $query->where('company_id', "%$request->searchField%")->orWhere('title', 'like', "%$request->searchField%") : $query = Event::searchCompanyName($request->searchField);
 		}
 
 		if($request->option('industry_id') != 0){
@@ -51,6 +51,11 @@ class Event extends Model
 	public static function searchCompanyName($request)
 	{
 		return Event::where('name', 'like', "%$request->searchField%")->orWhere('title', 'like',"%$request->searchField%");
+	}
+
+	public static function usersEvents($id)
+	{
+		return Event::where('company_id', $id);
 	}
 
 	public static function dashboardEvents($connections)
