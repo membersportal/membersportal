@@ -41,7 +41,7 @@ class ContactsController extends Controller
     public function edit($id)
     {
         $contact = Contact::findOrFail($id);
-        return view('companies.edit_account_contact')->with('contact', $contact);
+        return view('contacts.edit_account_contact')->with('contact', $contact);
     }
 
     /**

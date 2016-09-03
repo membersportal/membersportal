@@ -37,7 +37,7 @@ class EventsController extends Controller
      */
     public function create()
     {
-        return view('events.create');
+        return view('events.create_event');
     }
 
     /**
@@ -127,4 +127,5 @@ class EventsController extends Controller
           $request->session()->flash('message', 'Event was successfully created!'); // flash success message when saved
           return redirect()->action('companies.view_profile');
         }
+    }
 }

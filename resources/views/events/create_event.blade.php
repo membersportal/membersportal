@@ -1,10 +1,9 @@
 @extends('layouts.master')
 
 @section('content')
-
-<form method="POST" action="{{ action('UsersController@store') }}">
+<form method="POST" action="{{ action('EventsController@store') }}">
 	{!!csrf_field()!!}
-	@include('partials.admin_create_login')
+	@include('partials.create_event')
 <button type="submit">Submit</button>
 </form>
 
