@@ -21,6 +21,26 @@ class Contact extends Model
 		return $this->hasOne(User::class, 'id');
 	}
 
+	public function getAddressLine1Attribute($value)
+	{
+		return ucwords($value);
+	}
+
+	public function getAddressLine2Attribute($value)
+	{
+		return ucwords($value);
+	}
+
+	public function getAddressLine3Attribute($value)
+	{
+		return ucwords($value);
+	}
+
+	public function getCityAttribute($value)
+	{
+		return ucwords($value);
+	}
+
 	public static function searchLocations($results)
 	{
 		$contacts = [];

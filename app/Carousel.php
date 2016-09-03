@@ -13,6 +13,16 @@ class Carousel extends Model
      'url' => 'required|url'
    	];
 
+    public function getDescAttribute($value)
+    {
+        return ucwords($value);
+    }
+
+    public function getTitleAttribute($value)
+    {
+        return ucwords($value);
+    }
+
     public static function pullCarousels()
     {
     	$carousels = Carousel::orderBy('created_at', 'desc')->take(2)->get();

@@ -131,6 +131,16 @@ class Company extends Model
 		return $query;
 	}
 
+	public function getNameAttribute($value)
+	{
+		return ucwords($value);
+	}
+
+	public function getDescAttribute($value)
+	{
+		return ucwords($value);
+	}
+
 	public static $rules = [
      'name' => 'required|max:120',
      'industry_id' => 'required|integer',
