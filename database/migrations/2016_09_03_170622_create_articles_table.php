@@ -15,10 +15,11 @@ class CreateArticlesTable extends Migration
         Schema::create('articles', function (Blueprint $table) {
             $table->increments('id');
             $table->string('heading', 250);
-            $table->string('subheading', 250);
+            $table->string('subheading', 250)->nullable();
+            $table->date('date');
             $table->string('desc', 500);
             $table->string('img');
-            $table->string('url');
+            $table->string('url')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

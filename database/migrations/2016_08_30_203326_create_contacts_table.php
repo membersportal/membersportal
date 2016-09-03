@@ -23,7 +23,7 @@ class CreateContactsTable extends Migration
             $table->char('state', 2)->nullable();
             $table->integer('zip')->unsigned()->nullable();
             $table->string('country', 15)->nullable();
-            $table->url('website')->nullable();
+            $table->string('website')->nullable();
             $table->string('twitter', 20)->nullable();
             $table->string('facebook', 20)->nullable();
             $table->string('instagram', 20)->nullable();

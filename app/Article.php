@@ -12,6 +12,7 @@ class Article extends Model
 	public static $rules = [
 		'heading' => 'required|max:250',
 		'subheading' => 'required|max:250',
+		'date' => 'required|date',
 		'desc' => 'required|max:500',
 		'img' => 'required|image',
 		'url' => 'required|url'
@@ -25,5 +26,11 @@ class Article extends Model
 	public function getSubheadingAttribute($value)
 	{
 		return ucwords($value);
+	}
+
+	public static function homeArticles()
+	{
+		$articles = Article::orderBy('date', 'desc')->take(5)->get();
+		return $articles;
 	}
 }
