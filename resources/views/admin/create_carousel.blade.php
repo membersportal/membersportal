@@ -3,7 +3,8 @@
 @section('content')
 
 <form method="POST" action="{{ action('CarouselsController@store') }}">
-@include(admin_create_carousel.blade.php)
+	{!!csrf_field()!!}
+	@include('partials.admin_create_carousel')
 <button type="submit">Submit</button>
 </form>
 

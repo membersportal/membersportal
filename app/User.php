@@ -63,10 +63,10 @@ class User extends Model implements AuthenticatableContract,
 
 	public static function searchUser($request)
 	{
-		$query = User::where('email', "$$request->searchField");
+		$query = User::where('email', "$request->searchField");
 		//(get_class_methods(get_class($query)));
 		// echo $query->getQuery()->toSql();
-		return $query->get();
+		return $query->first();
 	}
 
 	public static $rules = [
@@ -74,7 +74,7 @@ class User extends Model implements AuthenticatableContract,
 		'last_name' => 'required|max:100',
 		'username' => 'required|max:32',
 		'email'   => 'required|email',
-		'password' => 'required|max:100'
+		'password' => 'required|max:64'
 	];
 
 }

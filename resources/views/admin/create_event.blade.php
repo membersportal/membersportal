@@ -4,7 +4,7 @@
 
 <form method="POST" action="{{ action('EventsController@store') }}">
 	{!!csrf_field()!!}
-@include(create.event.blade.php)
+@include(partials.create_event)
 <button type="submit">Submit</button>
 </form>
 

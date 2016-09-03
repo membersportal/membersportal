@@ -37,12 +37,12 @@ $factory->define(App\Rfp::class, function (Faker\Generator $faker) {
     return [
         'company_id' => $faker->numberBetween($min = 1, $max = 9),
         'project_title' => $faker->words(4, true),
-        'deadline' => $faker->dateTimeThisMonth($max = 'now'),
+        'deadline' => $faker->dateTimeThisMonth($max = 'now', $format ='Y-m-d'),
         'contact_name' => $faker->name,
         'contact_department' => $faker->words(2, true),
         'contact_no' => $faker->phoneNumber,
         'project_scope' => $faker->sentences(4, true),
-        'contract_from_date' => $faker->dateTimeThisMonth($max = 'now'),
-        'contract_to_date' => $faker->dateTimeThisMonth($max = 'now'),
+        'contract_from_date' => $faker->dateTimeThisMonth($max = 'now', $format ='Y-m-d'),
+        'contract_to_date' => $faker->dateTimeThisMonth($max = 'now', $format ='Y-m-d'),
     ];
 });

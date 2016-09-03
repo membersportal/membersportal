@@ -31,14 +31,17 @@ class UsersController extends Controller
         $admin_user = User::find(1);
         $admin_events = $admin_user->company->events;
         $carousels = Carousel::pullCarousels();
-        $admin_rfps = Rfp::homeRfps()->get();
+        $admin_rfps = Rfp::homeRfps()->take(5)->get();
         $data = compact('newest_member', 'carousels', 'admin_user', 'admin_events', 'admin_rfps');
         return view('home')->with($data);
     }
 
-    public function editUsers()
+    public function editUsers(Request $request)
     {
-        return view('admin.edit_users');
+        $searchedUser = User::searchUser($request);
+        $searchedUserCompany = $searchedUser->company;
+        $data = compact('searchedUserCompany');
+        return view('admin.edit_users')->with($data);
     }
 
     public function create()

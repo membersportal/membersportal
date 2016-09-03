@@ -17,16 +17,21 @@
 		</div>
 
 		<div class="panel_white rfps">
-			<h3 class="text-center">Request for Proposals</h3>
-			@foreach ($admin_rfps as $key => $rfp)
-				@if ($rfp->deadline > '2015-01-01')
-				<ul>
-					<li>
-						<a href="#">{{ $rfp->project_title }}</a>
-					</li>
-				</ul>
-				@endif
-			@endforeach
+			<h3 class="text-center">Requests for Proposals</h3>
+				@foreach ($admin_rfps as $key => $rfp)
+					<ul class="rfps">
+					@if ($rfp->deadline > '2015-01-01')
+						<li class="rfps">
+							<a class="red_link" href="#">{{ $rfp->project_title }}</a>
+						</li>
+						<li class="small_gray"><span class="strong">Deadline:</span> {{ $rfp->deadline }}</li>
+						<li class="small_gray"><span class="strong">Contact:</span> {{ $rfp->contact_name }}</li>
+					@endif
+					</ul>
+				@endforeach
+		</div>
+		<div class="panel_green">
+			<a class="green_bg" href="#" alt="View All Events">Browse All RFPs</a>
 		</div>
 	</div>
 
@@ -64,7 +69,7 @@
 
 	<div class="row">
 		<div class="col-xs-3">
-			<img src="" alt="">
+			<img src="/img/news_1.jpg">
 		</div>
 		<div class="col-xs-9">
 			<p>

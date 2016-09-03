@@ -138,6 +138,21 @@ p.company_desc_home {
 	line-height: 1.25em;
 }
 
+ul.rfps {
+	line-height: 1.25em;
+	padding-left: 0;
+	list-style: none;
+	margin-bottom: 10px;
+}
+
+li.rfps {
+	margin-left: 0;
+}
+
+li.small_gray {
+	font-size: .8em;
+}
+
 span.industry_name_home{
 	font-weight: bold;
 	color: #66a498;
@@ -163,11 +178,7 @@ ul.footer {
 	padding-left: 0;
 }
 
-a, a:hover, a:visited, a:active {
-	text-decoration: none;
-}
-
-div.panel_green > a.green_bg:after, div.panel_green > a.green_bg:hover:after, ul.footer > li > a.footer_triangle:after, ul.footer > li > a.footer_triangle:hover:after, div.login > a.forgot_password:hover:after, a.forgot_password:after, a.red_link:after, a.red_link:hover:after {
+div.panel_green > a.green_bg:after, div.panel_green > a.green_bg:hover:after, ul.footer > li > a.footer_triangle:after, ul.footer > li > a.footer_triangle:hover:after, div.login > a.forgot_password:hover:after, a.forgot_password:after {
 	content: "";
 	display: inline-block;
 	height: 11px;
@@ -176,11 +187,7 @@ div.panel_green > a.green_bg:after, div.panel_green > a.green_bg:hover:after, ul
 	margin-left: 5px;
 }
 
-a.red_link {
-	background: transparent url('/img/arrow_white.png') no-repeat;
-}
-
-div.login > a.forgot_password:after, a.red_link:hover:after {
+div.login > a.forgot_password:after {
 	background: transparent url('/img/arrow_red.png') no-repeat;
 }
 
@@ -189,7 +196,7 @@ ul.footer > li > a.footer_triangle:hover:after, div.login > a.forgot_password:ho
 }
 
 div.panel_green > a.green_bg:after {
-	background: transparent url('/img/arrow_green') no-repeat;
+	background: transparent url('/img/arrow_green.png') no-repeat;
 }
 
 ul.footer > li > a.footer_triangle:after, ul.footer > li > a.footer_triangle:hover:after, div.login > a.forgot_password:hover:after, div.panel_green > a.green_bg:hover:after {
@@ -200,15 +207,11 @@ ul.footer > li > a.footer_triangle:hover {
 	color: #fff5c3;
 }
 
-a.green_bg {
-	color: #fff5c3;
+a.green_bg, a.green_bg:visited, a.green_bg:active, a.green_bg:hover {
+	color: #7c786a;
 	font-size: 1.15em;
 	padding-bottom: -10px;
 	margin-left: 10px;
-}
-
-a.green_bg:visited, a.green_bg:active, a.redbg:hover:after {
-	color: #7c786a;
 }
 
 a.red_link {
@@ -223,7 +226,6 @@ ul.footer > li > a.footer_triangle {
 	color: #fff;
 }
 
-
 a.forgot_password {
 	color: #fff5c3;
 	display: block;
@@ -233,6 +235,10 @@ a.forgot_password {
 
 a.forgot_password:active, a.forgot_password:visited {
 	color: #fff;
+}
+
+a, a:hover, a:visited, a:active {
+	text-decoration: none;
 }
 
 /*Images*/
