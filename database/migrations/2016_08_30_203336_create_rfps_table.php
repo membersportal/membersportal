@@ -19,7 +19,7 @@ class CreateRfpsTable extends Migration
             $table->date('deadline')->nullable();
             $table->string('contact_name', 100)->nullable();
             $table->string('contact_department', 100)->nullable();
-            $table->string('contact_no', 20)->nullable();
+            $table->integer('contact_no')->nullable()->unsigned();
             $table->text('project_scope')->nullable();
             $table->date('contract_from_date')->nullable();
             $table->date('contract_to_date')->nullable();

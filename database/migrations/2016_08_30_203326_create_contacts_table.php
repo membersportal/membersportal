@@ -15,7 +15,7 @@ class CreateContactsTable extends Migration
         Schema::create('contacts', function (Blueprint $table) {
             $table->integer('company_id')->unsigned();
             $table->integer('user_id')->unsigned();
-            $table->integer('phone_no')->nullable();
+            $table->integer('phone_no')->unsigned()->nullable();
             $table->string('address_line_1', 50)->nullable();
             $table->string('address_line_2', 50)->nullable();
             $table->string('address_line_3', 50)->nullable();
@@ -23,7 +23,7 @@ class CreateContactsTable extends Migration
             $table->char('state', 2)->nullable();
             $table->integer('zip')->unsigned()->nullable();
             $table->string('country', 15)->nullable();
-            $table->string('website', 100)->nullable();
+            $table->url('website')->nullable();
             $table->string('twitter', 20)->nullable();
             $table->string('facebook', 20)->nullable();
             $table->string('instagram', 20)->nullable();
