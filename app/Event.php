@@ -20,11 +20,6 @@ class Event extends Model
 		return ucwords($value);
 	}
 
-	public function setTitleAttribute($value)
-	{
-		$this->attributes['title'] = ucwords($value);
-	}
-
 	public static function searchEvents($request)
 	{
 		$query = Event::orderBy('created_at');
