@@ -90,13 +90,39 @@ div.carousel_bar {
 div#map {
 	height: 300px;
 	width: 100%;
-	margin: 25px 0;
+	margin-bottom: 25px;
+	margin-top: 15px;
+	border: 1px solid #d3e397;
 }
 
 hr {
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
+
+.user_grid {
+	background-color: #fff;
+	border: 1px solid #8dcdc1;
+	padding: 10px;
+	margin: 10px 0;
+	width: 99%;
+}
+
+#nav_tabs {
+	margin: 10px 0;
+	border: none;
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:visited, .nav-tabs > li.active > a:active {
+	border: none;
+	border-radius: 0;
+	margin-left: 9px;
+}
+
+.nav-tabs > li.active > a {
+	background-color: #8dcdc1;
+	margin-right: 5px;
+	}
 
 /*Text*/
 body {
@@ -171,9 +197,19 @@ p.industry_name_home {
 	margin-bottom: 5px;
 }
 
+p.industry_name {
+	color: #8dcdc1;
+	margin-top: -2px;
+}
+
 p.company_desc_home {
 	font-size: .85em;
 	line-height: 1.25em;
+}
+
+p.company_desc {
+	margin-top: -7px;
+	font-size: .85em;
 }
 
 p.article_desc {
@@ -295,7 +331,13 @@ a, a:hover, a:visited, a:active {
 
 .user_avatar {
 	margin-top: 7px;
+	width: 40px;
 	border: 1px solid #514e43;
+}
+
+.user_avatar_grid {
+	margin-top: 8%;
+	border: 1px solid #d3e397;
 }
 
 .profile_photo_home {
@@ -317,12 +359,11 @@ img.hiring {
 }
 
 /*Buttons*/
-button.btn.btn-primary.pull-right.login {
+button.btn.btn-primary.pull-right, button.btn.btn-primary.pull-right.login {
 	background-color: #8dcdc1;
 	border-style: none;
 	border-color: #fff5c3;
 	border-radius: 0;
-	width: 100%;
 	text-transform: uppercase;
 	text-shadow: 0 0 0 #237666;
 	color: #fff;
@@ -330,11 +371,22 @@ button.btn.btn-primary.pull-right.login {
 	margin-bottom: 10px;
 }
 
-button.btn.btn-primary.pull-right.login:hover {
+button.btn.btn-primary.pull-right.login {
+	width: 100%;
+}
+
+button.btn.btn-primary.pull-right.login:hover, button.btn.btn-primary.pull-right:hover {
 	background-color: #82bab0;
 }
 
 /*Forms*/
+form#search_form {
+	background-color: #fff;
+	border: 1px solid #d3e397;
+	padding: 30px;
+	margin-top: 20px;
+}
+
 p.form_label_small {
 	
 }
@@ -352,6 +404,16 @@ input.login {
 
 input.login_checkbox {
 	border-radius: 0;
+}
+
+.form-control.search_form {
+	width: 48%;
+	margin-right: 0;
+	display: inline-block;
+}
+
+select.form-control.search_form {
+	height: 35px;
 }
 
 ::-webkit-input-placeholder{
@@ -387,6 +449,10 @@ input.login_checkbox {
 	display: block;
 	text-align: center;
 	margin-bottom: 7px;
+}
+
+.checkbox-inline {
+	color: #66a498;
 }
 
 @-webkit-viewport { width: device-width; }
