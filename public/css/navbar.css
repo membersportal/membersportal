@@ -1,4 +1,9 @@
 /*Navbar*/
+
+nav.navbar {
+	margin-bottom: 15px;
+}
+
 nav.navbar.navbar-default {
 	border-color: #d5633e;
 }

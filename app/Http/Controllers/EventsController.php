@@ -18,8 +18,8 @@ class EventsController extends Controller
      */
     public function index()
     {
-        // $events =
-        return view('events.all');
+        $events = Events::all();
+        return view('events.all')->with('events', $events);
     }
 
     public function searchEvents(Request $request)
