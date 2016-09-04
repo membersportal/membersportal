@@ -4,7 +4,7 @@
 	margin-bottom: 30px;
 }
 
-.container.expand {
+.expand {
 	height: auto;
 }
 
@@ -78,7 +78,7 @@ div.main_panel {
 	border: 1px solid #66a498;
 }
 
-div.twitter, div.rfps {
+div.twitter, div.rfps, div.contact {
 	margin-top: 16px;
 }
 
@@ -122,7 +122,25 @@ hr {
 .nav-tabs > li.active > a {
 	background-color: #8dcdc1;
 	margin-right: 5px;
-	}
+}
+
+div.image_container {
+	position: relative;
+	max-height: 350px;
+}
+
+div.company_header_img {
+	width: 100%;
+	overflow: hidden;
+}
+
+div.company_profile_img {
+	width: 100px;
+	height: 100px;
+	position: absolute;
+	top: 275px;
+	left: 27px;
+}
 
 /*Text*/
 body {
@@ -216,7 +234,7 @@ p.article_desc {
 	margin-bottom: 20px;
 }
 
-ul.rfps {
+ul.rfps, ul.contact {
 	line-height: 1.25em;
 	padding-left: 0;
 	list-style: none;
@@ -236,7 +254,7 @@ span.industry_name_home{
 	color: #66a498;
 }
 
-span.strong {
+span.strong, .strong {
 	font-weight: bold;
 }
 
@@ -296,6 +314,11 @@ a.red_link {
 	color: #eb6e44;
 }
 
+a.red_link.small_caps {
+	text-transform: uppercase;
+	font-size: .85em;
+}
+
 a.footer {
 	color: #dad6c7;
 }
@@ -316,13 +339,17 @@ a.forgot_password:active, a.forgot_password:visited {
 }
 
 a, a:hover, a:visited, a:active {
-	text-decoration: none;
+	text-decoration: none !important;
 }
 
 /*Images*/
 .logo {
 	width: 60px;
 	margin-right: 20px;
+}
+
+.social_media_icon {
+	width: 40px;
 }
 
 .logo.randi {
@@ -356,6 +383,15 @@ img.hiring {
 	height: auto;
 	border: 1px solid #eb6e44;
 	margin: 15px 0;
+}
+
+img.company_header {
+	object-fit: contain;
+	width: inherit;
+}
+
+img.company_profile {
+	object-fit: contain;
 }
 
 /*Buttons*/
