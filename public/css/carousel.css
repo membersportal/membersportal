@@ -1,0 +1,44 @@
+.carousel {
+	height: 400px;
+	width: 100%;
+	max-width: 100%;
+	margin-bottom: 15px;
+}
+.carousel-caption {
+	z-index: 10;
+}
+
+.carousel .item {
+	min-height: 400px;
+	background-color: #777;
+}
+
+.carousel-inner > .item > img, .carousel-inner > .item > a > img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+div.carousel-caption {
+	padding: 0 28px 10px 28px;
+	background-color: rgba(102, 164, 152, 0.92);
+	width: 100%;
+	left: 0;
+	bottom: 0;
+}
+
+h3.carousel_head {
+	color: #d3e397;
+	margin-bottom: 10px;
+}
+
+.carousel-control.right {
+	background-image: none;
+}
+
+.carousel-control.left {
+	background-image: none;
+}
