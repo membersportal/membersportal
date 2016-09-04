@@ -75,6 +75,7 @@ Route::delete('/admin/contacts/{contact}', 'ContactsController@destroy');
 
 // Events
 Route::get('/admin/events/create', 'EventsController@create');
+
 Route::post('/admin/events', 'EventsController@store');
 Route::get('/admin/events/{event}/edit', 'EventsController@edit');
 Route::put('/admin/events/{event}', 'EventsController@update');
