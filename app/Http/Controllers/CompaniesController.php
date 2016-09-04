@@ -49,13 +49,13 @@ class CompaniesController extends Controller
 	{
 		$user = Auth::user();
 		$company = Company::findOrFail($id);
-		$industry = Industry::all();
-		$data = compact('company', 'industry', 'user');
+		$industries = Industry::all();
+		$data = compact('company', 'industries', 'user');
 		
 		if($user->id != 1) {
 		return view('companies.edit_account_company')->with($data);
 		} else {
-			return view('admin.edit_account_company');
+			return view('admin.edit_account_company')->with($data);
 		}
 	}
 

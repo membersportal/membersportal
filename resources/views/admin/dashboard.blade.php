@@ -7,13 +7,13 @@
 			<h3 class="text-center">Navigation</h3>
 			<ul>
 				<li>
-					<a href="{{ action('UsersController@edit', [$id = 1]) }}" alt="Manage Admin Login">Manage Admin Login</a>
+					<a href="{{ action('UsersController@edit', ['id' => 1]) }}" alt="Manage Admin Login">Manage Admin Login</a>
 				</li>
 				<li>
-					<a href="{{ action('CompaniesController@edit', [$id = 1]) }}" alt="Manage Admin Company">Manage Admin Company</a>
+					<a href="{{ action('CompaniesController@edit', ['id' => 1]) }}" alt="Manage Admin Company">Manage Admin Company</a>
 				</li>
 				<li>
-					<a href="{{ action('ContactsController@edit', [$id = 1]) }}" alt="Manage Admin Contact">Manage Admin Contact</a>
+					<a href="{{ action('ContactsController@edit', ['id' => 1]) }}" alt="Manage Admin Contact">Manage Admin Contact</a>
 				</li>
 				<li>
 					<a href="{{ action('UsersController@create') }}" alt="Create User">Create User</a>

@@ -51,28 +51,33 @@ Route::resource('rfps', 'RFPsController');
 // ================= Admin Only ================= //
 
 // Users
-Route::get('admin/users/create', 'UsersController@create');
-Route::post('admin/users/store', 'UsersController@store');
-Route::delete('admin/users/{user}', 'UsersController@destroy');
+Route::get('/admin/users/create', 'UsersController@create');
+Route::post('/admin/users/store', 'UsersController@store');
+Route::delete('/admin/users/{user}', 'UsersController@destroy');
 Route::get('/admin/dashboard', 'UsersController@getAdminDashboard');
+Route::get('/admin/users/edit', 'UsersController@editUsers');
 
 // Companies
-Route::get('admin/companies/create', 'CompaniesController@create');
-Route::post('admin/companies/store', 'CompaniesController@store');
-Route::delete('admin/companies/{company}', 'CompaniesController@destroy');
+Route::get('/admin/companies/create', 'CompaniesController@create');
+Route::post('/admin/companies/store', 'CompaniesController@store');
+Route::get('/admin/companies/{company}/edit', 'CompaniesController@edit');
+Route::put('/admin/companies/{company}', 'CompaniesController@update');
+Route::delete('/admin/companies/{company}', 'CompaniesController@destroy');
 
 // Contacts
-Route::get('admin/contacts/create', 'ContactsController@create');
-Route::post('admin/contacts/store', 'ContactsController@store');
-Route::delete('contacts/{contact}', 'ContactsController@destroy');
-Route::get('admin/users/edit', 'UsersController@editUsers');
+Route::get('/admin/contacts/create', 'ContactsController@create');
+Route::post('/admin/contacts/store', 'ContactsController@store');
+Route::get('/admin/contacts/{company}/edit', 'ContactsController@edit');
+Route::put('/admin/contacts/{company}', 'ContactsController@update');
+Route::delete('/admin/contacts/{contact}', 'ContactsController@destroy');
 
 // Events
-Route::get('admin/events/create', 'EventController@create');
-Route::get('admin/events/{event}/edit', 'EventController@edit');
+Route::get('/admin/events/create', 'EventController@create');
+Route::get('/admin/events/{event}/edit', 'EventController@edit');
 
 // Carousels
-Route::get('carousels/create', 'CarouselsController@create');
-Route::get('carousels/{carousel}/edit', 'CarouselsController@edit');
-Route::put('carousels/{carousel}', 'CarouselsController@update');
-Route::delete('carousels/{carousel}', 'CarouselsController@destroy');
+Route::get('/admin/carousels/create', 'CarouselsController@create');
+Route::get('/admin/carousels/{carousel}/edit', 'CarouselsController@edit');
+Route::put('/admin/carousels/{carousel}', 'CarouselsController@update');
+Route::delete('/admin/carousels/{carousel}', 'CarouselsController@destroy');
+Route::post('/admin/carousels', 'CarouselsController@store');

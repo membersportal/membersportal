@@ -8,7 +8,7 @@
 <select class="form-control" name="industry_id" required>
 	<option value="0">Select</option>
 @foreach ($industries as $industry)
-	<option value="{{ $industry->id }}" {{ $company->industry_id == $industry->id ? 'selected' : '' }}>{{ $industry }}</option>
+	<option value="{{ $industry->id }}" {{ $company->industry->industry == $industry->industry ? 'selected' : '' }}>{{ $industry->industry }}</option>
 @endforeach
 </select>
 <div class="form-group">

@@ -8,7 +8,7 @@
 
   <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 center_home">
 
-    <form class="" action="{{ action('ContactsController@update', [$id = $contact->id]) }}" method="post">
+    <form class="" action="{{ action('ContactsController@update', ['id' => $contact->id]) }}" method="post">
       {!! csrf_field() !!}
       @include('partials.edit_account_contact')
 
