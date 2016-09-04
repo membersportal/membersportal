@@ -55,7 +55,9 @@ div.panel_white, div.about {
 	border: 1px solid #d3e397;
 }
 
-div.about {}
+div.about {
+	margin-top: 16px;
+}
 
 div.panel_green {
 	width: 100%;
@@ -137,6 +139,12 @@ div.image_container {
 
 div.company_header_img {
 	width: 100%;
+	overflow: hidden;
+}
+
+div.leader {
+	width: 100px;
+	height: 100px;
 	overflow: hidden;
 }
 
@@ -402,6 +410,12 @@ img.company_header {
 }
 
 img.company_profile {
+	object-fit: contain;
+}
+
+img.leader_headshot {
+	width: 50px;
+	height: 50px; 
 	object-fit: contain;
 }
 
