@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Supp;
+use App\Carousel;
 
 class CarouselsController extends Controller
 {
@@ -17,7 +18,7 @@ class CarouselsController extends Controller
 	 */
 	public function create()
 	{
-	  return view('admin.create_carousel');
+		return view('admin.admin_create_carousel');
 	}
 
 	/**
@@ -28,8 +29,8 @@ class CarouselsController extends Controller
 	 */
 	public function store(Request $request)
 	{
-	  $carousel = new Carousel();
-	  return $this->validateAndSave($carousel, $request);
+		$carousel = new Carousel();
+		return $this->validateAndSave($carousel, $request);
 	}
 
 	/**
@@ -40,9 +41,9 @@ class CarouselsController extends Controller
 	 */
 	public function edit($id)
 	{
-	  $carousel = Carousel::findOrFail($id);
-	  $data = compact('carousel');
-	  return view('admin.edit_carousel')->with($data);
+		$carousel = Carousel::findOrFail($id);
+		$data = compact('carousel');
+		return view('admin.admin_edit_carousel')->with($data);
 	}
 
 	/**
@@ -54,8 +55,8 @@ class CarouselsController extends Controller
 	 */
 	public function update(Request $request, $id)
 	{
-	  $carousel = Carousel::findOrFail($id);
-	  return $this->validateAndSave($carousel, $request);
+		$carousel = Carousel::findOrFail($id);
+		return $this->validateAndSave($carousel, $request);
 	}
 
 	/**
@@ -68,19 +69,21 @@ class CarouselsController extends Controller
 	{
 		$carousel = Carousel::findOrFail($id);
 		$carousel->delete();
-		return redirect()->action('admin.dashboard');
+		return redirect()->action('admin.admin_dashboard');
 	}
 
 	private function validateAndSave(Carousel $Carousel, Request $request){
-		$request->session()->flash('ERROR_MESSAGE', 'Carousel was not created successfully'); 
+		$request->session()->flash('ERROR_MESSAGE', 'Carousel not created successfully.'); 
 		$this->validate($request, Carousel::$rules);
 		$request->session()->forget('ERROR_MESSAGE');
+
 		$carousel->title = $request->title;
 		$carousel->desc = $request->desc;
 		$carousel->img = $request->img;
 		$carousel->url = $request->url;
 		$carousel->save();
-		$request->session()->flash('message', 'Carousel item successfully saved!');
-		return redirect()->action('admin.dashboard');
+		
+		$request->session()->flash('message', 'Carousel item successfully saved.');
+		return redirect()->action('admin.admin_dashboard');
 	}
 }

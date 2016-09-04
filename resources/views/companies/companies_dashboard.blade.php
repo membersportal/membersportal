@@ -6,7 +6,7 @@
       <label for="users_rfps">My RFPs</label>
       <select class="form-control" id="rfp_id" name="rfp_id">
         <option disabled selected label="Select"></option>
-        @foreach ($usersRfps as $rfp)
+        @foreach ($users_rfps as $rfp)
           <option value="{{ $rfp->id }}">{{ $rfp->project_title }}</option>
         @endforeach
       </select>
@@ -24,11 +24,11 @@
 
   <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 right_home">
 
-    <form class="" action="{{ action('EventsController@edit') }}" method="get">
+    <form class="" action="{{ action('EventsController@edit') }}" method="GET">
       <label for="users_events">My Events</label>
       <select class="form-control" id="event_id" name="event_id">
         <option disabled selected label="Select"></option>
-        @foreach ($usersEvents as $event)
+        @foreach ($users_events as $event)
           <option value="{{ $event->id }}">{{ $event->title }}</option>
         @endforeach
       </select>
