@@ -8,10 +8,11 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
-use App\User;
 use App\Article;
-use App\Company;
 use App\Carousel;
+use App\Company;
+use App\Contact;
+use App\User;
 use App\Rfp;
 
 
@@ -38,17 +39,17 @@ class UsersController extends Controller
         return view('home')->with($data);
     }
 
-    public function editUsers(Request $request)
+    public function adminDeleteUser(Request $request)
     {
-        $searchedUser = User::searchUser($request);
-        $searchedUserCompany = $searchedUser->company;
-        $data = compact('searchedUserCompany');
-        return view('admin.edit_users')->with($data);
+        $searched_user = User::searchUser($request);
+        $searched_user_company = $searched_user->company;
+        $data = compact('searched_user_company');
+        return view('admin.admin_delete_user')->with($data);
     }
 
     public function create()
     {
-        return view('admin.create_account_login');
+        return view('admin.admin_create_user');
     }
 
     /**
@@ -73,7 +74,7 @@ class UsersController extends Controller
     {
         $user = User::find($id);
         $data = compact('user');
-        return view('users.edit_account_login')->with('user', $user);
+        return view('users.edit_login')->with($data);
     }
 
     /**
@@ -99,19 +100,14 @@ class UsersController extends Controller
     {
         $user = User::findOrFail($id);
         $user->delete();
-        return redirect()->action('CompaniesController@destroy');
-    }
-
-    public function adminSearchUser(Request $request)
-    {
-        $user = User::searchUser($request);
-        return view('admin.edit_users')->with('user', $user);
+        return redirect()->action('CompaniesController@destroy', ['id' => $user->id]);
     }
 
     public function getAdminDashboard()
     {
         $user = User::find(Auth::user()->id);
-        return view('admin.dashboard')->with('user', $user);
+        $data = compact('user');
+        return view('admin.admin_dashboard')->with($data);
     }
 
     private function validateAndSave(User $user, Request $request){

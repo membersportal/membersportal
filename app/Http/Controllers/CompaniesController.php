@@ -7,13 +7,14 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use App\Industry;
-use App\Contact;
 use App\Company;
-use App\Rfp;
-use App\Event;
-use App\User;
 use App\Connection;
+use App\Contact;
+use App\Event;
+use App\Industry;
+use App\Leader;
+use App\Rfp;
+use App\User;
 
 class CompaniesController extends Controller
 {
@@ -24,7 +25,7 @@ class CompaniesController extends Controller
 	 */
 	public function create()
 	{
-		return view('admin.create_account_company');
+		return view('admin.admin_create_company');
 	}
 
 	/**
@@ -49,14 +50,11 @@ class CompaniesController extends Controller
 	{
 		$user = Auth::user();
 		$company = Company::findOrFail($id);
+		// $leaders = $company->leaders;
 		$industries = Industry::all();
 		$data = compact('company', 'industries', 'user');
 
-		if($user->id != 1) {
-		return view('companies.edit_account_company')->with($data);
-		} else {
-			return view('admin.edit_account_company')->with($data);
-		}
+		return view('companies.edit_company')->with($data);
 	}
 
 	/**
@@ -82,15 +80,15 @@ class CompaniesController extends Controller
 	{
 		$company = Company::findOrFail($id);
 		$company->delete();
-		return redirect()->action('ContactsController@destroy');
+		return redirect()->action('ContactsController@destroy', ['id' => $company->id]);
 	}
 
 	public function searchMembers(Request $request)
 	{
 		$industries = Industry::all();
 		$current_user_address = Auth::user()->company->contact->address_line_1 . ' ' . Auth::user()->company->contact->city;
-		$data = compact('industries', 'current_user_address', 'results');
-		return view('search')->with($data);
+		$data = compact('industries', 'current_user_address');
+		return view('search_members')->with($data);
 	}
 
 	public function getSearchedCompanies(Request $request)
@@ -109,19 +107,18 @@ class CompaniesController extends Controller
 	{
 		$company = Company::find($id);
 		$connections = $company->connections;
-		dd($connections);
-		$feedContent = $this->buildFeed($connections);
-		$usersRfps = $company->rfps;
-		$usersEvents = $company->events;
-		$data = compact('feedContent', 'usersRfps', 'usersEvents');
-		return view('companies.dashboard')->with($data);
-	 }
+		$feed_content = $this->buildFeed($connections);
+		$users_rfps = $company->rfps;
+		$users_events = $company->events;
+		$data = compact('feed_content', 'users_rfps', 'users_events');
+		return view('companies.company_dashboard')->with($data);
+	}
 
 	public function viewConnections($id)
 	{
 		$user = User::find($id);
 		$data = compact('user');
-		return view('companies.connections')->with($data);
+		return view('companies.all_connections')->with($data);
 	}
 
 	public function show($id)
@@ -132,14 +129,14 @@ class CompaniesController extends Controller
 		$events = $company->events;
 		$leader = $company->leaders;
 		$connections = Connection::viewConnections($id)->take(3)->get();
-		$profileConnections = Company::profileConnections($connections)->get();
-		$data = compact('company', 'contact', 'rfps', 'events', 'leader', 'profileConnections');
+		$profile_connections = Company::profileConnections($connections)->get();
+		$data = compact('company', 'contact', 'rfps', 'events', 'leader', 'profile_connections');
 		return view('companies.view_profile')->with($data);
 	}
 
 	private function validateAndSave(Company $company, Request $request)
 	{
-		$request->session()->flash('ERROR_MESSAGE', 'Company was not created successfully');
+		$request->session()->flash('ERROR_MESSAGE', 'Company not created successfully.');
 		$this->validate($request, Company::$rules);
 		$request->session()->forget('ERROR_MESSAGE');
 
@@ -170,22 +167,22 @@ class CompaniesController extends Controller
 	private function buildFeed($connections)
 	{
 		$collection = [];
-		$dashboardEvents = Event::dashboardEvents($connections);
-		$dashboardRfps = RFP::dashboardRfps($connections);
+		$dashboard_events = Event::dashboardEvents($connections);
+		$dashboard_rfps = RFP::dashboardRfps($connections);
 		$dashboardConnections = Connection::dashboardConnections($connections);
 
-		foreach($dashboardEvents as $dashboardEvent){
-			$collection[] = $dashboardEvent;
+		foreach($dashboard_events as $dashboard_event){
+			$collection[] = $dashboard_event;
 		}
 
-		foreach($dashboardRfps as $dashboardRfp){
-			$collection[] = $dashboardRfp;
+		foreach($dashboard_rfps as $dashboard_rfp){
+			$collection[] = $dashboard_rfp;
 		}
 
-		foreach ($dashboardConnections as $dashboardConnection) {
-			$collection[] = $dashboardConnection;
+		foreach ($dashboard_connections as $dashboard_connection) {
+			$collection[] = $dashboard_connection;
 		}
 
-		return $collection->sortBy('created_at');
+		return $collection->sortBy('created_at', 'desc');
 	}
 }
