@@ -72,8 +72,8 @@ Route::put('/admin/contacts/{company}', 'ContactsController@update');
 Route::delete('/admin/contacts/{contact}', 'ContactsController@destroy');
 
 // Events
-Route::get('/admin/events/create', 'EventController@create');
-Route::get('/admin/events/{event}/edit', 'EventController@edit');
+Route::get('/admin/events/create', 'EventsController@create');
+Route::get('/admin/events/{event}/edit', 'EventsController@edit');
 
 // Carousels
 Route::get('/admin/carousels/create', 'CarouselsController@create');

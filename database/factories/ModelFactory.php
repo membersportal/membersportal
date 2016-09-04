@@ -46,3 +46,13 @@ $factory->define(App\Rfp::class, function (Faker\Generator $faker) {
         'contract_to_date' => $faker->dateTimeThisMonth($max = 'now', $format ='Y-m-d'),
     ];
 });
+
+$factory->define(App\Leader::class, function (Faker\Generator $faker) {
+    return [
+        'company_id' => $faker->numberBetween($min = 2, $max = 30),
+        'full_name' => $faker->name,
+        'title' => $faker->words(6, true),
+        'img' => $faker->imageUrl($width = 100, $height = 100),
+        'linkedin_url' => $faker->url,
+    ];
+});
