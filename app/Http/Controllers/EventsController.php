@@ -19,15 +19,14 @@ class EventsController extends Controller
 	public function index()
 	{
 		$events = Event::all();
-		$usersEvents = Event::usersEvents(Auth::user()->id)->get();
-		$data = compact('events', 'usersEvents');
+		$users_events = Event::usersEvents(Auth::user()->id)->get();
+		$data = compact('events', 'users_events');
 		return view('events.all_events')->with($data);
 	}
 
 	public function searchEvents(Request $request)
 	{
 	  $results = Event::searchEvents($request);
-
 	  $data = compact('results');
 		return view('events.search')->with($data);
 	}
