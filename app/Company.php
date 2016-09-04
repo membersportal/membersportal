@@ -46,7 +46,7 @@ class Company extends Model
 
 	public function connections()
 	{
-		return $this->hasManyThrough(Connection::class, Company::class, 'id', 'company1_id');
+		return $this->hasManyThrough(Company::class, Connection::class, 'company1_id', 'company2_id', 'id');
 	}
 
 	public static function newestMember()
