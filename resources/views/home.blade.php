@@ -5,7 +5,7 @@
 		<div class="panel_white">
 			<h3 class="text-center">Newest Member</h3>
 			<a href="{{ action('CompaniesController@show', $newest_member->id) }}" alt="New Member">
-				<img class="img-thumbnail img-responsive center-block profile_photo_home" src="/img/profile_photo_template.png">
+				<img class="img-thumbnail img-responsive center-block profile_photo_home" src="{{ '/img/uploads/avatars/' . $newest_member->profile_img }}">
 			</a>
 			<p class="company_name text-center">{{ $newest_member->name }}</p>
 			<p class="industry_name_home text-center"><span class="industry_name_home">Industry:</span> {{ $newest_member->industry->industry }}</p>
