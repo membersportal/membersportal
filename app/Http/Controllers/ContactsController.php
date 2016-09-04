@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Company;
+use App\Contact;
+use App\User;
 
 class ContactsController extends Controller
 {
@@ -17,7 +20,7 @@ class ContactsController extends Controller
      */
     public function create()
     {
-        return view('admin.create_account_contacts');
+        return view('admin.admin_create_contact');
     }
 
     /**
@@ -41,7 +44,7 @@ class ContactsController extends Controller
     public function edit($id)
     {
         $contact = Contact::findOrFail($id);
-        return view('admin.edit_account_contact')->with('contact', $contact);
+        return view('admin.admin_edit_org_contact')->with('contact', $contact);
     }
 
     /**
@@ -67,12 +70,12 @@ class ContactsController extends Controller
     {
         $contact = Contact::findOrFail($id);
         $contact->delete();
-        $request->session()->flash('successMessage', 'User deleted successfully');
+        $request->session()->flash('successMessage', 'User deleted successfully.');
         return redirect()->action('admin.dashboard');
     }
 
     private function validateAndSave(Contact $contact, Request $request){
-        $request->session()->flash('ERROR_MESSAGE', 'Contact was not created successfully');
+        $request->session()->flash('ERROR_MESSAGE', 'Contact not created successfully.');
         $this->validate($request, Contact::$rules);
         $request->session()->forget('ERROR_MESSAGE');
 
@@ -96,7 +99,7 @@ class ContactsController extends Controller
 
         if ($is_admin) {
             $request->session()->flash('message', 'Contact successfully created. New user complete.');
-            return redirect()->action('admin.dashboard');
+            return redirect()->action('admin.admin_dashboard');
         } else {
             $request->session()->flash('message', 'Contact information successfully updated.');
             return redirect()->action('UsersController@edit', ['id' => Auth::user()->id]);

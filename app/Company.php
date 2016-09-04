@@ -4,10 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\User;
+use App\Connection;
+use App\Contact;
 use App\Industry;
 use App\Leader;
 use App\Rfp;
+use App\User;
 
 class Company extends Model
 {
@@ -45,7 +47,7 @@ class Company extends Model
 
 	public function connections()
 	{
-		return $this->hasManyThrough(Company::class, Connection::class, 'company1_id', 'company2_id');
+		return $this->hasManyThrough(Company::class, Connection::class, 'company1_id', 'company2_id', 'id');
 	}
 
 	public static function newestMember()
