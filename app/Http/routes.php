@@ -48,7 +48,7 @@ Route::resource('events', 'EventsController');
 Route::resource('leaders', 'LeadersController');
 
 // RFPs
-Route::resource('rfps', 'RFPsController');
+Route::resource('rfps', 'RFPController');
 
 // ================= Admin Only ================= //
 

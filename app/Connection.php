@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Company;
 
 class Connection extends Model
 {
@@ -24,7 +25,7 @@ class Connection extends Model
 		$companies = [];
 
 		foreach($connections as $connection){
-			$company = $connection->company_id;
+			$company = $connection->id;
 			$companies[] = $company;
 		}
 		return Connection::whereIn('company1_id', $companies)->orderBy('created_at');

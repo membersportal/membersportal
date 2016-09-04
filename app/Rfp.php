@@ -35,7 +35,7 @@ class Rfp extends Model
 		$companies = [];
 
 		foreach($connections as $connection){
-			$company = $connection->company_id;
+			$company = $connection->id;
 			$companies[] = $company;
 		}
 		return Rfp::whereIn('company_id', $companies)->orderBy('created_at');
