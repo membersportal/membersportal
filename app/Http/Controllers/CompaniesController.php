@@ -109,6 +109,7 @@ class CompaniesController extends Controller
 	{
 		$company = Company::find($id);
 		$connections = $company->connections;
+		dd($connections);
 		$feedContent = $this->buildFeed($connections);
 		$usersRfps = $company->rfps;
 		$usersEvents = $company->events;
