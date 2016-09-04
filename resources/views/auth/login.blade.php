@@ -1,4 +1,5 @@
 @extends('layouts.master')
+
 @section('content')
 	<div id="login">
 		<div class="container">
@@ -13,4 +14,5 @@
 			</div>
 		</div>
 	</div>
+	
 @stop
