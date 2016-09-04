@@ -8,7 +8,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Connection extends Model
 {
 	use SoftDeletes;
-		
+
+	public function company()
+	{
+		return $this->belongsTo(Company::class, 'company1_id');
+	}
+
 	public static function viewConnections($id)
 	{
 		$connections = Connection::where('company1_id', $id);
