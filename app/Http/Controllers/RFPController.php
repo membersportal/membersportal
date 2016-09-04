@@ -69,7 +69,7 @@ class RFPController extends Controller
         $user = Auth::user();
         $rfp = Rfp::findOrFail($id);
         $data = compact('contact', 'user');
-        return view('companies.edit_account_contact')->with($data);
+        return view('rfps.edit')->with($data);
     }
 
     /**

@@ -17,9 +17,10 @@
 
 
   <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 center_home">
-    @foreach($events as $event)
-      <h5>$event->title</h5>
-    @endforeach
+
+    <h1>Edit Event</h1>
+    @include('partials.edit_event')
+
   </div>
 
 

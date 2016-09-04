@@ -18,8 +18,10 @@ class EventsController extends Controller
      */
     public function index()
     {
-        $events = Events::all();
-        return view('events.all')->with('events', $events);
+        $events = Event::all();
+        $usersEvents = Event::usersEvents(Auth::user()->id)->get();
+        $data = compact('events', 'usersEvents');
+        return view('events.all')->with($data);
     }
 
     public function searchEvents(Request $request)
@@ -76,7 +78,7 @@ class EventsController extends Controller
     {
       $event = Event::findOrFail($id);
       $data = compact('event');
-      return view('companies.edit_account_company')->with($data);
+      return view('events.edit_event')->with($data);
     }
 
     /**
