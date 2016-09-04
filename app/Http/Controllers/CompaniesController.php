@@ -106,12 +106,12 @@ class CompaniesController extends Controller
 	public function dashboard($id)
 	{
 		$company = Company::find($id);
-		$connections = $company->connections;
+		$connections = $company->companies;
 		$feed_content = $this->buildFeed($connections);
 		$users_rfps = $company->rfps;
 		$users_events = $company->events;
 		$data = compact('feed_content', 'users_rfps', 'users_events');
-		return view('companies.company_dashboard')->with($data);
+		return view('companies.companies_dashboard')->with($data);
 	}
 
 	public function viewConnections($id)
@@ -167,9 +167,9 @@ class CompaniesController extends Controller
 	private function buildFeed($connections)
 	{
 		$collection = [];
-		$dashboard_events = Event::dashboardEvents($connections);
-		$dashboard_rfps = RFP::dashboardRfps($connections);
-		$dashboardConnections = Connection::dashboardConnections($connections);
+		$dashboard_events = Event::dashboardEvents($connections)->get();
+		$dashboard_rfps = RFP::dashboardRfps($connections)->get();
+		$dashboard_connections = Connection::dashboardConnections($connections)->get();
 
 		foreach($dashboard_events as $dashboard_event){
 			$collection[] = $dashboard_event;
@@ -182,7 +182,8 @@ class CompaniesController extends Controller
 		foreach ($dashboard_connections as $dashboard_connection) {
 			$collection[] = $dashboard_connection;
 		}
-
-		return $collection->sortBy('created_at', 'desc');
+		$feed = collect($collection);
+		$test = $feed->sortBy('created_at');
+		return $test;
 	}
 }

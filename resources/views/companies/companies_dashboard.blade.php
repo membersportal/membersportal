@@ -1,3 +1,5 @@
+@extends('layouts.master')
+
 @section('content')
 <div class="row">
   <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 left_home">

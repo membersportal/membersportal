@@ -45,9 +45,9 @@ class Company extends Model
 		return $this->hasMany(Rfp::class, 'company_id');
 	}
 
-	public function connections()
+	public function companies()
 	{
-		return $this->hasManyThrough(Company::class, Connection::class, 'company1_id', 'company2_id', 'id');
+		return $this->belongsToMany(Company::class, 'connections', 'company1_id', 'company2_id');
 	}
 
 	public static function newestMember()
