@@ -125,12 +125,12 @@ class CompaniesController extends Controller
 	{
 		$company = Company::findOrFail($id);
 		$contact = $company->contact;
-		$rfps = $company->rfps;
+		$rfps = Rfp::profileRfps($company->id);
 		$events = $company->events;
-		$leader = $company->leaders;
+		$leaders = $company->leaders;
 		$connections = Connection::viewConnections($id)->take(3)->get();
 		$profile_connections = Company::profileConnections($connections)->get();
-		$data = compact('company', 'contact', 'rfps', 'events', 'leader', 'profile_connections');
+		$data = compact('company', 'contact', 'rfps', 'events', 'leaders', 'profile_connections');
 		return view('companies.view_profile')->with($data);
 	}
 

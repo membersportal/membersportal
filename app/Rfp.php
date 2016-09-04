@@ -41,8 +41,14 @@ class Rfp extends Model
 		return Rfp::whereIn('company_id', $companies)->orderBy('created_at');
 	}
 
-	public static function homeRfps(){
+	public static function homeRfps()
+	{
 		return Rfp::where('company_id', 1)->orderBy('deadline', 'desc')->get();
+	}
+
+	public static function profileRfps($company_id)
+	{
+		return Rfp::where('company_id', $company_id)->orderBy('deadline', 'desc')->get();
 	}
 
 	public static $rules = [
