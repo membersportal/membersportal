@@ -24,21 +24,16 @@ class UsersTableSeeder extends Seeder
         ['first_name' => 'Douglas', 'last_name' => 'Gordon' , 'username' => 'gdouglas1', 'email' => 'don0@prnewswire.com', 'password' => 'ajsdfor32', 'is_admin' => False],
         ['first_name' => 'Nicole', 'last_name' => 'Allen' , 'username' => 'nallen1', 'email' => 'nallen1@upenn.edu', 'password' => 'fdjoiidv28', 'is_admin' => False],
         ['first_name' => 'Wanda', 'last_name' => 'Butler' , 'username' => 'wbutler1', 'email' => 'wbutlerblair@cloudfare.com', 'password' => 'cvuiqouh84', 'is_admin' => False],
-        ['first_name' => 'Nicole', 'last_name' => 'Allen' , 'username' => 'nallen1', 'email' => 'nallen1@upenn.edu', 'password' => 'fdjoiidv28', 'is_admin' => False],
+        ['first_name' => 'Nicole', 'last_name' => 'Allen' , 'username' => 'tester', 'email' => 'tester@upenn.edu', 'password' => 'fdjoiidv28', 'is_admin' => False],
         ['first_name' => 'Roy', 'last_name' => 'Allen' , 'username' => 'rallen1', 'email' => 'rallen1@utexas.edu', 'password' => 'gfjdopwefr9', 'is_admin' => False],
         ['first_name' => 'Roy', 'last_name' => 'Baker' , 'username' => 'nbaker1', 'email' => 'rbaker4@bandcamp.com', 'password' => 'ju709hufi', 'is_admin' => False],
-        ['first_name' => 'Nicole', 'last_name' => 'Allen' , 'username' => 'nallen1', 'email' => 'nallen1@upenn.edu', 'password' => 'fdjoiidv28', 'is_admin' => False],
         ['first_name' => 'Margaret', 'last_name' => 'Patterson' , 'username' => 'Mpatterson1', 'email' => 'mpatterson5@pbs.org', 'password' => 'reqvadnuio4', 'is_admin' => False],
         ['first_name' => 'Pamela', 'last_name' => 'Morales' , 'username' => 'pmorales1', 'email' => 'pmorales6@samsung.com', 'password' => 'vjipqefj887', 'is_admin' => False],
         ['first_name' => 'Frances', 'last_name' => 'Vasquez' , 'username' => 'fvasquez1', 'email' => 'fvasquez7@twitpic.com', 'password' => 'rewuiv78923', 'is_admin' => False],
-        ['first_name' => 'Pamela', 'last_name' => 'Morales' , 'username' => 'pmorales1', 'email' => 'pmorales6@samsung.com', 'password' => 'vjipqefj887', 'is_admin' => False],
+        ['first_name' => 'Pamela', 'last_name' => 'Morales' , 'username' => 'tester1', 'email' => 'tester1@samsung.com', 'password' => 'vjipqefj887', 'is_admin' => False],
         ['first_name' => 'Juan', 'last_name' => 'Ray' , 'username' => 'jray1', 'email' => 'jray8@cnet.com', 'password' => 'vavref8u', 'is_admin' => False],
         ['first_name' => 'Harold', 'last_name' => 'Nichols' , 'username' => 'hnichols1', 'email' => 'hnichols9@latimes.com', 'password' => 'cvijp98ij', 'is_admin' => False],
-        ['first_name' => 'Carlos', 'last_name' => 'Bradley' , 'username' => 'cbradley1', 'email' => 'cbradleya@4shared.com', 'password' => 'vuioqefni86', 'is_admin' => False],
-
-
-11,Carlos,Bradley,cbradleya@4shared.com,Male,146.33.193.3
-
+        ['first_name' => 'Carlos', 'last_name' => 'Bradley' , 'username' => 'cbradley1', 'email' => 'cbradleya@4shared.com', 'password' => 'vuioqefni86', 'is_admin' => False]
       ];
 
       foreach ($users as $user) {
