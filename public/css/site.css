@@ -2,6 +2,7 @@
 .container {
 	width: 90%;
 	margin-bottom: 30px;
+	position: relative;
 }
 
 .expand {
@@ -48,7 +49,7 @@ div.login {
 	position: relative;
 }
 
-div.panel_white, div.about {
+div.panel_white {
 	width: 100%;
 	background-color: #fff;
 	padding: 10px 25px 20px 25px;
@@ -59,24 +60,26 @@ div.about {
 	margin-top: 16px;
 }
 
-div.panel_red {
+div.panel_red, div.panel_green, div.about_panel_red {
 	width: 100%;
 	background-color: #c65c39;
 	padding: 10px 25px;
 	border: 1px solid #514e43;
 	margin-bottom: 15px;
 	margin-top: 16px;
+}
+
+div.about_panel_red {
+	padding: 20px 40px;
+}
+
+div.panel_red, div.panel_green {
 	text-align: center;
 }
 
 div.panel_green {
-	width: 100%;
 	background-color: #d3e397;
 	border: 1px solid #b7c483;
-	padding: 10px 25px;
-	margin-bottom: 15px;
-	margin-top: 16px;
-	text-align: center;
 }
 
 div.main_panel {
@@ -101,6 +104,10 @@ div#map {
 	margin-bottom: 25px;
 	margin-top: 15px;
 	border: 1px solid #d3e397;
+}
+
+div.project_showcase {
+	margin-top: 8px;
 }
 
 hr {
@@ -142,18 +149,18 @@ div.company_header_img {
 	overflow: hidden;
 }
 
-div.leader {
-	width: 100px;
-	height: 100px;
-	overflow: hidden;
-}
-
 div.company_profile_img {
 	width: 100px;
 	height: 100px;
 	position: absolute;
-	top: 275px;
-	left: 27px;
+	top: 80%;
+	left: 4%;
+}
+
+div.leader {
+	width: 100px;
+	height: 100px;
+	overflow: hidden;
 }
 
 /*Text*/
@@ -180,6 +187,12 @@ h4.article_heading{
 	color: #7c786a;
 	margin-bottom: 3px;
 	line-height: 1.25em;
+}
+
+h4.project_showcase {
+	margin-top: -13px;
+	color: #b7c483;
+	margin-bottom: 15px;
 }
 
 h1, h2, h3, h4 {
@@ -253,11 +266,20 @@ p.article_desc {
 	margin-bottom: 20px;
 }
 
-ul.rfps, ul.contact {
+ul.rfps, ul.contact, ul.company_stats {
 	line-height: 1.25em;
 	padding-left: 0;
 	list-style: none;
 	margin-bottom: 10px;
+}
+
+ul.company_stats {
+	color: #fff;
+	font-size: 1.05em;
+}
+
+ul.company_stats > li > span.strong {
+	color: #fff5c3;
 }
 
 li.rfps {
@@ -295,7 +317,7 @@ ul.footer {
 
 /*Links*/
 
-a.green_bg:after, a.green_bg:hover:after, ul.footer > li > a.footer_triangle:after, ul.footer > li > a.footer_triangle:hover:after, div.login > a.forgot_password:hover:after, a.forgot_password:after {
+a.green_bg:after, a.green_bg:hover:after, ul.footer > li > a.footer_triangle:after, ul.footer > li > a.footer_triangle:hover:after, div.login > a.forgot_password:hover:after, a.forgot_password:after, div.connect > button.btn.btn-primary.pull-right.connect:after, div.connect > button.btn.btn-primary.pull-right.connect:hover:after {
 	content: "";
 	display: inline-block;
 	height: 11px;
@@ -311,18 +333,20 @@ ul.footer > li > a.footer_triangle:hover:after, div.login > a.forgot_password:ho
 	background: transparent url('/img/arrow.png') no-repeat;
 }
 
-a.green_bg:after {
-	background: transparent url('/img/arrow_green.png') no-repeat;
+div.login > a.forgot_password:after, ul.footer > li > a.footer_triangle:hover:after, div.login > a.forgot_password:hover:after, ul.footer > li > a.footer_triangle:after, ul.footer > li > a.footer_triangle:after, a.green_bg:hover:after, a.green_bg:after, a.green_bg:hover:after, div.connect > button.btn.btn-primary.pull-right.connect:after, div.connect > button.btn.btn-primary.pull-right.connect:hover:after {
 	margin-left: 4px;
 }
 
-ul.footer > li > a.footer_triangle:after {
+a.green_bg:after, div.connect > button.btn.btn-primary.pull-right.connect:after {
+	background: transparent url('/img/arrow_green.png') no-repeat;
+}
+
+ul.footer > li > a.footer_triangle:after, div.connect > button.btn.btn-primary.pull-right.connect:hover:after {
 	background: transparent url('/img/arrow_gray.png') no-repeat;
 }
 
 a.green_bg:hover:after {
 	background: transparent url('/img/arrow_gray.png') no-repeat;
-	margin-left: 4px;
 }
 
 ul.footer > li > a.footer_triangle:hover {
@@ -397,6 +421,16 @@ a, a:hover, a:visited, a:active {
 	margin-bottom: 5px;
 }
 
+img.company_header {
+	object-fit: contain;
+	width: inherit;
+}
+
+img.company_profile {
+	object-fit: contain;
+	width: inherit;
+}
+
 img.articles {
 	object-fit: cover;
 	width: 80px;
@@ -411,19 +445,22 @@ img.hiring {
 	margin: 15px 0;
 }
 
-img.company_header {
-	object-fit: contain;
-	width: inherit;
-}
-
-img.company_profile {
-	object-fit: contain;
-}
-
 img.leader_headshot {
 	width: 50px;
 	height: 50px; 
 	object-fit: contain;
+}
+
+img.project_showcase {
+	margin-top: 16px;
+	width: 100%;
+	border: 1px solid #d3e397;
+}
+
+.glyphicon.glyphicon-ok {
+	font-size: .75em;
+	margin-right: 10px;
+	color: #d3e397;
 }
 
 /*Buttons*/
@@ -439,12 +476,23 @@ button.btn.btn-primary.pull-right, button.btn.btn-primary.pull-right.login {
 	margin-bottom: 10px;
 }
 
-button.btn.btn-primary.pull-right.login {
+button.btn.btn-primary.pull-right.login, button.btn.btn-primary.pull-right.connect {
 	width: 100%;
 }
 
 button.btn.btn-primary.pull-right.login:hover, button.btn.btn-primary.pull-right:hover {
 	background-color: #82bab0;
+}
+
+button.btn.btn-primary.pull-right.connect {
+	border: 1px solid #b7c483;
+	background-color: #d3e397;
+	color: #568b80;
+}
+
+div.connect {
+	margin-bottom: 65px;
+	margin-top: 16px;
 }
 
 /*Forms*/

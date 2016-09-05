@@ -11,17 +11,17 @@
 		</div>
 	</div>
 
-@if (!Auth::user()->is_admin)
-	<form method="POST" action="{{ action('ConnectionsController@store', ['id' => $company->id]) }}">
-		{!! csrf_field() !!}
-		<button type="submit" class="btn btn-primary">Connect</button>
-	</form>
-@endif
-
 	<h1 class="text-center company_name_profile">{{ $company->name }}</h1>
 
 	<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 left_home">
-
+		@if (!Auth::user()->is_admin)
+		<div class="connect">
+			<form method="POST" action="{{ action('ConnectionsController@store', ['id' => $company->id]) }}">
+				{!! csrf_field() !!}
+				<button type="submit" class="btn btn-primary pull-right connect">Connect</button>
+			</form>
+		</div>
+		@endif
 		<div class="panel_white">
 			<h3 class="text-center">Contact</h3>
 			<ul class="contact">
@@ -47,40 +47,62 @@
 						@endif
 						</ul>
 					@endif
-				@endforeach
+			@endforeach
+			<div class="panel_green">
+				<a class="green_bg" href="#" alt="Browse All RFPs">Browse All RFPs</a>
+			</div>
 		</div>
 
 	</div>
 
 	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 center_home">
-			
-		<div class="about">
-			<ul>
-				@if($company->industry_id)
-					<li>{{ $company->industry->industry }}</li>
-				@endif
-				@if($company->woman_owned)
-					<span class="glyphicon glyphicon-ok"></span><li>Woman-owned</li>
-				@endif
-				@if($company->family_owned)
-					<span class="glyphicon glyphicon-ok"></span><li>Family-owned</li>
-				@endif
-				@if ($company->organization)
-					<li>Size: {{ $company->size }}</li>
-				@endif
-				@if($company->contractor)
-					<li>Contractor</li>
-				@endif
-				@if($company->organization)
-					<li>Organization</li>
-				@endif
-					<li>{{ $company->date_established }}</li>
-			</ul>
+		<div class="about_panel_red">
+			<div class="row">
+				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+					<ul class="company_stats">
+						@if($company->industry_id)
+							<li><span class="strong">Industry: </span>{{ $company->industry->industry }}</li>
+						@endif
+						@if($company->contractor)
+							<li><span class="strong">Business type:</span> Contractor</li>
+						@endif
+						@if($company->organization)
+							<li><span class="strong">Business type:</span> Organization</li>
+						@endif
+						@if ($company->organization)
+							<li><span class="strong">Company size: </span>{{ $company->size }}</li>
+						@endif
+					</ul>
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+					<ul class="company_stats">
+						<li><span class="strong">Date established:</span> {{ $company->date_established }}</li>
+						@if($company->woman_owned)
+							<li><span class="glyphicon glyphicon-ok"></span>Woman-owned</li>
+						@endif
+						@if($company->family_owned)
+							<li><span class="glyphicon glyphicon-ok"></span>Family-owned</li>
+						@endif
+					</ul>
+				</div>
+			</div>
 		</div>
 
-		<p>{{ $company->desc }}</p>
+		<div class="panel_white">
+			<h3 class="text-center">About</h3>
+			<p>{{ $company->desc }}</p>
+		</div>
 
-		<div class="leaders">
+		<img class="img-responsive project_showcase" src="/img/frostbank.jpg">
+		<div class="main_panel project_showcase">
+			<h3 class="text-center">Project Showcase</h3>
+			<h4 class="text-center project_showcase">New Building Proposed for Downtown San Antonio</h4>
+			<p>SAN ANTONIO — New renderings of the proposed Frost Bank headquarters show a vibrant, transformed area of downtown San Antonio as the city gears up to begin its review process of the design Wednesday.</p>
+			<p>Released over the weekend by the Historic and Design Review Commission, the renderings lay out where the 23-story glass skyscraper would lie amid a sea of concrete and stone buildings.</p>
+			<a class="red_link text-center" href="http://www.mysanantonio.com/business/article/City-releases-renderings-of-proposed-glass-8384186.php" alt="Read full article">See Project ></a>
+		</div>
+
+		<div class="panel_white leaders">
 			<h3 class="text-center">Leadership</h3>
 			@foreach ($leaders as $leader)
 				<div class="leader">

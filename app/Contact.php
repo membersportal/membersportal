@@ -46,6 +46,17 @@ class Contact extends Model
 		return '(' . substr($value, 0, 3) . ') ' . substr($value, 3, 3) . '-' . substr($value, 6, 4);
 	}
 
+	public function getWebsiteAttribute($value)
+	{
+		if (substr($value, 0, 12) === 'https://www.') {
+			return substr($value, 12);
+		} elseif (substr($value, 0, 11) === 'http://www.') {
+			return substr($value, 11);
+		} else {
+			return $value;
+		}
+	}
+
 	public static function searchLocations($results)
 	{
 		$contacts = [];
