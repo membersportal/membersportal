@@ -20,7 +20,7 @@ class EventsController extends Controller
 	 */
 	public function index()
 	{
-		$events = Event::all();
+		$events = Event::all()->sortBy('from_date');
 		$user = Auth::user()->id;
 		$user_company = Company::find($user);
 		$connections = $user_company->companies;
