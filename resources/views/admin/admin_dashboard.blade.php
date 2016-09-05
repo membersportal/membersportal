@@ -21,9 +21,16 @@
 				<li>
 					<a href="{{ action('CarouselsController@create') }}" alt="Create New Carousel">Create New Carousel Item</a>
 				</li>
-				<li>
-					<a href="{{ action('EventsController@create') }}" alt="Create New Org Event">Create New Org. Event</a>
-				</li>							
+				<ul><p>Org Event</p>
+					<li>
+						<a href="{{ action('EventsController@create') }}" alt="Create New Org Event">Create New Org. Event</a>
+					</li>
+					<li>
+						<a href="{{ action('EventsController@edit') }}" alt="Edit Org Event">Edit Org. Event</a>
+					</li>
+				</ul>	
+
+
 			</ul>			
 		</div>
 	</div>
