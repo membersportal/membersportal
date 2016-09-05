@@ -31,7 +31,14 @@ class UsersTableSeeder extends Seeder
           $new_user->email = $user['email'];
           $new_user->password = Hash::make($user['password']);
           $new_user->is_admin = $user['is_admin'];
-        	$new_user->save();
+
+          if ($new_user->email == 'randimays@codeup.com' || $new_user->email == 'jaynichols@codeup.com' || $new_user->email == 'anthonym@codeup.com' || $new_user->email == 'jmills0@friendfeed.com') {
+            $new_user->attachRole($admin);
+          } else {
+            $new_user->attachRole($user);
+          }
+
+          $new_user->save();
     	}
     }
 }
