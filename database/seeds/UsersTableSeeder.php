@@ -13,9 +13,9 @@ class UsersTableSeeder extends Seeder
     {
       $users = [
         ['first_name' => 'Janice', 'last_name' =>	'Mills', 'username' =>	'jmills0', 'email' =>	'jmills0@friendfeed.com', 'password' => 'vRmMtWhx', 'is_admin' => True],
-        ['first_name' => 'Louise', 'last_name' =>	'George', 'username' =>	'lgeorge1', 'email' =>	'lgeorge1@cnbc.com', 'password' => 'QDqz2lhTEGm', 'is_admin' => False],
-        ['first_name' => 'Ruby', 'last_name' =>	'Fisher', 'username' =>	'rfisher2', 'email' =>	'rfisher2@technorati.com', 'password' => 'dqAFkcJ', 'is_admin' => False],
-        ['first_name' => 'Judith', 'last_name' =>	'Nguyen', 'username' =>	'jnguyen3', 'email' =>	'jnguyen3@list-manage.com', 'password' => 'Yb8LVdikFzle', 'is_admin' => False],
+        ['first_name' => 'Randi', 'last_name' =>	'Mays', 'username' =>	'randimays', 'email' =>	'randimays@codeup.com', 'password' => 'randimays', 'is_admin' => True],
+        ['first_name' => 'Jay', 'last_name' =>	'Nichols', 'username' =>	'jaynichols', 'email' =>	'jaynichols@codeup.com', 'password' => 'jaynichols', 'is_admin' => True],
+        ['first_name' => 'Anthony', 'last_name' =>	'Anthony', 'username' =>	'anthonym', 'email' =>	'anthonym@codeup.com', 'password' => 'anthonym', 'is_admin' => True],
         ['first_name' => 'Anne', 'last_name' =>	'Alexander', 'username' =>	'aalexander4', 'email' =>	'aalexander4@hatena.ne.jp', 'password' => 'fvnFvlfIGZ', 'is_admin' => False],
         ['first_name' => 'Terry', 'last_name' =>	'Powell', 'username' =>	'tpowell5', 'email' =>	'tpowell5@zdnet.com', 'password' => 'puzQ1X', 'is_admin' => False],
         ['first_name' => 'Christopher', 'last_name' =>	'Perez', 'username' =>	'cperez6', 'email' =>	'cperez6@usa.gov', 'password' => 'UszC1x', 'is_admin' => False],
