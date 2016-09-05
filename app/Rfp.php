@@ -62,6 +62,4 @@ class Rfp extends Model
      'contract_to_date' => 'required|date',
      'url' => 'required|url'
    	];
-
-    //
 }
