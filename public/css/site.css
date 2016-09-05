@@ -65,7 +65,17 @@ div.panel_red {
 	padding: 10px 25px;
 	border: 1px solid #514e43;
 	margin-bottom: 15px;
-	margin-top: 3px;
+	margin-top: 16px;
+	text-align: center;
+}
+
+div.panel_green {
+	width: 100%;
+	background-color: #d3e397;
+	border: 1px solid #b7c483;
+	padding: 10px 25px;
+	margin-bottom: 15px;
+	margin-top: 16px;
 	text-align: center;
 }
 
@@ -76,7 +86,7 @@ div.main_panel {
 	border: 1px solid #66a498;
 }
 
-div.twitter, div.rfps, div.contact {
+div.twitter, div.rfps {
 	margin-top: 16px;
 }
 
@@ -232,7 +242,7 @@ p.industry_name {
 p.company_desc_home {
 	font-size: .85em;
 	line-height: 1.25em;
-}
+}„
 
 p.company_desc {
 	margin-top: -7px;
@@ -291,7 +301,6 @@ a.green_bg:after, a.green_bg:hover:after, ul.footer > li > a.footer_triangle:aft
 	height: 11px;
 	width: 10px;
 	margin-bottom: -3px;
-	margin-left: 5px;
 }
 
 div.login > a.forgot_password:after {
@@ -304,22 +313,27 @@ ul.footer > li > a.footer_triangle:hover:after, div.login > a.forgot_password:ho
 
 a.green_bg:after {
 	background: transparent url('/img/arrow_green.png') no-repeat;
+	margin-left: 4px;
 }
 
-ul.footer > li > a.footer_triangle:after,  a.green_bg:hover:after {
+ul.footer > li > a.footer_triangle:after {
 	background: transparent url('/img/arrow_gray.png') no-repeat;
+}
+
+a.green_bg:hover:after {
+	background: transparent url('/img/arrow_gray.png') no-repeat;
+	margin-left: 4px;
 }
 
 ul.footer > li > a.footer_triangle:hover {
 	color: #fff5c3;
 }
 
-a.green_bg, a.green_bg:visited, a.green_bg:active, a.green_bg:hover {
+a.green_bg, a.green_bg:visited, a.green_bg:active {
 	color: #7c786a;
-	font-size: .8em;
+	font-size: .85em;
 	text-transform: uppercase;
-	padding-bottom: -10px;
-	/*margin-left: 5px;*/
+	margin-left: 4px;
 }
 
 a.red_link {
@@ -333,13 +347,6 @@ a.red_link.small_caps {
 
 a.footer {
 	color: #dad6c7;
-}
-
-div.panel_white > a.green_bg {
-	background-color: #d3e397;
-	padding: 10px 25px;
-	border: 1px solid #b7c483;
-	/*margin: 15px auto;*/
 }
 
 ul.footer > li > a.footer_triangle {
