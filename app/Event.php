@@ -68,8 +68,8 @@ class Event extends Model
 		'desc' => 'required|filled',
 		'from_date' => 'required|date',
 		'to_date' => 'required|date',
-		'invite_only' => 'required|boolean',
-		'rsvp_required' => 'required|boolean',
+		'invite_only' => 'boolean',
+		'rsvp_required' => 'boolean',
 		'url' => 'required|url',
 		'img' => 'required|image'
 	];
