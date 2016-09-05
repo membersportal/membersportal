@@ -99,17 +99,36 @@
 			<h4 class="text-center project_showcase">New Building Proposed for Downtown San Antonio</h4>
 			<p>SAN ANTONIO — New renderings of the proposed Frost Bank headquarters show a vibrant, transformed area of downtown San Antonio as the city gears up to begin its review process of the design Wednesday.</p>
 			<p>Released over the weekend by the Historic and Design Review Commission, the renderings lay out where the 23-story glass skyscraper would lie amid a sea of concrete and stone buildings.</p>
-			<a class="red_link text-center" href="http://www.mysanantonio.com/business/article/City-releases-renderings-of-proposed-glass-8384186.php" alt="Read full article">See Project ></a>
+			<a class="red_link project" href="http://www.mysanantonio.com/business/article/City-releases-renderings-of-proposed-glass-8384186.php" alt="Read full article" target="_blank">See Full Project </a>
 		</div>
 
 		<div class="panel_white leaders">
 			<h3 class="text-center">Leadership</h3>
-			@foreach ($leaders as $leader)
-				<div class="leader">
-					<img class="leader_headshot" src="{{ '/img/uploads/leaders' . $leader->img }}">
+				<div class="row">
+					<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 text-center">
+						<a href="http://www.google.com" target="_blank">
+							<img class="img-circle img-thumbnail leader_headshot center-block" src="/img/uploads/avatars/profile_photo_template.png">
+						</a>
+						<h5 class="leader_name">Jay Nichols</h5>
+						<p class="leader_title">CEO</p>
+					</div>
+					<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 text-center">
+						<a href="http://www.google.com" target="_blank">
+							<img class="img-circle img-thumbnail leader_headshot center-block" src="/img/uploads/avatars/profile_photo_template.png">
+						</a>
+						<h5 class="leader_name">Anthony Martinez</h5>
+						<p class="leader_title">CEO</p>
+					</div>
+					<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 text-center">
+						<a href="http://www.google.com" target="_blank">
+							<img class="img-circle img-thumbnail leader_headshot center-block" src="/img/uploads/avatars/profile_photo_template.png">
+						</a>
+						<h5 class="leader_name">Randi Mays</h5>
+						<p class="leader_title">CEO</p>
+					</div>
 				</div>
-				@endforeach
 		</div>
+
 	</div>
 
 	<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 right_home">
