@@ -2,9 +2,9 @@
 
 @section('content')
 
-<form method="POST" action="{{ action('ContactsController@store') }}">
+<form method="POST" action="{{ action('ContactsController@update', ['id' => $contacts->id]) }}">
 	{!!csrf_field()!!}
-	@include(edit_contact_form)
+	@include(partials.admin_edit_contact_form)
 	<button type="submit">Save</button>
 </form>
 

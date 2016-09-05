@@ -55,6 +55,7 @@ Route::resource('rfps', 'RFPController');
     Route::get('/admin/users/create', 'UsersController@create');
     Route::post('/admin/users/store', 'UsersController@store');
     Route::delete('/admin/users/{user}', 'UsersController@destroy');
+    Route::get('/admin/users/deleteUser', 'UsersController@adminDeleteUser');
     Route::get('/admin/dashboard', 'UsersController@getAdminDashboard');
     Route::get('/admin/users/edit', 'UsersController@editUsers');
 

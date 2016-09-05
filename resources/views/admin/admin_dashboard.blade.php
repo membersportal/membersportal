@@ -16,6 +16,9 @@
 					<a href="{{ action('UsersController@create') }}" alt="Create New User">Create New User</a>
 				</li>
 				<li>
+					<a href="{{ action('CompaniesController@create') }}" alt="Create New Company">Create New Company</a>
+				</li>
+				<li>
 					<a href="{{ action('CarouselsController@create') }}" alt="Create New Carousel">Create New Carousel Item</a>
 				</li>
 				<li>
