@@ -59,16 +59,6 @@ div.about {
 	margin-top: 16px;
 }
 
-div.panel_green {
-	width: 100%;
-	background-color: #d3e397;
-	padding: 10px 25px;
-	border: 1px solid #b7c483;
-	margin-bottom: 15px;
-	margin-top: 3px;
-	text-align: center;
-}
-
 div.panel_red {
 	width: 100%;
 	background-color: #c65c39;
@@ -293,7 +283,9 @@ ul.footer {
 	padding-left: 0;
 }
 
-div.panel_green > a.green_bg:after, div.panel_green > a.green_bg:hover:after, ul.footer > li > a.footer_triangle:after, ul.footer > li > a.footer_triangle:hover:after, div.login > a.forgot_password:hover:after, a.forgot_password:after {
+/*Links*/
+
+a.green_bg:after, a.green_bg:hover:after, ul.footer > li > a.footer_triangle:after, ul.footer > li > a.footer_triangle:hover:after, div.login > a.forgot_password:hover:after, a.forgot_password:after {
 	content: "";
 	display: inline-block;
 	height: 11px;
@@ -310,11 +302,11 @@ ul.footer > li > a.footer_triangle:hover:after, div.login > a.forgot_password:ho
 	background: transparent url('/img/arrow.png') no-repeat;
 }
 
-div.panel_green > a.green_bg:after {
+a.green_bg:after {
 	background: transparent url('/img/arrow_green.png') no-repeat;
 }
 
-ul.footer > li > a.footer_triangle:after, ul.footer > li > a.footer_triangle:hover:after, div.panel_green > a.green_bg:hover:after {
+ul.footer > li > a.footer_triangle:after,  a.green_bg:hover:after {
 	background: transparent url('/img/arrow_gray.png') no-repeat;
 }
 
@@ -324,9 +316,10 @@ ul.footer > li > a.footer_triangle:hover {
 
 a.green_bg, a.green_bg:visited, a.green_bg:active, a.green_bg:hover {
 	color: #7c786a;
-	font-size: 1.15em;
+	font-size: .8em;
+	text-transform: uppercase;
 	padding-bottom: -10px;
-	margin-left: 10px;
+	/*margin-left: 5px;*/
 }
 
 a.red_link {
@@ -340,6 +333,13 @@ a.red_link.small_caps {
 
 a.footer {
 	color: #dad6c7;
+}
+
+div.panel_white > a.green_bg {
+	background-color: #d3e397;
+	padding: 10px 25px;
+	border: 1px solid #b7c483;
+	/*margin: 15px auto;*/
 }
 
 ul.footer > li > a.footer_triangle {
