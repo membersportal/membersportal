@@ -24,6 +24,11 @@ class EventsController extends Controller
 		return view('events.all_events')->with($data);
 	}
 
+	public function show()
+	{
+		//
+	}
+
 	public function searchEvents(Request $request)
 	{
 	  $results = Event::searchEvents($request);
@@ -62,7 +67,8 @@ class EventsController extends Controller
 	public function edit($id)
 	{
 	  $event = Event::findOrFail($id);
-	  $data = compact('event');
+		$users_events = Event::usersEvents()->get();
+	  $data = compact('event', 'users_events');
 	  return view('events.edit_event')->with($data);
 	}
 
