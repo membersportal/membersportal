@@ -31,20 +31,6 @@ class ConnectionsController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-      $connections = Connection::viewConnections($id)->paginate(10);
-      $companies = Company::($connections);
-      $data = compact('companies');
-      return view('')->with($data);
-    }
-
-    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id

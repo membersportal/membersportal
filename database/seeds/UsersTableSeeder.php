@@ -31,7 +31,8 @@ class UsersTableSeeder extends Seeder
           $new_user->email = $user['email'];
           $new_user->password = Hash::make($user['password']);
           $new_user->is_admin = $user['is_admin'];
-        	$new_user->save();
+
+          $new_user->save();
     	}
     }
 }
