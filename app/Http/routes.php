@@ -78,6 +78,7 @@ Route::resource('rfps', 'RFPController');
     Route::get('/admin/events/{event}/edit', 'EventsController@edit');
     Route::put('/admin/events/{event}', 'EventsController@update');
     Route::delete('/admin/events/{event}', 'EventsController@destroy');
+    Route::resource('/events', 'EventsController');
 
     // Articles
     Route::get('/admin/articles/create', 'ArticlesController@create');
