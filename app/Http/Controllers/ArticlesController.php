@@ -10,6 +10,11 @@ use App\Article;
 
 class ArticlesController extends Controller
 {
+	public function index()
+	{
+		return view('articles.all_articles');
+	}
+
 	/**
 	 * Show the form for creating a new resource.
 	 *

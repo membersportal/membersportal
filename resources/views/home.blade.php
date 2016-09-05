@@ -10,8 +10,10 @@
 			</a>
 			<p class="company_name text-center">{{ $newest_member->name }}</p>
 			<p class="industry_name_home text-center"><span class="industry_name_home">Industry:</span> {{ $newest_member->industry->industry }}</p>
-			<p class="text-center company_desc_home">Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
-			<a class="green_bg text-center" href="{{ action('CompaniesController@searchMembers') }}" alt="Find New Connections">Find New Connections</a>
+			<p class="text-center company_desc_home">{{ $newest_member->desc }}</p>
+			<div class="panel_green">
+				<a class="green_bg" href="{{ action('CompaniesController@searchMembers') }}" alt="Find New Connections">Find New Connections</a>
+			</div>
 		</div>
 
 		<div class="panel_white rfps">
@@ -87,6 +89,9 @@
 				<hr>
 			@endif
 			@endforeach
+			<div class="panel_green">
+				<a class="green_bg" href="{{ action('ArticlesController@index') }}" alt="Read More Articles">Read More Articles</a>
+			</div>
 		</div>
 	</div>
 
@@ -111,7 +116,9 @@
 				</div>
 				@endif
 			@endforeach
-			<a class="green_bg" href="{{ action('EventsController@index') }}" alt="View All Events">See All Events</a>
+			<div class="panel_green">
+				<a class="green_bg" href="{{ action('EventsController@index') }}" alt="View All Events">See All Events</a>
+			</div>
 		</div>
 		<a href="#">
 			<div class="panel_red">

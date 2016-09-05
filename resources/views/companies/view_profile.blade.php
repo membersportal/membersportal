@@ -22,7 +22,7 @@
 
 	<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 left_home">
 
-		<div class="panel_white contact">
+		<div class="panel_white">
 			<h3 class="text-center">Contact</h3>
 			<ul class="contact">
 				<li>{{ $contact->address_line_1 }}</li>
@@ -92,10 +92,10 @@
 
 	<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 right_home">
 		<div class="social_media">
-			<a href="http://www.facebook.com/{{ $contact->facebook }}"><img class="social_media_icon" src="/facebook-dreamstale25.png" alt="facebook" /></a>
-			<a href="http://www.instagram.com/{{ $contact->instagram }}"><img class="social_media_icon" src="/instagram-dreamstale43.png" alt="instagram" /></a>
-			<a href="http://www.linkedin.com/in/{{ $contact->linkedin }}"><img class="social_media_icon" src="/linkedin-dreamstale45.png" alt="linkedin" /></a>
-			<a href="http://plus.google.com/{{ $contact->google_plus }}"><img class="social_media_icon" src="/google+-dreamstale37.png" alt="google+" /></a>
+			<a href="http://www.facebook.com/{{ $contact->facebook }}"><img class="social_media_icon" src="/img/facebook-dreamstale25.png" alt="facebook" /></a>
+			<a href="http://www.instagram.com/{{ $contact->instagram }}"><img class="social_media_icon" src="/img/instagram-dreamstale43.png" alt="instagram" /></a>
+			<a href="http://www.linkedin.com/in/{{ $contact->linkedin }}"><img class="social_media_icon" src="/img/linkedin-dreamstale45.png" alt="linkedin" /></a>
+			<a href="http://plus.google.com/{{ $contact->google_plus }}"><img class="social_media_icon" src="/img/google+-dreamstale37.png" alt="google+" /></a>
 		</div>
 		<div class="home_panel">
 			<h3 class="text-center">Events</h3>
