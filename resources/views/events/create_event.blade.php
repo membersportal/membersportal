@@ -4,7 +4,7 @@
 
 <form method="POST" action="{{ action('EventsController@store') }}">
     {!!csrf_field()!!}
-    @include('partials.edit_event')
+    @include('partials.create_event_form')
 <button type="submit" name="button">Submit</button>
 </form>
 

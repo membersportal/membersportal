@@ -19,7 +19,7 @@
   <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 center_home">
 
     <h1>Edit Event</h1>
-    @include('partials.edit_event')
+    @include('partials.edit_event_form')
 
   </div>
 
@@ -30,7 +30,7 @@
       <label for="users_events">My Events</label>
       <select class="form-control" id="event_id" name="event_id">
         <option disabled selected label="Select"></option>
-        @foreach ($usersEvents as $event)
+        @foreach ($users_events as $event)
           <option value="{{ $event->id }}">{{ $event->title }}</option>
         @endforeach
       </select>
