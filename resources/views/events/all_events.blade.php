@@ -27,7 +27,7 @@
 
   <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 right_home">
 
-    <form class="" action="{{ action('EventsController@edit', $id) }}" method="get">
+    <form class="" action="{{ action('EventsController@edit', ['id' => 'event_id']) }}" method="get">
       <label for="users_events">My Events</label>
       <select class="form-control" id="event_id" name="event_id">
         <option disabled selected label="Select"></option>
