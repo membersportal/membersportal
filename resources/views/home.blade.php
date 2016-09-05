@@ -11,9 +11,7 @@
 			<p class="company_name text-center">{{ $newest_member->name }}</p>
 			<p class="industry_name_home text-center"><span class="industry_name_home">Industry:</span> {{ $newest_member->industry->industry }}</p>
 			<p class="text-center company_desc_home">Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
-		</div>
-		<div class="panel_green">
-			<a class="green_bg" href="{{ action('CompaniesController@searchMembers') }}" alt="View All Events">Find New Connections</a>
+			<a class="green_bg text-center" href="{{ action('CompaniesController@searchMembers') }}" alt="Find New Connections">Find New Connections</a>
 		</div>
 
 		<div class="panel_white rfps">
@@ -31,9 +29,7 @@
 						</ul>
 					@endif
 				@endforeach
-		</div>
-		<div class="panel_green">
-				<a class="green_bg" href="#" alt="View All Events">Browse All RFPs</a>
+			<a class="green_bg" href="#" alt="Browse All RFPs">Browse All RFPs</a>
 		</div>
 	</div>
 
@@ -115,8 +111,6 @@
 				</div>
 				@endif
 			@endforeach
-		</div>
-		<div class="panel_green">
 			<a class="green_bg" href="{{ action('EventsController@index') }}" alt="View All Events">See All Events</a>
 		</div>
 		<a href="#">
