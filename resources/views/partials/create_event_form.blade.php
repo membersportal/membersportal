@@ -18,12 +18,12 @@
 </div>
 <div class="checkbox-inline">
 	<label for="invite_only">
-	<input type="checkbox" name="invite_only" value="{{ old('invite_only') }}" required> Invite Only?<span class="required">*</span>
+	<input type="checkbox" name="invite_only" value="True" required> Invite Only?<span class="required">*</span>
 	</label>
 </div>
 <div class="checkbox-inline">
 	<label for="rsvp_required">
-	<input type="checkbox" name="rsvp_required" value="{{ old('rsvp_required') }}" required> RSVP Required?<span class="required">*</span>
+	<input type="checkbox" name="rsvp_required" value="True" required> RSVP Required?<span class="required">*</span>
 	</label>
 </div>
 <div class="form-group">

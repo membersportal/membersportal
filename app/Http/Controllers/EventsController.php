@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Event;
+use App\Company;
 
 
 class EventsController extends Controller
@@ -19,9 +21,18 @@ class EventsController extends Controller
 	public function index()
 	{
 		$events = Event::all();
-		$users_events = Event::usersEvents(Auth::user()->id)->get();
-		$data = compact('events', 'users_events');
+		$user = Auth::user()->id;
+		$user_company = Company::find($user);
+		$connections = $user_company->companies;
+		$connections_events = Event::dashboardEvents($connections)->get();
+		$users_events = Event::usersEvents($user)->get();
+		$data = compact('events', 'users_events', 'connections_events');
 		return view('events.all_events')->with($data);
+	}
+
+	public function show()
+	{
+		//
 	}
 
 	public function searchEvents(Request $request)
@@ -38,7 +49,13 @@ class EventsController extends Controller
 	 */
 	public function create()
 	{
-		return view('events.create_event');
+		$user = Auth::user()->id;
+		$user_company = Company::find($user);
+		$connections = $user_company->companies;
+		$connections_events = Event::dashboardEvents($connections)->get();
+		$users_events = Event::usersEvents($user)->get();
+		$data = compact('users_events', 'connections_events');
+		return view('events.create_event')->with($data);
 	}
 
 	/**
@@ -59,10 +76,16 @@ class EventsController extends Controller
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function edit($id)
+	public function edit(Request $request)
 	{
-	  $event = Event::findOrFail($id);
-	  $data = compact('event');
+		$user = Auth::user()->id;
+		$event_id = $request->event_id;
+	  $event = Event::findOrFail($event_id);
+		$user_company = Company::find($user);
+		$connections = $user_company->companies;
+		$connections_events = Event::dashboardEvents($connections)->get();
+		$users_events = Event::usersEvents($user)->get();
+	  $data = compact('event', 'users_events', 'connections_events');
 	  return view('events.edit_event')->with($data);
 	}
 
@@ -100,7 +123,7 @@ class EventsController extends Controller
 	private function validateAndSave(Event $event, Request $request){
 		$company_id = Auth::user()->id;
 		$is_admin = Auth::user()->is_admin;
-		$request->session()->flash('ERROR_MESSAGE', 'User not created successfully.');
+		$request->session()->flash('ERROR_MESSAGE', 'Event not created successfully.');
 
 		$this->validate($request, Event::$rules);
 		$request->session()->forget('ERROR_MESSAGE');

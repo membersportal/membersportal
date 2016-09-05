@@ -140,9 +140,9 @@ class Company extends Model
 
 	public function getDescAttribute($value)
 	{
-		return ucwords($value);
+		return ucfirst($value);
 	}
-
+	
 	public static $rules = [
 		'name' => 'required|max:120',
 		'industry_id' => 'required|integer',
