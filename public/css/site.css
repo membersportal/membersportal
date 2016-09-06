@@ -110,6 +110,10 @@ div.social_media {
 	padding-bottom: 30px;
 }
 
+div.social_media_edit {
+	margin-top: 30px;
+}
+
 div.nav_triangle_div {
 	width: 100%;
 	position: relative;
@@ -122,7 +126,7 @@ div.nav_triangle_1, div.nav_triangle_2, div.nav_triangle_3 {
 	border-left: 12px solid #66a498;
 	border-bottom: 22px solid transparent;
 	position: absolute;
-	right: 12px;
+	right: 4px;
 }
 
 div.nav_triangle_2 {
@@ -188,6 +192,12 @@ div.leader {
 	width: 100px;
 	height: 100px;
 	overflow: hidden;
+}
+
+div.interior_form {
+	padding: 0;
+	margin-left: -8px;
+	margin-right: -8px;
 }
 
 /*Text*/
@@ -272,6 +282,10 @@ h4.footer {
 p.red_panel_text {
 	line-height: 1.25em;
 	color: #fff;
+}
+
+p.blue {
+	color: #66a498;
 }
 
 p.company_name {
@@ -656,6 +670,10 @@ input.login_checkbox {
 	border-radius: 0;
 }
 
+input.form-control.included {
+	margin-top: 5px;
+}
+
 .form-control.search_form {
 	width: 48%;
 	margin-right: 0;
@@ -677,6 +695,12 @@ select.form-control.search_form {
 	box-shadow: none;
 }
 
+.form-control:focus {
+	border: 1px solid #d3e397;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+}
+
 ::-webkit-input-placeholder{
 	color: #514e43;
 	opacity: 0.8;
@@ -686,7 +710,7 @@ select.form-control.search_form {
 
 :-moz-placeholder {
 	color: #514e43;
-	opacity: 0.8;
+	opacity: 0.7;
 	letter-spacing: .5px;
 	font-size: 1.1em;
 } 

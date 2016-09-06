@@ -5,7 +5,7 @@
 <div class="container">
 	<h1 class="text-center">Edit Login Information</h1>
 	<p class="text-center"><span class="required">*</span> Required Field</p>
-	<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 edit_nav">	
+	<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 col-xl-2  col-sm-offset-1 col-md-offset-1 col-lg-offset-1  col-xl-offset-1 edit_nav">	
 		<div class="row edit_account_nav">
 			<div class="col-xs-11 col-sm-11 col-md-11 col-lg-11 col-xl-11">
 				@include('partials.edit_account_nav', ['login' => 'active', 'company' => '', 'contact' => ''])

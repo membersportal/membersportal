@@ -41,11 +41,6 @@ class Contact extends Model
 		return ucwords($value);
 	}
 
-	public function getPhoneNoAttribute($value)
-	{
-		return '(' . substr($value, 0, 3) . ') ' . substr($value, 3, 3) . '-' . substr($value, 6, 4);
-	}
-
 	public function getWebsiteAttribute($value)
 	{
 		if (substr($value, 0, 12) === 'https://www.') {
@@ -78,9 +73,9 @@ class Contact extends Model
      'country' => 'required|max:15',
      'website' => 'nullable|url',
      'twitter'  => 'nullable|max:20',
-     'facebook' => 'nullable|max:20',
-     'instagram' => 'nullable|max:20',
-     'linkedin' => 'nullable|max:20',
-     'google_plus' => 'nullable|max:20'
+     'facebook' => 'nullable|max:200',
+     'instagram' => 'nullable|max:200',
+     'linkedin' => 'nullable|max:200',
+     'google_plus' => 'nullable|max:200'
    	];
 }
