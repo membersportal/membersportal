@@ -116,8 +116,9 @@ class CompaniesController extends Controller
 
 	public function viewConnections($id)
 	{
-		$user = User::find($id);
-		$data = compact('user');
+		$user = User::find($id)->id;
+		$connections = Company::findOrFail($user)->companies;
+		$data = compact('connections');
 		return view('companies.all_connections')->with($data);
 	}
 
