@@ -56,7 +56,7 @@ div.panel_white {
 	border: 1px solid #d3e397;
 }
 
-div.about, div.leaders {
+div.about, div.leaders, div.events {
 	margin-top: 16px;
 }
 
@@ -89,7 +89,7 @@ div.main_panel {
 	border: 1px solid #66a498;
 }
 
-div.twitter, div.rfps {
+div.twitter, div.rfps, div.connections {
 	margin-top: 16px;
 }
 
@@ -108,6 +108,11 @@ div#map {
 
 div.project_showcase {
 	margin-top: 8px;
+}
+
+div.social_media {
+	margin-top: 16px;
+	padding-bottom: 30px;
 }
 
 hr {
@@ -330,7 +335,7 @@ ul.footer {
 
 /*Links*/
 
-a.green_bg:after, a.green_bg:hover:after, ul.footer > li > a.footer_triangle:after, ul.footer > li > a.footer_triangle:hover:after, div.login > a.forgot_password:hover:after, a.forgot_password:after, div.connect > button.btn.btn-primary.pull-right.connect:after, div.connect > button.btn.btn-primary.pull-right.connect:hover:after {
+a.green_bg:after, a.green_bg:hover:after, ul.footer > li > a.footer_triangle:after, ul.footer > li > a.footer_triangle:hover:after, div.login > a.forgot_password:hover:after, a.forgot_password:after, div.connect > form > button.btn.btn-primary.pull-right.connect:after, div.connect > form > button.btn.btn-primary.pull-right.connect:hover:after, div.main_panel > div >  a.red_link.project:after, div.main_panel > div >  a.red_link.project:hover:after {
 	content: "";
 	display: inline-block;
 	height: 11px;
@@ -338,7 +343,11 @@ a.green_bg:after, a.green_bg:hover:after, ul.footer > li > a.footer_triangle:aft
 	margin-bottom: -3px;
 }
 
-div.login > a.forgot_password:after {
+div.main_panel > div >  a.red_link.project:after {
+	background: transparent url('/img/arrow_white.png') no-repeat;
+}
+
+div.login > a.forgot_password:after, div.main_panel > div >  a.red_link.project:hover:after {
 	background: transparent url('/img/arrow_red.png') no-repeat;
 }
 
@@ -346,20 +355,20 @@ ul.footer > li > a.footer_triangle:hover:after, div.login > a.forgot_password:ho
 	background: transparent url('/img/arrow.png') no-repeat;
 }
 
-div.login > a.forgot_password:after, ul.footer > li > a.footer_triangle:hover:after, div.login > a.forgot_password:hover:after, ul.footer > li > a.footer_triangle:after, ul.footer > li > a.footer_triangle:after, a.green_bg:hover:after, a.green_bg:after, a.green_bg:hover:after, div.connect > button.btn.btn-primary.pull-right.connect:after, div.connect > button.btn.btn-primary.pull-right.connect:hover:after {
+div.login > a.forgot_password:after, ul.footer > li > a.footer_triangle:hover:after, div.login > a.forgot_password:hover:after, ul.footer > li > a.footer_triangle:after, ul.footer > li > a.footer_triangle:after, a.green_bg:hover:after, a.green_bg:after, a.green_bg:hover:after, div.connect > form > button.btn.btn-primary.pull-right.connect:after, div.connect > form > button.btn.btn-primary.pull-right.connect:hover:after {
 	margin-left: 4px;
 }
 
-a.green_bg:after, div.connect > button.btn.btn-primary.pull-right.connect:after {
+a.green_bg:after, div.connect > form > button.btn.btn-primary.pull-right.connect:after {
 	background: transparent url('/img/arrow_green.png') no-repeat;
 }
 
-ul.footer > li > a.footer_triangle:after, div.connect > button.btn.btn-primary.pull-right.connect:hover:after {
+ul.footer > li > a.footer_triangle:after, a.green_bg:hover:after {
 	background: transparent url('/img/arrow_gray.png') no-repeat;
 }
 
-a.green_bg:hover:after {
-	background: transparent url('/img/arrow_gray.png') no-repeat;
+div.connect > form > button.btn.btn-primary.pull-right.connect:hover:after {
+	background: transparent url('/img/arrow_dkblue.png') no-repeat;
 }
 
 ul.footer > li > a.footer_triangle:hover {
@@ -370,15 +379,11 @@ a.green_bg, a.green_bg:visited, a.green_bg:active {
 	color: #7c786a;
 	font-size: .85em;
 	text-transform: uppercase;
-	margin-left: 4px;
+	margin-left: 8px;
 }
 
 a.red_link {
 	color: #eb6e44;
-}
-
-div.main_panel.project_showcase > a.red_link.project {
-	text-align: center;
 }
 
 a.red_link.small_caps {
@@ -416,7 +421,7 @@ a, a:hover, a:visited, a:active {
 }
 
 .social_media_icon {
-	width: 40px;
+	width: 30px;
 }
 
 .logo.randi {
@@ -472,7 +477,12 @@ img.leader_headshot {
 img.project_showcase {
 	margin-top: 16px;
 	width: 100%;
-	border: 1px solid #d3e397;
+	border: 1px solid #66a498;
+}
+
+img.connection_thumb {
+	width: 65px;
+	height: 65px;
 }
 
 .glyphicon.glyphicon-ok {

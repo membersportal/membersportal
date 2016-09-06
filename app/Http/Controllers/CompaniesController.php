@@ -116,8 +116,9 @@ class CompaniesController extends Controller
 
 	public function viewConnections($id)
 	{
-		$user = User::find($id);
-		$data = compact('user');
+		$user = User::find($id)->id;
+		$connections = Company::findOrFail($user)->companies;
+		$data = compact('connections');
 		return view('companies.all_connections')->with($data);
 	}
 
@@ -125,7 +126,7 @@ class CompaniesController extends Controller
 	{
 		$company = Company::findOrFail($id);
 		$contact = $company->contact;
-		$rfps = Rfp::profileRfps($company->id);
+		$rfps = Rfp::profileRfps($company->id)->get();
 		$events = $company->events;
 		$leaders = $company->leaders;
 		$connections = Connection::viewConnections($id)->take(3)->get();
