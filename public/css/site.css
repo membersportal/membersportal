@@ -112,20 +112,29 @@ div.social_media {
 
 div.nav_triangle_div {
 	width: 100%;
+	position: relative;
 }
 
-div.nav_triangle {
+div.nav_triangle_1, div.nav_triangle_2, div.nav_triangle_3 {
 	width: 0;
 	height: 0;
 	border-top: 22px solid transparent;
 	border-left: 12px solid #66a498;
 	border-bottom: 22px solid transparent;
 	position: absolute;
-	right: 3.75px;
+	right: 12px;
 }
 
-div.edit_account_nav {
-	position: relative;
+div.nav_triangle_2 {
+	top: 42px;
+}
+
+div.nav_triangle_3 {
+	top: 85px;
+}
+
+div.checkboxes {
+	margin: 10px 0;
 }
 
 hr {
@@ -535,6 +544,19 @@ img.connection_thumb {
 	height: 65px;
 }
 
+img.current_company_header {
+	margin: 15px 0;
+	width: 100%;
+	height: auto;
+}
+
+img.current_company_profile {
+	margin-top: 15px;
+	margin-bottom: 15px;
+	width: 100px;
+	height: auto;
+}
+
 .glyphicon.glyphicon-ok {
 	font-size: .75em;
 	margin-right: 10px;
@@ -592,6 +614,12 @@ div.connect {
 }
 
 /*Forms*/
+textarea {
+	width: 100%;
+	padding: 10px;
+	resize: none;
+}
+
 form#search_form {
 	background-color: #fff;
 	border: 1px solid #d3e397;
@@ -600,7 +628,8 @@ form#search_form {
 }
 
 p.form_label_small {
-	
+	font-size: .8em;
+	color: #66a498;
 }
 
 label.login {
@@ -614,11 +643,10 @@ div.form-group > label {
 
 input.form-control.login {
 	border-style: none;
-	border-radius: 0;
 	text-align: center;
 }
 
-input.form-control {
+input.form-control, textarea {
 	border: 1px solid #d3e397;
 	border-radius: 0;
 	box-shadow: none;
@@ -634,8 +662,19 @@ input.login_checkbox {
 	display: inline-block;
 }
 
+.form-group.half_width {
+	width: 49.65%;
+	display: inline-block;
+}
+
 select.form-control.search_form {
 	height: 35px;
+}
+
+.form-group > select {
+	border: 1px solid #d3e397;
+	border-radius: 0;
+	box-shadow: none;
 }
 
 ::-webkit-input-placeholder{

@@ -23,7 +23,7 @@
     <form method="POST" action="{{ action('EventsController@store') }}" enctype="multipart/form-data">
         {!!csrf_field()!!}
         @include('partials.create_event_form')
-    <button type="submit">Submit</button>
+      <button type="submit">Submit</button>
     </form>
 
   </div>
