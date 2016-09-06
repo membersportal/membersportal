@@ -101,6 +101,7 @@ Route::delete('/connections/{user}', 'ConnectionsController@destroy');
 
 // Events
 Route::post('/events/{event}', 'EventsController@update');
+Route::delete('/events/{event}', 'EventsController@destroy');
 Route::resource('events', 'EventsController');
 
 // Leaders
