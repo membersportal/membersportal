@@ -333,6 +333,11 @@ ul.footer {
 	padding-left: 0;
 }
 
+span.required {
+	color: #eb6e44;
+	font-weight: 700;
+}
+
 /*Links*/
 
 a.green_bg:after, a.green_bg:hover:after, ul.footer > li > a.footer_triangle:after, ul.footer > li > a.footer_triangle:hover:after, div.login > a.forgot_password:hover:after, a.forgot_password:after, div.connect > form > button.btn.btn-primary.pull-right.connect:after, div.connect > form > button.btn.btn-primary.pull-right.connect:hover:after, div.main_panel > div >  a.red_link.project:after, div.main_panel > div >  a.red_link.project:hover:after {
