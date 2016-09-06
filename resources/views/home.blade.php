@@ -33,7 +33,7 @@
 					@endif
 				@endforeach
 			<div class="panel_green">
-				<a class="green_bg" href="#" alt="Browse All RFPs">Browse All RFPs</a>
+				<a class="green_bg" href="{{ action('RFPController@index') }}" alt="Browse All RFPs">Browse All RFPs</a>
 			</div>
 		</div>
 	</div>
