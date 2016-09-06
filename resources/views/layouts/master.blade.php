@@ -28,7 +28,7 @@
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li class="active triangle"><a href="{{ action('EventsController@index') }}">Events <span class="sr-only">Events</span></a></li>
-					<li class="active triangle"><a href="{{ action('RFPController@index') }}">RFPs <span class="sr-only">RFPs</span></a></li>
+					<li class="active triangle"><a href="{{ action('RFPController@index') }}">Requests for Proposals <span class="sr-only">RFPs</span></a></li>
 					<li class="active triangle"><a href="{{ action('ArticlesController@index') }}">Articles <span class="sr-only">Articles</span></a></li>
 					<li class="triangle"><a href="{{ action('CompaniesController@searchMembers') }}">Search Members</a></li>
 				</ul>

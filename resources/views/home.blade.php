@@ -17,7 +17,8 @@
 		</div>
 
 		<div class="panel_white rfps">
-			<h3 class="text-center">Requests for Proposals</h3>
+			<h3 class="text-center rfps">Requests for Proposals</h3>
+			<h3 class="text-center abbreviation">(RFPs)</h3>
 				@foreach ($admin_rfps as $key => $rfp)
 					@if ($key < 11)
 						<ul class="rfps">
