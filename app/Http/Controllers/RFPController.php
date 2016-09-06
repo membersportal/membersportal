@@ -37,7 +37,7 @@ class RFPController extends Controller
 	{
 		$user = Auth::user();
 		$data = compact('user');
-		return view('rfps.create')->with($data);
+		return view('admin.admin_create_rfp')->with($data);
 	}
 
 	/**
@@ -84,7 +84,7 @@ class RFPController extends Controller
 		$connections_rfps = Rfp::dashboardRfps($connections)->get();
 		$users_rfps = Rfp::profileRfps($user)->get();
 		$data = compact('rfp', 'connections_rfps', 'users_rfps');
-		return view('rfps.edit_rfp')->with($data);
+		return view('admin.admin_edit_rfp')->with($data);
 	}
 
 	/**

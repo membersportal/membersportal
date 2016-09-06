@@ -39,6 +39,11 @@ class UsersController extends Controller
 		return view('home')->with($data);
 	}
 
+	public function deleteUserSearch()
+	{
+		return view('admin.admin_delete_user_search');
+	}
+
 	public function adminDeleteUser(Request $request)
 	{
 		$searched_user = User::searchUser($request);
