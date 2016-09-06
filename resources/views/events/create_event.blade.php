@@ -20,13 +20,10 @@
 
   <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 center_home">
 
-    <form method="POST" action="{{ action('EventsController@store') }}">
+    <form method="POST" action="{{ action('EventsController@store') }}" enctype="multipart/form-data">
         {!!csrf_field()!!}
-            <div class="form-group">
-      <label for="Image">Image</label>
-      <input type="file" class="form-control" name="image" accept="image/*">
-    </div>
-    <button type="submit" name="button">Submit</button>
+        @include('partials.create_event_form')
+      <button type="submit">Submit</button>
     </form>
 
   </div>

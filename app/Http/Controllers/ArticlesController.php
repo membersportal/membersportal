@@ -50,6 +50,12 @@ class ArticlesController extends Controller
 		return view('admin.admin_edit_article')->with($data);
 	}
 
+	public function editgeneral()
+	{
+		$articles = Article::homeArticles();
+		$data = compact('articles');
+		return view('admin.admin_show_articles')->with($data);
+	}
 	/**
 	 * Update the specified resource in storage.
 	 *

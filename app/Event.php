@@ -65,13 +65,13 @@ class Event extends Model
 
 	public static $rules = [
 		'title' => 'required|max:75',
-		'desc' => 'required|filled',
-		'from_date' => 'required|date',
-		'to_date' => 'required|date',
+		'desc' => 'required',
+		'from_date' => 'required|date_format:"Y-m-d"',
+		'to_date' => 'required|date_format:"Y-m-d"',
 		'invite_only' => 'boolean',
 		'rsvp_required' => 'boolean',
 		'url' => 'required|url',
-		'img' => 'required|image'
+		'img' => 'image|required'
 	];
 	//
 }
