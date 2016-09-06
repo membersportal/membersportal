@@ -56,7 +56,7 @@ div.panel_white {
 	border: 1px solid #d3e397;
 }
 
-div.about {
+div.about, div.leaders {
 	margin-top: 16px;
 }
 
@@ -195,7 +195,12 @@ h4.project_showcase {
 	margin-bottom: 15px;
 }
 
-h1, h2, h3, h4 {
+h5.leader_name {
+	margin-bottom: 3px;
+	color: #b7c483;
+}
+
+h1, h2, h3, h4, h5 {
 	font-family: 'Roboto Slab', serif;
 	color: #7c786a;
 }
@@ -266,6 +271,13 @@ p.article_desc {
 	margin-bottom: 20px;
 }
 
+p.leader_title {
+	font-family: 'Roboto Slab', serif;
+	margin-bottom: 0;
+	letter-spacing: 1px;
+	font-size: .95em;
+}
+
 ul.rfps, ul.contact, ul.company_stats {
 	line-height: 1.25em;
 	padding-left: 0;
@@ -276,6 +288,7 @@ ul.rfps, ul.contact, ul.company_stats {
 ul.company_stats {
 	color: #fff;
 	font-size: 1.05em;
+	line-height: 1.5em;
 }
 
 ul.company_stats > li > span.strong {
@@ -364,6 +377,10 @@ a.red_link {
 	color: #eb6e44;
 }
 
+div.main_panel.project_showcase > a.red_link.project {
+	text-align: center;
+}
+
 a.red_link.small_caps {
 	text-transform: uppercase;
 	font-size: .85em;
@@ -446,9 +463,10 @@ img.hiring {
 }
 
 img.leader_headshot {
-	width: 50px;
-	height: 50px; 
+	width: 75px;
+	height: 75px; 
 	object-fit: contain;
+	display: inline-block;
 }
 
 img.project_showcase {
