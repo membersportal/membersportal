@@ -24,7 +24,7 @@
 </div>
 <div class="form-group">
   <label for="project_scope">Project Scope<span class="required">*</span></label>
-  <textarea class="form-control" name="project_scope" rows="2000" cols="12">{{ option('project_scope') }}</textarea>
+  <textarea class="form-control" name="project_scope" maxlength="2000" cols="12">{{ option('project_scope') }}</textarea>
   @include ('partials.error', ['value' => 'project_scope'])
 </div>
 <div class="form-group">
