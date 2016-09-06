@@ -129,10 +129,10 @@ class EventsController extends Controller
 	  $event = Event::findOrFail($id);
 	  $event->delete();
 
-	  if(!Auth::user()->is_admin) {
-	  	return redirect()->action('companies.view_profile');
+	  if(Auth::user()->is_admin) {
+			return redirect()->action('UsersControllers@getAdminDashboard');
 	  } else {
-	  	return redirect()->action('admin.admin_dashboard');
+	  	return redirect()->action('EventsController@index');
 	  }
 	}
 

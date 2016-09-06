@@ -24,9 +24,12 @@
       {!! csrf_field() !!}
         @include('partials.edit_event_form')
       <button type="submit">Save</button>
-      <a href="{{ action('EventsController@destroy', $id = $event->id) }}">Delete Event</a>
     </form>
-
+    <form action="{{ action('EventsController@destroy', $id = $event->id) }}" method="post">
+      {!! csrf_field() !!}
+      {{ method_field('DELETE') }}
+      <button type="submit" name="button">Delete Event</button>
+    </form>
   </div>
 
 
