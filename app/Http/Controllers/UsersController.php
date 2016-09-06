@@ -79,7 +79,7 @@ class UsersController extends Controller
 	{
 		$user = User::find($id);
 		$data = compact('user');
-		return view('users.edit_login')->with($data);
+		return view('admin.admin_edit_login')->with($data);
 	}
 
 	/**
