@@ -59,6 +59,7 @@ Route::get('articles', 'ArticlesController@index');
     Route::get('/admin/users/create', 'UsersController@create');
     Route::post('/admin/users/store', 'UsersController@store');
     Route::delete('/admin/users/{user}', 'UsersController@destroy');
+    Route::get('/admin/userssearch', 'UsersController@deleteUserSearch');
     Route::get('/admin/users/deleteUser', 'UsersController@adminDeleteUser');
     Route::get('/admin/dashboard', 'UsersController@getAdminDashboard');
     Route::get('/admin/users/edit', 'UsersController@editUsers');
@@ -82,6 +83,7 @@ Route::get('articles', 'ArticlesController@index');
     Route::post('/admin/events', 'EventsController@store');
     Route::get('/admin/events/{event}/edit', 'EventsController@edit');
     Route::put('/admin/events/{event}', 'EventsController@update');
+    Route::get('/admin/eventsview', 'EventsController@editgeneral');
     Route::delete('/admin/events/{event}', 'EventsController@destroy');
 
     // Articles
@@ -97,3 +99,4 @@ Route::get('articles', 'ArticlesController@index');
     Route::get('/admin/carousels/{carousel}/edit', 'CarouselsController@edit');
     Route::put('/admin/carousels/{carousel}', 'CarouselsController@update');
     Route::delete('/admin/carousels/{carousel}', 'CarouselsController@destroy');
+    Route::get('/admin/carouselsview', 'CarouselsController@editgeneral');

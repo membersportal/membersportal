@@ -44,7 +44,8 @@ class ContactsController extends Controller
     public function edit($id)
     {
         $contact = Contact::findOrFail($id);
-        return view('admin.admin_edit_org_contact')->with('contact', $contact);
+        $data = compact('contact');
+        return view('admin.admin_edit_org_contact')->with($data);
     }
 
     /**

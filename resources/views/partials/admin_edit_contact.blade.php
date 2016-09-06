@@ -1,10 +1,5 @@
 <!-- Org Contact Name and Address -->
 <div class="form-group">
-	<label for="address_line_1">Company Name<span class="required">*</span></label>
-	<input type="text" class="form-control" name="name" value="{{ $contact->company_id }}" placeholder="Address Line 1" maxlength="50" required>
-	@include ('partials.error', ['value' => 'name'])
-</div>
-<div class="form-group">
 	<label for="address_line_1">Company Address<span class="required">*</span></label>
 	<input type="text" class="form-control" name="address_line_1" value="{{ $contact->address_line_1 }}" placeholder="Address Line 1" maxlength="50" required>
 	@include ('partials.error', ['value' => 'address_line_1'])
