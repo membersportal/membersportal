@@ -20,10 +20,10 @@
 
   <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 center_home">
 
-    <form method="POST" action="{{ action('EventsController@store') }}">
+    <form method="POST" action="{{ action('EventsController@store') }}" enctype="multipart/form-data">
         {!!csrf_field()!!}
         @include('partials.create_event_form')
-    <button type="submit" name="button">Submit</button>
+    <button type="submit">Submit</button>
     </form>
 
   </div>

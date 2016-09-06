@@ -144,19 +144,29 @@ class EventsController extends Controller
 		$this->validate($request, Event::$rules);
 		$request->session()->forget('ERROR_MESSAGE');
 		$event->company_id = $company_id;
+		$event->title = $request->title;
 		$event->desc = $request->desc;
 		$event->from_date = $request->from_date;
 		$event->to_date = $request->to_date;
 		$event->invite_only = $request->invite_only;
 		$event->rsvp_required = $request->rsvp_required;
 		$event->url = $request->url;
+		$this->storeImage($request, $event);
 		$event->save();
 
 		$request->session()->flash('message', 'Event successfully created.');
 		if ($is_admin) {
-		  return redirect()->action('admin.admin_dashboard');
+		  return redirect()->action('UsersControllers@getAdminDashboard');
 		} else {
-		  return redirect()->action('companies.view_profile');
+		  return redirect()->action('EventsController@index');
 		}
+	}
+
+	private function storeImage($request, $event)
+	{
+		$file = $request->file('img')->getClientOriginalName();
+		$request->file('img')->move(public_path('img'), $request->file('img')->getClientOriginalName());
+		$file_path = public_path('img/uploads/events') . '/' . $request->file('img')->getClientOriginalName();
+		$event->img = $file;
 	}
 }
