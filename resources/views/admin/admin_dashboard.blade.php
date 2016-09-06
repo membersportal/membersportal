@@ -47,7 +47,7 @@
 						<a href="{{ action('RFPController@create') }}" alt="Create New RFP">Create New RFP</a>
 					</li>
 					<li>
-						<a href="{{ action('RFPController@edit') }}" alt="Edit RFP">Edit RFP</a>
+						<a href="{{ action('RFPController@editgeneral') }}" alt="Edit RFP">Edit RFP</a>
 					</li>
 				</ul>
 				<ul>
@@ -56,7 +56,7 @@
 						<a href="{{ action('ArticlesController@create') }}" alt="Create New Article">Create New Article</a>
 					</li>
 					<li>
-						<a href="{{ action('ArticlesController@edit') }}" alt="Edit Article">Edit Article</a>
+						<a href="{{ action('ArticlesController@editgeneral') }}" alt="Edit Article">Edit Article</a>
 					</li>
 				</ul>	
 

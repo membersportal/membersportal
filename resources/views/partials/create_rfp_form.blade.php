@@ -19,12 +19,12 @@
 </div>
 <div class="form-group">
   <label for="phone_no">Contact Number<span class="required">*</span></label>
-  <input type="tel" class="form-control" name="phone_no" value="{{ option('phone_no') }}">
+  <input type="tel" class="form-control" name="phone_no" value="{{ old('phone_no') }}">
   @include ('partials.error', ['value' => 'phone_no'])
 </div>
 <div class="form-group">
   <label for="project_scope">Project Scope<span class="required">*</span></label>
-  <textarea class="form-control" name="project_scope" maxlength="2000" cols="12">{{ option('project_scope') }}</textarea>
+  <textarea class="form-control" name="project_scope" maxlength="2000" cols="12">{{ old('project_scope') }}</textarea>
   @include ('partials.error', ['value' => 'project_scope'])
 </div>
 <div class="form-group">

@@ -76,17 +76,29 @@ class RFPController extends Controller
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function edit(Request $request)
+	public function edit(Request $request, $id)
 	{
-		$user = Auth::user()->id;
-		$rfp = Rfp::findOrFail($request->rfp_id);
-		$connections = Company::find($user)->companies;
-		$connections_rfps = Rfp::dashboardRfps($connections)->get();
-		$users_rfps = Rfp::profileRfps($user)->get();
-		$data = compact('rfp', 'connections_rfps', 'users_rfps');
-		return view('admin.admin_edit_rfp')->with($data);
+		$user = Auth::user();
+		if ($user->is_admin){
+			$rfp = Rfp::findOrFail($id);
+			$data = compact('rfp');
+			return view('admin.admin_edit_rfp')->with($data);	
+		} else {
+			$rfp = Rfp::findorfail($request->rfp_id);
+			$connections = Company::find($user->id)->companies;
+			$connections_rfps = Rfp::dashboardRfps($connections)->get();
+			$users_rfps = Rfp::profileRfps($user)->get();
+			$data = compact('rfp', 'connections_rfps', 'users_rfps');
+			return view('rfps.edit.rfp')->with($data);
+		}
 	}
 
+	public function editgeneral()
+	{
+		$rfps = Rfp::homeRfps();
+		$data = compact('rfps');
+		return view('admin.admin_edit_rfps_general')->with($data);
+	}
 	/**
 	 * Update the specified resource in storage.
 	 *
