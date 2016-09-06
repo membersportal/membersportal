@@ -55,6 +55,9 @@ Route::get('articles', 'ArticlesController@index');
 
 
 // ================= Admin Only ================= //
+
+Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
+{
     // Users
     Route::get('/admin/users/create', 'UsersController@create');
     Route::post('/admin/users/store', 'UsersController@store');
@@ -97,3 +100,4 @@ Route::get('articles', 'ArticlesController@index');
     Route::get('/admin/carousels/{carousel}/edit', 'CarouselsController@edit');
     Route::put('/admin/carousels/{carousel}', 'CarouselsController@update');
     Route::delete('/admin/carousels/{carousel}', 'CarouselsController@destroy');
+});
