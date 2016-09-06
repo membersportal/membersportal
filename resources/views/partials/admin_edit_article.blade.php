@@ -10,7 +10,7 @@
 </div>
 <div class="form-group">
 	<label for="desc">Description<span class="required">*</span></label>
-	<input type="text" class="form-control" name="title" value="{{ article->desc }}" maxlength="500" required>
+	<input type="text" class="form-control" name="title" value="{{ $article->desc }}" maxlength="500" required>
 	@include ('partials.error', ['value' => 'desc'])
 </div>
 <div class="form-group">
