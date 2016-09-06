@@ -56,7 +56,7 @@ div.panel_white {
 	border: 1px solid #d3e397;
 }
 
-div.about, div.leaders, div.events {
+div.about, div.leaders, div.events, div.twitter, div.rfps, div.connections, div.social_media {
 	margin-top: 16px;
 }
 
@@ -67,6 +67,11 @@ div.panel_red, div.panel_green, div.about_panel_red {
 	border: 1px solid #514e43;
 	margin-bottom: 15px;
 	margin-top: 16px;
+}
+
+div.panel_form {
+	width: 100%;
+	padding: 0 25px 10px 25px
 }
 
 div.about_panel_red {
@@ -89,15 +94,6 @@ div.main_panel {
 	border: 1px solid #66a498;
 }
 
-div.twitter, div.rfps, div.connections {
-	margin-top: 16px;
-}
-
-div.carousel_bar {
-	background-color: #c65c39;
-	height: 100%;
-}
-
 div#map {
 	height: 300px;
 	width: 100%;
@@ -106,13 +102,27 @@ div#map {
 	border: 1px solid #d3e397;
 }
 
-div.project_showcase {
+div.project_showcase, div.edit_nav {
 	margin-top: 8px;
 }
 
 div.social_media {
-	margin-top: 16px;
 	padding-bottom: 30px;
+}
+
+div.nav_triangle {
+	content: "";
+	width: 0;
+	height: 0;
+	border-top: 22px solid transparent;
+	border-left: 12px solid #66a498;
+	border-bottom: 22px solid transparent;
+	position: absolute;
+	right: 4px;
+}
+
+div.edit_account_nav {
+	position: relative;
 }
 
 hr {
@@ -181,6 +191,14 @@ h3.login {
 	padding-top: 0;
 	margin-top: 0;
 	margin-bottom: 15px;
+}
+
+h3.rfps {
+	margin-bottom: 0;
+}
+
+h3.abbreviation {
+	margin-top: 3px;
 }
 
 h1.company_name_profile {
@@ -265,7 +283,7 @@ p.industry_name {
 p.company_desc_home {
 	font-size: .85em;
 	line-height: 1.25em;
-}„
+}
 
 p.company_desc {
 	margin-top: -7px;
@@ -283,7 +301,7 @@ p.leader_title {
 	font-size: .95em;
 }
 
-ul.rfps, ul.contact, ul.company_stats {
+ul.rfps, ul.contact, ul.company_stats, ul.edit_account_nav {
 	line-height: 1.25em;
 	padding-left: 0;
 	list-style: none;
@@ -306,6 +324,10 @@ li.rfps {
 
 li.small_gray {
 	font-size: .8em;
+}
+
+ul.edit_account_nav > li {
+	background-color: #8dcdc1;
 }
 
 span.industry_name_home{
@@ -348,20 +370,12 @@ a.green_bg:after, a.green_bg:hover:after, ul.footer > li > a.footer_triangle:aft
 	margin-bottom: -3px;
 }
 
-div.main_panel > div >  a.red_link.project:after {
-	background: transparent url('/img/arrow_white.png') no-repeat;
-}
-
-div.login > a.forgot_password:after, div.main_panel > div >  a.red_link.project:hover:after {
-	background: transparent url('/img/arrow_red.png') no-repeat;
-}
-
-ul.footer > li > a.footer_triangle:hover:after, div.login > a.forgot_password:hover:after {
-	background: transparent url('/img/arrow.png') no-repeat;
-}
-
 div.login > a.forgot_password:after, ul.footer > li > a.footer_triangle:hover:after, div.login > a.forgot_password:hover:after, ul.footer > li > a.footer_triangle:after, ul.footer > li > a.footer_triangle:after, a.green_bg:hover:after, a.green_bg:after, a.green_bg:hover:after, div.connect > form > button.btn.btn-primary.pull-right.connect:after, div.connect > form > button.btn.btn-primary.pull-right.connect:hover:after {
 	margin-left: 4px;
+}
+
+ul.edit_account_nav > li > a:after {
+	background: transparent url('/img/arrow_blue.png') no-repeat;
 }
 
 a.green_bg:after, div.connect > form > button.btn.btn-primary.pull-right.connect:after {
@@ -376,8 +390,28 @@ div.connect > form > button.btn.btn-primary.pull-right.connect:hover:after {
 	background: transparent url('/img/arrow_dkblue.png') no-repeat;
 }
 
+div.main_panel > div >  a.red_link.project:after {
+	background: transparent url('/img/arrow_white.png') no-repeat;
+}
+
+div.login > a.forgot_password:after, div.main_panel > div >  a.red_link.project:hover:after {
+	background: transparent url('/img/arrow_red.png') no-repeat;
+}
+
+ul.footer > li > a.footer_triangle:hover:after, div.login > a.forgot_password:hover:after {
+	background: transparent url('/img/arrow.png') no-repeat;
+}
+
 ul.footer > li > a.footer_triangle:hover {
 	color: #fff5c3;
+}
+
+ul.edit_account_nav > li > a:hover {
+	color: #d4fdf5;
+}
+
+ul.edit_account_nav > li > a.active {
+	background-color: #66a498;
 }
 
 a.green_bg, a.green_bg:visited, a.green_bg:active {
@@ -400,8 +434,16 @@ a.footer {
 	color: #dad6c7;
 }
 
-ul.footer > li > a.footer_triangle {
+ul.footer > li > a.footer_triangle, ul.edit_account_nav > li > a {
 	color: #fff;
+}
+
+ul.edit_account_nav > li > a {
+	font-size: 1.25em;
+	line-height: 2.5em;
+	width: 100%;
+	display: inline-block;
+	padding: 0px 15px;
 }
 
 a.forgot_password {
@@ -497,8 +539,22 @@ img.connection_thumb {
 }
 
 /*Buttons*/
+
+a.cancel_button, a.cancel_button:visited, a.cancel_button:active {
+	background-color: #c65c39;
+	color: #fff;
+	font-size: 1.15em;
+	text-transform: uppercase;
+	padding: 6px 12px;
+	margin-right: 10px;
+}
+
+a.cancel_button:hover {
+	background-color: #eb6e44;
+}
+
 button.btn.btn-primary.pull-right, button.btn.btn-primary.pull-right.login {
-	background-color: #8dcdc1;
+	background-color: #66a498;
 	border-style: none;
 	border-color: #fff5c3;
 	border-radius: 0;
@@ -507,6 +563,10 @@ button.btn.btn-primary.pull-right, button.btn.btn-primary.pull-right.login {
 	color: #fff;
 	font-size: 1.15em;
 	margin-bottom: 10px;
+}
+
+button.btn.btn-primary.pull-right.login {
+	background-color: #8dcdc1;
 }
 
 button.btn.btn-primary.pull-right.login, button.btn.btn-primary.pull-right.connect {
@@ -545,10 +605,20 @@ label.login {
 	font-weight: 400;
 }
 
-input.login {
+div.form-group > label {
+	color: #7c786a;
+}
+
+input.form-control.login {
 	border-style: none;
 	border-radius: 0;
 	text-align: center;
+}
+
+input.form-control {
+	border: 1px solid #d3e397;
+	border-radius: 0;
+	box-shadow: none;
 }
 
 input.login_checkbox {
