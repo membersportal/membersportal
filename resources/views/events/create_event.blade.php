@@ -22,7 +22,10 @@
 
     <form method="POST" action="{{ action('EventsController@store') }}">
         {!!csrf_field()!!}
-        @include('partials.create_event_form')
+            <div class="form-group">
+      <label for="Image">Image</label>
+      <input type="file" class="form-control" name="image" accept="image/*">
+    </div>
     <button type="submit" name="button">Submit</button>
     </form>
 
