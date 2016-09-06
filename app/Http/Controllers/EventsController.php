@@ -48,13 +48,17 @@ class EventsController extends Controller
 	 */
 	public function create()
 	{
-		$user = Auth::user()->id;
-		$user_company = Company::find($user);
+		$user = Auth::user();
+		$user_company = Company::find($user->id);
 		$connections = $user_company->companies;
 		$connections_events = Event::dashboardEvents($connections)->get();
 		$users_events = Event::usersEvents($user)->get();
 		$data = compact('users_events', 'connections_events');
-		return view('events.create_event')->with($data);
+		if ($user->is_admin){
+			return view('admin.admin_create_event');
+		} else {
+			return view('events.create_event')->with($data);
+		}
 	}
 
 	/**
@@ -75,15 +79,30 @@ class EventsController extends Controller
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function edit(Request $request)
+	public function edit(Request $request, $id)
 	{
-		$user = Auth::user()->id;
-	  $event = Event::findOrFail($request->event_id);
-		$connections = Company::find($user)->companies;
-		$connections_events = Event::dashboardEvents($connections)->get();
-		$users_events = Event::usersEvents($user)->get();
-	  $data = compact('event', 'users_events', 'connections_events');
-	  return view('events.edit_event')->with($data);
+		$user = Auth::user();
+		if ($user->is_admin) {
+			$event = Event::findOrFail($id);
+			$data = compact('event');
+		  	return view('admin.admin_edit_event')->with($data);
+		} else {
+	  		$event = Event::findOrFail($request->event_id);
+			$connections = Company::find($user->id)->companies;
+			$connections_events = Event::dashboardEvents($connections)->get();
+			$users_events = Event::usersEvents($user)->get();
+		  	$data = compact('event', 'users_events', 'connections_events');
+		  	return view('events.edit_event')->with($data);
+		}
+
+	}
+
+	public function editgeneral()
+	{
+		$id = Auth::user()->id;
+		$events = Event::usersEvents($id)->get();
+		$data = compact('events');
+		return view('admin.admin_show_events')->with($data);
 	}
 
 	/**

@@ -46,6 +46,13 @@ class CarouselsController extends Controller
 		return view('admin.admin_edit_carousel')->with($data);
 	}
 
+	public function editgeneral()
+	{
+		$carousels = Carousel::pullCarousels();
+		$data = compact('carousels');
+		return view('admin.admin_edit_carousel_general')->with($data);
+	}
+
 	/**
 	 * Update the specified resource in storage.
 	 *
