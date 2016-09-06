@@ -11,49 +11,6 @@
 |
 */
 
-// ================= User and Admin Access ================= //
-
-// Auth
-Route::get('/auth/login', 'Auth\AuthController@getLogin');
-Route::post('/auth/login', 'Auth\AuthController@postLogin');
-Route::get('/auth/logout', 'Auth\AuthController@getLogout');
-
-// Users
-Route::get('/', 'UsersController@index');
-Route::get('/users/{user}/edit', 'UsersController@edit');
-Route::put('/users/{user}', 'UsersController@update');
-
-// Companies
-Route::get('/companies/{company}', 'CompaniesController@show');
-Route::get('/companies/{company}/edit', 'CompaniesController@edit');
-Route::put('/companies/{company}', 'CompaniesController@update');
-Route::get('/search', 'CompaniesController@searchMembers');
-Route::get('/search/results', 'CompaniesController@getSearchedCompanies');
-Route::get('/companies/{company}/dashboard', 'CompaniesController@dashboard');
-Route::get('/companies/{company}/connections', 'CompaniesController@viewConnections');
-
-// Contacts
-Route::get('/contacts/{contact}/edit', 'ContactsController@edit');
-Route::put('/contacts/{contact}', 'ContactsController@update');
-
-// Connections
-Route::get('/connections/{user}', 'ConnectionsController@show');
-Route::post('/connections/{user}', 'ConnectionsController@store');
-Route::delete('/connections/{user}', 'ConnectionsController@destroy');
-
-// Events
-Route::resource('events', 'EventsController');
-
-// Leaders
-Route::resource('leaders', 'LeadersController');
-
-// RFPs
-Route::resource('rfps', 'RFPController');
-
-
-// Articles
-Route::get('articles', 'ArticlesController@index');
-
 
 
 // ================= Admin Only ================= //
@@ -111,3 +68,45 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
     
     Route::get('/admin/rfpsview', 'RFPController@editgeneral');
 });
+
+// ================= User and Admin Access ================= //
+
+// Auth
+Route::get('/auth/login', 'Auth\AuthController@getLogin');
+Route::post('/auth/login', 'Auth\AuthController@postLogin');
+Route::get('/auth/logout', 'Auth\AuthController@getLogout');
+
+// Users
+Route::get('/', 'UsersController@index');
+Route::get('/users/{user}/edit', 'UsersController@edit');
+Route::put('/users/{user}', 'UsersController@update');
+
+// Companies
+Route::get('/companies/{company}', 'CompaniesController@show');
+Route::get('/companies/{company}/edit', 'CompaniesController@edit');
+Route::put('/companies/{company}', 'CompaniesController@update');
+Route::get('/search', 'CompaniesController@searchMembers');
+Route::get('/search/results', 'CompaniesController@getSearchedCompanies');
+Route::get('/companies/{company}/dashboard', 'CompaniesController@dashboard');
+Route::get('/companies/{company}/connections', 'CompaniesController@viewConnections');
+
+// Contacts
+Route::get('/contacts/{contact}/edit', 'ContactsController@edit');
+Route::put('/contacts/{contact}', 'ContactsController@update');
+
+// Connections
+Route::get('/connections/{user}', 'ConnectionsController@show');
+Route::post('/connections/{user}', 'ConnectionsController@store');
+Route::delete('/connections/{user}', 'ConnectionsController@destroy');
+
+// Events
+Route::resource('events', 'EventsController');
+
+// Leaders
+Route::resource('leaders', 'LeadersController');
+
+// RFPs
+Route::resource('rfps', 'RFPController');
+
+// Articles
+Route::get('articles', 'ArticlesController@index');
