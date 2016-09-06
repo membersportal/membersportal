@@ -61,9 +61,13 @@ class RFPController extends Controller
 	public function show($id)
 	{
 	  $rfp = Rfp::findOrFail($id);
-	  $company_id = $rfp->companies;
-	  $data = compact('rfp', 'company_id');
-	  return view('')->with($data);
+		$rfp_owner = $rfp->company;
+		$user = Auth::user()->id;
+		$connections = Company::find($user)->companies;
+		$connections_rfps = Rfp::dashboardRfps($connections)->get();
+		$users_rfps = Rfp::profileRfps($user)->get();
+		$data = compact('rfp', 'rfp_owner', 'connections_rfps', 'users_rfps');
+	  return view('rfps.show_rfp')->with($data);
 	}
 
 	/**
