@@ -18,12 +18,12 @@
 </div>
 <div class="checkbox-inline">
 	<label for="invite_only">
-	<input type="checkbox" name="invite_only" value="True" required> Invite Only?<span class="required">*</span>
+	<input type="checkbox" name="invite_only" value="1" required> Invite Only?<span class="required">*</span>
 	</label>
 </div>
 <div class="checkbox-inline">
 	<label for="rsvp_required">
-	<input type="checkbox" name="rsvp_required" value="True" required> RSVP Required?<span class="required">*</span>
+	<input type="checkbox" name="rsvp_required" value="1" required> RSVP Required?<span class="required">*</span>
 	</label>
 </div>
 <div class="form-group">
@@ -34,7 +34,7 @@
 	@include ('partials.error', ['value' => 'url'])
 </div>
 <div class="form-group">
-	<label for="header_img">Event Image<span class="required">*</span></label>
+	<label for="img">Event Image<span class="required">*</span></label>
 	<p class="form_label_small">Maximum Size: 10MB</p>
 	<input type="file" class="form-control" name="img" accept="image/*">
 	@include ('partials.error', ['value' => 'img'])
