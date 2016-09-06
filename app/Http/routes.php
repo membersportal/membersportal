@@ -50,8 +50,10 @@ Route::resource('leaders', 'LeadersController');
 // RFPs
 Route::resource('rfps', 'RFPController');
 
+
 // Articles
 Route::get('articles', 'ArticlesController@index');
+
 
 
 // ================= Admin Only ================= //
@@ -94,6 +96,7 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
     Route::post('/admin/articles', 'ArticlesController@store');
     Route::get('/admin/articles/{article}/edit', 'ArticlesController@edit');
     Route::put('/admin/articles/{article}', 'ArticlesController@update');
+    Route::get('/admin/articlesview', 'ArticlesController@editgeneral');
     Route::delete('/admin/articles/{article}', 'ArticlesController@destroy');
 
     // Carousels
@@ -103,4 +106,8 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
     Route::put('/admin/carousels/{carousel}', 'CarouselsController@update');
     Route::delete('/admin/carousels/{carousel}', 'CarouselsController@destroy');
     Route::get('/admin/carouselsview', 'CarouselsController@editgeneral');
+
+    //RFPs
+    
+    Route::get('/admin/rfpsview', 'RFPController@editgeneral');
 });
