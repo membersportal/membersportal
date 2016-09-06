@@ -29,7 +29,7 @@
 				<li>{{ $contact->city }}, {{ $contact->state }} {{ $contact->zip }}</li>
 				<li><a class="red_link small_caps" href="{{ 'https://www.google.com/maps/search/' . $contact->address_line_1 . '+' . $contact->city . '+' . $contact->state . '+' . $contact->zip }}" target="_blank">Directions</a></li>
 			</ul>
-			<p class="strong">{{ $contact->phone_no }}</p>
+			<p class="strong">{{ '(' . substr($contact->phone_no, 0, 3) . ') ' . substr($contact->phone_no, 3, 3) . '-' . substr($contact->phone_no, 6, 4) }}</p>
 			<p><a class="red_link" target="_blank" alt="{{ $company->name }}">{{ $contact->website }}</a></p>
 		</div>
 

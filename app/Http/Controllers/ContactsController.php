@@ -45,7 +45,12 @@ class ContactsController extends Controller
     {
         $contact = Contact::findOrFail($id);
         $data = compact('contact');
-        return view('admin.admin_edit_org_contact')->with($data);
+
+        if (Auth::user()->is_admin) {
+            return view('admin.admin_edit_org_contact')->with($data);
+        } else {
+            return view('contacts.edit_contact')->with($data);
+        }
     }
 
     /**

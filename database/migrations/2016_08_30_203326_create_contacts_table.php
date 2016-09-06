@@ -26,10 +26,10 @@ class CreateContactsTable extends Migration
             $table->string('country', 15)->nullable();
             $table->string('website')->nullable();
             $table->string('twitter', 20)->nullable();
-            $table->string('facebook', 20)->nullable();
-            $table->string('instagram', 20)->nullable();
-            $table->string('linkedin', 20)->nullable();
-            $table->string('google_plus', 20)->nullable();
+            $table->string('facebook', 200)->nullable();
+            $table->string('instagram', 200)->nullable();
+            $table->string('linkedin', 200)->nullable();
+            $table->string('google_plus', 200)->nullable();
             $table->timestamps();
             $table->foreign('company_id')->references('id')->on('companies');
             $table->foreign('user_id')->references('id')->on('users');
