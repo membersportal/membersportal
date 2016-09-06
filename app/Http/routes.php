@@ -65,7 +65,7 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
     Route::get('/admin/carouselsview', 'CarouselsController@editgeneral');
 
     //RFPs
-    
+
     Route::get('/admin/rfpsview', 'RFPController@editgeneral');
 });
 
@@ -100,6 +100,7 @@ Route::post('/connections/{user}', 'ConnectionsController@store');
 Route::delete('/connections/{user}', 'ConnectionsController@destroy');
 
 // Events
+Route::post('/events/{event}', 'EventsController@update');
 Route::resource('events', 'EventsController');
 
 // Leaders

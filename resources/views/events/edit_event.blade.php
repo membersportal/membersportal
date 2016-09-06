@@ -19,9 +19,13 @@
 
 
   <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 center_home">
-
     <h1>Edit Event</h1>
-    @include('partials.edit_event_form')
+    <form action="{{ action('EventsController@update', $id = $event->id) }}" method="post" enctype="multipart/form-data">
+      {!! csrf_field() !!}
+        @include('partials.edit_event_form')
+      <button type="submit">Save</button>
+      <a href="{{ action('EventsController@destroy', $id = $event->id) }}">Delete Event</a>
+    </form>
 
   </div>
 
