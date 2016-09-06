@@ -27,14 +27,14 @@
 	</label>
 </div>
 <div class="form-group">
-	<label for="url">Website</label>
+	<label for="url">Website<span class="required">*</span></label>
 	<p class="form_label_small">Please enter the full URL including http://</p>
 	<p class="form_label_small">This link should enable members to read more detail regarding your event as well as RSVP.</p>
 	<input type="url" class="form-control" name="url" value="{{ old('url') }}" placeholder="http://www.example.com">
 	@include ('partials.error', ['value' => 'url'])
 </div>
 <div class="form-group">
-	<label for="header_img">Event Image</label>
+	<label for="header_img">Event Image<span class="required">*</span></label>
 	<p class="form_label_small">Maximum Size: 10MB</p>
 	<input type="file" class="form-control" name="img" accept="image/*">
 	@include ('partials.error', ['value' => 'img'])

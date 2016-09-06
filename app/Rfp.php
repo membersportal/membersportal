@@ -48,7 +48,7 @@ class Rfp extends Model
 
 	public static function profileRfps($company_id)
 	{
-		return Rfp::where('company_id', $company_id)->orderBy('deadline', 'desc')->get();
+		return Rfp::where('company_id', $company_id)->orderBy('deadline');
 	}
 
 	public static $rules = [

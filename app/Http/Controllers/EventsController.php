@@ -20,10 +20,9 @@ class EventsController extends Controller
 	 */
 	public function index()
 	{
-		$events = Event::all();
+		$events = Event::all()->sortBy('from_date');
 		$user = Auth::user()->id;
-		$user_company = Company::find($user);
-		$connections = $user_company->companies;
+		$connections = Company::find($user)->companies;
 		$connections_events = Event::dashboardEvents($connections)->get();
 		$users_events = Event::usersEvents($user)->get();
 		$data = compact('events', 'users_events', 'connections_events');
@@ -79,10 +78,8 @@ class EventsController extends Controller
 	public function edit(Request $request)
 	{
 		$user = Auth::user()->id;
-		$event_id = $request->event_id;
-	  $event = Event::findOrFail($event_id);
-		$user_company = Company::find($user);
-		$connections = $user_company->companies;
+	  $event = Event::findOrFail($request->event_id);
+		$connections = Company::find($user)->companies;
 		$connections_events = Event::dashboardEvents($connections)->get();
 		$users_events = Event::usersEvents($user)->get();
 	  $data = compact('event', 'users_events', 'connections_events');

@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Rfp;
+use App\Company;
 
 class RFPController extends Controller
 {
@@ -17,7 +19,13 @@ class RFPController extends Controller
 	 */
 	public function index()
 	{
-		return view('rfps.all_rfps');
+		$rfps = Rfp::all();
+		$user = Auth::user()->id;
+		$connections = Company::find($user)->companies;
+		$connections_rfps = Rfp::dashboardRfps($connections)->get();
+		$users_rfps = Rfp::profileRfps($user)->get();
+		$data = compact('connections_rfps', 'users_rfps', 'rfps');
+		return view('rfps.all_rfps')->with($data);
 	}
 
 	/**
@@ -64,12 +72,15 @@ class RFPController extends Controller
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function edit($id)
+	public function edit(Request $request)
 	{
-		$user = Auth::user();
-		$rfp = Rfp::findOrFail($id);
-		$data = compact('contact', 'user');
-		return view('rfps.edit')->with($data);
+		$user = Auth::user()->id;
+		$rfp = Rfp::findOrFail($request->rfp_id);
+		$connections = Company::find($user)->companies;
+		$connections_rfps = Rfp::dashboardRfps($connections)->get();
+		$users_rfps = Rfp::profileRfps($user)->get();
+		$data = compact('rfp', 'connections_rfps', 'users_rfps');
+		return view('rfps.edit_rfp')->with($data);
 	}
 
 	/**
@@ -125,4 +136,5 @@ class RFPController extends Controller
 		} else {
 			return redirect()->action('CompaniesController@dashboard', ['id' => $company_id]);
 		}
+	}
 }
