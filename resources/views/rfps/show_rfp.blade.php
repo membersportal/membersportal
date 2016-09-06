@@ -12,6 +12,7 @@
 
 
       </select>
+      <a href="{{ action('RFPController@create') }}">Create New Request</a>
       <button type="submit" class="btn btn-default">Edit</button>
     </form>
 
