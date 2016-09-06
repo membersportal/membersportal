@@ -99,7 +99,9 @@
 			<h4 class="text-center project_showcase">New Building Proposed for Downtown San Antonio</h4>
 			<p>SAN ANTONIO — New renderings of the proposed Frost Bank headquarters show a vibrant, transformed area of downtown San Antonio as the city gears up to begin its review process of the design Wednesday.</p>
 			<p>Released over the weekend by the Historic and Design Review Commission, the renderings lay out where the 23-story glass skyscraper would lie amid a sea of concrete and stone buildings.</p>
-			<a class="red_link project" href="http://www.mysanantonio.com/business/article/City-releases-renderings-of-proposed-glass-8384186.php" alt="Read full article" target="_blank">See Full Project </a>
+			<div class="text-center">
+				<a class="red_link project" href="http://www.mysanantonio.com/business/article/City-releases-renderings-of-proposed-glass-8384186.php" alt="Read full article" target="_blank">See Full Project </a>
+			</div>
 		</div>
 
 		<div class="panel_white leaders">
@@ -132,13 +134,14 @@
 	</div>
 
 	<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 right_home">
-		<div class="social_media">
+		<div class="social_media panel_white text-center">
+			<h3>Follow {{ $company->name }}</h3>
 			<a href="http://www.facebook.com/{{ $contact->facebook }}"><img class="social_media_icon" src="/img/facebook-dreamstale25.png" alt="facebook" /></a>
 			<a href="http://www.instagram.com/{{ $contact->instagram }}"><img class="social_media_icon" src="/img/instagram-dreamstale43.png" alt="instagram" /></a>
 			<a href="http://www.linkedin.com/in/{{ $contact->linkedin }}"><img class="social_media_icon" src="/img/linkedin-dreamstale45.png" alt="linkedin" /></a>
 			<a href="http://plus.google.com/{{ $contact->google_plus }}"><img class="social_media_icon" src="/img/google+-dreamstale37.png" alt="google+" /></a>
 		</div>
-		<div class="home_panel">
+		<div class="panel_white events">
 			<h3 class="text-center">Events</h3>
 			@foreach ($events as $key => $event)
 				@if ($key < 3)
@@ -158,18 +161,24 @@
 				</div>
 				@endif
 			@endforeach
+			<div class="panel_green">
+				<a class="green_bg" href="{{ action('EventsController@index') }}" alt="View All Events">See All Events</a>
+			</div>
 		</div>
-			<div class="home_panel twitter">
+			<div class="panel_white twitter">
 				<a class="twitter-timeline" href="https://twitter.com/search?q=from%3A{{ $contact->twitter }}" data-widget-id="771057747718582272" data-screen-name="{{ $contact->twitter }}">Tweets about </a>
 					<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 					<a href="https://twitter.com/{{ $contact->twitter }}" class=" twitter-follow-button" data-show-count="false">Follow @{{ $contact-> }}</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 			</div>
 
-			<div class="home_panel">
+			<div class="panel_white connections">
 					<h3 class="text-center">Connections</h3>
 					@foreach($profile_connections as $connection)
-						<a href="{{ action('CompaniesController@show', $connection->id) }}"><img src="{{ $connection->profile_img }}" alt="{{ $connection->name }}" /></a>
+						<a href="{{ action('CompaniesController@show', $connection->id) }}"><img class="img-thumbnail connection_thumb" src="{{ '/img/uploads/avatars/' . $connection->profile_img }}" alt="{{ $connection->name }}"></a>
 					@endforeach
+					<div class="panel_green">
+						<a class="green_bg" href="{{ action('CompaniesController@viewConnections', ['id' => $company->id]) }}" alt="View All Connections">All Connections</a>
+					</div>
 			</div>
 
 		</div>
