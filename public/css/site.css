@@ -110,15 +110,18 @@ div.social_media {
 	padding-bottom: 30px;
 }
 
+div.nav_triangle_div {
+	width: 100%;
+}
+
 div.nav_triangle {
-	content: "";
 	width: 0;
 	height: 0;
 	border-top: 22px solid transparent;
 	border-left: 12px solid #66a498;
 	border-bottom: 22px solid transparent;
 	position: absolute;
-	right: 4px;
+	right: 3.75px;
 }
 
 div.edit_account_nav {
