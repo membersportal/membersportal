@@ -156,7 +156,7 @@ class EventsController extends Controller
 
 		$request->session()->flash('message', 'Event successfully created.');
 		if ($is_admin) {
-		  return redirect()->action('UsersControllers@getAdminDashboard');
+		  return redirect()->action('UsersController@getAdminDashboard');
 		} else {
 		  return redirect()->action('EventsController@index');
 		}
