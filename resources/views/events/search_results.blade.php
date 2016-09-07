@@ -25,7 +25,7 @@
       <input type="text" name="search_field" value="" placeholder="company name">
       <button type="Submit">Search</button>
     </form>
-    @foreach($events as $event)
+    @foreach($search_results as $event)
       <a href="{{ action('EventsController@show', $id = $event->id) }}"><h5>{{ $event->title }}</h5></a>
     @endforeach
   </div>

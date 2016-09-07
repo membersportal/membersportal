@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Company;
+use App\Event;
 
 class Event extends Model
 {
@@ -23,24 +24,21 @@ class Event extends Model
 	public static function searchEvents($request)
 	{
 		$query = Event::orderBy('created_at');
-
-		if($request->searchField != ''){
-			(isset($query)) ? $query->where('company_id', "%$request->searchField%")->orWhere('title', 'like', "%$request->searchField%") : $query = Event::searchCompanyName($request->searchField);
+		if($request->search_field){
+			return Company::where('name', 'like', "%$request->search_field%")->first();
+		} else {
+			return $query;
 		}
-
-		if($request->option('industry_id') != 0){
-			(isset($query)) ? $query->orWhere('industry_id', $request->industry_id) : $query = Event::where('industry_id', $request->industry_id);
-		}
+		// if($request->searchField != ''){
+		// 	(isset($query)) ? $query->where('company_id', "%$request->searchField%")->orWhere('title', 'like', "%$request->searchField%") : $query = Event::searchCompanyName($request->searchField);
+		// }
+		//
+		// if($request->option('industry_id') != 0){
+		// 	(isset($query)) ? $query->orWhere('industry_id', $request->industry_id) : $query = Event::where('industry_id', $request->industry_id);
+		// }
 
 		//var_dump(get_class_methods(get_class($query)));
 		// echo $query->getQuery()->toSql();
-
-		return $query->get();
-	}
-
-	public static function searchCompanyName($request)
-	{
-		return Event::where('name', 'like', "%$request->searchField%")->orWhere('title', 'like',"%$request->searchField%");
 	}
 
 	public static function usersEvents($id)
