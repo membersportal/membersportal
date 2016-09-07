@@ -115,7 +115,6 @@ class EventsController extends Controller
 	public function update(Request $request, $id)
 	{
 	  $event = Event::findOrFail($id);
-		dd($request);
 	  return $this->validateAndSave($event, $request);
 	}
 
@@ -130,18 +129,18 @@ class EventsController extends Controller
 	  $event = Event::findOrFail($id);
 	  $event->delete();
 
-	  if(!Auth::user()->is_admin) {
-	  	return redirect()->action('companies.view_profile');
+	  if(Auth::user()->is_admin) {
+			return redirect()->action('UsersControllers@getAdminDashboard');
 	  } else {
-	  	return redirect()->action('admin.admin_dashboard');
+	  	return redirect()->action('EventsController@index');
 	  }
 	}
 
-	private function validateAndSave($event, $request){
+	private function validateAndSave(Event $event, Request $request){
 		$company_id = Auth::user()->id;
 		$is_admin = Auth::user()->is_admin;
 		$request->session()->flash('ERROR_MESSAGE', 'Event not created successfully.');
-		dd($request);
+
 		$this->validate($request, Event::$rules);
 		$request->session()->forget('ERROR_MESSAGE');
 		$event->company_id = $company_id;
