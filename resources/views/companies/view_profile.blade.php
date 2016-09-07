@@ -136,10 +136,18 @@
 	<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 right_home">
 		<div class="social_media panel_white text-center">
 			<h3>Follow {{ $company->name }}</h3>
+			@if ($contact->facebook)
 			<a href="http://www.facebook.com/{{ $contact->facebook }}"><img class="social_media_icon" src="/img/facebook-dreamstale25.png" alt="facebook" /></a>
+			@endif
+			@if ($contact->instagram)
 			<a href="http://www.instagram.com/{{ $contact->instagram }}"><img class="social_media_icon" src="/img/instagram-dreamstale43.png" alt="instagram" /></a>
+			@endif
+			@if ($contact->linkedin)
 			<a href="http://www.linkedin.com/in/{{ $contact->linkedin }}"><img class="social_media_icon" src="/img/linkedin-dreamstale45.png" alt="linkedin" /></a>
+			@endif
+			@if ($contact->google_plus)
 			<a href="http://plus.google.com/{{ $contact->google_plus }}"><img class="social_media_icon" src="/img/google+-dreamstale37.png" alt="google+" /></a>
+			@endif
 		</div>
 		<div class="panel_white events">
 			<h3 class="text-center">Events</h3>

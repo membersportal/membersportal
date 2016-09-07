@@ -60,8 +60,13 @@ div.panel_white {
 	border: 1px solid #d3e397;
 }
 
-div.about, div.leaders, div.events, div.twitter, div.rfps, div.connections, div.social_media {
+div.about, div.leaders, div.events, div.twitter, div.rfps, div.connections, div.social_media, div.social {
 	margin-top: 16px;
+}
+
+div.panel_white.social {
+	text-align: center;
+	padding-bottom: 30px;
 }
 
 div.panel_red, div.panel_green, div.about_panel_red {
@@ -71,6 +76,7 @@ div.panel_red, div.panel_green, div.about_panel_red {
 	border: 1px solid #514e43;
 	margin-bottom: 15px;
 	margin-top: 16px;
+	text-align: center;
 }
 
 div.panel_form {
@@ -82,15 +88,14 @@ div.about_panel_red {
 	padding: 20px 40px;
 }
 
-div.panel_red, div.panel_green {
-	text-align: center;
-}
-
 div.panel_green {
+	width: 100%;
+	padding: 10px 25px;
 	background-color: #d3e397;
 	border: 1px solid #b7c483;
 	margin-bottom: 7px;
 	margin-top: 25px;
+	text-align: center;
 }
 
 div.main_panel {
@@ -123,14 +128,18 @@ div.social_media_edit {
 div.checkboxes {
 	margin: 10px 0;
 }
+/*
+div.row.article_table {
+	padding: 0 10px;
+}*/
 
 hr {
 	margin: 10px 0;
 }
 
 hr.wide {
-	margin-top: 28px;
-	margin-bottom: 35px;
+	margin-top: 18px;
+	margin-bottom: 25px;
 }
 
 .user_grid {
@@ -202,6 +211,10 @@ h3.login {
 	margin-bottom: 15px;
 }
 
+h3.social {
+	margin-bottom: 15px;
+}
+
 h3.rfps {
 	margin-bottom: 0;
 }
@@ -248,7 +261,7 @@ h1 {
 	font-weight: 700;
 }
 
-h1.articles {
+h1.articles, h1.space {
 	margin-bottom: 20px;
 }
 
@@ -274,7 +287,6 @@ h4 {
 h4.footer {
 	color: #d3e397;
 }
-
 
 p.red_panel_text {
 	line-height: 1.25em;
@@ -456,6 +468,14 @@ ul.edit_account_nav > li > a.active {
 	background-color: #66a498;
 }
 
+h4.article_heading > a, h4.article_heading > a:visited, h4.article_heading > a:active {
+	color: #7c786a;
+}
+
+h4.article_heading > a:hover {
+	color: #514e43;
+}
+
 a.green_bg, a.green_bg:visited, a.green_bg:active {
 	color: #7c786a;
 	font-size: .85em;
@@ -542,9 +562,15 @@ img.company_profile {
 	width: inherit;
 }
 
-img.articles, img.articles_full {
+img.articles, img.articles_full, img.articles_grid {
 	object-fit: cover;
 	border: 1px solid #7c786a;
+}
+
+img.articles_grid {
+	max-height: 100px;
+	max-width: 100px;
+	margin: 15px auto 0 auto;
 }
 
 img.articles {
@@ -617,16 +643,28 @@ a.cancel_button:hover {
 	background-color: #eb6e44;
 }
 
-button.btn.btn-primary.pull-right, button.btn.btn-primary.pull-right.login {
-	background-color: #66a498;
+button.btn.btn-primary.pull-right, button.btn.btn-primary.pull-right.login, button.btn.btn-info.pull-right, button.btn.btn-danger.pull-right {
 	border-style: none;
-	border-color: #fff5c3;
 	border-radius: 0;
 	text-transform: uppercase;
 	text-shadow: 0 0 0 #237666;
-	color: #fff;
-	font-size: 1.15em;
 	margin-bottom: 10px;
+	font-size: 1.15em;
+}
+
+button.btn.btn-primary.pull-right, button.btn.btn-primary.pull-right.login {
+	background-color: #66a498;
+	border-color: #fff5c3;
+	color: #fff;
+}
+
+button.btn.btn-info.pull-right {
+	background-color: #b7c483;
+}
+
+button.btn.btn-danger.pull-right {
+	background-color: #c65c39;
+	margin-right: 10px;
 }
 
 button.btn.btn-primary.pull-right.login {
