@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-	<h1 class="text-center">Edit Org. Contact Information</h1>
+	<h1 class="text-center space">Edit Org. Contact Information</h1>
 	<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-sm-offset-1 col-md-offset-1 col-lg-offset-1 col-xl-offset-1 edit_nav">	
 		<ul class="edit_account_nav">
 			<li><a href="{{ action('UsersController@getAdminDashboard') }}" alt="Analytics">Analytics</a></li>
@@ -21,7 +21,8 @@
 			<form method="POST" action="{{ action('ContactsController@update', ['id' => $contact->id]) }}">
 				{!!csrf_field()!!}
 				@include('partials.admin_edit_contact')
-				<button type="submit">Save</button>
+				<button class="btn btn-primary pull-right" type="submit">Save</button>
+				<a class="cancel_button pull-right" href="{{ action('UsersController@index') }}" alt="cancel">Cancel</a>
 			</form>
 		</div>
 	</div>

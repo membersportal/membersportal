@@ -17,6 +17,14 @@ class ArticlesController extends Controller
 		return view('articles.all_articles')->with($data);
 	}
 
+	public function adminIndex()
+	{
+		$articles = Article::paginate(5);
+		$paginate = 5;
+		$data = compact('articles', 'paginate');
+		return view('admin.admin_manage_articles')->with($data);
+	}
+
 	/**
 	 * Show the form for creating a new resource.
 	 *

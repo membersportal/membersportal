@@ -15,12 +15,18 @@
 				<a class="green_bg" href="{{ action('CompaniesController@searchMembers') }}" alt="Find New Connections">Find New Connections</a>
 			</div>
 		</div>
-
+		<a href="#">
+			<div class="panel_red">
+				<h3 class="red_panel_head">We're Hiring!</h3>
+				<img class="hiring img-responsive" src="/img/hiring.jpg">
+				<p class="red_panel_text">Browse our job postings and submit your resume for consideration.</p>
+			</div>
+		</a>
 		<div class="panel_white rfps">
 			<h3 class="text-center rfps">Requests for Proposals</h3>
 			<h3 class="text-center abbreviation">(RFPs)</h3>
 				@foreach ($admin_rfps as $key => $rfp)
-					@if ($key < 11)
+					@if ($key < 5)
 						<ul class="rfps">
 						@if ($rfp->deadline > '2015-01-01')
 							<li class="rfps">
@@ -123,13 +129,21 @@
 				<a class="green_bg" href="{{ action('EventsController@index') }}" alt="View All Events">See All Events</a>
 			</div>
 		</div>
-		<a href="#">
-			<div class="panel_red">
-				<h3 class="red_panel_head">We're Hiring!</h3>
-				<img class="hiring img-responsive" src="/img/hiring.jpg">
-				<p class="red_panel_text">Browse our job postings and submit your resume for consideration.</p>
-			</div>
-		</a>
+		<div class="panel_white social">
+			<h3 class="text-center social">Follow Us</h3>
+			@if ($contact->facebook)
+			<a href="http://www.facebook.com/{{ $contact->facebook }}"><img class="social_media_icon" src="/img/facebook-dreamstale25.png" alt="facebook" /></a>
+			@endif
+			@if ($contact->instagram)
+			<a href="http://www.instagram.com/{{ $contact->instagram }}"><img class="social_media_icon" src="/img/instagram-dreamstale43.png" alt="instagram" /></a>
+			@endif
+			@if ($contact->linkedin)
+			<a href="http://www.linkedin.com/in/{{ $contact->linkedin }}"><img class="social_media_icon" src="/img/linkedin-dreamstale45.png" alt="linkedin" /></a>
+			@endif
+			@if ($contact->google_plus)
+			<a href="http://plus.google.com/{{ $contact->google_plus }}"><img class="social_media_icon" src="/img/google+-dreamstale37.png" alt="google+" /></a>
+			@endif
+		</div>
 		<div class="panel_white twitter">
 			<a class="twitter-timeline" href="https://twitter.com/search?q=from%3A{{ $admin_user->contact->twitter }}" data-widget-id="771057747718582272" data-screen-name="{{ $admin_user->contact->twitter }}">Tweets about </a>
 			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
