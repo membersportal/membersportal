@@ -2,12 +2,12 @@
 
 @section('content')
 
-<form enctype="multipart/form-data" class="" action="{{ action('RFPController@store') }}" method="post">
+<form class="" action="{{ action('RFPController@store') }}" method="post" enctype="multipart/form-data">
   {!! csrf_field() !!}
-  @include('partials.create_rfp_form')
+  @include('partials.admin_create_rfp_form')
 
 <button type="submit" class="btn btn-default">Create</button>
- 
-</form>  
+
+</form>
 
 @stop
