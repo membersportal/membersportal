@@ -2,18 +2,10 @@
 
 @section('content')
 <div class="container">
-	<h1 class="text-center space">Edit Org. Contact Information</h1>
+	<h1 class="text-center">Edit Org. Contact Information</h1>
+	<p class="text-center"><span class="required">*</span> Required Field</p>
 	<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-sm-offset-1 col-md-offset-1 col-lg-offset-1 col-xl-offset-1 edit_nav">	
-		<ul class="edit_account_nav">
-			<li><a href="{{ action('UsersController@getAdminDashboard') }}" alt="Analytics">Analytics</a></li>
-			<li><a href="{{ action('UsersController@edit', ['id' => Auth::user()->id]) }}" alt="Edit Admin Login">Edit My Login</a></li>
-			<li><a class="active" href="{{ action('ContactsController@edit', ['id' => Auth::user()->id]) }}" alt="Edit Org Contact">Edit Org. Contact</a></li>
-			<li><a href="{{ action('ArticlesController@adminIndex') }}" alt="Manage Articles">Articles</a></li>
-			<li><a href="{{ action('CarouselsController@adminIndex') }}" alt="Manage Carousels">Carousels</a></li>
-			<li><a href="{{ action('EventsController@adminIndex') }}" alt="Manage Events">Events</a></li>
-			<li><a href="{{ action('RFPController@adminIndex') }}" alt="Manage RFPs">RFPs</a></li>
-			<li><a href="{{ action('UsersController@adminIndex') }}" alt="Manage Users">Users</a></li>
-		</ul>
+		@include('partials.admin_dash_nav', ['home' => '', 'login' => '', 'contact' => 'active', 'articles' => '', 'carousels' => '', 'events' => '', 'rfps' => '', 'users' => ''] )
 	</div>
 
 	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
@@ -22,7 +14,7 @@
 				{!!csrf_field()!!}
 				@include('partials.admin_edit_contact')
 				<button class="btn btn-primary pull-right" type="submit">Save</button>
-				<a class="cancel_button pull-right" href="{{ action('UsersController@index') }}" alt="cancel">Cancel</a>
+				<a class="cancel_button pull-right" href="{{ action('UsersController@getAdminDashboard') }}" alt="cancel">Cancel</a>
 			</form>
 		</div>
 	</div>

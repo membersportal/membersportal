@@ -4,13 +4,13 @@
 	@include ('partials.error', ['value' => 'heading'])
 </div>
 <div class="form-group">
-	<label for="subheading">Subheading<span class="required">*</span></label>
+	<label for="subheading">Subheading</label>
 	<input type="text" class="form-control" name="title" value="{{ $article->subheading }}" maxlength="250" required>
 	@include ('partials.error', ['value' => 'subheading'])
 </div>
 <div class="form-group">
 	<label for="desc">Description<span class="required">*</span></label>
-	<input type="text" class="form-control" name="title" value="{{ $article->desc }}" maxlength="500" required>
+	<textarea name="desc" maxlength="500" rows="6" required>{{ $article->desc }}</textarea>
 	@include ('partials.error', ['value' => 'desc'])
 </div>
 <div class="form-group">

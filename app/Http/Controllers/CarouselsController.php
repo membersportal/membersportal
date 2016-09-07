@@ -26,7 +26,7 @@ class CarouselsController extends Controller
 		$carousels = Carousel::paginate(5);
 		$paginate = 5;
 		$data = compact('carousels', 'paginate');
-		return view('admin.admin_manage_carousels');
+		return view('admin.admin_manage_carousels')->with($data);
 	}
 
 	/**
@@ -52,13 +52,6 @@ class CarouselsController extends Controller
 		$carousel = Carousel::findOrFail($id);
 		$data = compact('carousel');
 		return view('admin.admin_edit_carousel')->with($data);
-	}
-
-	public function editgeneral()
-	{
-		$carousels = Carousel::pullCarousels();
-		$data = compact('carousels');
-		return view('admin.admin_edit_carousel_general')->with($data);
 	}
 
 	/**
