@@ -62,7 +62,7 @@
 									draggable: false
 								});
 								var infoWindow = new google.maps.InfoWindow({
-									content: "<p>" + business.company.name + "</p>" + "<p>" + business.user_id + "</p>"
+									content: "<p>" + business.company.name + "</p>" + "<p>" + business.company.desc + "</p>"
 								});
 								marker.addListener('click', function() {
 									map.setCenter(results[0].geometry.location);
