@@ -43,9 +43,15 @@ class EventsController extends Controller
 
 	public function searchEvents(Request $request)
 	{
-	  $results = Event::searchEvents($request);
-	  $data = compact('results');
-		return view('events.search')->with($data);
+	  $searched_info = Event::searchEvents($request);
+		$search_results = Event::usersEvents($searched_info->id)->get();
+
+		$user = Auth::user()->id;
+		$connections = Company::find($user)->companies;
+		$connections_events = Event::dashboardEvents($connections)->get();
+		$users_events = Event::usersEvents($user)->get();
+	  $data = compact('search_results', 'connections_events', 'users_events');
+		return view('events.search_results')->with($data);
 	}
 
 	/**
