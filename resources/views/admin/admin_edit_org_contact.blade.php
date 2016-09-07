@@ -12,7 +12,7 @@
 		<div class="panel_form">
 			<form method="POST" action="{{ action('ContactsController@update', ['id' => $contact->id]) }}">
 				{!!csrf_field()!!}
-				@include('partials.admin_edit_contact')
+				@include('partials.edit_contact_form')
 				<button class="btn btn-primary pull-right" type="submit">Save</button>
 				<a class="cancel_button pull-right" href="{{ action('UsersController@getAdminDashboard') }}" alt="cancel">Cancel</a>
 			</form>

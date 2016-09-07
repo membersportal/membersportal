@@ -14,9 +14,9 @@
 	@include ('partials.error', ['value' => 'desc'])
 </div>
 <div class="form-group">
-	<label for="img">Upload An Image</label>
+	<label for="img">Upload An Image<span class="required">*</span></label>
 	<p class="form_label_small">Maximum Size: 10MB</p>
-	<input type="file" class="form-control" name="img" accept="image/*">
+	<input type="file" class="form-control" name="img" accept="image/*" required>
 	@include ('partials.error', ['value' => 'img'])
 </div>
 <div class="form-group">

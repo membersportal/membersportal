@@ -80,7 +80,6 @@ div.panel_red, div.panel_green, div.about_panel_red {
 	border: 1px solid #514e43;
 	margin-bottom: 15px;
 	margin-top: 16px;
-	text-align: center;
 }
 
 div.panel_form {
@@ -232,7 +231,7 @@ h1.company_name_profile {
 	font-size: 2em;
 }
 
-h4.article_heading, h4.carousel_heading {
+h4.article_heading, h4.carousel_heading, h4.event_heading {
 	color: #7c786a;
 	margin-bottom: 3px;
 	line-height: 1.25em;
@@ -299,6 +298,13 @@ p.red_panel_text {
 
 p.blue {
 	color: #66a498;
+}
+
+p.event_boolean {
+	color: #7c786a;
+	font-size: .85em;
+	margin: 0 15px 5px 0;
+	display: inline-block;
 }
 
 p.company_name {
@@ -472,7 +478,7 @@ ul.edit_account_nav > li > a.active {
 	background-color: #66a498;
 }
 
-h4.article_heading > a, h4.article_heading > a:visited, h4.article_heading > a:active, h4.carousel_heading > a, h4.carousel_heading > a:visited, h4.carousel_heading > a:active {
+h4.article_heading > a, h4.article_heading > a:visited, h4.article_heading > a:active, h4.carousel_heading > a, h4.carousel_heading > a:visited, h4.carousel_heading > a:active, h4.event_heading > a, h4.event_heading > a:visited, h4.event_heading > a:active {
 	color: #7c786a;
 }
 
@@ -566,12 +572,12 @@ img.company_profile {
 	width: inherit;
 }
 
-img.articles, img.articles_full, img.articles_grid, img.carousels_grid {
+img.articles, img.articles_full, img.articles_grid, img.carousels_grid, img.events_grid {
 	object-fit: cover;
 	border: 1px solid #7c786a;
 }
 
-img.articles_grid, img.carousels_grid {
+img.articles_grid, img.carousels_grid, img.events_grid {
 	max-height: 100px;
 	max-width: 100px;
 	margin: 15px auto 0 auto;
@@ -634,8 +640,7 @@ img.current_company_profile {
 
 /*Buttons*/
 
-a.cancel_button, a.cancel_button:visited, a.cancel_button:active {
-	background-color: #514e43;
+a.cancel_button, a.cancel_button:visited, a.cancel_button:active, a.edit_button, a.edit_button:visited, a.edit_button:active {
 	color: #fff;
 	font-size: 1.15em;
 	text-transform: uppercase;
@@ -643,8 +648,20 @@ a.cancel_button, a.cancel_button:visited, a.cancel_button:active {
 	margin-right: 10px;
 }
 
+a.edit_button, a.edit_button:visited, a.edit_button:active {
+	background-color: #b7c483;
+}
+
+a.cancel_button, a.cancel_button:visited, a.cancel_button:active{
+	background-color: #514e43;
+}
+
 a.cancel_button:hover {
 	background-color: #7c786a;
+}
+
+a.edit_button:hover {
+	background-color: #d3e397;
 }
 
 button.btn.btn-primary.pull-right, button.btn.btn-primary.pull-right.login, button.btn.btn-info.pull-right, button.btn.btn-danger.pull-right {
@@ -669,6 +686,10 @@ button.btn.btn-info.pull-right {
 button.btn.btn-danger.pull-right {
 	background-color: #c65c39;
 	margin-right: 10px;
+}
+
+button.btn.btn-danger.pull-right:hover {
+	background-color: #eb6e44;
 }
 
 button.btn.btn-primary.pull-right.login {
@@ -805,6 +826,7 @@ select.form-control.search_form {
 
 .checkbox-inline {
 	color: #66a498;
+	margin-bottom: 10px;
 }
 
 @-webkit-viewport { width: device-width; }

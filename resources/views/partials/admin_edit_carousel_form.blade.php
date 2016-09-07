@@ -10,7 +10,7 @@
 </div>
 <div class="form-group">
 	<label for="url">URL</label>
-	<p class="form_label_small">Please enter the full URL including http://</p>
+	<p class="form_label_small">Enter the full URL including http://</p>
 	<input type="url" class="form-control" name="url" value="{{ $carousel->url }}" placeholder="http://www.example.com">
 	@include ('partials.error', ['value' => 'url'])
 </div>

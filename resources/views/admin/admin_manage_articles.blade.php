@@ -20,20 +20,15 @@
 					<h5>{{ $article->subheading }}</h5>
 					@endif
 					<p class="article_desc">{{ $article->desc }}</p>
-
-					<form method="GET" action="{{ action('ArticlesController@edit', ['id' => $article->id]) }}">
-						<button class="btn btn-info pull-right" type="submit">Edit</button>
-					</form>
-
+					<a href="{{ action('ArticlesController@edit', ['id' => $article->id]) }}" class="edit_button pull-right">Edit</a>
 					<form method="POST" action="{{ action('ArticlesController@destroy', ['id' => $article->id]) }}">
 						{{ method_field('DELETE') }}
 						{!! csrf_field() !!}
 						<button class="btn btn-danger pull-right" type="submit">Delete</button>
 					</form>
-
 				</div>
 			</div>
-			@if (($key + 1) % $paginate != 0 || $key + 1 == count($articles))
+			@if (($key + 1) % $paginate != 0 || $key + 1 != count($articles))
 				<hr class="wide">
 			@endif
 			@endforeach

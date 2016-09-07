@@ -31,6 +31,14 @@ class EventsController extends Controller
 		return view('events.all_events')->with($data);
 	}
 
+	public function adminIndex()
+	{
+		$events = Event::paginate(10);
+		$paginate = 10;
+		$data = compact('events', 'paginate');
+		return view('admin.admin_manage_events')->with($data);
+	}
+
 	public function show($id)
 	{
 		$event = Event::findOrFail($id);
