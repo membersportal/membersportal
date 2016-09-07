@@ -29,9 +29,16 @@ class EventsController extends Controller
 		return view('events.all_events')->with($data);
 	}
 
-	public function show()
+	public function show($id)
 	{
-		//
+		$event = Event::findOrFail($id);
+		$event_owner = $event->company;
+		$user = Auth::user()->id;
+		$connections = Company::find($user)->companies;
+		$connections_events = Event::dashboardEvents($connections)->get();
+		$users_events = Event::usersEvents($user)->get();
+		$data = compact('event', 'event_owner', 'connections_events', 'users_events');
+		return view('events.show_event')->with($data);
 	}
 
 	public function searchEvents(Request $request)
@@ -139,10 +146,11 @@ class EventsController extends Controller
 	private function validateAndSave(Event $event, Request $request){
 		$company_id = Auth::user()->id;
 		$is_admin = Auth::user()->is_admin;
-		$request->session()->flash('ERROR_MESSAGE', 'Event not created successfully.');
 
+		$request->session()->flash('ERROR_MESSAGE', 'Event not created successfully.');
 		$this->validate($request, Event::$rules);
 		$request->session()->forget('ERROR_MESSAGE');
+
 		$event->company_id = $company_id;
 		$event->title = $request->title;
 		$event->desc = $request->desc;

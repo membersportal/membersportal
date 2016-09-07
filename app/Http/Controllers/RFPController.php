@@ -76,20 +76,20 @@ class RFPController extends Controller
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function edit(Request $request, $id)
+	public function edit($id)
 	{
 		$user = Auth::user();
 		if ($user->is_admin){
 			$rfp = Rfp::findOrFail($id);
 			$data = compact('rfp');
-			return view('admin.admin_edit_rfp')->with($data);	
+			return view('admin.admin_edit_rfp')->with($data);
 		} else {
-			$rfp = Rfp::findorfail($request->rfp_id);
+			$rfp = Rfp::findorfail($id);
 			$connections = Company::find($user->id)->companies;
 			$connections_rfps = Rfp::dashboardRfps($connections)->get();
 			$users_rfps = Rfp::profileRfps($user)->get();
 			$data = compact('rfp', 'connections_rfps', 'users_rfps');
-			return view('rfps.edit.rfp')->with($data);
+			return view('rfps.edit_rfp')->with($data);
 		}
 	}
 
@@ -108,6 +108,7 @@ class RFPController extends Controller
 	 */
 	public function update(Request $request, $id)
 	{
+		dd($id);
 		$rfp = Rfp::findOrFail($id);
 		return $this->validateAndSave($rfp, $request);
 	}
@@ -122,9 +123,14 @@ class RFPController extends Controller
 	{
 		$rfp = Rfp::findOrFail($id);
 		$rfp->delete();
-		$message = 'RFP deleted';
-		$request->session()->flash('sucessMessage', $message);
-		return redirect()->action('companies.view_profile');
+
+		if(Auth::user()->is_admin){
+			return redirect()->action('UsersController@getAdminDashboard');
+		} else {
+			$message = 'RFP deleted';
+			$request->session()->flash('sucessMessage', $message);
+			return redirect()->action('CompaniesController@show', $id = Auth::user()->id);
+		}
 	}
 
 	private function validateAndSave(Rfp $rfp, Request $request){
@@ -142,13 +148,14 @@ class RFPController extends Controller
 		$rfp->contact_department = $request->contact_department;
 		$rfp->contact_no = $request->contact_no;
 		$rfp->project_scope = $request->project_scope;
-		$rfp->contract_to_date = $request->contract_to_date;
 		$rfp->contract_from_date = $request->contract_from_date;
+		$rfp->contract_to_date = $request->contract_to_date;
+		$rfp->url = $request->url;
 		$rfp->save();
 
 		$request->session()->flash('message', 'Entry successfully saved.');
 		if ($is_admin) {
-			return redirect()->action('admin.admin_dashboard');
+			return redirect()->action('UsersController@getAdminDashboard');
 		} else {
 			return redirect()->action('CompaniesController@dashboard', ['id' => $company_id]);
 		}

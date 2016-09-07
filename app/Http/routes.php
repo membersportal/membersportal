@@ -17,56 +17,59 @@
 
 Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 {
-    // Users
-    Route::get('/admin/users/create', 'UsersController@create');
-    Route::post('/admin/users/store', 'UsersController@store');
-    Route::delete('/admin/users/{user}', 'UsersController@destroy');
-    Route::get('/admin/userssearch', 'UsersController@deleteUserSearch');
-    Route::get('/admin/users/deleteUser', 'UsersController@adminDeleteUser');
+  // Users
     Route::get('/admin/dashboard', 'UsersController@getAdminDashboard');
-    Route::get('/admin/users/edit', 'UsersController@editUsers');
+    Route::get('admin/users', 'UsersController@adminIndex');
+    Route::get('/admin/users/create', 'UsersController@create');
+    Route::post('/admin/users', 'UsersController@store');
+    Route::get('/admin/users/delete', 'UsersController@adminDeleteUser');
+    Route::delete('/admin/users/{user}', 'UsersController@destroy');
 
     // Companies
     Route::get('/admin/companies/create', 'CompaniesController@create');
-    Route::post('/admin/companies/store', 'CompaniesController@store');
+    Route::post('/admin/companies', 'CompaniesController@store');
     Route::get('/admin/companies/{company}/edit', 'CompaniesController@edit');
     Route::put('/admin/companies/{company}', 'CompaniesController@update');
     Route::delete('/admin/companies/{company}', 'CompaniesController@destroy');
 
     // Contacts
     Route::get('/admin/contacts/create', 'ContactsController@create');
-    Route::post('/admin/contacts/store', 'ContactsController@store');
+    Route::post('/admin/contacts', 'ContactsController@store');
     Route::get('/admin/contacts/{company}/edit', 'ContactsController@edit');
     Route::put('/admin/contacts/{company}', 'ContactsController@update');
     Route::delete('/admin/contacts/{contact}', 'ContactsController@destroy');
 
     // Events
+    Route::get('/admin/events', 'EventsController@adminIndex');
     Route::get('/admin/events/create', 'EventsController@create');
     Route::post('/admin/events', 'EventsController@store');
     Route::get('/admin/events/{event}/edit', 'EventsController@edit');
     Route::put('/admin/events/{event}', 'EventsController@update');
-    Route::get('/admin/eventsview', 'EventsController@editgeneral');
     Route::delete('/admin/events/{event}', 'EventsController@destroy');
 
     // Articles
+    Route::get('/admin/articles', 'ArticlesController@adminIndex');
     Route::get('/admin/articles/create', 'ArticlesController@create');
     Route::post('/admin/articles', 'ArticlesController@store');
     Route::get('/admin/articles/{article}/edit', 'ArticlesController@edit');
     Route::put('/admin/articles/{article}', 'ArticlesController@update');
-    Route::get('/admin/articlesview', 'ArticlesController@editgeneral');
     Route::delete('/admin/articles/{article}', 'ArticlesController@destroy');
 
     // Carousels
+    Route::get('/admin/carousels', 'CarouselsController@adminIndex');
     Route::get('/admin/carousels/create', 'CarouselsController@create');
     Route::post('/admin/carousels', 'CarouselsController@store');
     Route::get('/admin/carousels/{carousel}/edit', 'CarouselsController@edit');
     Route::put('/admin/carousels/{carousel}', 'CarouselsController@update');
     Route::delete('/admin/carousels/{carousel}', 'CarouselsController@destroy');
-    Route::get('/admin/carouselsview', 'CarouselsController@editgeneral');
 
     //RFPs
-
-    Route::get('/admin/rfpsview', 'RFPController@editgeneral');
+    Route::get('/admin/rfps', 'RFPController@adminRFPs');
+    Route::get('/admin/rfps/create', 'RFPController@create');
+    Route::post('/admin/rfps', 'RFPController@store');
+    Route::get('/admin/rfps/{rfp}/edit', 'RFPController@edit');
+    Route::put('/admin/rfps/{rfp}', 'RFPController@update');
+    Route::delete('/admin/rfps/{rfp}', 'RFPController@destroy');
 });
 
 // ================= User and Admin Access ================= //

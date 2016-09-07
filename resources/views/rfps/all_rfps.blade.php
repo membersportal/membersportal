@@ -21,7 +21,7 @@
 
   <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 center_home">
     @foreach($rfps as $rfp)
-      <h5>{{ $rfp->project_title }}</h5>
+      <h5><a href="{{ action('RFPController@show', $id = $rfp->id) }}">{{ $rfp->project_title }}</a></h5>
     @endforeach
   </div>
 
@@ -33,7 +33,7 @@
       <select class="form-control" id="rfp_id" name="rfp_id">
         <option disabled selected label="Select"></option>
         @foreach ($users_rfps as $rfp)
-          <option value="{!! $rfp->id !!}">{{ $rfp->project_title }}</option>
+          <option value="{{ $rfp->id }}">{{ $rfp->project_title }}</option>
         @endforeach
       </select>
       <a href="{{ action('RFPController@create') }}">Create New Request</a>
