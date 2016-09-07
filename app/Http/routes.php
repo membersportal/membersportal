@@ -111,6 +111,7 @@ Route::resource('events', 'EventsController');
 Route::resource('leaders', 'LeadersController');
 
 // RFPs
+Route::post('/rfps/{rfp}', 'RFPController@update');
 Route::resource('rfps', 'RFPController');
 
 // Articles

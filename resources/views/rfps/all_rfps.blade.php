@@ -28,17 +28,30 @@
 
   <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 right_home">
 
-    <form class="" action="{{ action('RFPController@edit') }}" method="get">
-      <label for="users_rfps">My RFPs</label>
-      <select class="form-control" id="rfp_id" name="rfp_id">
-        <option disabled selected label="Select"></option>
-        @foreach ($users_rfps as $rfp)
-          <option value="{{ $rfp->id }}">{{ $rfp->project_title }}</option>
-        @endforeach
-      </select>
-      <a href="{{ action('RFPController@create') }}">Create New Request</a>
-      <button type="submit" class="btn btn-default">Edit</button>
-    </form>
+    <div class="panel_white">
+      <h3 class="text-center">My RFPs</h3>
+      @foreach ($users_rfps as $key => $rfp)
+        @if ($key < 3)
+        <div id="accordion" role="tablist" aria-multiselectable="false">
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="heading{{$key+1}}">
+              <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{$key+1}}" aria-expanded="false" aria-controls="collapse{{$key+1}}">{{ $rfp->project_title }}
+              </a>
+              </h4>
+              <p class="event_date_home">Deadline for submission: {{ $rfp->deadline }}</p>
+            </div>
+            <div id="collapse{{$key+1}}" class="panel-collapse collapse event_desc_home" role="tabpanel" aria-labelledby="heading{{$key+1}}">
+            {{ str_limit($rfp->project_scope, 100) }}<a class="red_link" href="{{ action('RFPController@show', $id = $rfp->id) }}"> see request</a>
+            </div>
+          </div>
+        </div>
+        @endif
+      @endforeach
+      <div class="panel_green">
+        <a class="green_bg" href="{{ action('RFPController@index') }}" alt="View All RFPs">See All RFPs</a>
+      </div>
+    </div>
 
 
   <div class="panel_white">
