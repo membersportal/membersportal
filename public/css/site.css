@@ -212,7 +212,7 @@ body {
 	font-family: 'Source Sans Pro', sans-serif;
 }
 
-.event_desc_home {
+.event_desc_home, .rfp_contact_detail {
 	margin-top: 10px;
 	line-height: 1.25em;
 }
@@ -221,9 +221,14 @@ body {
 	font-size: .85em;
 }
 
-.event_date_home, .rfp_date {
+.event_date_home, .rfp_date, .rfp_contact_detail {
 	color: #8dcdc1;
 	font-weight: bolder;
+	font-size: 1.05em;
+}
+
+.rfp_dates, .rfp_date {
+	margin-bottom: 0;
 }
 
 h3.login {
@@ -362,7 +367,7 @@ p.company_desc {
 	font-size: .85em;
 }
 
-p.article_desc {
+p.article_desc, p.rfp_desc {
 	margin-bottom: 20px;
 }
 
