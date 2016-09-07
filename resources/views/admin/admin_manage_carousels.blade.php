@@ -10,7 +10,7 @@
 	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
 		<div class="panel_white carousels">
 			@foreach ($carousels as $key => $carousel)
-			<div class="row carousel_table">
+			<div class="row">
 				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
 					<img class="img-responsive carousels_grid" src="{{ '/img/carousel/' . $carousel->img }}" alt="">
 				</div>

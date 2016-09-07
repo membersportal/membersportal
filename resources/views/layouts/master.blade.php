@@ -9,7 +9,6 @@
 	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab|Source+Sans+Pro" rel="stylesheet">
 	<link href="/css/site.css" rel="stylesheet">
 	<link href="/css/navbar.css" rel="stylesheet">
-	<link href="/css/event_home.css" rel="stylesheet">
 	<link href="/css/carousel.css" rel="stylesheet">
 </head>
 <body>
