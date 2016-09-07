@@ -79,11 +79,11 @@
 					</a>
 				</div>
 				<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 col-xl-9">
-					<h4 class="article_heading">{{ $article->heading }}</h4>
+					<h4 class="article_heading">{{ $article->heading }}<span class="article_date">&nbsp;&nbsp;//&nbsp;&nbsp;{{ $article->date }}</span></h4>
 					@if ($article->subheading)
 					<h5>{{ $article->subheading }}</h5>
 					@endif
-					<p class="article_desc">{{ str_limit($article->desc, 100) }}
+					<p class="article_desc">{{ str_limit($article->desc, 75) }}
 						<a class="red_link" href="{{ $article->url }}"> continue reading</a>
 					</p>
 				</div>
