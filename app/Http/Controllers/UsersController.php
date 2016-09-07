@@ -12,8 +12,9 @@ use App\Article;
 use App\Carousel;
 use App\Company;
 use App\Contact;
-use App\User;
+use App\Leader;
 use App\Rfp;
+use App\User;
 
 
 class UsersController extends Controller
@@ -79,7 +80,12 @@ class UsersController extends Controller
 	{
 		$user = User::find($id);
 		$data = compact('user');
-		return view('admin.admin_edit_login')->with($data);
+
+		if (Auth::user()->is_admin) {
+			return view('admin.admin_edit_login')->with($data);
+		}
+		
+		return view('users.edit_login')->with($data);
 	}
 
 	/**
@@ -104,16 +110,8 @@ class UsersController extends Controller
 	public function destroy($id)
 	{
 		$user = User::findOrFail($id);
-
-		// delete roles
-		$role = Role::findOrFail(1);
-		$role->delete();
-		$role->users()->sync([]);
-		$role->perms()->sync([]);
-		$role->forceDelete();
-		
 		$user->delete();
-		return redirect()->action('CompaniesController@destroy', ['id' => $user->id]);
+		return redirect()->action('CompaniesController@destroy', $user->id);
 	}
 
 	public function getAdminDashboard()
@@ -127,7 +125,6 @@ class UsersController extends Controller
 		$request->session()->flash('ERROR_MESSAGE', 'User was not created successfully');
 		$this->validate($request, User::$rules);
 		$request->session()->forget('ERROR_MESSAGE');
-
 		$user->first_name = $request->first_name;
 		$user->last_name = $request->last_name;
 		$user->email = $request->email;
@@ -135,14 +132,12 @@ class UsersController extends Controller
 		$user->password = Hash::make($request->password);
 		$user->save();
 
-		$is_admin = Auth::user()->is_admin;
-
-		if ($is_admin) {
+		if (Auth::user()->is_admin) {
 			$request->session()->flash('message', 'User successfully created, please enter company information.');
 			return redirect()->action('CompaniesController@create');
-		} else {
-			$request->session()->flash('message', 'User login information successfully updated.');
-			return redirect()->action('UsersController@edit', ['id' => Auth::user()->id]);
 		}
+
+		$request->session()->flash('message', 'User login information successfully updated.');
+		return redirect()->action('UsersController@edit', Auth::user()->id);
 	}
 }
