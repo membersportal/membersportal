@@ -12,7 +12,9 @@ class ArticlesController extends Controller
 {
 	public function index()
 	{
-		return view('articles.all_articles');
+		$articles = Article::paginate(5);
+		$data = compact('articles');
+		return view('articles.all_articles')->with($data);
 	}
 
 	/**
@@ -43,9 +45,9 @@ class ArticlesController extends Controller
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function edit($id)
+	public function edit(Request $request)
 	{
-		$article = Article::findOrFail($id);
+		$article = Article::findOrFail($request->article_id);
 		$data = compact('article');
 		return view('admin.admin_edit_article')->with($data);
 	}
