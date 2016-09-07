@@ -10,7 +10,7 @@
 	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
 		<div class="panel_white articles">
 			@foreach ($articles as $key => $article)
-			<div class="row article_table">
+			<div class="row">
 				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
 					<img class="img-responsive articles_grid" src="{{ '/img/articles/' . $article->img }}" alt="">
 				</div>

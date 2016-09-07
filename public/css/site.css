@@ -64,7 +64,7 @@ div.about, div.leaders, div.events, div.twitter, div.rfps, div.connections, div.
 	margin-top: 16px;
 }
 
-div.panel_white.articles, div.panel_white.carousels {
+div.panel_white.articles, div.panel_white.carousels, div.panel_white.events, div.panel_white.rfps {
 	margin-top: 8px;
 }
 
@@ -131,10 +131,6 @@ div.social_media_edit {
 div.checkboxes {
 	margin: 10px 0;
 }
-/*
-div.row.article_table {
-	padding: 0 10px;
-}*/
 
 hr {
 	margin: 10px 0;
@@ -199,9 +195,35 @@ div.interior_form {
 	margin-right: -8px;
 }
 
+.panel-default > .panel-heading {
+	padding: 0;
+	border-style: none;
+	background-color: #fff;
+}
+
+.panel {
+	border: none;
+	box-shadow: none;
+	margin-bottom: 10px;
+}
+
 /*Text*/
 body {
 	font-family: 'Source Sans Pro', sans-serif;
+}
+
+.event_desc_home {
+	margin-top: 10px;
+	line-height: 1.25em;
+}
+
+.event_desc_date {
+	font-size: .85em;
+}
+
+.event_date_home, .rfp_date {
+	color: #8dcdc1;
+	font-weight: bolder;
 }
 
 h3.login {
@@ -231,7 +253,7 @@ h1.company_name_profile {
 	font-size: 2em;
 }
 
-h4.article_heading, h4.carousel_heading, h4.event_heading {
+h4.article_heading, h4.carousel_heading, h4.event_heading, h4.rfp_heading {
 	color: #7c786a;
 	margin-bottom: 3px;
 	line-height: 1.25em;
@@ -294,6 +316,11 @@ h4.footer {
 p.red_panel_text {
 	line-height: 1.25em;
 	color: #fff;
+}
+
+p.rfp_dates {
+	display: inline-block;
+	margin-right: 5px;
 }
 
 p.blue {
@@ -425,8 +452,7 @@ span.required {
 }
 
 /*Links*/
-
-a.green_bg:after, a.green_bg:hover:after, ul.footer > li > a.footer_triangle:after, ul.footer > li > a.footer_triangle:hover:after, div.login > a.forgot_password:hover:after, a.forgot_password:after, div.connect > form > button.btn.btn-primary.pull-right.connect:after, div.connect > form > button.btn.btn-primary.pull-right.connect:hover:after, div.main_panel > div >  a.red_link.project:after, div.main_panel > div >  a.red_link.project:hover:after {
+a.green_bg:after, a.green_bg:hover:after, ul.footer > li > a.footer_triangle:after, ul.footer > li > a.footer_triangle:hover:after, div.login > a.forgot_password:hover:after, a.forgot_password:after, div.connect > form > button.btn.btn-primary.pull-right.connect:after, div.connect > form > button.btn.btn-primary.pull-right.connect:hover:after, div.main_panel > div >  a.red_link.project:after, div.main_panel > div >  a.red_link.project:hover:after, h4.panel-title > a:hover:after, h4.panel-title > a:after {
 	content: "";
 	display: inline-block;
 	height: 11px;
@@ -438,7 +464,7 @@ div.login > a.forgot_password:after, ul.footer > li > a.footer_triangle:hover:af
 	margin-left: 4px;
 }
 
-ul.edit_account_nav > li > a:after {
+ul.edit_account_nav > li > a:after, h4.panel-title > a:hover:after {
 	background: transparent url('/img/arrow_blue.png') no-repeat;
 }
 
@@ -454,7 +480,7 @@ div.connect > form > button.btn.btn-primary.pull-right.connect:hover:after {
 	background: transparent url('/img/arrow_dkblue.png') no-repeat;
 }
 
-div.main_panel > div >  a.red_link.project:after {
+div.main_panel > div >  a.red_link.project:after, h4.panel-title > a:after {
 	background: transparent url('/img/arrow_white.png') no-repeat;
 }
 
@@ -470,6 +496,10 @@ ul.footer > li > a.footer_triangle:hover {
 	color: #fff5c3;
 }
 
+h4.panel-title > a {
+	font-size: 1em;
+}
+
 ul.edit_account_nav > li > a:hover {
 	color: #d4fdf5;
 }
@@ -478,11 +508,11 @@ ul.edit_account_nav > li > a.active {
 	background-color: #66a498;
 }
 
-h4.article_heading > a, h4.article_heading > a:visited, h4.article_heading > a:active, h4.carousel_heading > a, h4.carousel_heading > a:visited, h4.carousel_heading > a:active, h4.event_heading > a, h4.event_heading > a:visited, h4.event_heading > a:active {
+h4.article_heading > a, h4.article_heading > a:visited, h4.article_heading > a:active, h4.carousel_heading > a, h4.carousel_heading > a:visited, h4.carousel_heading > a:active, h4.event_heading > a, h4.event_heading > a:visited, h4.event_heading > a:active, h4.rfp_heading > a, h4.rfp_heading > a:visited, h4.rfp_heading > a:active {
 	color: #7c786a;
 }
 
-h4.article_heading > a:hover {
+h4.article_heading > a:hover, h4.carousel_heading > a:hover, h4.event_heading > a:hover, h4.rfp_heading > a:hover {
 	color: #514e43;
 }
 

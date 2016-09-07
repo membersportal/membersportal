@@ -37,7 +37,7 @@
 </div>
 <div class="form-group">
 	<label for="url">RFP Link<span class="required">*</span></label>
-	<p class="form_label_small">Please enter the full URL including http://</p>
+	<p class="form_label_small">Enter the full URL including http://</p>
 	<p class="form_label_small">This link should enable members to read more detail regarding your request for proposal.</p>
 	<input type="url" class="form-control" name="url" value="{{ $rfp->url }}" placeholder="http://www.example.com">
 	@include ('partials.error', ['value' => 'url'])
