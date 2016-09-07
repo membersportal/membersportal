@@ -21,6 +21,14 @@ class CarouselsController extends Controller
 		return view('admin.admin_create_carousel');
 	}
 
+	public function adminIndex()
+	{
+		$carousels = Carousel::paginate(5);
+		$paginate = 5;
+		$data = compact('carousels', 'paginate');
+		return view('admin.admin_manage_carousels');
+	}
+
 	/**
 	 * Store a newly created resource in storage.
 	 *
