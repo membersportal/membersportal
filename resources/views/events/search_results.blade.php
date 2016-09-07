@@ -19,17 +19,15 @@
 
 
   <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 center_home">
-    <h1>Edit Event</h1>
-    <form action="{{ action('EventsController@update', $id = $event->id) }}" method="post" enctype="multipart/form-data">
+    <form class="form-group" action="{{ action('EventsController@searchEvents') }}" method="get">
       {!! csrf_field() !!}
-        @include('partials.edit_event_form')
-      <button type="submit">Save</button>
+      <label for="name">Search Events by Company</label>
+      <input type="text" name="search_field" value="" placeholder="company name">
+      <button type="Submit">Search</button>
     </form>
-    <form action="{{ action('EventsController@destroy', $id = $event->id) }}" method="post">
-      {!! csrf_field() !!}
-      {{ method_field('DELETE') }}
-      <button type="submit" name="button">Delete Event</button>
-    </form>
+    @foreach($search_results as $event)
+      <a href="{{ action('EventsController@show', $id = $event->id) }}"><h5>{{ $event->title }}</h5></a>
+    @endforeach
   </div>
 
 

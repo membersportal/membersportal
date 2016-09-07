@@ -19,10 +19,11 @@
 
 
   <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 center_home">
-    <form class="form-group" action="#" method="get">
+    <form class="form-group" action="{{ action('EventsController@searchEvents') }}" method="get">
       {!! csrf_field() !!}
       <label for="name">Search Events by Company</label>
-      <input type="text" name="company" value="" placeholder="company name">
+      <input type="text" name="search_field" value="" placeholder="company name">
+      <button type="Submit">Search</button>
     </form>
     @foreach($events as $event)
       <a href="{{ action('EventsController@show', $id = $event->id) }}"><h5>{{ $event->title }}</h5></a>
@@ -52,6 +53,7 @@
 				</div>
 				@endif
 			@endforeach
+      <a href="{{ action('EventsController@create') }}">Create New Event</a>
 			<div class="panel_green">
 				<a class="green_bg" href="{{ action('EventsController@index') }}" alt="View All Events">See All Events</a>
 			</div>

@@ -18,9 +18,9 @@
   @include ('partials.error', ['value' => 'contact_department'])
 </div>
 <div class="form-group">
-  <label for="phone_no">Contact Number<span class="required">*</span></label>
-  <input type="tel" class="form-control" name="phone_no" value="{{ $rfp->phone_no }}">
-  @include ('partials.error', ['value' => 'phone_no'])
+  <label for="contact_no">Contact Number<span class="required">*</span></label>
+  <input type="tel" class="form-control" name="contact_no" value="{{ $rfp->contact_no }}">
+  @include ('partials.error', ['value' => 'contact_no'])
 </div>
 <div class="form-group">
   <label for="project_scope">Project Scope<span class="required">*</span></label>

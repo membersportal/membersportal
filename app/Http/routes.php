@@ -64,7 +64,7 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
     Route::delete('/admin/carousels/{carousel}', 'CarouselsController@destroy');
 
     //RFPs
-    Route::get('/admin/rfps', 'RFPController@adminRFPs');
+    Route::get('/admin/rfps', 'RFPController@adminIndex');
     Route::get('/admin/rfps/create', 'RFPController@create');
     Route::post('/admin/rfps', 'RFPController@store');
     Route::get('/admin/rfps/{rfp}/edit', 'RFPController@edit');
@@ -103,6 +103,7 @@ Route::post('/connections/{user}', 'ConnectionsController@store');
 Route::delete('/connections/{user}', 'ConnectionsController@destroy');
 
 // Events
+Route::get('/events/search', 'EventsController@searchEvents');
 Route::post('/events/{event}', 'EventsController@update');
 Route::delete('/events/{event}', 'EventsController@destroy');
 Route::resource('events', 'EventsController');

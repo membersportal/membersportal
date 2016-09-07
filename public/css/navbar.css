@@ -17,7 +17,7 @@ nav.navbar.navbar-default {
 	padding-top: 13px;
 }
 
-.navbar-header > a.navbar-brand:hover {
+.navbar-header > a.navbar-brand:hover, .navbar-default.navbar-brand:focus {
 	background-color: #c65c39;
 	color: #fff5c3;
 }

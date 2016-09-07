@@ -1,7 +1,7 @@
 @extends ('layouts.master')
 
-
 @section ('content')
+
 <div class="home_panel">
 	<div class="panel_green">
 		<a class="green_bg" href="{{ action('UsersController@create') }}" alt="Create User">Create New User</a>
