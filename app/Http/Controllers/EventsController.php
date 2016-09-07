@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Event;
 use App\Company;
+use App\Industry;
 
 
 class EventsController extends Controller
@@ -25,7 +26,8 @@ class EventsController extends Controller
 		$connections = Company::find($user)->companies;
 		$connections_events = Event::dashboardEvents($connections)->get();
 		$users_events = Event::usersEvents($user)->get();
-		$data = compact('events', 'users_events', 'connections_events');
+		$industries = Industry::all();
+		$data = compact('events', 'users_events', 'connections_events', 'industries');
 		return view('events.all_events')->with($data);
 	}
 

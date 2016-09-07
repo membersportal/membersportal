@@ -21,8 +21,17 @@
   <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 center_home">
     <form class="form-group" action="{{ action('EventsController@searchEvents') }}" method="get">
       {!! csrf_field() !!}
+
       <label for="name">Search Events by Company</label>
       <input type="text" name="search_field" value="" placeholder="company name">
+
+      <select class="form-control search_form pull-right" id="industry_id" name="industry_id">
+        <option disabled selected label="Select Industry"></option>
+        @foreach ($industries as $industry)
+          <option value="{{ $industry->id }}">{{ $industry->industry }}</option>
+        @endforeach
+      </select>
+
       <button type="Submit">Search</button>
     </form>
     @foreach($events as $event)
