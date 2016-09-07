@@ -40,6 +40,14 @@
 					<button type="submit" class="btn btn-primary pull-right">Map It!</button>
 					</div>
 	  			</form>
+	  			<form id="search_form" method="GET" action="{{ action('CompaniesController@searchMembers') }}">
+ 	  				<div class="form-group">
+ 		  				<input type="text" id="searchField" name="searchField" class="form-control search_form" placeholder="Enter Zip Code">
+ 						@include ('partials.error', ['value' => 'searchField'])
+ 						<input type="text" id="searchField" name="searchField" class="form-control search_form" placeholder="Company's Zip Code">
+ 						@include ('partials.error', ['value' => 'searchField'])
+ 						<button type="submit" class="btn btn-primary pull-right">Calculate Distance</button>
+ 	  			</form>
 			</div>
 		</div>
 	</div>
