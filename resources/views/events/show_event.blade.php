@@ -39,12 +39,12 @@
         {{ $event->url }}
       </p>
       @if(Auth::user()->id == $event->company_id)
-        <form action="{{ action('EventsController@edit', $id = $event->id) }}" method="post">
-          {!! csrf_field() !!}
+        <form action="{{ action('EventsController@edit', $id = $event->id) }}" method="get">
           <button type="submit">Edit</button>
         </form>
         <form action="{{ action('EventsController@destroy', $id = $event->id) }}" method="post">
           {!! csrf_field() !!}
+          {{ method_field('DELETE') }}
           <button type="submit">Delete</button>
         </form>
       @endif
@@ -66,7 +66,7 @@
 							<p class="event_date_home">{{ $event->from_date->format('F j') }} - {{ $event->to_date->format('F j') }}</p>
 						</div>
 						<div id="collapse{{$key+1}}" class="panel-collapse collapse event_desc_home" role="tabpanel" aria-labelledby="heading{{$key+1}}">
-						{{ str_limit($event->desc, 100) }}<a class="red_link" href="{{ $event->url }}" target="_blank"> see event</a>
+						{{ str_limit($event->desc, 100) }}<a class="red_link" href="{{ action('EventsController@show', $id = $event->id) }}"> see event</a>
 						</div>
 					</div>
 				</div>
