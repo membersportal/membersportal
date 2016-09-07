@@ -53,18 +53,11 @@ class ArticlesController extends Controller
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function edit(Request $request)
+	public function edit($id)
 	{
-		$article = Article::findOrFail($request->article_id);
+		$article = Article::findOrFail($id);
 		$data = compact('article');
 		return view('admin.admin_edit_article')->with($data);
-	}
-
-	public function editgeneral()
-	{
-		$articles = Article::homeArticles();
-		$data = compact('articles');
-		return view('admin.admin_show_articles')->with($data);
 	}
 	/**
 	 * Update the specified resource in storage.

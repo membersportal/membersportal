@@ -83,7 +83,7 @@ class UsersController extends Controller
 		$data = compact('user');
 
 		if (Auth::user()->is_admin) {
-			return view('admin.admin_edit_login')->with($data);
+			return view('admin.admin_edit_org_login')->with($data);
 		}
 		
 		return view('users.edit_login')->with($data);

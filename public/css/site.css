@@ -64,6 +64,10 @@ div.about, div.leaders, div.events, div.twitter, div.rfps, div.connections, div.
 	margin-top: 16px;
 }
 
+div.panel_white.articles, div.panel_white.carousels {
+	margin-top: 8px;
+}
+
 div.panel_white.social {
 	text-align: center;
 	padding-bottom: 30px;
@@ -138,8 +142,8 @@ hr {
 }
 
 hr.wide {
-	margin-top: 18px;
-	margin-bottom: 25px;
+	margin-top: 10px;
+	margin-bottom: 15px;
 }
 
 .user_grid {
@@ -228,7 +232,7 @@ h1.company_name_profile {
 	font-size: 2em;
 }
 
-h4.article_heading {
+h4.article_heading, h4.carousel_heading {
 	color: #7c786a;
 	margin-bottom: 3px;
 	line-height: 1.25em;
@@ -468,7 +472,7 @@ ul.edit_account_nav > li > a.active {
 	background-color: #66a498;
 }
 
-h4.article_heading > a, h4.article_heading > a:visited, h4.article_heading > a:active {
+h4.article_heading > a, h4.article_heading > a:visited, h4.article_heading > a:active, h4.carousel_heading > a, h4.carousel_heading > a:visited, h4.carousel_heading > a:active {
 	color: #7c786a;
 }
 
@@ -562,12 +566,12 @@ img.company_profile {
 	width: inherit;
 }
 
-img.articles, img.articles_full, img.articles_grid {
+img.articles, img.articles_full, img.articles_grid, img.carousels_grid {
 	object-fit: cover;
 	border: 1px solid #7c786a;
 }
 
-img.articles_grid {
+img.articles_grid, img.carousels_grid {
 	max-height: 100px;
 	max-width: 100px;
 	margin: 15px auto 0 auto;
@@ -631,7 +635,7 @@ img.current_company_profile {
 /*Buttons*/
 
 a.cancel_button, a.cancel_button:visited, a.cancel_button:active {
-	background-color: #c65c39;
+	background-color: #514e43;
 	color: #fff;
 	font-size: 1.15em;
 	text-transform: uppercase;
@@ -640,7 +644,7 @@ a.cancel_button, a.cancel_button:visited, a.cancel_button:active {
 }
 
 a.cancel_button:hover {
-	background-color: #eb6e44;
+	background-color: #7c786a;
 }
 
 button.btn.btn-primary.pull-right, button.btn.btn-primary.pull-right.login, button.btn.btn-info.pull-right, button.btn.btn-danger.pull-right {
