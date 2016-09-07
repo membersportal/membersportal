@@ -120,29 +120,6 @@ div.social_media_edit {
 	margin-top: 30px;
 }
 
-div.nav_triangle_div {
-	width: 100%;
-	position: relative;
-}
-
-div.nav_triangle_1, div.nav_triangle_2, div.nav_triangle_3 {
-	width: 0;
-	height: 0;
-	border-top: 22px solid transparent;
-	border-left: 12px solid #66a498;
-	border-bottom: 22px solid transparent;
-	position: absolute;
-	right: 5px;
-}
-
-div.nav_triangle_2 {
-	top: 42px;
-}
-
-div.nav_triangle_3 {
-	top: 85px;
-}
-
 div.checkboxes {
 	margin: 10px 0;
 }
