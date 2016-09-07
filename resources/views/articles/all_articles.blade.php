@@ -4,7 +4,6 @@
 <div class="container articles">
 
 	<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 col-xl-8 col-sm-offset-2 col-md-offset-2 col-lg-offset-2 col-xl-offset-2">
-		<a class="back_link" alt="Previous Page" href="{{ URL::previous() }}">< Back</a>
 		<h1 class="text-center articles">All Articles</h1>
 	@foreach ($articles as $article)
 		<a href="{{ $article->url }}">
