@@ -94,12 +94,15 @@ class CompaniesController extends Controller
 	public function getSearchedCompanies(Request $request)
 	{
 		$data = [];
-		$data['results'] = Company::searchMembers($request)->get();
+		$data['results'] = Company::searchMembers($request)->with('contact')->get();
 		foreach($data['results'] as &$result) {
 			$result->url = action('CompaniesController@show', $result->id);
 			$result->industry = $result->industry->industry;
 		}
 		$data['locations'] = Contact::searchLocations($data['results']);
+		foreach ($data['locations'] as &$location) {
+			$location->company;
+		}
 		return $data;
 	}
 
