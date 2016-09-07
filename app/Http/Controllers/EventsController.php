@@ -59,7 +59,7 @@ class EventsController extends Controller
 		$user_company = Company::find($user->id);
 		$connections = $user_company->companies;
 		$connections_events = Event::dashboardEvents($connections)->get();
-		$users_events = Event::usersEvents($user)->get();
+		$users_events = Event::usersEvents($user->id)->get();
 		$data = compact('users_events', 'connections_events');
 		if ($user->is_admin){
 			return view('admin.admin_create_event');
@@ -97,7 +97,7 @@ class EventsController extends Controller
 	  	$event = Event::findOrFail($id);
 			$connections = Company::find($user->id)->companies;
 			$connections_events = Event::dashboardEvents($connections)->get();
-			$users_events = Event::usersEvents($user)->get();
+			$users_events = Event::usersEvents($user->id)->get();
 		  $data = compact('event', 'users_events', 'connections_events');
 		  return view('events.edit_event')->with($data);
 		}

@@ -52,6 +52,7 @@
 				</div>
 				@endif
 			@endforeach
+      <a href="{{ action('EventsController@create') }}">Create New Event</a>
 			<div class="panel_green">
 				<a class="green_bg" href="{{ action('EventsController@index') }}" alt="View All Events">See All Events</a>
 			</div>

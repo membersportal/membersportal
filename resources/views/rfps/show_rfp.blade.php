@@ -42,7 +42,7 @@
       Contract from {{ $rfp->contract_from_date }} to {{ $rfp->contract_to_date }}
     </p>
 
-    @if(Auth::user()->id == $rfp->company_id)
+    @if(Auth::user()->id == $rfp->company_id && !Auth::user()->is_admin)
       <form action="{{ action('RFPController@edit', $id = $rfp->id) }}" method="get">
         <button type="submit">Edit</button>
       </form>
