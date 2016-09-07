@@ -36,8 +36,15 @@ class RFPController extends Controller
 	public function create()
 	{
 		$user = Auth::user();
-		$data = compact('user');
-		return view('admin.admin_create_rfp')->with($data);
+		$connections = Company::find($user->id)->companies;
+		$connections_rfps = Rfp::dashboardRfps($connections)->get();
+		$users_rfps = Rfp::profileRfps($user->id)->get();
+		$data = compact('user', 'connections_rfps', 'users_rfps');
+		if($user->is_admin){
+			return view('admin.admin_create_rfp')->with($data);
+		} else {
+			return view('rfps.create_rfp')->with($data);
+		}
 	}
 
 	/**
@@ -87,7 +94,7 @@ class RFPController extends Controller
 			$rfp = Rfp::findorfail($id);
 			$connections = Company::find($user->id)->companies;
 			$connections_rfps = Rfp::dashboardRfps($connections)->get();
-			$users_rfps = Rfp::profileRfps($user)->get();
+			$users_rfps = Rfp::profileRfps($user->id)->get();
 			$data = compact('rfp', 'connections_rfps', 'users_rfps');
 			return view('rfps.edit_rfp')->with($data);
 		}
@@ -108,7 +115,6 @@ class RFPController extends Controller
 	 */
 	public function update(Request $request, $id)
 	{
-		dd($id);
 		$rfp = Rfp::findOrFail($id);
 		return $this->validateAndSave($rfp, $request);
 	}
@@ -119,7 +125,7 @@ class RFPController extends Controller
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function destroy($id)
+	public function destroy(Request $request, $id)
 	{
 		$rfp = Rfp::findOrFail($id);
 		$rfp->delete();
@@ -129,7 +135,7 @@ class RFPController extends Controller
 		} else {
 			$message = 'RFP deleted';
 			$request->session()->flash('sucessMessage', $message);
-			return redirect()->action('CompaniesController@show', $id = Auth::user()->id);
+			return redirect()->action('RFPController@index');
 		}
 	}
 
@@ -157,7 +163,7 @@ class RFPController extends Controller
 		if ($is_admin) {
 			return redirect()->action('UsersController@getAdminDashboard');
 		} else {
-			return redirect()->action('CompaniesController@dashboard', ['id' => $company_id]);
+			return redirect()->action('RFPController@index');
 		}
 	}
 }
