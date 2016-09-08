@@ -115,7 +115,7 @@ class CompaniesController extends Controller
 		$feed_content = $this->buildFeed($connections);
 		$users_rfps = $company->rfps;
 		$users_events = $company->events;
-		$data = compact('feed_content', 'users_rfps', 'users_events');
+		$data = compact('feed_content', 'users_rfps', 'users_events', 'company');
 		return view('companies.companies_dashboard')->with($data);
 	}
 
@@ -148,6 +148,9 @@ class CompaniesController extends Controller
 		$this->validate($request, Company::$rules);
 		$request->session()->forget('ERROR_MESSAGE');
 
+		if(Auth::user()->is_admin && (Auth::user()->id != $company->id)){
+			$company->user_id = User::all()->last()->id;
+		}
 		$company->name = $request->name;
 		$company->industry_id = $request->industry_id;
 		$company->profile_img = $this->storeImage($request);
