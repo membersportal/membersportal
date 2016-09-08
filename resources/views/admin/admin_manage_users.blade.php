@@ -14,8 +14,6 @@
 			<p class="text-center"><span class="strong">Total:</span> {{ count($users) }} &nbsp;&nbsp;//&nbsp;&nbsp; <span class="strong">Last User Added:</span> {{ $last_user_added->created_at->format('F j Y') }}</p>
 			<a href="{{ action('UsersController@create') }}" class="create_button">Create New User</a>
 			</div>
-		</div>
-		<div class="panel_form">
 			<p class="text-center">To delete a user, search for the record with an email address.</p>
 			<form method="GET" action="{{ action('AdminController@deleteUser') }}">
 				<div class="form-group">
