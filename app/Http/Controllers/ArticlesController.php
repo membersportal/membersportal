@@ -82,7 +82,7 @@ class ArticlesController extends Controller
 	{
 		$article = Article::findOrFail($id);
 		$article->delete();
-		return redirect()->action('admin.admin_dashboard');
+		return redirect()->action('ArticlesController@adminIndex');
 	}
 
 	private function validateAndSave(Article $article, Request $request){
