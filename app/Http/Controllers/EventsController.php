@@ -49,14 +49,6 @@ class EventsController extends Controller
 			return redirect()->action('EventsController@index');
 		}
 		$searched_info = Event::searchEvents($request);
-		if($searched_info->isEmpty()){
-			$request->session()->flash('message', 'There are no results.');
-			return redirect()->action('EventsController@index');
-		}
-		if(is_array($searched_info)){
-			dd('hi');
-		}
-		dd($searched_info->pull('id'));
 		$search_results = Event::usersEvents($searched_info->id)->get();
 
 		$user = Auth::user()->id;
@@ -136,7 +128,7 @@ class EventsController extends Controller
 	{
 		$event = Event::findOrFail($id);
 		$event->delete();
-		$request->session()->flash('successMessage', 'Event deleted successfully.')
+		$request->session()->flash('SUCCESS_MESSAGE', 'Event deleted successfully.')
 		return redirect()->action('EventsController@index');
 	}
 
@@ -156,7 +148,7 @@ class EventsController extends Controller
 		$this->storeImage($request, $event);
 		$event->save();
 
-		$request->session()->flash('message', 'Event saved successfully.');
+		$request->session()->flash('SUCCESS_MESSAGE', 'Event saved successfully.');
 		return redirect()->action('EventsController@index');
 		}
 	}

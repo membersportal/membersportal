@@ -71,7 +71,7 @@ class ContactsController extends Controller
 	{
 		$contact = Contact::findOrFail($id);
 		$contact->delete();
-		$request->session()->flash('successMessage', 'User deleted successfully.');
+		$request->session()->flash('SUCCESS_MESSAGE', 'User deleted successfully.');
 		return redirect()->action('AdminController@index');
 	}
 
@@ -99,10 +99,10 @@ class ContactsController extends Controller
 		$is_admin = Auth::user()->is_admin;
 
 		if ($is_admin) {
-			$request->session()->flash('message', 'Contact saved successfully. New user saved.');
+			$request->session()->flash('SUCCESS_MESSAGE', 'Contact saved successfully. New user saved.');
 			return redirect()->action('AdminController@index');
 		} else {
-			$request->session()->flash('message', 'Contact information saved successfully.');
+			$request->session()->flash('SUCCESS_MESSAGE', 'Contact information saved successfully.');
 			return redirect()->action('UsersController@edit', ['id' => Auth::user()->id]);
 		}
 	}

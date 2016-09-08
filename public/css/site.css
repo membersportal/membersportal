@@ -1,3 +1,9 @@
+/*Alerts*/
+.alert.alert-success, .alert.alert-danger {
+	padding: 10px 0;
+	text-align: center;
+}
+
 /*Divs and Page Structure*/
 .container {
 	width: 90%;
@@ -65,7 +71,7 @@ div.panel_white {
 	border: 1px solid #d3e397;
 }
 
-div.about, div.leaders, div.events, div.twitter, div.rfps, div.connections, div.social_media, div.social, div.users {
+div.about, div.leaders, div.events, div.twitter, div.rfps, div.connections, div.social_media, div.social {
 	margin-top: 16px;
 }
 
@@ -73,7 +79,7 @@ div.users {
 	padding-bottom: 50px;
 }
 
-div.panel_white.articles, div.panel_white.carousels, div.panel_white.events, div.panel_white.rfps {
+div.panel_white.articles, div.panel_white.carousels, div.panel_white.events, div.panel_white.rfps, div.users, div.manage_users {
 	margin-top: 8px;
 }
 
@@ -309,6 +315,7 @@ h1, h2, h3, h4, h5 {
 h1 {
 	font-size: 1.7em;
 	font-weight: 700;
+	margin-top: 30px;
 }
 
 h1.articles {

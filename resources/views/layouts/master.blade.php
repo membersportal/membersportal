@@ -55,6 +55,7 @@
 		</div><!-- /.container-fluid -->
 	</nav>
 	@endif
+	@include('partials.session_alerts')
 	<div class="expand">
 		@yield('content')
 	</div>
