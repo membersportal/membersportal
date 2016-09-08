@@ -150,6 +150,11 @@ div#map {
 	border: 1px solid #d3e397;
 }
 
+div.connections_grid {
+	margin: 8px 0;
+	text-align: center;
+}
+
 div.project_showcase, div.edit_nav {
 	margin-top: 8px;
 }
@@ -795,6 +800,10 @@ img.current_company_profile {
 	margin-bottom: 15px;
 	width: 100px;
 	height: auto;
+}
+
+img.connections_grid {
+	margin-top: 20px;
 }
 
 .glyphicon.glyphicon-ok {
