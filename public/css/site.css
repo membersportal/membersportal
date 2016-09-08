@@ -155,7 +155,7 @@ div.connections_grid {
 	text-align: center;
 }
 
-div.project_showcase, div.edit_nav {
+div.project_showcase, div.edit_nav, div.connections_events {
 	margin-top: 8px;
 }
 
@@ -397,6 +397,12 @@ h1.text-center.req {
 
 p.text-center.req {
 	margin-bottom: 20px;
+}
+
+p.event_company_name {
+	color: #eb6e44;
+	margin-bottom: 3px;
+	margin-top: 2px;
 }
 
 h2 {

@@ -123,7 +123,12 @@ class CompaniesController extends Controller
 	{
 		$user = User::find($id)->id;
 		$connections = Company::findOrFail($user)->companies;
-		$data = compact('connections');
+		foreach ($connections as $connection) {
+			$company_events = [];
+			$event = Event::usersEvents($connection->id)->get();
+			$company_events[] = $event;
+		}
+		$data = compact('connections', 'company_events');
 		return view('companies.all_connections')->with($data);
 	}
 
