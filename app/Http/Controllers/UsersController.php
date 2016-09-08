@@ -43,7 +43,7 @@ class UsersController extends Controller
 
 	public function adminIndex()
 	{
-		return view('admin.manage_users');
+		return view('admin.admin_manage_users');
 	}
 
 	public function adminDeleteUser(Request $request)
