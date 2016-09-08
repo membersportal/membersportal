@@ -77,7 +77,7 @@ class CarouselsController extends Controller
 	{
 		$carousel = Carousel::findOrFail($id);
 		$carousel->delete();
-		return redirect()->action('admin.admin_dashboard');
+		return redirect()->action('CarouselsController@adminIndex');
 	}
 
 	private function validateAndSave(Carousel $carousel, Request $request){

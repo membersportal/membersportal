@@ -29,14 +29,14 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
     Route::get('/admin/companies/create', 'CompaniesController@create');
     Route::post('/admin/companies', 'CompaniesController@store');
     Route::get('/admin/companies/{company}/edit', 'CompaniesController@edit');
-    Route::put('/admin/companies/{company}', 'CompaniesController@update');
+    Route::post('/admin/companies/{company}', 'CompaniesController@update');
     Route::delete('/admin/companies/{company}', 'CompaniesController@destroy');
 
     // Contacts
     Route::get('/admin/contacts/create', 'ContactsController@create');
     Route::post('/admin/contacts', 'ContactsController@store');
     Route::get('/admin/contacts/{company}/edit', 'ContactsController@edit');
-    Route::put('/admin/contacts/{company}', 'ContactsController@update');
+    Route::post('/admin/contacts/{company}', 'ContactsController@update');
     Route::delete('/admin/contacts/{contact}', 'ContactsController@destroy');
 
     // Events
@@ -68,7 +68,7 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
     Route::get('/admin/rfps/create', 'RFPController@create');
     Route::post('/admin/rfps', 'RFPController@store');
     Route::get('/admin/rfps/{rfp}/edit', 'RFPController@edit');
-    Route::put('/admin/rfps/{rfp}', 'RFPController@update');
+    Route::post('/admin/rfps/{rfp}', 'RFPController@update');
     Route::delete('/admin/rfps/{rfp}', 'RFPController@destroy');
 });
 

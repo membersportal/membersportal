@@ -4,8 +4,8 @@
 	@include ('partials.error', ['value' => 'heading'])
 </div>
 <div class="form-group">
-	<label for="subheading">Subheading<span class="required">*</span></label>
-	<input type="text" class="form-control" name="title" value="{{ old('subheading') }}" maxlength="250" required>
+	<label for="subheading">Subheading</label>
+	<input type="text" class="form-control" name="title" value="{{ old('subheading') }}" maxlength="250">
 	@include ('partials.error', ['value' => 'subheading'])
 </div>
 <div class="form-group">
