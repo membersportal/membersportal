@@ -50,7 +50,7 @@
 		  	var d = R * c;
 		  	return d; // returns the distance in meter
 		};
-		
+
 
 		function getSearchResults(){
 			$.ajax("{{ action('CompaniesController@getSearchedCompanies') }}", {
@@ -66,16 +66,17 @@
 			}).done(function(data){
 				var search_results = data.results;
 				var businesses = data.locations;
-				var distanceInMiles = getDistance(currentLocation, results[0].geometry.location) * 0.000621371;
 				clearMarkers();
 				markers = [];
 					businesses.forEach(function(business) {
 						console.log(business);
 						var address = business.address_line_1 + ' ' + business.city + ' ' + business.state + ' ' + business.zip;
 						geocoder.geocode({ "address": address }, function (results, status) {
+						var distanceInMiles = (getDistance(currentLocation, results[0].geometry.location) * 0.000621371).toFixed(2);
 							if (status == google.maps.GeocoderStatus.OK) {
 								
 								console.log(
+									distanceInMiles
 									//google.maps.geometry
 									// getDistance(
 									// 	currentLocation, results[0].geometry.location
@@ -88,7 +89,7 @@
 									draggable: false
 								});
 								var infoWindow = new google.maps.InfoWindow({
-									content: "<p>" + business.company.name + "</p>" + "<p>" + business.company.desc + "</p>"
+									content: "<p>" + business.company.name + "</p>" + "<p>" + business.company.desc + "</p>" + "<p>" + "Miles from you: " + distanceInMiles + "</p>"
 								});
 								marker.addListener('click', function() {
 									map.setCenter(results[0].geometry.location);
