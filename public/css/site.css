@@ -433,6 +433,12 @@ p.red_panel_text {
 	color: #fff;
 }
 
+p.dashboard_category {
+	color: #7c786a;
+	font-size: .85em;
+	text-transform: uppercase;
+}
+
 p.delete_user_warning {
 	margin-top: 15px;
 	color: #66a498;
