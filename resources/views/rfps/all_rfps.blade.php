@@ -12,7 +12,6 @@
 
 
       </select>
-      <a href="{{ action('RFPController@create') }}">Create New Request</a>
       <button type="submit" class="btn btn-default">Edit</button>
     </form>
 
@@ -48,6 +47,9 @@
         </div>
         @endif
       @endforeach
+      @if(!Auth::user()->is_admin)
+        <a href="{{ action('RFPController@create') }}">Create New Request</a>
+      @endif
       <div class="panel_green">
         <a class="green_bg" href="{{ action('RFPController@index') }}" alt="View All RFPs">See All RFPs</a>
       </div>
