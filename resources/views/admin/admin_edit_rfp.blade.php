@@ -10,12 +10,13 @@
 		</div>
 		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
 			<div class="panel_form">
-				<form enctype="multipart/form-data" method="POST" action="{{ action('RFPController@update', ['id' => $rfp->id]) }}">
+				<form enctype="multipart/form-data" method="POST" action="{{ action('AdminController@updateRfp', ['id' => $rfp->id]) }}">
 					{!!csrf_field()!!}
+					{{ method_field('PUT') }}
 					@include('partials.edit_rfp_form')
 					<button class="btn btn-primary pull-right" type="submit">Save</button>
 				</form>
-				<a class="cancel_button pull-right" href="{{ action('RFPController@adminIndex') }}" alt="cancel">Cancel</a>
+				<a class="cancel_button pull-right" href="{{ action('AdminController@rfpIndex') }}" alt="cancel">Cancel</a>
 			</div>
 		</div>
 </div>

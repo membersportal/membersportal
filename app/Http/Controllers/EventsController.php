@@ -31,14 +31,6 @@ class EventsController extends Controller
 		return view('events.all_events')->with($data);
 	}
 
-	public function adminIndex()
-	{
-		$events = Event::paginate(10);
-		$paginate = 10;
-		$data = compact('events', 'paginate');
-		return view('admin.admin_manage_events')->with($data);
-	}
-
 	public function show($id)
 	{
 		$event = Event::findOrFail($id);
@@ -56,7 +48,7 @@ class EventsController extends Controller
 		if(!$request){
 			return redirect()->action('EventsController@index');
 		}
-	  $searched_info = Event::searchEvents($request);
+		$searched_info = Event::searchEvents($request);
 		if($searched_info->isEmpty()){
 			$request->session()->flash('message', 'There are no results.');
 			return redirect()->action('EventsController@index');
@@ -72,7 +64,7 @@ class EventsController extends Controller
 		$connections_events = Event::dashboardEvents($connections)->get();
 		$users_events = Event::usersEvents($user)->get();
 		$industries = Industry::all();
-	  $data = compact('search_results', 'connections_events', 'users_events', 'industries');
+		$data = compact('search_results', 'connections_events', 'users_events', 'industries');
 		return view('events.search_results')->with($data);
 	}
 
@@ -89,11 +81,7 @@ class EventsController extends Controller
 		$connections_events = Event::dashboardEvents($connections)->get();
 		$users_events = Event::usersEvents($user->id)->get();
 		$data = compact('users_events', 'connections_events');
-		if ($user->is_admin){
-			return view('admin.admin_create_event');
-		} else {
-			return view('events.create_event')->with($data);
-		}
+		return view('events.create_event')->with($data);
 	}
 
 	/**
@@ -104,8 +92,8 @@ class EventsController extends Controller
 	 */
 	public function store(Request $request)
 	{
-	  $event = new Event();
-	  return $this->validateAndSave($event, $request);
+		$event = new Event();
+		return $this->validateAndSave($event, $request);
 	}
 
 	/**
@@ -117,27 +105,12 @@ class EventsController extends Controller
 	public function edit($id)
 	{
 		$user = Auth::user();
-		if ($user->is_admin) {
-			$event = Event::findOrFail($id);
-			$data = compact('event');
-		  	return view('admin.admin_edit_event')->with($data);
-		} else {
-	  	$event = Event::findOrFail($id);
-			$connections = Company::find($user->id)->companies;
-			$connections_events = Event::dashboardEvents($connections)->get();
-			$users_events = Event::usersEvents($user->id)->get();
-		  $data = compact('event', 'users_events', 'connections_events');
-		  return view('events.edit_event')->with($data);
-		}
-
-	}
-
-	public function editgeneral()
-	{
-		$id = Auth::user()->id;
-		$events = Event::usersEvents($id)->get();
-		$data = compact('events');
-		return view('admin.admin_show_events')->with($data);
+		$event = Event::findOrFail($id);
+		$connections = Company::find($user->id)->companies;
+		$connections_events = Event::dashboardEvents($connections)->get();
+		$users_events = Event::usersEvents($user->id)->get();
+		$data = compact('event', 'users_events', 'connections_events');
+		return view('events.edit_event')->with($data);
 	}
 
 	/**
@@ -149,8 +122,8 @@ class EventsController extends Controller
 	 */
 	public function update(Request $request, $id)
 	{
-	  $event = Event::findOrFail($id);
-	  return $this->validateAndSave($event, $request);
+		$event = Event::findOrFail($id);
+		return $this->validateAndSave($event, $request);
 	}
 
 	/**
@@ -161,25 +134,18 @@ class EventsController extends Controller
 	 */
 	public function destroy($id)
 	{
-	  $event = Event::findOrFail($id);
-	  $event->delete();
-
-	  if(Auth::user()->is_admin) {
-			return redirect()->action('UsersControllers@getAdminDashboard');
-	  } else {
-	  	return redirect()->action('EventsController@index');
-	  }
+		$event = Event::findOrFail($id);
+		$event->delete();
+		$request->session()->flash('successMessage', 'Event deleted successfully.')
+		return redirect()->action('EventsController@index');
 	}
 
 	private function validateAndSave(Event $event, Request $request){
-		$company_id = Auth::user()->id;
-		$is_admin = Auth::user()->is_admin;
-
-		$request->session()->flash('ERROR_MESSAGE', 'Event not created successfully.');
+		$request->session()->flash('ERROR_MESSAGE', 'Event not saved.');
 		$this->validate($request, Event::$rules);
 		$request->session()->forget('ERROR_MESSAGE');
 
-		$event->company_id = $company_id;
+		$event->company_id = Auth::user()->id;
 		$event->title = $request->title;
 		$event->desc = $request->desc;
 		$event->from_date = $request->from_date;
@@ -190,11 +156,8 @@ class EventsController extends Controller
 		$this->storeImage($request, $event);
 		$event->save();
 
-		$request->session()->flash('message', 'Event successfully created.');
-		if ($is_admin) {
-		  return redirect()->action('EventsController@editgeneral');
-		} else {
-		  return redirect()->action('EventsController@index');
+		$request->session()->flash('message', 'Event saved successfully.');
+		return redirect()->action('EventsController@index');
 		}
 	}
 

@@ -21,9 +21,7 @@
 				<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 col-xl-9">
 					<h4 class="carousel_heading"><a href="{{ $carousel->url }}" target="_blank">{{ $carousel->title }}</a></h4>
 					<p class="carousel_desc">{{ $carousel->desc }}</p>
-					<form method="GET" action="{{ action('CarouselsController@edit', ['id' => $carousel->id]) }}">
-						<button class="btn btn-info pull-right" type="submit">Edit</button>
-					</form>
+					<a href="{{ action('CarouselsController@edit', ['id' => $carousel->id]) }}" class="edit_button pull-right">Edit</a>
 					<form method="POST" action="{{ action('CarouselsController@destroy', ['id' => $carousel->id]) }}">
 						{{ method_field('DELETE') }}
 						{!! csrf_field() !!}

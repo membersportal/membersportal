@@ -61,6 +61,18 @@ class User extends Model implements AuthenticatableContract,
 		return ucwords($value);
 	}
 
+	public static function countUsers()
+	{
+		$users = User::all();
+		return $users->count();
+	}
+
+	public static function returnLastUserAdded()
+	{
+		$user = User::orderBy('created_at', 'desc')->first();
+		return $user;
+	}
+
 	public static function searchUser($request)
 	{
 		$query = User::where('email', "$request->searchField");
@@ -74,7 +86,7 @@ class User extends Model implements AuthenticatableContract,
 		'last_name' => 'required|max:100',
 		'username' => 'required|max:32',
 		'email'   => 'required|email',
-		'password' => 'required|max:64'
+		'password' => 'required|confirmed|max:64',
 	];
 
 }
