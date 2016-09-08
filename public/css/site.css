@@ -80,6 +80,10 @@ div.about, div.leaders, div.events, div.twitter, div.rfps, div.connections, div.
 	margin-top: 16px;
 }
 
+div.all_rfps {
+	margin-top: 16px;
+}
+
 div.users {
 	padding-bottom: 50px;
 }
@@ -135,6 +139,7 @@ div.panel_beige {
 	margin-bottom: 7px;
 	margin-top: 5px;
 	text-align: center;
+	padding: 5px 20px;
 }
 
 div#map {
@@ -720,6 +725,7 @@ img.articles {
 img.articles_full {
 	width: 100%;
 	max-height: 300px;
+	margin-top: 10px;
 }
 
 img.hiring {
@@ -862,12 +868,12 @@ textarea {
 	resize: none;
 }
 
-form#search_form, .event_search {
+form#search_form, .event_search, .rfp_search {
 	background-color: #fff;
 	border: 1px solid #d3e397;
 }
 
-.event_search {
+.event_search, .rfp_search {
 	padding: 10px 30px 60px 30px;
 }
 
