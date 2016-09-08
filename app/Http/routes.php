@@ -103,8 +103,9 @@ Route::post('/connections/{user}', 'ConnectionsController@store');
 Route::delete('/connections/{user}', 'ConnectionsController@destroy');
 
 // Events
-Route::resource('events', 'EventsController');
 Route::get('/events/search', 'EventsController@searchEvents');
+Route::put('/events/{event}', 'EventsController@update');
+Route::resource('events', 'EventsController');
 
 // Leaders
 Route::put('/leaders/{leader}', 'LeadersController@update');
