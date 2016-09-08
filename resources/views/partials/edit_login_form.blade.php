@@ -18,3 +18,14 @@
 	<input type="text" class="form-control" name="username" value="{{ $user->username }}" maxlength="32" required>
 	@include ('partials.error', ['value' => 'username'])
 </div>
+<div class="form-group">
+	<label for="password">Password<span class="required">*</span></label>
+	<p class="form_label_small">Enter a new password.</p>
+	<input type="password" class="form-control" name="password" maxlength="32" required>
+	@include ('partials.error', ['value' => 'password'])
+</div>
+<div class="form-group">
+	<label for="password_confirmed">Confirm Password<span class="required">*</span></label>
+	<input type="password" class="form-control" name="password_confirmation" maxlength="32" required>
+	@include ('partials.error', ['value' => 'password_confirmation'])
+</div>
