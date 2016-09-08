@@ -105,7 +105,7 @@ class ContactsController extends Controller
 
         if ($is_admin) {
             $request->session()->flash('message', 'Contact successfully created. New user complete.');
-            return redirect()->action('admin.admin_dashboard');
+            return redirect()->action('UsersController@getAdminDashboard');
         } else {
             $request->session()->flash('message', 'Contact information successfully updated.');
             return redirect()->action('UsersController@edit', ['id' => Auth::user()->id]);
