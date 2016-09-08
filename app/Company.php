@@ -142,7 +142,7 @@ class Company extends Model
 	{
 		return ucfirst($value);
 	}
-	
+
 	public static $rules = [
 		'name' => 'required|max:120',
 		'industry_id' => 'required|integer',
