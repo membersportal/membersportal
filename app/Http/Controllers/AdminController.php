@@ -43,7 +43,7 @@ class AdminController extends Controller
 			return redirect()->action('AdminController@manageUsers');
 		}
 		$searched_user_company = $searched_user->company;
-		$data = compact('searched_user_company');
+		$data = compact('searched_user_company', 'searched_user');
 		return view('admin.admin_delete_user')->with($data);
 	}
 
