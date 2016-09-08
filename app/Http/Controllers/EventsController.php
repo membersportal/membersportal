@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 use App\Event;
 use App\Company;
 use App\Industry;
@@ -22,6 +23,7 @@ class EventsController extends Controller
 	public function index()
 	{
 		$events = Event::all()->sortBy('from_date');
+		// dd(Carbon::now()->addWeeks(1));
 		$user = Auth::user()->id;
 		$connections = Company::find($user)->companies;
 		$connections_events = Event::dashboardEvents($connections)->get();
