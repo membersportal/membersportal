@@ -80,9 +80,9 @@ class ContactsController extends Controller
 		$this->validate($request, Contact::$rules);
 		$request->session()->forget('ERROR_MESSAGE');
 
-		if(Auth::user()->is_admin)){
+		if(Auth::user()->is_admin){
 			$contact->user_id = User::all()->last()->id;
-			$contact->company_id = User::all()->last()->id;
+			$contact->company_id = Company::all()->last()->id;
 		}
 		$contact->phone_no = $request->phone_no;
 		$contact->address_line_1 = $request->address_line_1;
