@@ -113,7 +113,7 @@ class RFPController extends Controller
 	{
 		$rfp = Rfp::findOrFail($id);
 		$rfp->delete();
-		$request->session()->flash('successMessage', 'RFP deleted successfully.');
+		$request->session()->flash('SUCCESS_MESSAGE', 'RFP deleted successfully.');
 		return redirect()->action('RFPController@index');
 	}
 
@@ -134,7 +134,7 @@ class RFPController extends Controller
 		$rfp->url = $request->url;
 		$rfp->save();
 
-		$request->session()->flash('message', 'RFP saved successfully.');
+		$request->session()->flash('SUCCESS_MESSAGE', 'RFP saved successfully.');
 		return redirect()->action('RFPController@index');
 	}
 }

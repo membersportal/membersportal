@@ -158,10 +158,10 @@ class CompaniesController extends Controller
 		$company->save();
 
 		if($is_admin){
-			$request->session()->flash('message', 'Company saved successfully, please enter contact information.');
+			$request->session()->flash('SUCCESS_MESSAGE', 'Company saved successfully, please enter contact information.');
 			return redirect()->action('ContactsController@create');
 		} else {
-			$request->session()->flash('message', 'Company information saved successfully.');
+			$request->session()->flash('SUCCESS_MESSAGE', 'Company information saved successfully.');
 			return redirect()->action('UsersController@edit', ['id' => Auth::user()->id]);
 		}
 	}

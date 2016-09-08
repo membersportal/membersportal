@@ -38,6 +38,10 @@ class AdminController extends Controller
 	public function deleteUser(Request $request)
 	{
 		$searched_user = User::searchUser($request);
+		if ($searched_user->is_admin) {
+			$request->session()->flash('ERROR_MESSAGE', 'Admin users cannot be deleted.');
+			return redirect()->action('AdminController@manageUsers');
+		}
 		$searched_user_company = $searched_user->company;
 		$data = compact('searched_user_company');
 		return view('admin.admin_delete_user')->with($data);
@@ -162,7 +166,7 @@ class AdminController extends Controller
 		$user->password = $request->password;
 		$user->save();
 
-		$request->session()->flash('message', 'User login information successfully updated.');
+		$request->session()->flash('SUCCESS_MESSAGE', 'User login information successfully updated.');
 		return redirect()->action('AdminController@index');
 	}
 
@@ -187,7 +191,7 @@ class AdminController extends Controller
 		$contact->google_plus = $request->google_plus;
 		$contact->save();
 
-		$request->session()->flash('message', 'Contact information successfully updated.');
+		$request->session()->flash('SUCCESS_MESSAGE', 'Contact information successfully updated.');
 		return redirect()->action('AdminController@index');
 	}
 
@@ -208,7 +212,7 @@ class AdminController extends Controller
 		$this->storeImage($request, $event);
 		$event->save();
 
-		$request->session()->flash('message', 'Event successfully created.');
+		$request->session()->flash('SUCCESS_MESSAGE', 'Event successfully created.');
 		return redirect()->action('EventsController@adminIndex');
 	}
 
