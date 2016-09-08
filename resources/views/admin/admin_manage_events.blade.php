@@ -9,6 +9,10 @@
 
 	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
 		<div class="panel_white events">
+		<div class="summary">
+			<p class="text-center"><span class="strong">Total:</span> {{ count($events) }} &nbsp;&nbsp;//&nbsp;&nbsp; <span class="strong">Last Event Added:</span> {{ $events[0]->created_at->format('F j Y') }}</p>
+			<a href="{{ action('EventsController@create') }}" class="create_button">Create New Event</a>
+		</div>
 			@foreach ($events as $key => $event)
 			<div class="row">
 				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
