@@ -17,10 +17,6 @@
 	padding-right: 9px;
 }
 
-.container.articles {
-	margin-bottom: 0;
-}
-
 .expand {
 	height: auto;
 }
@@ -155,6 +151,13 @@ div.social_media_edit {
 
 div.checkboxes {
 	margin: 10px 0;
+}
+
+div.all_events {
+	background-color: #fff;
+	border: 1px solid #d3e397;
+	padding: 30px;
+	margin-top: 20px;
 }
 
 hr {
@@ -564,8 +567,9 @@ ul.footer > li > a.footer_triangle:hover {
 	color: #fff5c3;
 }
 
-h4.panel-title > a {
+h4.panel-title > a, h4.panel-title > a:hover, h4.rsvp_title {
 	font-size: 1em;
+	color: #7c786a;
 }
 
 ul.edit_account_nav > li > a:hover {
@@ -836,10 +840,13 @@ textarea {
 	resize: none;
 }
 
-form#search_form {
+form#search_form, .event_search {
 	background-color: #fff;
 	border: 1px solid #d3e397;
 	padding: 30px;
+}
+
+form#search_form {
 	margin-top: 20px;
 }
 

@@ -128,7 +128,7 @@ class EventsController extends Controller
 	{
 		$event = Event::findOrFail($id);
 		$event->delete();
-		$request->session()->flash('SUCCESS_MESSAGE', 'Event deleted successfully.')
+		$request->session()->flash('SUCCESS_MESSAGE', 'Event deleted successfully.');
 		return redirect()->action('EventsController@index');
 	}
 
@@ -150,7 +150,6 @@ class EventsController extends Controller
 
 		$request->session()->flash('SUCCESS_MESSAGE', 'Event saved successfully.');
 		return redirect()->action('EventsController@index');
-		}
 	}
 
 	private function storeImage($request, $event)
