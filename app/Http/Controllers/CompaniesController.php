@@ -148,6 +148,9 @@ class CompaniesController extends Controller
 		$this->validate($request, Company::$rules);
 		$request->session()->forget('ERROR_MESSAGE');
 
+		if(Auth::user()->is_admin && (Auth::user()->id != $company->id)){
+			$company->user_id = User::all()->last()->id;
+		}
 		$company->name = $request->name;
 		$company->industry_id = $request->industry_id;
 		$company->profile_img = $this->storeImage($request);
