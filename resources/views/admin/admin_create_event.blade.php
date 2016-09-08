@@ -10,12 +10,12 @@
 		</div>
 		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
 			<div class="panel_form">
-				<form method="POST" action="{{ action('EventsController@store') }}" enctype="multipart/form-data">
+				<form method="POST" action="{{ action('AdminController@storeEvent') }}" enctype="multipart/form-data">
 					{!!csrf_field()!!}
 					@include ('partials.create_event_form')
 					<button class="btn btn-primary pull-right" type="submit">Create</button>
 				</form>
-				<a class="cancel_button pull-right" href="{{ action('EventsController@adminIndex') }}" alt="cancel">Cancel</a>
+				<a class="cancel_button pull-right" href="{{ action('AdminController@eventIndex') }}" alt="cancel">Cancel</a>
 			</div>
 		</div>
 </div>

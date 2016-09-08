@@ -69,7 +69,8 @@ class User extends Model implements AuthenticatableContract,
 
 	public static function returnLastUserAdded()
 	{
-
+		$user = User::orderBy('created_at', 'desc')->first();
+		return $user;
 	}
 
 	public static function searchUser($request)

@@ -36,15 +36,16 @@
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->username }}<span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							@if (Auth::user()->is_admin)
-								<li><a href="{{ action('UsersController@getAdminDashboard') }}">Admin Dashboard</a></li>
+								<li><a href="{{ action('AdminController@index') }}">Admin Dashboard</a></li>
+								<li><a href="{{ action('AdminController@editOrgLogin', ['id' => Auth::user()->id]) }}">My Account</a></li>
 							@endif
 							@if (!Auth::user()->is_admin)
 								<li><a href="{{ action('CompaniesController@show', ['id' => Auth::user()->id]) }}">View Profile</a></li>
 								<li><a href="{{ action('CompaniesController@dashboard', ['id' => Auth::user()->id]) }}">My Dashboard</a></li>
 								<li><a href="{{ action('CompaniesController@viewConnections', ['id' => Auth::user()->id]) }}">My Connections</a></li>
 								<li role="separator" class="divider"></li>
+								<li><a href="{{ action('UsersController@edit', ['id' => Auth::user()->id]) }}">My Account</a></li>
 							@endif
-							<li><a href="{{ action('UsersController@edit', ['id' => Auth::user()->id]) }}">My Account</a></li>
 							<li><a href="{{ action('Auth\AuthController@getLogout') }}">Log Out</a></li>
 						</ul>
 					<li><img src="http://placekitten.com/35/35" class="user_avatar img-circle"></li>

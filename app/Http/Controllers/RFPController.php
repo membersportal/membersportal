@@ -28,14 +28,6 @@ class RFPController extends Controller
 		return view('rfps.all_rfps')->with($data);
 	}
 
-	public function adminIndex()
-	{
-		$rfps = Rfp::paginate(10);
-		$paginate = 10;
-		$data = compact('rfps', 'paginate');
-		return view('admin.admin_manage_rfps')->with($data);
-	}
-
 	/**
 	 * Show the form for creating a new resource.
 	 *
@@ -48,11 +40,7 @@ class RFPController extends Controller
 		$connections_rfps = Rfp::dashboardRfps($connections)->get();
 		$users_rfps = Rfp::profileRfps($user->id)->get();
 		$data = compact('user', 'connections_rfps', 'users_rfps');
-		if($user->is_admin){
-			return view('admin.admin_create_rfp')->with($data);
-		} else {
-			return view('rfps.create_rfp')->with($data);
-		}
+		return view('rfps.create_rfp')->with($data);
 	}
 
 	/**
@@ -94,26 +82,14 @@ class RFPController extends Controller
 	public function edit($id)
 	{
 		$user = Auth::user();
-		if ($user->is_admin){
-			$rfp = Rfp::findOrFail($id);
-			$data = compact('rfp');
-			return view('admin.admin_edit_rfp')->with($data);
-		} else {
-			$rfp = Rfp::findorfail($id);
-			$connections = Company::find($user->id)->companies;
-			$connections_rfps = Rfp::dashboardRfps($connections)->get();
-			$users_rfps = Rfp::profileRfps($user->id)->get();
-			$data = compact('rfp', 'connections_rfps', 'users_rfps');
-			return view('rfps.edit_rfp')->with($data);
-		}
+		$rfp = Rfp::findorfail($id);
+		$connections = Company::find($user->id)->companies;
+		$connections_rfps = Rfp::dashboardRfps($connections)->get();
+		$users_rfps = Rfp::profileRfps($user->id)->get();
+		$data = compact('rfp', 'connections_rfps', 'users_rfps');
+		return view('rfps.edit_rfp')->with($data);
 	}
 
-	public function editgeneral()
-	{
-		$rfps = Rfp::homeRfps();
-		$data = compact('rfps');
-		return view('admin.admin_edit_rfps_general')->with($data);
-	}
 	/**
 	 * Update the specified resource in storage.
 	 *
@@ -137,25 +113,16 @@ class RFPController extends Controller
 	{
 		$rfp = Rfp::findOrFail($id);
 		$rfp->delete();
-
-		if(Auth::user()->is_admin){
-			return redirect()->action('UsersController@getAdminDashboard');
-		} else {
-			$message = 'RFP deleted';
-			$request->session()->flash('sucessMessage', $message);
-			return redirect()->action('RFPController@index');
-		}
+		$request->session()->flash('successMessage', 'RFP deleted successfully.');
+		return redirect()->action('RFPController@index');
 	}
 
 	private function validateAndSave(Rfp $rfp, Request $request){
-		$company_id = Auth::user()->id;
-		$is_admin = Auth::user()->is_admin;
-
-		$request->session()->flash('ERROR_MESSAGE', 'RFP was not created successfully');
+		$request->session()->flash('ERROR_MESSAGE', 'RFP not saved.');
 		$this->validate($request, Rfp::$rules);
 		$request->session()->forget('ERROR_MESSAGE');
 
-		$rfp->company_id = $company_id;
+		$rfp->company_id = Auth::user()->id;
 		$rfp->project_title = $request->project_title;
 		$rfp->deadline = $request->deadline;
 		$rfp->contact_name = $request->contact_name;
@@ -167,11 +134,7 @@ class RFPController extends Controller
 		$rfp->url = $request->url;
 		$rfp->save();
 
-		$request->session()->flash('message', 'Entry successfully saved.');
-		if ($is_admin) {
-			return redirect()->action('UsersController@getAdminDashboard');
-		} else {
-			return redirect()->action('RFPController@index');
-		}
+		$request->session()->flash('message', 'RFP saved successfully.');
+		return redirect()->action('RFPController@index');
 	}
 }

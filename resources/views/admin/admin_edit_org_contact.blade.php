@@ -10,12 +10,12 @@
 
 	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
 		<div class="panel_form">
-			<form method="POST" action="{{ action('ContactsController@update', ['id' => $contact->id]) }}">
+			<form method="POST" action="{{ action('AdminController@updateOrgContact', ['id' => $contact->id]) }}">
 				{!!csrf_field()!!}
 				{{ method_field('PUT') }}
 				@include('partials.edit_contact_form')
 				<button class="btn btn-primary pull-right" type="submit">Save</button>
-				<a class="cancel_button pull-right" href="{{ action('UsersController@getAdminDashboard') }}" alt="cancel">Cancel</a>
+				<a class="cancel_button pull-right" href="{{ action('AdminController@index') }}" alt="cancel">Cancel</a>
 			</form>
 		</div>
 	</div>
