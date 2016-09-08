@@ -2,6 +2,8 @@
 
 @section('content')
 <div class="container">
+	<h1 class="text-center">Dashboard</h1>
+	<h3 class="text-center company_name_profile">{{ $company->name }}</h3>
 	<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 left_home">
 		<div class="panel_white">
 			<h3 class="text-center">My RFPs</h3>
@@ -37,17 +39,30 @@
 
 
 	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 center_home">
-	<h1 class="text-center company_name_profile">{{ $company->name }} Dashboard</h1>
+		<div class="main_panel">
+			<h3 class="text-center feed">My Feed</h3>
 		@foreach($feed_content as $content)
 			@if($content->company1_id)
-				<h1>{{ $content->company1_id }}</h1>
+			<div class="row">
+				<div class="connection_feed">
+					<h1>{{ $content->company1_id }}</h1>
+				</div>
+			</div>
 			@elseif($content->project_title)
-				<h2>{{ $content->project_title }}
+			<div class="row">
+				<div class="rfp_feed">
+					<h2>{{ $content->project_title }}</h2>
+				</div>
+			</div>
 			@elseif($content->title)
+			<div class="row">
+				<div class="event_feed">
 				<h3>{{ $content->title }}</h3>
+				</div>
+			</div>
 			@endif
 		@endforeach
-
+		</div>
 	</div>
 
 
@@ -75,9 +90,12 @@
 			<div class="panel_green">
 				<a class="green_bg" href="{{ action('EventsController@index') }}" alt="View All Events">See All Events</a>
 			</div>
+			@if(!Auth::user()->is_admin)
+			<div class="panel_beige">
+				<a class="beige_bg" href="{{ action('EventsController@create') }}" alt="Create New Event">Create New Event</a>
+			</div>
+			@endif
 		</div>
-
-
 	</div>
 </div>
 
