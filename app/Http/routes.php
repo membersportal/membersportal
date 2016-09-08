@@ -38,7 +38,7 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
     Route::get('/admin/contacts/create', 'ContactsController@create');
     Route::post('/admin/contacts', 'ContactsController@store');
     Route::get('/admin/contacts/{company}/edit', 'ContactsController@edit');
-    Route::post('/admin/contacts/{company}', 'ContactsController@update');
+    Route::put('/admin/contacts/{company}', 'ContactsController@update');
     Route::delete('/admin/contacts/{contact}', 'ContactsController@destroy');
 
     // Events
