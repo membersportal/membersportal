@@ -1,4 +1,4 @@
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2OJukM41NiEP_KnDGkx4mQ6HSucCuhwI"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2OJukM41NiEP_KnDGkx4mQ6HSucCuhwI"></script>
 <script>
 	(function() {
 		"use strict";
@@ -16,9 +16,11 @@
 		var markers = [];
 		var geocoder = new google.maps.Geocoder();
 		var address = "{{ $current_user_address }}";
+		var currentLocation;
 
 		geocoder.geocode( {'address': address}, function(results, status) {
 			if(status == google.maps.GeocoderStatus.OK) {
+				currentLocation = results[0].geometry.location;
 				new google.maps.Marker({
 					position: results[0].geometry.location,
 					map: map
@@ -32,6 +34,23 @@
 				marker.setMap(null);
 			});
 		}
+
+		var rad = function(x) {
+		  return x * Math.PI / 180;
+		};
+
+		var getDistance = function(p1, p2) {
+			var R = 6378137; // Earth’s mean radius in meter
+		 	var dLat = rad(p2.lat() - p1.lat());
+		 	var dLong = rad(p2.lng() - p1.lng());
+		  	var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+		  	Math.cos(rad(p1.lat())) * Math.cos(rad(p2.lat())) *
+		  	Math.sin(dLong / 2) * Math.sin(dLong / 2);
+		  	var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+		  	var d = R * c;
+		  	return d; // returns the distance in meter
+		};
+
 
 		function getSearchResults(){
 			$.ajax("{{ action('CompaniesController@getSearchedCompanies') }}", {
@@ -47,14 +66,22 @@
 			}).done(function(data){
 				var search_results = data.results;
 				var businesses = data.locations;
-				console.log(businesses);
 				clearMarkers();
 				markers = [];
 					businesses.forEach(function(business) {
 						console.log(business);
 						var address = business.address_line_1 + ' ' + business.city + ' ' + business.state + ' ' + business.zip;
 						geocoder.geocode({ "address": address }, function (results, status) {
+						var distanceInMiles = (getDistance(currentLocation, results[0].geometry.location) * 0.000621371).toFixed(2);
 							if (status == google.maps.GeocoderStatus.OK) {
+								
+								console.log(
+									distanceInMiles
+									//google.maps.geometry
+									// getDistance(
+									// 	currentLocation, results[0].geometry.location
+									// ) * 0.000621371
+								);
 								var marker = new google.maps.Marker({
 									position: results[0].geometry.location,
 									map: map,
@@ -62,7 +89,7 @@
 									draggable: false
 								});
 								var infoWindow = new google.maps.InfoWindow({
-									content: "<p>" + business.company.name + "</p>" + "<p>" + business.company.desc + "</p>"
+									content: "<p>" + business.company.name + "</p>" + "<p>" + business.company.desc + "</p>" + "<p>" + "Miles from you: " + distanceInMiles + "</p>"
 								});
 								marker.addListener('click', function() {
 									map.setCenter(results[0].geometry.location);
