@@ -111,7 +111,6 @@ class UsersController extends Controller
 
 		if (Auth::user()->is_admin) {
 			$request->session()->flash('SUCCESS_MESSAGE', 'User successfully created, please enter company information.');
-
 			return redirect()->action('CompaniesController@create');
 		} else {
 			$request->session()->flash('SUCCESS_MESSAGE', 'User login information successfully updated.');
