@@ -156,7 +156,7 @@ class CompaniesController extends Controller
 		$this->validate($request, Company::$rules);
 		$request->session()->forget('ERROR_MESSAGE');
 
-		if(Auth::user()->is_admin && (Auth::user()->id != $company->id)){
+		if(Auth::user()->is_admin){
 			$company->user_id = User::all()->last()->id;
 		}
 		$company->name = $request->name;

@@ -101,6 +101,7 @@ class UsersController extends Controller
 	private function validateAndSave(User $user, Request $request){
 		$request->session()->flash('ERROR_MESSAGE', 'User was not saved successfully');
 		$this->validate($request, User::$rules);
+
 		$request->session()->forget('ERROR_MESSAGE');
 		$user->first_name = $request->first_name;
 		$user->last_name = $request->last_name;
@@ -111,7 +112,6 @@ class UsersController extends Controller
 
 		if (Auth::user()->is_admin) {
 			$request->session()->flash('SUCCESS_MESSAGE', 'User successfully created, please enter company information.');
-
 			return redirect()->action('CompaniesController@create');
 		} else {
 			$request->session()->flash('SUCCESS_MESSAGE', 'User login information successfully updated.');
