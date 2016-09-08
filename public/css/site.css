@@ -204,6 +204,13 @@ div.interior_form {
 	margin-right: -8px;
 }
 
+div.summary {
+	background-color: #f6f6f6;
+	padding: 20px 0 25px 0;
+	margin: 10px 0 15px 0;
+	text-align: center;
+}
+
 .panel-default > .panel-heading {
 	padding: 0;
 	border-style: none;
@@ -390,6 +397,10 @@ p.leader_title {
 	margin-bottom: 0;
 	letter-spacing: 1px;
 	font-size: .95em;
+}
+
+div.summary > p.text-center {
+	margin-bottom: 20px;
 }
 
 ul.rfps, ul.contact, ul.company_stats, ul.edit_account_nav {
@@ -684,7 +695,7 @@ img.current_company_profile {
 
 /*Buttons*/
 
-a.cancel_button, a.cancel_button:visited, a.cancel_button:active, a.edit_button, a.edit_button:visited, a.edit_button:active {
+a.cancel_button, a.cancel_button:visited, a.cancel_button:active, a.edit_button, a.edit_button:visited, a.edit_button:active, a.create_button, a.create_button:visited, a.cancel_button:active {
 	color: #fff;
 	font-size: 1.15em;
 	text-transform: uppercase;
@@ -696,8 +707,16 @@ a.edit_button, a.edit_button:visited, a.edit_button:active {
 	background-color: #b7c483;
 }
 
+a.create_button, a.create_button:visited, a.cancel_button:active {
+	background-color: #8dcdc1;
+}
+
 a.cancel_button, a.cancel_button:visited, a.cancel_button:active{
 	background-color: #514e43;
+}
+
+a.create_button:hover {
+	background-color: #66a498;
 }
 
 a.cancel_button:hover {

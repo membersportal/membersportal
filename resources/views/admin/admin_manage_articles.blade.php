@@ -9,6 +9,10 @@
 
 	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
 		<div class="panel_white articles">
+			<div class="summary">
+				<p class="text-center"><span class="strong">Total:</span> {{ count($articles) }} &nbsp;&nbsp;//&nbsp;&nbsp; <span class="strong">Last Article Added:</span> {{ $articles[0]->created_at->format('F j Y') }}</p>
+				<a href="{{ action('ArticlesController@create') }}" class="create_button">Create New Article</a>
+			</div>
 			@foreach ($articles as $key => $article)
 			<div class="row">
 				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
