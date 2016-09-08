@@ -6,61 +6,62 @@
 	<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3">
 		<div class="panel_white">
 			<h3 class="text-center">My RSVPs</h3>
-				<div id="accordion" role="tablist" aria-multiselectable="false">
-					<div class="panel panel-default">
-						<div class="panel-heading" role="tab" id="heading">
-							<h4 class="panel-title">
-							<a data-toggle="collapse" data-parent="#accordion" href="#collapse" aria-expanded="false" aria-controls="collapse">Event Title
-							</a>
-							</h4>
-							<p class="event_date_home">Dates</p>
-						</div>
-						<div id="collapse" class="panel-collapse collapse event_desc_home" role="tabpanel" aria-labelledby="heading">
-						Description of event blah blah blah...<a class="red_link" href="#" target="_blank"> see event</a>
-						</div>
+			<div id="accordion" role="tablist" aria-multiselectable="false">
+				<div class="panel panel-default">
+					<div class="panel-heading" role="tab" id="heading">
+						<h4 class="panel-title">
+						<a data-toggle="collapse" data-parent="#accordion" href="#collapse" aria-expanded="false" aria-controls="collapse">Event Title
+						</a>
+						</h4>
+						<p class="event_date_home">Dates</p>
 					</div>
-				</div>
-				<div id="accordion" role="tablist" aria-multiselectable="false">
-					<div class="panel panel-default">
-						<div class="panel-heading" role="tab" id="heading">
-							<h4 class="panel-title">
-							<a data-toggle="collapse" data-parent="#accordion" href="#collapse" aria-expanded="false" aria-controls="collapse">Event Title
-							</a>
-							</h4>
-							<p class="event_date_home">Dates</p>
-						</div>
-						<div id="collapse" class="panel-collapse collapse event_desc_home" role="tabpanel" aria-labelledby="heading">
-						Description of event blah blah blah...<a class="red_link" href="#" target="_blank"> see event</a>
-						</div>
-					</div>
-				</div>
-				<div id="accordion" role="tablist" aria-multiselectable="false">
-					<div class="panel panel-default">
-						<div class="panel-heading" role="tab" id="heading">
-							<h4 class="panel-title">
-							<a data-toggle="collapse" data-parent="#accordion" href="#collapse" aria-expanded="false" aria-controls="collapse">Event Title
-							</a>
-							</h4>
-							<p class="event_date_home">Dates</p>
-						</div>
-						<div id="collapse" class="panel-collapse collapse event_desc_home" role="tabpanel" aria-labelledby="heading">
-						Description of event blah blah blah...<a class="red_link" href="#" target="_blank"> see event</a>
-						</div>
+					<div id="collapse" class="panel-collapse collapse event_desc_home" role="tabpanel" aria-labelledby="heading">
+					Description of event blah blah blah...<a class="red_link" href="#" target="_blank"> see event</a>
 					</div>
 				</div>
 			</div>
+			<div id="accordion" role="tablist" aria-multiselectable="false">
+				<div class="panel panel-default">
+					<div class="panel-heading" role="tab" id="heading">
+						<h4 class="panel-title">
+						<a data-toggle="collapse" data-parent="#accordion" href="#collapse" aria-expanded="false" aria-controls="collapse">Event Title
+						</a>
+						</h4>
+						<p class="event_date_home">Dates</p>
+					</div>
+					<div id="collapse" class="panel-collapse collapse event_desc_home" role="tabpanel" aria-labelledby="heading">
+					Description of event blah blah blah...<a class="red_link" href="#" target="_blank"> see event</a>
+					</div>
+				</div>
+			</div>
+			<div id="accordion" role="tablist" aria-multiselectable="false">
+				<div class="panel panel-default">
+					<div class="panel-heading" role="tab" id="heading">
+						<h4 class="panel-title">
+						<a data-toggle="collapse" data-parent="#accordion" href="#collapse" aria-expanded="false" aria-controls="collapse">Event Title
+						</a>
+						</h4>
+						<p class="event_date_home">Dates</p>
+					</div>
+					<div id="collapse" class="panel-collapse collapse event_desc_home" role="tabpanel" aria-labelledby="heading">
+					Description of event blah blah blah...<a class="red_link" href="#" target="_blank"> see event</a>
+					</div>
+				</div>
+			</div>
+			<div class="panel_green">
+				<a class="green_bg" href="#" alt="Add An RSVP">Add An RSVP</a>
+			</div>
+		</div>
 	</div>
 
 
 	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 center_home">
 		<div class="event_search">
+			<h3 class="text-center">Search Events</h3>
 			<form action="{{ action('EventsController@searchEvents') }}" method="GET">
+				<input type="text" class="form-control" name="search_field" value="{{ old('search_field') }}" placeholder="Search events by company name">
 				<div class="form-group">
-					<label for="name">Search Events by Company</label>
-					<input type="text" name="search_field" value="{{ old('search_field') }}" placeholder="Company Name">
-				</div>
-				<div class="form-group">
-					<select class="form-control search_form pull-right" id="industry_id" name="industry_id">
+					<select class="form-control event_search_form" id="industry_id" name="industry_id">
 						<option disabled selected label="Select Industry"></option>
 						@foreach ($industries as $industry)
 							<option value="{{ $industry->id }}">{{ $industry->industry }}</option>
@@ -100,12 +101,14 @@
 				</div>
 				@endif
 			@endforeach
-			@if(!Auth::user()->is_admin)
-			<a href="{{ action('EventsController@create') }}">Create New Event</a>
-			@endif
 			<div class="panel_green">
 				<a class="green_bg" href="{{ action('EventsController@index') }}" alt="View All Events">See All Events</a>
 			</div>
+			@if(!Auth::user()->is_admin)
+			<div class="panel_beige">
+				<a class="beige_bg" href="{{ action('EventsController@create') }}" alt="Create New Event">Create New Event</a>
+			</div>
+			@endif
 		</div>
 
 
