@@ -46,7 +46,7 @@
 </div>
 <div class="form-group">
 	<label for="twitter half_width">Twitter</label>
-		<p class="form_label_small">This username will be used to produce the Twitter feed on the user profile page.</p>
+		<p class="form_label_small">This username will be used to produce a Twitter feed.</p>
 		<input class="form-control" type="text" name="twitter" value="{{ $contact->twitter }}" maxlength="20" placeholder="Username Only">
 	</label>
 </div>
