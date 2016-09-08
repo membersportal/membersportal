@@ -65,7 +65,6 @@
 		</div>
 	</div>
 
-
 	<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 right_home">
 		<div class="panel_white">
 			<h3 class="text-center">My Events</h3>

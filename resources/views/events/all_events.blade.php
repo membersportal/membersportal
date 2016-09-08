@@ -133,7 +133,7 @@
 
 
 	<div class="panel_white">
-		<h3 class="text-center">Connection Events</h3>
+		<h3 class="text-center">Connections' Events</h3>
 		@foreach ($connections_events as $key => $event)
 			@if ($key < 3)
 			<div id="accordion" role="tablist" aria-multiselectable="false">
