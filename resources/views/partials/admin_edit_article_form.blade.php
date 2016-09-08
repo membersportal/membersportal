@@ -5,7 +5,7 @@
 </div>
 <div class="form-group">
 	<label for="subheading">Subheading</label>
-	<input type="text" class="form-control" name="title" value="{{ $article->subheading }}" maxlength="250" required>
+	<input type="text" class="form-control" name="title" value="{{ $article->subheading }}" maxlength="250">
 	@include ('partials.error', ['value' => 'subheading'])
 </div>
 <div class="form-group">

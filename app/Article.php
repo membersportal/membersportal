@@ -12,9 +12,8 @@ class Article extends Model
 	public static $rules = [
 		'heading' => 'required|max:250',
 		'subheading' => 'nullable|max:250',
-		'date' => 'required|date',
 		'desc' => 'required|max:500',
-		'img' => 'required|image',
+		'img' => 'image|required',
 		'url' => 'required|url'
 	];
 

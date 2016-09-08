@@ -10,7 +10,7 @@
 		</div>
 		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
 			<div class="panel_form">
-				<form method="POST" action="{{ action('CarouselsController@update', ['id' => $carousel->id]) }} enctype="multipart/form-data"">
+				<form method="POST" action="{{ action('CarouselsController@update', ['id' => $carousel->id]) }}" enctype="multipart/form-data">
 					{!!csrf_field()!!}
 					@include ('partials.admin_edit_carousel_form')
 					<button class="btn btn-primary pull-right" type="submit">Save</button>
