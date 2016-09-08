@@ -77,7 +77,7 @@ class AdminController extends Controller
 	// Events ===============================================
 	public function eventIndex()
 	{
-		$events = Event::paginate(10);
+		$events = Event::adminEvents()->paginate(10);
 		$paginate = 10;
 		$data = compact('events', 'paginate');
 		return view('admin.admin_manage_events')->with($data);
@@ -88,7 +88,7 @@ class AdminController extends Controller
 		return view('admin.admin_create_event');
 	}
 
-	public function storeEvent()
+	public function storeEvent(Request $request)
 	{
 		$event = new Event();
 		return $this->validateEventAndSave($event, $request);
@@ -101,17 +101,18 @@ class AdminController extends Controller
 		return view('admin.admin_edit_event')->with($data);
 	}
 
-	public function updateEvent($id)
+	public function updateEvent(Request $request, $id)
 	{
 		$event = Event::findOrFail($id);
 		return $this->validateEventAndSave($event, $request);
 	}
 
-	public function destroyEvent($id)
+	public function destroyEvent(Request $request, $id)
 	{
 		$event = Event::findOrFail($id);
 		$event->delete();
-		return redirect()->action('EventsController@adminIndex');
+		$request->session()->flash('SUCCESS_MESSAGE', 'Event successfully deleted.');
+		return redirect()->action('AdminController@eventIndex');
 	}
 
 	// RFPs ===============================================
@@ -147,11 +148,12 @@ class AdminController extends Controller
 		return $this->validateRfpAndSave($rfp, $request);
 	}
 
-	public function destroyRfp($id)
+	public function destroyRfp(Request $request, $id)
 	{
 		$rfp = Rfp::findOrFail($id);
 		$rfp->delete();
-		return redirect()->action('RFPController@adminIndex');
+		$request->session()->flash('SUCCESS_MESSAGE', 'RFP successfully deleted.');
+		return redirect()->action('AdminController@rfpIndex');
 	}
 
 
@@ -213,7 +215,7 @@ class AdminController extends Controller
 		$event->save();
 
 		$request->session()->flash('SUCCESS_MESSAGE', 'Event successfully created.');
-		return redirect()->action('EventsController@adminIndex');
+		return redirect()->action('AdminController@eventIndex');
 	}
 
 	private function storeImage($request, $event)

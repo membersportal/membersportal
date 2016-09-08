@@ -44,7 +44,7 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
     Route::get('/admin/events/create', 'AdminController@createEvent');
     Route::post('/admin/events', 'AdminController@storeEvent');
     Route::get('/admin/events/{event}/edit', 'AdminController@editEvent');
-    Route::post('/admin/events/{event}', 'AdminController@updateEvent');
+    Route::put('/admin/events/{event}', 'AdminController@updateEvent');
     Route::delete('/admin/events/{event}', 'AdminController@destroyEvent');
 
     // Articles
