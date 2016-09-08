@@ -69,6 +69,10 @@ div.about, div.leaders, div.events, div.twitter, div.rfps, div.connections, div.
 	margin-top: 16px;
 }
 
+div.users {
+	padding-bottom: 50px;
+}
+
 div.panel_white.articles, div.panel_white.carousels, div.panel_white.events, div.panel_white.rfps {
 	margin-top: 8px;
 }
