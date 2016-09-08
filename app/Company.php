@@ -146,13 +146,13 @@ class Company extends Model
 	public static $rules = [
 		'name' => 'required|max:120',
 		'industry_id' => 'required|integer',
-		'profile_img' => 'nullable|image',
-		'header_img' => 'nullable|image',
-		'desc' => 'required|2000',
-		'size' => 'nullable|20',
-		'woman_owned' => 'nullable|boolean',
-		'family_owned' => 'nullable|boolean',
-		'contractor' => 'required|boolean',
-		'organization' => 'required|boolean'
-	];
+		'profile_img' => 'image',
+		'header_img' => 'image',
+		'desc' => 'required|max:2000',
+		'size' => 'max:20',
+		'woman_owned' => 'boolean',
+		'family_owned' => 'boolean',
+		'business_type' => 'required',
+		'date_established' => 'date_format:"Y-m-d"'
+ 	];
 }

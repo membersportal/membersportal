@@ -12,6 +12,7 @@
 		<div class="panel_form">
 			<form enctype="multipart/form-data" action="{{ action('CompaniesController@update', ['id' => $company->id]) }}" method="POST">
 				{!! csrf_field() !!}
+				{{ method_field('PUT') }}
 				@include('partials.edit_company_form')
 				@include('partials.edit_company_images_form')
 				<button class="btn btn-primary pull-right" type="submit">Save</button>

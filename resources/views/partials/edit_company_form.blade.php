@@ -16,7 +16,7 @@
 <div class="form-group half_width">
 	<label for="business_type">Business Type<span class="required">*</span></label>
 	<select class="form-control" id="business_type" name="business_type" required>
-		<option value="0">Select</option>
+		<option disabled value="0">Select</option>
 		<option value="contractor" {{ $company->contractor ?  'selected' : ''}}>Contractor</option>
 		<option value="organization" {{ $company->organization ? 'selected'  : ''}}>Organization</option>
 	</select>
@@ -46,7 +46,7 @@
 <div class="form-group half_width">
 	<label for="size">Number of Employees</label>
 	<select class="form-control" id="size" name="size">
-		<option value="0">Select</option>
+		<option disabled value="0">Select</option>
 		<option value="fewer_than_10" {{ ($company->size == 'fewer_than_10') ? 'selected' : ''}}>Fewer Than 10</option>
 		<option value="11-25" {{ ($company->size == '11-25') ? 'selected' : ''}}>11-25</option>
 		<option value="26-50" {{ ($company->size == '26-50') ? 'selected' : ''}}>26-50</option>
