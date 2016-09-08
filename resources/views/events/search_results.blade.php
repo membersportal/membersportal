@@ -23,6 +23,14 @@
       {!! csrf_field() !!}
       <label for="name">Search Events by Company</label>
       <input type="text" name="search_field" value="" placeholder="company name">
+
+      <select class="form-control search_form pull-right" id="industry_id" name="industry_id">
+        <option disabled selected label="Select Industry"></option>
+        @foreach ($industries as $industry)
+          <option value="{{ $industry->id }}">{{ $industry->industry }}</option>
+        @endforeach
+      </select>
+
       <button type="Submit">Search</button>
     </form>
     @foreach($search_results as $event)
