@@ -1,9 +1,9 @@
-<div class="form-group">
+<div class="form-group half_width">
 	<label for="first_name">First Name<span class="required">*</span></label>
 	<input type="text" class="form-control" name="first_name" value="{{ old('first_name') }}" maxlength="100" required>
 	@include ('partials.error', ['value' => 'first_name'])
 </div>
-<div class="form-group">
+<div class="form-group half_width">
 	<label for="last_name">Last Name<span class="required">*</span></label>
 	<input type="text" class="form-control" name="last_name" value="{{ old('last_name') }}" maxlength="100" required>
 	@include ('partials.error', ['value' => 'last_name'])

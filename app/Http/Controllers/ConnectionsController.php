@@ -26,7 +26,7 @@ class ConnectionsController extends Controller
       $connection->company2_id = $id;
       $connection->save(); //save when submited
       // Log::info('User successfully creates post', $request->all()); // create custom log when post is created
-      $request->session()->flash('message', 'New Connection!'); // flash success message when saved
+      $request->session()->flash('SUCCESS_MESSAGE', 'New Connection!'); // flash success message when saved
       return redirect()->action('CompaniesController@show', $id); //redirect to the index page
     }
 

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 use App\Event;
 use App\Company;
 use App\Industry;
@@ -22,6 +23,7 @@ class EventsController extends Controller
 	public function index()
 	{
 		$events = Event::all()->sortBy('from_date');
+		// dd(Carbon::now()->addWeeks(1));
 		$user = Auth::user()->id;
 		$connections = Company::find($user)->companies;
 		$connections_events = Event::dashboardEvents($connections)->get();
@@ -49,14 +51,6 @@ class EventsController extends Controller
 			return redirect()->action('EventsController@index');
 		}
 		$searched_info = Event::searchEvents($request);
-		if($searched_info->isEmpty()){
-			$request->session()->flash('message', 'There are no results.');
-			return redirect()->action('EventsController@index');
-		}
-		if(is_array($searched_info)){
-			dd('hi');
-		}
-		dd($searched_info->pull('id'));
 		$search_results = Event::usersEvents($searched_info->id)->get();
 
 		$user = Auth::user()->id;
@@ -132,11 +126,11 @@ class EventsController extends Controller
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function destroy($id)
+	public function destroy(Request $request, $id)
 	{
 		$event = Event::findOrFail($id);
 		$event->delete();
-		$request->session()->flash('successMessage', 'Event deleted successfully.')
+		$request->session()->flash('SUCCESS_MESSAGE', 'Event deleted successfully.');
 		return redirect()->action('EventsController@index');
 	}
 
@@ -156,9 +150,8 @@ class EventsController extends Controller
 		$this->storeImage($request, $event);
 		$event->save();
 
-		$request->session()->flash('message', 'Event saved successfully.');
+		$request->session()->flash('SUCCESS_MESSAGE', 'Event saved successfully.');
 		return redirect()->action('EventsController@index');
-		}
 	}
 
 	private function storeImage($request, $event)

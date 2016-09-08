@@ -60,7 +60,7 @@ class Rfp extends Model
      'project_scope' => 'required|filled',
      'contract_from_date' => 'required|date_format:"Y-m-d"',
      'contract_to_date' => 'required|date_format:"Y-m-d"',
-     'file' => 'file|nullable',
+     'file' => 'file',
      'url' => 'required|url'
    	];
 }

@@ -22,6 +22,7 @@
     <h1>Edit Event</h1>
     <form action="{{ action('EventsController@update', $id = $event->id) }}" method="post" enctype="multipart/form-data">
       {!! csrf_field() !!}
+      {{ method_field('PUT') }}
         @include('partials.edit_event_form')
       <button type="submit">Save</button>
     </form>

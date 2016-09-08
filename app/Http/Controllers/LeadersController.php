@@ -7,9 +7,17 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Leader;
 
 class LeadersController extends Controller
 {
+
+	public function index()
+	{
+		$leaders = Leader::all();
+		$data = compact('leaders');
+		return view('leaders.all_leaders')->with($data);
+	}
 	/**
 	 * Show the form for creating a new resource.
 	 *
@@ -64,27 +72,35 @@ class LeadersController extends Controller
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function destroy($id)
+	public function destroy(Request $request, $id)
 	{
 		$leader = Leader::findOrFail($id);
 		$leader->delete();
-		$request->session()->flash('message', 'Entry deleted.');
-		return redirect()->action('companies.view_profile');
+		$request->session()->flash('SUCCESS_MESSAGE', 'Entry deleted.');
+		return redirect()->action('LeadersController@index');
 	}
-	
-	private function validateAndSave(Leader $rfp, Request $request){
-		$company_id = new Auth::user()->id;    
-		$request->session()->flash('ERROR_MESSAGE', 'Leader was not created successfully'); 
+
+	private function validateAndSave(Leader $leader, Request $request){
+		$company_id = Auth::user()->id;
+		$request->session()->flash('ERROR_MESSAGE', 'Leader was not created successfully');
 		$this->validate($request, Leader::$rules);
 		$request->session()->forget('ERROR_MESSAGE');
 
 		$leader->company_id = $company_id;
 		$leader->full_name = $request->full_name;
 		$leader->title = $request->title;
-		$leader->image = $request->image;
+		$this->storeImage($request, $leader);
 		$leader->linkedin_url = $request->linkedin_url;
 		$leader->save();
 
-		$request->session()->flash('message', 'Entry saved.');
-		return redirect()->action('companies.view_profile');
+		$request->session()->flash('SUCCESS_MESSAGE', 'Entry saved.');
+		return redirect()->action('LeadersController@index');
+	}
+	private function storeImage($request, $leader)
+	{
+		$file = $request->file('img')->getClientOriginalName();
+		$request->file('img')->move(public_path('img'), $request->file('img')->getClientOriginalName());
+		$file_path = public_path('img/uploads/leaders') . '/' . $request->file('img')->getClientOriginalName();
+		$leader->img = $file;
+	}
 }

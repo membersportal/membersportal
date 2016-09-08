@@ -25,7 +25,9 @@ class CompaniesController extends Controller
 	 */
 	public function create()
 	{
-		return view('admin.admin_create_company');
+		$industries = Industry::all();
+		$data = compact('industries');
+		return view('admin.admin_create_company')->with($data);
 	}
 
 	/**
@@ -113,7 +115,7 @@ class CompaniesController extends Controller
 		$feed_content = $this->buildFeed($connections);
 		$users_rfps = $company->rfps;
 		$users_events = $company->events;
-		$data = compact('feed_content', 'users_rfps', 'users_events');
+		$data = compact('feed_content', 'users_rfps', 'users_events', 'company');
 		return view('companies.companies_dashboard')->with($data);
 	}
 
@@ -140,29 +142,34 @@ class CompaniesController extends Controller
 
 	private function validateAndSave(Company $company, Request $request)
 	{
+		$request->woman_owned = ($request->woman_owned) ? TRUE : FALSE;
+		$request->family_owned = ($request->family_owned) ? TRUE : FALSE;
 		$request->session()->flash('ERROR_MESSAGE', 'Company information not saved.');
 		$this->validate($request, Company::$rules);
 		$request->session()->forget('ERROR_MESSAGE');
 
+		if(Auth::user()->is_admin && (Auth::user()->id != $company->id)){
+			$company->user_id = User::all()->last()->id;
+		}
 		$company->name = $request->name;
 		$company->industry_id = $request->industry_id;
-		$company->profile_img = $request->profile_img;
-		$company->profile_img = $request->header_img;
+		$company->profile_img = $this->storeImage($request);
+		$company->profile_img = $this->storeImage($request);
 		$company->desc = $request->desc;
 		$company->size = $request->size;
 		$company->woman_owned = $request->woman_owned;
-		$company->contractor = $request->contactor;
+		$company->contractor = $this->checkBusinessType($request);
 		$company->family_owned = $request->family_owned;
-		$company->organization = $request->organization;
+		$company->organization = $this->checkBusinessType($request);
 		$company->date_established = $request->date_established;
 		$company->save();
 
-		if($is_admin){
-			$request->session()->flash('message', 'Company saved successfully, please enter contact information.');
+		if(Auth::user()->is_admin){
+			$request->session()->flash('SUCCESS_MESSAGE', 'Company saved successfully, please enter contact information.');
 			return redirect()->action('ContactsController@create');
 		} else {
-			$request->session()->flash('message', 'Company information saved successfully.');
-			return redirect()->action('UsersController@edit', ['id' => Auth::user()->id]);
+			$request->session()->flash('SUCCESS_MESSAGE', 'Company information saved successfully.');
+			return redirect()->action('CompaniesController@edit', ['id' => Auth::user()->id]);
 		}
 	}
 
@@ -187,5 +194,33 @@ class CompaniesController extends Controller
 		$feed = collect($collection);
 		$test = $feed->sortBy('created_at');
 		return $test;
+	}
+
+	private function storeImage($request)
+	{
+		if($request->file('profile_img')){
+			$file = $request->file('profile_img')->getClientOriginalName();
+			$request->file('profile_img')->move(public_path('profile_img'), $request->file('profile_img')->getClientOriginalName());
+			$file_path = public_path('img/uploads/avatars') . '/' . $request->file('profile_img')->getClientOriginalName();
+			return $file;
+		} elseif ($request->file('header_img')) {
+			$file = $request->file('header_img')->getClientOriginalName();
+			$request->file('header_img')->move(public_path('header_img'), $request->file('header_img')->getClientOriginalName());
+			$file_path = public_path('img/uploads/headers') . '/' . $request->file('header_img')->getClientOriginalName();
+			return $file;
+		} else {
+			return NULL;
+		}
+	}
+
+	private function checkBusinessType($request)
+	{
+		if($request->business_type == 'contractor'){
+			return 1;
+		} elseif($request->business_type == 'organization'){
+			return 1;
+		} else {
+			return 0;
+		}
 	}
 }

@@ -38,8 +38,12 @@ class AdminController extends Controller
 	public function deleteUser(Request $request)
 	{
 		$searched_user = User::searchUser($request);
+		if ($searched_user->is_admin) {
+			$request->session()->flash('ERROR_MESSAGE', 'Admin users cannot be deleted.');
+			return redirect()->action('AdminController@manageUsers');
+		}
 		$searched_user_company = $searched_user->company;
-		$data = compact('searched_user_company');
+		$data = compact('searched_user_company', 'searched_user');
 		return view('admin.admin_delete_user')->with($data);
 	}
 
@@ -73,7 +77,7 @@ class AdminController extends Controller
 	// Events ===============================================
 	public function eventIndex()
 	{
-		$events = Event::paginate(10);
+		$events = Event::adminEvents()->paginate(10);
 		$paginate = 10;
 		$data = compact('events', 'paginate');
 		return view('admin.admin_manage_events')->with($data);
@@ -84,7 +88,7 @@ class AdminController extends Controller
 		return view('admin.admin_create_event');
 	}
 
-	public function storeEvent()
+	public function storeEvent(Request $request)
 	{
 		$event = new Event();
 		return $this->validateEventAndSave($event, $request);
@@ -97,17 +101,18 @@ class AdminController extends Controller
 		return view('admin.admin_edit_event')->with($data);
 	}
 
-	public function updateEvent($id)
+	public function updateEvent(Request $request, $id)
 	{
 		$event = Event::findOrFail($id);
 		return $this->validateEventAndSave($event, $request);
 	}
 
-	public function destroyEvent($id)
+	public function destroyEvent(Request $request, $id)
 	{
 		$event = Event::findOrFail($id);
 		$event->delete();
-		return redirect()->action('EventsController@adminIndex');
+		$request->session()->flash('SUCCESS_MESSAGE', 'Event successfully deleted.');
+		return redirect()->action('AdminController@eventIndex');
 	}
 
 	// RFPs ===============================================
@@ -124,7 +129,7 @@ class AdminController extends Controller
 		return view('admin.admin_create_rfp');
 	}
 
-	public function storeRfp()
+	public function storeRfp(Request $request)
 	{
 		$rfp = new Rfp();
 		return $this->validateRfpAndSave($rfp, $request);
@@ -137,17 +142,18 @@ class AdminController extends Controller
 		return view('admin.admin_edit_rfp')->with($data);
 	}
 
-	public function updateRfp($id)
+	public function updateRfp(Request $request, $id)
 	{
 		$rfp = Rfp::findOrFail($id);
 		return $this->validateRfpAndSave($rfp, $request);
 	}
 
-	public function destroyRfp($id)
+	public function destroyRfp(Request $request, $id)
 	{
 		$rfp = Rfp::findOrFail($id);
 		$rfp->delete();
-		return redirect()->action('RFPController@adminIndex');
+		$request->session()->flash('SUCCESS_MESSAGE', 'RFP successfully deleted.');
+		return redirect()->action('AdminController@rfpIndex');
 	}
 
 
@@ -162,7 +168,7 @@ class AdminController extends Controller
 		$user->password = $request->password;
 		$user->save();
 
-		$request->session()->flash('message', 'User login information successfully updated.');
+		$request->session()->flash('SUCCESS_MESSAGE', 'User login information successfully updated.');
 		return redirect()->action('AdminController@index');
 	}
 
@@ -187,7 +193,7 @@ class AdminController extends Controller
 		$contact->google_plus = $request->google_plus;
 		$contact->save();
 
-		$request->session()->flash('message', 'Contact information successfully updated.');
+		$request->session()->flash('SUCCESS_MESSAGE', 'Contact information successfully updated.');
 		return redirect()->action('AdminController@index');
 	}
 
@@ -208,8 +214,29 @@ class AdminController extends Controller
 		$this->storeImage($request, $event);
 		$event->save();
 
-		$request->session()->flash('message', 'Event successfully created.');
-		return redirect()->action('EventsController@adminIndex');
+		$request->session()->flash('SUCCESS_MESSAGE', 'Event successfully created.');
+		return redirect()->action('AdminController@eventIndex');
+	}
+
+	private function validateRfpAndSave(Rfp $rfp, Request $request){
+		$request->session()->flash('ERROR_MESSAGE', 'RFP not saved.');
+		$this->validate($request, Rfp::$rules);
+		$request->session()->forget('ERROR_MESSAGE');
+
+		$rfp->company_id = Auth::user()->id;
+		$rfp->project_title = $request->project_title;
+		$rfp->deadline = $request->deadline;
+		$rfp->contact_name = $request->contact_name;
+		$rfp->contact_department = $request->contact_department;
+		$rfp->contact_no = $request->contact_no;
+		$rfp->project_scope = $request->project_scope;
+		$rfp->contract_from_date = $request->contract_from_date;
+		$rfp->contract_to_date = $request->contract_to_date;
+		$rfp->url = $request->url;
+		$rfp->save();
+
+		$request->session()->flash('SUCCESS_MESSAGE', 'RFP saved successfully.');
+		return redirect()->action('AdminController@rfpIndex');
 	}
 
 	private function storeImage($request, $event)

@@ -37,7 +37,6 @@
 						<ul class="dropdown-menu">
 							@if (Auth::user()->is_admin)
 								<li><a href="{{ action('AdminController@index') }}">Admin Dashboard</a></li>
-								<li><a href="{{ action('AdminController@editOrgLogin', ['id' => Auth::user()->id]) }}">My Account</a></li>
 							@endif
 							@if (!Auth::user()->is_admin)
 								<li><a href="{{ action('CompaniesController@show', ['id' => Auth::user()->id]) }}">View Profile</a></li>
@@ -55,6 +54,7 @@
 		</div><!-- /.container-fluid -->
 	</nav>
 	@endif
+	@include('partials.session_alerts')
 	<div class="expand">
 		@yield('content')
 	</div>

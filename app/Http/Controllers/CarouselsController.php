@@ -90,7 +90,7 @@ class CarouselsController extends Controller
 		$this->storeImage($request, $carousel);
 		$carousel->save();
 
-		$request->session()->flash('message', 'Carousel item successfully saved.');
+		$request->session()->flash('SUCCESS_MESSAGE', 'Carousel item successfully saved.');
 		return redirect()->action('CarouselsController@adminIndex');
 	}
 
