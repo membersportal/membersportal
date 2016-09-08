@@ -85,7 +85,7 @@ class UsersController extends Controller
 		if (Auth::user()->is_admin) {
 			return view('admin.admin_edit_org_login')->with($data);
 		}
-		
+
 		return view('users.edit_login')->with($data);
 	}
 
@@ -130,15 +130,17 @@ class UsersController extends Controller
 		$user->last_name = $request->last_name;
 		$user->email = $request->email;
 		$user->username = $request->username;
-		$user->password = Hash::make($request->password);
+		$user->password = $request->password;
 		$user->save();
 
-		if (Auth::user()->is_admin) {
+		if(Auth::user()->is_admin && Auth::user()->first_name == $user->first_name){
+			return redirect()->action('UsersController@getAdminDashboard');
+		}elseif (Auth::user()->is_admin) {
 			$request->session()->flash('message', 'User successfully created, please enter company information.');
 			return redirect()->action('CompaniesController@create');
+		} else {
+			$request->session()->flash('message', 'User login information successfully updated.');
+			return redirect()->action('UsersController@edit', Auth::user()->id);
 		}
-
-		$request->session()->flash('message', 'User login information successfully updated.');
-		return redirect()->action('UsersController@edit', Auth::user()->id);
 	}
 }

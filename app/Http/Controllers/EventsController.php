@@ -120,7 +120,7 @@ class EventsController extends Controller
 		if ($user->is_admin) {
 			$event = Event::findOrFail($id);
 			$data = compact('event');
-		  	return view('admin.admin_edit_event')->with($data);
+		  return view('admin.admin_edit_event')->with($data);
 		} else {
 	  	$event = Event::findOrFail($id);
 			$connections = Company::find($user->id)->companies;
@@ -165,7 +165,7 @@ class EventsController extends Controller
 	  $event->delete();
 
 	  if(Auth::user()->is_admin) {
-			return redirect()->action('UsersControllers@getAdminDashboard');
+			return redirect()->action('EventsController@adminIndex');
 	  } else {
 	  	return redirect()->action('EventsController@index');
 	  }
@@ -192,7 +192,7 @@ class EventsController extends Controller
 
 		$request->session()->flash('message', 'Event successfully created.');
 		if ($is_admin) {
-		  return redirect()->action('EventsController@editgeneral');
+		  return redirect()->action('EventsController@adminIndex');
 		} else {
 		  return redirect()->action('EventsController@index');
 		}

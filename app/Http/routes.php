@@ -22,6 +22,8 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
     Route::get('admin/users', 'UsersController@adminIndex');
     Route::get('/admin/users/create', 'UsersController@create');
     Route::post('/admin/users', 'UsersController@store');
+    Route::get('/admin/users/{user}/edit', 'UsersController@edit');
+    Route::put('/admin/users/{user}', 'UsersController@update');
     Route::get('/admin/users/delete', 'UsersController@adminDeleteUser');
     Route::delete('/admin/users/{user}', 'UsersController@destroy');
 
