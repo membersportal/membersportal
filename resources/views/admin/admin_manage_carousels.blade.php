@@ -9,6 +9,10 @@
 
 	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
 		<div class="panel_white carousels">
+			<div class="summary">
+				<p class="text-center"><span class="strong">Total:</span> {{ count($carousels) }} &nbsp;&nbsp;//&nbsp;&nbsp; <span class="strong">Last Carousel Added:</span> {{ $carousels[0]->created_at->format('F j Y') }}</p>
+				<a href="{{ action('CarouselsController@create') }}" class="create_button">Create New Carousel</a>
+			</div>
 			@foreach ($carousels as $key => $carousel)
 			<div class="row">
 				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">

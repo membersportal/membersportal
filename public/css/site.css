@@ -307,8 +307,12 @@ h1 {
 	font-weight: 700;
 }
 
-h1.articles, h1.space {
+h1.articles {
 	margin-bottom: 20px;
+}
+
+h1.space {
+	margin-bottom: 40px;
 }
 
 h2 {

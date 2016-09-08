@@ -5,12 +5,12 @@
 </div>
 <div class="form-group">
 	<label for="desc">Description<span class="required">*</span></label>
-	<textarea class="form-control" name="desc" maxlength="150" rows="2" required>{{ old('desc') }}</textarea>
+	<textarea name="desc" maxlength="150" rows="2" required>{{ old('desc') }}</textarea>
 	@include ('partials.error', ['value' => 'desc'])
 </div>
 <div class="form-group">
 	<label for="url">URL</label>
-	<p class="form_label_small">Please enter the full URL including http://</p>
+	<p class="form_label_small">Enter the full URL including http://</p>
 	<input type="url" class="form-control" name="url" value="{{ old('url') }}" placeholder="http://www.example.com">
 	@include ('partials.error', ['value' => 'url'])
 </div>
