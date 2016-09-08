@@ -61,12 +61,19 @@ div.login {
 	position: relative;
 }
 
-div.panel_white {
+div.panel_white, div.main_panel {
 	width: 100%;
 	background-color: #fff;
-	padding: 10px 25px 20px 25px;
 	border: 1px solid #d3e397;
 	min-height: 100%;
+}
+
+div.panel_white {
+	padding: 10px 25px 20px 25px;
+}
+
+div.main_panel {
+	padding: 20px 40px 35px 40px;
 }
 
 div.about, div.leaders, div.events, div.twitter, div.rfps, div.connections, div.social_media, div.social {
@@ -90,7 +97,7 @@ div.panel_white.social {
 	padding-bottom: 30px;
 }
 
-div.panel_red, div.panel_green, div.about_panel_red {
+div.panel_red, div.about_panel_red, div.panel_beige {
 	width: 100%;
 	background-color: #c65c39;
 	padding: 10px 25px;
@@ -114,19 +121,20 @@ div.about_panel_red {
 
 div.panel_green {
 	width: 100%;
-	padding: 10px 25px;
+	padding: 5px 20px;
 	background-color: #d3e397;
 	border: 1px solid #b7c483;
-	margin-bottom: 7px;
-	margin-top: 25px;
+	margin-bottom: 5px;
+	margin-top: 20px;
 	text-align: center;
 }
 
-div.main_panel {
-	width: 100%;
-	padding: 20px 40px;
-	background-color: #fff;
-	border: 1px solid #66a498;
+div.panel_beige {
+	background-color: #fff5c3;
+	border: 1px solid #dbd5ac;
+	margin-bottom: 7px;
+	margin-top: 5px;
+	text-align: center;
 }
 
 div#map {
@@ -286,6 +294,10 @@ h3.rfps {
 
 h3.abbreviation {
 	margin-top: 3px;
+}
+
+h3.text-center.sm_bottom_margin {
+	margin-bottom: 3px;
 }
 
 h1.company_name_profile {
@@ -523,7 +535,7 @@ span.required {
 }
 
 /*Links*/
-a.green_bg:after, a.green_bg:hover:after, ul.footer > li > a.footer_triangle:after, ul.footer > li > a.footer_triangle:hover:after, div.login > a.forgot_password:hover:after, a.forgot_password:after, div.connect > form > button.btn.btn-primary.pull-right.connect:after, div.connect > form > button.btn.btn-primary.pull-right.connect:hover:after, div.main_panel > div >  a.red_link.project:after, div.main_panel > div >  a.red_link.project:hover:after, h4.panel-title > a:hover:after, h4.panel-title > a:after {
+a.green_bg:after, a.green_bg:hover:after, ul.footer > li > a.footer_triangle:after, ul.footer > li > a.footer_triangle:hover:after, div.login > a.forgot_password:hover:after, a.forgot_password:after, div.connect > form > button.btn.btn-primary.pull-right.connect:after, div.connect > form > button.btn.btn-primary.pull-right.connect:hover:after, div.main_panel > div >  a.red_link.project:after, div.main_panel > div >  a.red_link.project:hover:after, h4.panel-title > a:hover:after, h4.panel-title > a:after, a.beige_bg:after, a.beige_bg:hover:after, a.green_link:after, a.green_link:hover:after {
 	content: "";
 	display: inline-block;
 	height: 11px;
@@ -531,7 +543,7 @@ a.green_bg:after, a.green_bg:hover:after, ul.footer > li > a.footer_triangle:aft
 	margin-bottom: -3px;
 }
 
-div.login > a.forgot_password:after, ul.footer > li > a.footer_triangle:hover:after, div.login > a.forgot_password:hover:after, ul.footer > li > a.footer_triangle:after, ul.footer > li > a.footer_triangle:after, a.green_bg:hover:after, a.green_bg:after, a.green_bg:hover:after, div.connect > form > button.btn.btn-primary.pull-right.connect:after, div.connect > form > button.btn.btn-primary.pull-right.connect:hover:after {
+div.login > a.forgot_password:after, ul.footer > li > a.footer_triangle:hover:after, div.login > a.forgot_password:hover:after, ul.footer > li > a.footer_triangle:after, ul.footer > li > a.footer_triangle:after, a.green_bg:hover:after, a.green_bg:after, a.green_bg:hover:after, div.connect > form > button.btn.btn-primary.pull-right.connect:after, div.connect > form > button.btn.btn-primary.pull-right.connect:hover:after, a.beige_bg:hover:after, a.beige_bg:after, a.green_link:after, a.green_link:hover:after {
 	margin-left: 4px;
 }
 
@@ -539,11 +551,11 @@ ul.edit_account_nav > li > a:after, h4.panel-title > a:hover:after {
 	background: transparent url('/img/arrow_blue.png') no-repeat;
 }
 
-a.green_bg:after, div.connect > form > button.btn.btn-primary.pull-right.connect:after {
+a.green_bg:after, div.connect > form > button.btn.btn-primary.pull-right.connect:after, a.green_link:hover:after {
 	background: transparent url('/img/arrow_green.png') no-repeat;
 }
 
-ul.footer > li > a.footer_triangle:after, a.green_bg:hover:after {
+ul.footer > li > a.footer_triangle:after, a.green_bg:hover:after, a.beige_bg:hover:after {
 	background: transparent url('/img/arrow_gray.png') no-repeat;
 }
 
@@ -551,7 +563,7 @@ div.connect > form > button.btn.btn-primary.pull-right.connect:hover:after {
 	background: transparent url('/img/arrow_dkblue.png') no-repeat;
 }
 
-div.main_panel > div >  a.red_link.project:after, h4.panel-title > a:after {
+div.main_panel > div >  a.red_link.project:after, h4.panel-title > a:after, a.green_link:after {
 	background: transparent url('/img/arrow_white.png') no-repeat;
 }
 
@@ -559,7 +571,7 @@ div.login > a.forgot_password:after, div.main_panel > div >  a.red_link.project:
 	background: transparent url('/img/arrow_red.png') no-repeat;
 }
 
-ul.footer > li > a.footer_triangle:hover:after, div.login > a.forgot_password:hover:after {
+ul.footer > li > a.footer_triangle:hover:after, div.login > a.forgot_password:hover:after, a.beige_bg:after {
 	background: transparent url('/img/arrow.png') no-repeat;
 }
 
@@ -588,11 +600,14 @@ h4.article_heading > a:hover, h4.carousel_heading > a:hover, h4.event_heading > 
 	color: #514e43;
 }
 
-a.green_bg, a.green_bg:visited, a.green_bg:active {
-	color: #7c786a;
-	font-size: .85em;
+a.green_bg, a.green_bg:visited, a.green_bg:active, a.beige_bg, a.beige_bg:visited, a.beige_bg:hover, a.beige_bg:active {
+	font-size: .95em;
 	text-transform: uppercase;
 	margin-left: 10px;
+}
+
+a.green_bg, a.green_bg:visited, a.green_bg:active, a.beige_bg, a.beige_bg:visited, a.beige_bg:hover, a.beige_bg:active {
+	color: #7c786a;
 }
 
 a.red_link {
@@ -602,6 +617,13 @@ a.red_link {
 a.red_link.small_caps {
 	text-transform: uppercase;
 	font-size: .85em;
+}
+
+a.green_link, a.green_link:visited, a.green_link:active {
+	color: #b7c483;
+	font-size: .9em;
+	text-transform: uppercase;
+	margin-left: 10px;
 }
 
 a.footer {
