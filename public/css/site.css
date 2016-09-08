@@ -1,6 +1,7 @@
 /*Alerts*/
 .alert.alert-success, .alert.alert-danger {
 	padding: 10px 0;
+	margin-top: -15px;
 	text-align: center;
 }
 
@@ -69,6 +70,7 @@ div.panel_white {
 	background-color: #fff;
 	padding: 10px 25px 20px 25px;
 	border: 1px solid #d3e397;
+	min-height: 100%;
 }
 
 div.about, div.leaders, div.events, div.twitter, div.rfps, div.connections, div.social_media, div.social {
@@ -77,6 +79,10 @@ div.about, div.leaders, div.events, div.twitter, div.rfps, div.connections, div.
 
 div.users {
 	padding-bottom: 50px;
+}
+
+div.manage_users {
+	padding-bottom: 190px;
 }
 
 div.panel_white.articles, div.panel_white.carousels, div.panel_white.events, div.panel_white.rfps, div.users, div.manage_users {
@@ -283,7 +289,6 @@ h1.company_name_profile {
 	color: #c65c39;
 	font-size: 2em;
 }
-
 h4.article_heading, h4.carousel_heading, h4.event_heading, h4.rfp_heading {
 	color: #7c786a;
 	margin-bottom: 3px;
@@ -296,10 +301,14 @@ h4.article_heading_full {
 	margin-bottom: 2px;
 }
 
-h4.project_showcase {
+h4.project_showcase, h4.delete_user {
 	margin-top: -13px;
 	color: #b7c483;
 	margin-bottom: 15px;
+}
+
+h4.delete_user {
+	margin-bottom: 25px;
 }
 
 h5.leader_name {
@@ -315,7 +324,7 @@ h1, h2, h3, h4, h5 {
 h1 {
 	font-size: 1.7em;
 	font-weight: 700;
-	margin-top: 30px;
+	margin-top: 25px;
 }
 
 h1.articles {
@@ -323,7 +332,15 @@ h1.articles {
 }
 
 h1.space {
-	margin-bottom: 40px;
+	margin-bottom: 45px;
+}
+
+h1.text-center.req {
+	margin-bottom: 5px;
+}
+
+p.text-center.req {
+	margin-bottom: 20px;
 }
 
 h2 {
@@ -352,6 +369,12 @@ h4.footer {
 p.red_panel_text {
 	line-height: 1.25em;
 	color: #fff;
+}
+
+p.delete_user_warning {
+	margin-top: 15px;
+	color: #66a498;
+	font-weight: 700;
 }
 
 p.rfp_dates {
@@ -396,6 +419,11 @@ p.company_desc_home {
 p.company_desc {
 	margin-top: -7px;
 	font-size: .85em;
+}
+
+p.delete_user {
+	font-size: .9em;
+	margin-top: -10px;
 }
 
 p.article_desc, p.rfp_desc {
@@ -637,6 +665,10 @@ img.company_header {
 	width: inherit;
 }
 
+img.manage_users {
+	margin-top: 20px;
+}
+
 img.company_profile {
 	object-fit: contain;
 	width: inherit;
@@ -786,6 +818,10 @@ button.btn.btn-primary.pull-right.connect {
 	border: 1px solid #b7c483;
 	background-color: #d3e397;
 	color: #568b80;
+}
+
+.cancel_button.pull-right.delete_user, .btn.btn-danger.pull-right.delete_user {
+	margin-top: 15px;
 }
 
 div.connect {
