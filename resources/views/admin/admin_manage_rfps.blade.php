@@ -10,6 +10,10 @@
 
 	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
 		<div class="panel_white rfps">
+			<div class="summary">
+				<p class="text-center"><span class="strong">Total:</span> {{ count($rfps) }} &nbsp;&nbsp;//&nbsp;&nbsp; <span class="strong">Last RFP Added:</span> {{ $rfps[0]->created_at->format('F j Y') }}</p>
+				<a href="{{ action('RFPController@create') }}" class="create_button">Create New RFP</a>
+			</div>
 			@foreach ($rfps as $key => $rfp)
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
