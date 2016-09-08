@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Carbon;
 use App\Company;
 use App\Event;
 
@@ -33,21 +34,20 @@ class Event extends Model
 		} else {
 			return $query;
 		}
-		// if($request->searchField != ''){
-		// 	(isset($query)) ? $query->where('company_id', "%$request->searchField%")->orWhere('title', 'like', "%$request->searchField%") : $query = Event::searchCompanyName($request->searchField);
-		// }
-		//
-		// if($request->option('industry_id') != 0){
-		// 	(isset($query)) ? $query->orWhere('industry_id', $request->industry_id) : $query = Event::where('industry_id', $request->industry_id);
-		// }
-
-		//var_dump(get_class_methods(get_class($query)));
-		// echo $query->getQuery()->toSql();
 	}
 
 	public static function usersEvents($id)
 	{
 		return Event::where('company_id', $id);
+	}
+
+	public static function grabWeekEvents()
+	{
+		$week = Carbon::now()->addWeeks(1);
+		$now = Carbon::now();
+		$events = Event::where('from_date', '<', $week)->where('from_date', '>', $now)->orderBy('from_date');
+		dd($events);
+		return $events;
 	}
 
 	public static function dashboardEvents($connections)
@@ -80,5 +80,4 @@ class Event extends Model
 		'url' => 'required|url',
 		'img' => 'image|required'
 	];
-	//
 }

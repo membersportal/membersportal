@@ -71,9 +71,29 @@
 				<button class="btn btn-primary pull-right" type="Submit">Search</button>
 			</form>
 		</div>
+
 		<div class="all_events">
+		{{ dd($events) }}
 		@foreach($events as $event)
-			<a href="{{ action('EventsController@show', $id = $event->id) }}"><h5>{{ $event->title }}</h5></a>
+			<div class="row">
+				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+					<img class="img-responsive events_grid" src="http://fillmurray.com/100/100" alt="">
+				</div>
+				<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 col-xl-9">
+					<h4 class="event_heading"><a href="{{ $event->url }}" target="_blank">{{ $event->title }}</a></h4>
+					<p class="event_date_home">{{ $event->from_date->format('F j') }} - {{ $event->to_date->format('F j') }}</p>
+					@if ($event->invite_only)
+						<p class="event_boolean"><span class="glyphicon glyphicon-ok"></span>Invite Only</p>
+					@endif
+					@if ($event->rsvp_required)
+						<p class="event_boolean"><span class="glyphicon glyphicon-ok"></span>RSVP Required</p>
+					@endif
+					<p class="event_desc">{{ $event->desc }}</p>
+				</div>
+			</div>
+			@if ($event != $events[(count($events) - 1)])
+			<hr class="wide">
+			@endif
 		@endforeach
 		</div>
 	</div>
