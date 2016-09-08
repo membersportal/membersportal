@@ -111,6 +111,3 @@ Route::resource('leaders', 'LeadersController');
 
 // RFPs
 Route::resource('rfps', 'RFPController');
-
-// Articles
-Route::get('articles', 'ArticlesController@index');
