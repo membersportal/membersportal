@@ -41,9 +41,15 @@ class Contact extends Model
 		return ucwords($value);
 	}
 
-	public function getPhoneNoAttribute($value)
+	public function getViewProfileWebsite($value)
 	{
-		return '(' . substr($value, 0, 3) . ') ' . substr($value, 3, 3) . '-' . substr($value, 6, 4);
+		if (substr($value, 0, 12) === 'https://www.') {
+			return substr($value, 12);
+		} elseif (substr($value, 0, 11) === 'http://www.') {
+			return substr($value, 11);
+		} else {
+			return $value;
+		}
 	}
 
 	public static function searchLocations($results)
@@ -59,17 +65,17 @@ class Contact extends Model
 	public static $rules = [
      'phone_no' => 'required|integer',
      'address_line_1' => 'required|max:50',
-     'address_line_2' => 'nullable|max:50',
-     'address_line_3' => 'nullable|max:50',
+     'address_line_2' => 'max:50',
+     'address_line_3' => 'max:50',
      'city' => 'required|max:50',
      'state' => 'required|max:2',
      'zip' => 'required|integer',
      'country' => 'required|max:15',
-     'website' => 'nullable|url',
-     'twitter'  => 'nullable|max:20',
-     'facebook' => 'nullable|max:20',
-     'instagram' => 'nullable|max:20',
-     'linkedin' => 'nullable|max:20',
-     'google_plus' => 'nullable|max:20'
+     'website' => 'url',
+     'twitter'  => 'max:20',
+     'facebook' => 'max:200',
+     'instagram' => 'max:200',
+     'linkedin' => 'max:200',
+     'google_plus' => 'max:200'
    	];
 }

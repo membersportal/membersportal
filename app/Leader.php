@@ -31,5 +31,4 @@ class Leader extends Model
      'img' => 'required|image',
      'linkedin_url' => 'required|url'
    	];
-    //
 }

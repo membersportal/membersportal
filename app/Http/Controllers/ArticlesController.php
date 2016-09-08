@@ -10,6 +10,21 @@ use App\Article;
 
 class ArticlesController extends Controller
 {
+	public function index()
+	{
+		$articles = Article::paginate(5);
+		$data = compact('articles');
+		return view('articles.all_articles')->with($data);
+	}
+
+	public function adminIndex()
+	{
+		$articles = Article::paginate(5);
+		$paginate = 5;
+		$data = compact('articles', 'paginate');
+		return view('admin.admin_manage_articles')->with($data);
+	}
+
 	/**
 	 * Show the form for creating a new resource.
 	 *
@@ -44,7 +59,6 @@ class ArticlesController extends Controller
 		$data = compact('article');
 		return view('admin.admin_edit_article')->with($data);
 	}
-
 	/**
 	 * Update the specified resource in storage.
 	 *
@@ -68,20 +82,28 @@ class ArticlesController extends Controller
 	{
 		$article = Article::findOrFail($id);
 		$article->delete();
-		return redirect()->action('admin.admin_dashboard');
+		return redirect()->action('ArticlesController@adminIndex');
 	}
 
-	private function validateAndSave(Article $Article, Request $request){
-		$request->session()->flash('ERROR_MESSAGE', 'Article not created successfully.'); 
+	private function validateAndSave(Article $article, Request $request){
+		$request->session()->flash('ERROR_MESSAGE', 'Article not created successfully.');
 		$this->validate($request, Article::$rules);
 		$request->session()->forget('ERROR_MESSAGE');
 		$article->heading = $request->heading;
 		$article->subheading = $request->subheading;
 		$article->desc = $request->desc;
-		$article->img = $request->img;
+		$this->storeImage($request, $article);
 		$article->url = $request->url;
 		$article->save();
 		$request->session()->flash('message', 'Article successfully saved.');
-		return redirect()->action('admin.admin_dashboard');
+		return redirect()->action('ArticlesController@adminIndex');
+	}
+
+	private function storeImage($request, $article)
+	{
+		$file = $request->file('img')->getClientOriginalName();
+		$request->file('img')->move(public_path('img'), $request->file('img')->getClientOriginalName());
+		$file_path = public_path('img/articles') . '/' . $request->file('img')->getClientOriginalName();
+		$article->img = $file;
 	}
 }

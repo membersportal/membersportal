@@ -19,15 +19,15 @@ class ConnectionsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store($id)
+    public function store(Request $request, $id)
     {
       $connection = new Connection();
-      $connection->user1_id = Auth::user()->id; //can use $post->title = $request->input('title') alternatively
-      $connection->user2_id = $id;
+      $connection->company1_id = Auth::user()->id; //can use $post->title = $request->input('title') alternatively
+      $connection->company2_id = $id;
       $connection->save(); //save when submited
       // Log::info('User successfully creates post', $request->all()); // create custom log when post is created
       $request->session()->flash('message', 'New Connection!'); // flash success message when saved
-      return redirect()->action('companies.view_profile'); //redirect to the index page
+      return redirect()->action('CompaniesController@show', $id); //redirect to the index page
     }
 
     /**

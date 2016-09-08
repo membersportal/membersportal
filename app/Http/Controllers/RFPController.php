@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Rfp;
+use App\Company;
 
 class RFPController extends Controller
 {
@@ -17,7 +19,13 @@ class RFPController extends Controller
 	 */
 	public function index()
 	{
-		return view('rfps.all_rfps');
+		$rfps = Rfp::all();
+		$user = Auth::user()->id;
+		$connections = Company::find($user)->companies;
+		$connections_rfps = Rfp::dashboardRfps($connections)->get();
+		$users_rfps = Rfp::profileRfps($user)->get();
+		$data = compact('connections_rfps', 'users_rfps', 'rfps');
+		return view('rfps.all_rfps')->with($data);
 	}
 
 	/**
@@ -28,8 +36,11 @@ class RFPController extends Controller
 	public function create()
 	{
 		$user = Auth::user();
-		$data = compact('user');
-		return view('rfps.create')->with($data);
+		$connections = Company::find($user->id)->companies;
+		$connections_rfps = Rfp::dashboardRfps($connections)->get();
+		$users_rfps = Rfp::profileRfps($user->id)->get();
+		$data = compact('user', 'connections_rfps', 'users_rfps');
+		return view('rfps.create_rfp')->with($data);
 	}
 
 	/**
@@ -53,9 +64,13 @@ class RFPController extends Controller
 	public function show($id)
 	{
 	  $rfp = Rfp::findOrFail($id);
-	  $company_id = $rfp->companies;
-	  $data = compact('rfp', 'company_id');
-	  return view('')->with($data);
+		$rfp_owner = $rfp->company;
+		$user = Auth::user()->id;
+		$connections = Company::find($user)->companies;
+		$connections_rfps = Rfp::dashboardRfps($connections)->get();
+		$users_rfps = Rfp::profileRfps($user)->get();
+		$data = compact('rfp', 'rfp_owner', 'connections_rfps', 'users_rfps');
+	  return view('rfps.show_rfp')->with($data);
 	}
 
 	/**
@@ -67,9 +82,12 @@ class RFPController extends Controller
 	public function edit($id)
 	{
 		$user = Auth::user();
-		$rfp = Rfp::findOrFail($id);
-		$data = compact('contact', 'user');
-		return view('rfps.edit')->with($data);
+		$rfp = Rfp::findorfail($id);
+		$connections = Company::find($user->id)->companies;
+		$connections_rfps = Rfp::dashboardRfps($connections)->get();
+		$users_rfps = Rfp::profileRfps($user->id)->get();
+		$data = compact('rfp', 'connections_rfps', 'users_rfps');
+		return view('rfps.edit_rfp')->with($data);
 	}
 
 	/**
@@ -91,38 +109,32 @@ class RFPController extends Controller
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function destroy($id)
+	public function destroy(Request $request, $id)
 	{
 		$rfp = Rfp::findOrFail($id);
 		$rfp->delete();
-		$message = 'RFP deleted';
-		$request->session()->flash('sucessMessage', $message);
-		return redirect()->action('companies.view_profile');
+		$request->session()->flash('successMessage', 'RFP deleted successfully.');
+		return redirect()->action('RFPController@index');
 	}
 
 	private function validateAndSave(Rfp $rfp, Request $request){
-		$company_id = Auth::user()->id;
-		$is_admin = Auth::user()->is_admin;
-
-		$request->session()->flash('ERROR_MESSAGE', 'RFP was not created successfully');
+		$request->session()->flash('ERROR_MESSAGE', 'RFP not saved.');
 		$this->validate($request, Rfp::$rules);
 		$request->session()->forget('ERROR_MESSAGE');
 
-		$rfp->company_id = $company_id;
+		$rfp->company_id = Auth::user()->id;
 		$rfp->project_title = $request->project_title;
 		$rfp->deadline = $request->deadline;
 		$rfp->contact_name = $request->contact_name;
 		$rfp->contact_department = $request->contact_department;
 		$rfp->contact_no = $request->contact_no;
 		$rfp->project_scope = $request->project_scope;
-		$rfp->contract_to_date = $request->contract_to_date;
 		$rfp->contract_from_date = $request->contract_from_date;
+		$rfp->contract_to_date = $request->contract_to_date;
+		$rfp->url = $request->url;
 		$rfp->save();
 
-		$request->session()->flash('message', 'Entry successfully saved.');
-		if ($is_admin) {
-			return redirect()->action('admin.admin_dashboard');
-		} else {
-			return redirect()->action('CompaniesController@dashboard', ['id' => $company_id]);
-		}
+		$request->session()->flash('message', 'RFP saved successfully.');
+		return redirect()->action('RFPController@index');
+	}
 }

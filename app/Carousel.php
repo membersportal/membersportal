@@ -6,13 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Carousel extends Model
-{  
+{
 	use SoftDeletes;
-	
+
 	public static $rules = [
 		'title' => 'required|max:50',
 		'desc' => 'required|max:150',
-		'img' => 'required|image',
+		'img' => 'image|required',
 		'url' => 'required|url'
 	];
 

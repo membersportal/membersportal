@@ -50,7 +50,7 @@ class CompaniesController extends Controller
 	{
 		$user = Auth::user();
 		$company = Company::findOrFail($id);
-		// $leaders = $company->leaders;
+		$leaders = $company->leaders;
 		$industries = Industry::all();
 		$data = compact('company', 'industries', 'user');
 
@@ -94,12 +94,15 @@ class CompaniesController extends Controller
 	public function getSearchedCompanies(Request $request)
 	{
 		$data = [];
-		$data['results'] = Company::searchMembers($request)->get();
+		$data['results'] = Company::searchMembers($request)->with('contact')->get();
 		foreach($data['results'] as &$result) {
 			$result->url = action('CompaniesController@show', $result->id);
 			$result->industry = $result->industry->industry;
 		}
 		$data['locations'] = Contact::searchLocations($data['results']);
+		foreach ($data['locations'] as &$location) {
+			$location->company;
+		}
 		return $data;
 	}
 
@@ -116,8 +119,9 @@ class CompaniesController extends Controller
 
 	public function viewConnections($id)
 	{
-		$user = User::find($id);
-		$data = compact('user');
+		$user = User::find($id)->id;
+		$connections = Company::findOrFail($user)->companies;
+		$data = compact('connections');
 		return view('companies.all_connections')->with($data);
 	}
 
@@ -125,7 +129,7 @@ class CompaniesController extends Controller
 	{
 		$company = Company::findOrFail($id);
 		$contact = $company->contact;
-		$rfps = Rfp::profileRfps($company->id);
+		$rfps = Rfp::profileRfps($company->id)->get();
 		$events = $company->events;
 		$leaders = $company->leaders;
 		$connections = Connection::viewConnections($id)->take(3)->get();
@@ -136,7 +140,7 @@ class CompaniesController extends Controller
 
 	private function validateAndSave(Company $company, Request $request)
 	{
-		$request->session()->flash('ERROR_MESSAGE', 'Company not created successfully.');
+		$request->session()->flash('ERROR_MESSAGE', 'Company information not saved.');
 		$this->validate($request, Company::$rules);
 		$request->session()->forget('ERROR_MESSAGE');
 
@@ -153,13 +157,11 @@ class CompaniesController extends Controller
 		$company->date_established = $request->date_established;
 		$company->save();
 
-		$is_admin = Auth::user()->is_admin;
-
 		if($is_admin){
-			$request->session()->flash('message', 'Company successfully created, please enter contact information.');
+			$request->session()->flash('message', 'Company saved successfully, please enter contact information.');
 			return redirect()->action('ContactsController@create');
 		} else {
-			$request->session()->flash('message', 'Company information successfully updated.');
+			$request->session()->flash('message', 'Company information saved successfully.');
 			return redirect()->action('UsersController@edit', ['id' => Auth::user()->id]);
 		}
 	}

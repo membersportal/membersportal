@@ -21,6 +21,14 @@ class CarouselsController extends Controller
 		return view('admin.admin_create_carousel');
 	}
 
+	public function adminIndex()
+	{
+		$carousels = Carousel::paginate(5);
+		$paginate = 5;
+		$data = compact('carousels', 'paginate');
+		return view('admin.admin_manage_carousels')->with($data);
+	}
+
 	/**
 	 * Store a newly created resource in storage.
 	 *
@@ -69,21 +77,28 @@ class CarouselsController extends Controller
 	{
 		$carousel = Carousel::findOrFail($id);
 		$carousel->delete();
-		return redirect()->action('admin.admin_dashboard');
+		return redirect()->action('CarouselsController@adminIndex');
 	}
 
-	private function validateAndSave(Carousel $Carousel, Request $request){
-		$request->session()->flash('ERROR_MESSAGE', 'Carousel not created successfully.'); 
+	private function validateAndSave(Carousel $carousel, Request $request){
+		$request->session()->flash('ERROR_MESSAGE', 'Carousel not created successfully.');
 		$this->validate($request, Carousel::$rules);
 		$request->session()->forget('ERROR_MESSAGE');
-
 		$carousel->title = $request->title;
 		$carousel->desc = $request->desc;
-		$carousel->img = $request->img;
 		$carousel->url = $request->url;
+		$this->storeImage($request, $carousel);
 		$carousel->save();
-		
+
 		$request->session()->flash('message', 'Carousel item successfully saved.');
-		return redirect()->action('admin.admin_dashboard');
+		return redirect()->action('CarouselsController@adminIndex');
+	}
+
+	private function storeImage($request, $carousel)
+	{
+		$file = $request->file('img')->getClientOriginalName();
+		$request->file('img')->move(public_path('img'), $request->file('img')->getClientOriginalName());
+		$file_path = public_path('img/carousel') . '/' . $request->file('img')->getClientOriginalName();
+		$carousel->img = $file;
 	}
 }

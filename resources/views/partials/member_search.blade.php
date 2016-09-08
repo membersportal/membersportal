@@ -47,9 +47,11 @@
 			}).done(function(data){
 				var search_results = data.results;
 				var businesses = data.locations;
+				console.log(businesses);
 				clearMarkers();
 				markers = [];
 					businesses.forEach(function(business) {
+						console.log(business);
 						var address = business.address_line_1 + ' ' + business.city + ' ' + business.state + ' ' + business.zip;
 						geocoder.geocode({ "address": address }, function (results, status) {
 							if (status == google.maps.GeocoderStatus.OK) {
@@ -60,7 +62,7 @@
 									draggable: false
 								});
 								var infoWindow = new google.maps.InfoWindow({
-									content: "<p>" + business.company_id + "</p>" + "<p>" + business.user_id + "</p>"
+									content: "<p>" + business.company.name + "</p>" + "<p>" + business.company.desc + "</p>"
 								});
 								marker.addListener('click', function() {
 									map.setCenter(results[0].geometry.location);

@@ -1,5 +1,5 @@
-<ul>
-  <li><a href="{{ action('UsersController@edit', ['id' => Auth::user()->id]] }}">Manage Account</a></li>
-  <li><a href="{{ action('CompaniesController@edit', ['id' => Auth::user()->id]) }}">Manage Company</a></li>
-  <li><a href="{{ action('ContactsController@edit', ['id' => Auth::user()->id]) }}">Manage Contact</a></li>
+<ul class="edit_account_nav">
+  <li><a class="{{ $login }}" href="{{ action('UsersController@edit', ['id' => Auth::user()->id]) }}">Edit Login</a></li>
+  <li><a class="{{ $company }}" href="{{ action('CompaniesController@edit', ['id' => Auth::user()->id]) }}">Edit Company</a></li>
+  <li><a class="{{ $contact }}" href="{{ action('ContactsController@edit', ['id' => Auth::user()->id]) }}">Edit Contact</a></li>
 </ul>

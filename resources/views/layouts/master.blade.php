@@ -9,7 +9,6 @@
 	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab|Source+Sans+Pro" rel="stylesheet">
 	<link href="/css/site.css" rel="stylesheet">
 	<link href="/css/navbar.css" rel="stylesheet">
-	<link href="/css/event_home.css" rel="stylesheet">
 	<link href="/css/carousel.css" rel="stylesheet">
 </head>
 <body>
@@ -28,6 +27,8 @@
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li class="active triangle"><a href="{{ action('EventsController@index') }}">Events <span class="sr-only">Events</span></a></li>
+					<li class="active triangle"><a href="{{ action('RFPController@index') }}">Requests for Proposals <span class="sr-only">RFPs</span></a></li>
+					<li class="active triangle"><a href="{{ action('ArticlesController@index') }}">Articles <span class="sr-only">Articles</span></a></li>
 					<li class="triangle"><a href="{{ action('CompaniesController@searchMembers') }}">Search Members</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
@@ -35,15 +36,16 @@
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->username }}<span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							@if (Auth::user()->is_admin)
-								<li><a href="{{ action('UsersController@getAdminDashboard') }}">Admin Dashboard</a></li>
+								<li><a href="{{ action('AdminController@index') }}">Admin Dashboard</a></li>
+								<li><a href="{{ action('AdminController@editOrgLogin', ['id' => Auth::user()->id]) }}">My Account</a></li>
 							@endif
 							@if (!Auth::user()->is_admin)
 								<li><a href="{{ action('CompaniesController@show', ['id' => Auth::user()->id]) }}">View Profile</a></li>
 								<li><a href="{{ action('CompaniesController@dashboard', ['id' => Auth::user()->id]) }}">My Dashboard</a></li>
 								<li><a href="{{ action('CompaniesController@viewConnections', ['id' => Auth::user()->id]) }}">My Connections</a></li>
 								<li role="separator" class="divider"></li>
+								<li><a href="{{ action('UsersController@edit', ['id' => Auth::user()->id]) }}">My Account</a></li>
 							@endif
-							<li><a href="{{ action('UsersController@edit', ['id' => Auth::user()->id]) }}">My Account</a></li>
 							<li><a href="{{ action('Auth\AuthController@getLogout') }}">Log Out</a></li>
 						</ul>
 					<li><img src="http://placekitten.com/35/35" class="user_avatar img-circle"></li>
