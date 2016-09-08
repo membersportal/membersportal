@@ -843,10 +843,14 @@ textarea {
 form#search_form, .event_search {
 	background-color: #fff;
 	border: 1px solid #d3e397;
-	padding: 30px;
+}
+
+.event_search {
+	padding: 10px 30px 60px 30px;
 }
 
 form#search_form {
+	padding: 30px;
 	margin-top: 20px;
 }
 
@@ -896,6 +900,10 @@ input.form-control.included {
 
 select.form-control.search_form {
 	height: 35px;
+}
+
+select.form-control.event_search_form{
+	margin-top: 10px;
 }
 
 .form-group > select {
