@@ -60,6 +60,11 @@ class Event extends Model
 		return Event::whereIn('company_id', $companies)->orderBy('created_at');
 	}
 
+	public static function adminEvents()
+	{
+		return Event::whereIn('company_id', [1,2,3,4]);
+	}
+
 	protected $dates = [
 		'from_date',
 		'to_date'

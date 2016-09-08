@@ -38,7 +38,7 @@
       <p>
         {{ $event->url }}
       </p>
-      @if(Auth::user()->id == $event->company_id)
+      @if(Auth::user()->id == $event->company_id && !Auth::user()->is_admin)
         <form action="{{ action('EventsController@edit', $id = $event->id) }}" method="get">
           <button type="submit">Edit</button>
         </form>
