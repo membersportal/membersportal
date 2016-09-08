@@ -107,6 +107,7 @@ Route::resource('events', 'EventsController');
 Route::get('/events/search', 'EventsController@searchEvents');
 
 // Leaders
+Route::put('/leaders/{leader}', 'LeadersController@update');
 Route::resource('leaders', 'LeadersController');
 
 // RFPs
