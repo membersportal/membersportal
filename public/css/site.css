@@ -5,6 +5,11 @@
 	position: relative;
 }
 
+.row {
+	padding-left: 9px;
+	padding-right: 9px;
+}
+
 .container.articles {
 	margin-bottom: 0;
 }
@@ -64,6 +69,10 @@ div.about, div.leaders, div.events, div.twitter, div.rfps, div.connections, div.
 	margin-top: 16px;
 }
 
+div.panel_white.articles, div.panel_white.carousels, div.panel_white.events, div.panel_white.rfps {
+	margin-top: 8px;
+}
+
 div.panel_white.social {
 	text-align: center;
 	padding-bottom: 30px;
@@ -76,6 +85,9 @@ div.panel_red, div.panel_green, div.about_panel_red {
 	border: 1px solid #514e43;
 	margin-bottom: 15px;
 	margin-top: 16px;
+}
+
+div.panel_red {
 	text-align: center;
 }
 
@@ -100,7 +112,7 @@ div.panel_green {
 
 div.main_panel {
 	width: 100%;
-	padding: 10px 40px;
+	padding: 20px 40px;
 	background-color: #fff;
 	border: 1px solid #66a498;
 }
@@ -128,18 +140,14 @@ div.social_media_edit {
 div.checkboxes {
 	margin: 10px 0;
 }
-/*
-div.row.article_table {
-	padding: 0 10px;
-}*/
 
 hr {
 	margin: 10px 0;
 }
 
 hr.wide {
-	margin-top: 18px;
-	margin-bottom: 25px;
+	margin-top: 10px;
+	margin-bottom: 15px;
 }
 
 .user_grid {
@@ -196,9 +204,47 @@ div.interior_form {
 	margin-right: -8px;
 }
 
+div.summary {
+	background-color: #f6f6f6;
+	padding: 20px 0 25px 0;
+	margin: 10px 0 15px 0;
+	text-align: center;
+}
+
+.panel-default > .panel-heading {
+	padding: 0;
+	border-style: none;
+	background-color: #fff;
+}
+
+.panel {
+	border: none;
+	box-shadow: none;
+	margin-bottom: 10px;
+}
+
 /*Text*/
 body {
 	font-family: 'Source Sans Pro', sans-serif;
+}
+
+.event_desc_home, .rfp_contact_detail {
+	margin-top: 10px;
+	line-height: 1.25em;
+}
+
+.event_desc_date {
+	font-size: .85em;
+}
+
+.event_date_home, .rfp_date, .rfp_contact_detail {
+	color: #8dcdc1;
+	font-weight: bolder;
+	font-size: 1.05em;
+}
+
+.rfp_dates, .rfp_date {
+	margin-bottom: 0;
 }
 
 h3.login {
@@ -228,7 +274,7 @@ h1.company_name_profile {
 	font-size: 2em;
 }
 
-h4.article_heading {
+h4.article_heading, h4.carousel_heading, h4.event_heading, h4.rfp_heading {
 	color: #7c786a;
 	margin-bottom: 3px;
 	line-height: 1.25em;
@@ -261,8 +307,12 @@ h1 {
 	font-weight: 700;
 }
 
-h1.articles, h1.space {
+h1.articles {
 	margin-bottom: 20px;
+}
+
+h1.space {
+	margin-bottom: 40px;
 }
 
 h2 {
@@ -293,8 +343,20 @@ p.red_panel_text {
 	color: #fff;
 }
 
+p.rfp_dates {
+	display: inline-block;
+	margin-right: 5px;
+}
+
 p.blue {
 	color: #66a498;
+}
+
+p.event_boolean {
+	color: #7c786a;
+	font-size: .85em;
+	margin: 0 15px 5px 0;
+	display: inline-block;
 }
 
 p.company_name {
@@ -325,7 +387,7 @@ p.company_desc {
 	font-size: .85em;
 }
 
-p.article_desc {
+p.article_desc, p.rfp_desc {
 	margin-bottom: 20px;
 }
 
@@ -339,6 +401,10 @@ p.leader_title {
 	margin-bottom: 0;
 	letter-spacing: 1px;
 	font-size: .95em;
+}
+
+div.summary > p.text-center {
+	margin-bottom: 20px;
 }
 
 ul.rfps, ul.contact, ul.company_stats, ul.edit_account_nav {
@@ -415,8 +481,7 @@ span.required {
 }
 
 /*Links*/
-
-a.green_bg:after, a.green_bg:hover:after, ul.footer > li > a.footer_triangle:after, ul.footer > li > a.footer_triangle:hover:after, div.login > a.forgot_password:hover:after, a.forgot_password:after, div.connect > form > button.btn.btn-primary.pull-right.connect:after, div.connect > form > button.btn.btn-primary.pull-right.connect:hover:after, div.main_panel > div >  a.red_link.project:after, div.main_panel > div >  a.red_link.project:hover:after {
+a.green_bg:after, a.green_bg:hover:after, ul.footer > li > a.footer_triangle:after, ul.footer > li > a.footer_triangle:hover:after, div.login > a.forgot_password:hover:after, a.forgot_password:after, div.connect > form > button.btn.btn-primary.pull-right.connect:after, div.connect > form > button.btn.btn-primary.pull-right.connect:hover:after, div.main_panel > div >  a.red_link.project:after, div.main_panel > div >  a.red_link.project:hover:after, h4.panel-title > a:hover:after, h4.panel-title > a:after {
 	content: "";
 	display: inline-block;
 	height: 11px;
@@ -428,7 +493,7 @@ div.login > a.forgot_password:after, ul.footer > li > a.footer_triangle:hover:af
 	margin-left: 4px;
 }
 
-ul.edit_account_nav > li > a:after {
+ul.edit_account_nav > li > a:after, h4.panel-title > a:hover:after {
 	background: transparent url('/img/arrow_blue.png') no-repeat;
 }
 
@@ -444,7 +509,7 @@ div.connect > form > button.btn.btn-primary.pull-right.connect:hover:after {
 	background: transparent url('/img/arrow_dkblue.png') no-repeat;
 }
 
-div.main_panel > div >  a.red_link.project:after {
+div.main_panel > div >  a.red_link.project:after, h4.panel-title > a:after {
 	background: transparent url('/img/arrow_white.png') no-repeat;
 }
 
@@ -460,6 +525,10 @@ ul.footer > li > a.footer_triangle:hover {
 	color: #fff5c3;
 }
 
+h4.panel-title > a {
+	font-size: 1em;
+}
+
 ul.edit_account_nav > li > a:hover {
 	color: #d4fdf5;
 }
@@ -468,11 +537,11 @@ ul.edit_account_nav > li > a.active {
 	background-color: #66a498;
 }
 
-h4.article_heading > a, h4.article_heading > a:visited, h4.article_heading > a:active {
+h4.article_heading > a, h4.article_heading > a:visited, h4.article_heading > a:active, h4.carousel_heading > a, h4.carousel_heading > a:visited, h4.carousel_heading > a:active, h4.event_heading > a, h4.event_heading > a:visited, h4.event_heading > a:active, h4.rfp_heading > a, h4.rfp_heading > a:visited, h4.rfp_heading > a:active {
 	color: #7c786a;
 }
 
-h4.article_heading > a:hover {
+h4.article_heading > a:hover, h4.carousel_heading > a:hover, h4.event_heading > a:hover, h4.rfp_heading > a:hover {
 	color: #514e43;
 }
 
@@ -562,20 +631,20 @@ img.company_profile {
 	width: inherit;
 }
 
-img.articles, img.articles_full, img.articles_grid {
+img.articles, img.articles_full, img.articles_grid, img.carousels_grid, img.events_grid {
 	object-fit: cover;
 	border: 1px solid #7c786a;
 }
 
-img.articles_grid {
+img.articles_grid, img.carousels_grid, img.events_grid {
 	max-height: 100px;
 	max-width: 100px;
 	margin: 15px auto 0 auto;
 }
 
 img.articles {
-	width: 80px;
-	height: 80px;
+	width: 100px;
+	height: 100px;
 	margin-top: 12px;
 }
 
@@ -630,8 +699,7 @@ img.current_company_profile {
 
 /*Buttons*/
 
-a.cancel_button, a.cancel_button:visited, a.cancel_button:active {
-	background-color: #c65c39;
+a.cancel_button, a.cancel_button:visited, a.cancel_button:active, a.edit_button, a.edit_button:visited, a.edit_button:active, a.create_button, a.create_button:visited, a.cancel_button:active {
 	color: #fff;
 	font-size: 1.15em;
 	text-transform: uppercase;
@@ -639,8 +707,28 @@ a.cancel_button, a.cancel_button:visited, a.cancel_button:active {
 	margin-right: 10px;
 }
 
+a.edit_button, a.edit_button:visited, a.edit_button:active {
+	background-color: #b7c483;
+}
+
+a.create_button, a.create_button:visited, a.cancel_button:active {
+	background-color: #8dcdc1;
+}
+
+a.cancel_button, a.cancel_button:visited, a.cancel_button:active{
+	background-color: #514e43;
+}
+
+a.create_button:hover {
+	background-color: #66a498;
+}
+
 a.cancel_button:hover {
-	background-color: #eb6e44;
+	background-color: #7c786a;
+}
+
+a.edit_button:hover {
+	background-color: #d3e397;
 }
 
 button.btn.btn-primary.pull-right, button.btn.btn-primary.pull-right.login, button.btn.btn-info.pull-right, button.btn.btn-danger.pull-right {
@@ -665,6 +753,10 @@ button.btn.btn-info.pull-right {
 button.btn.btn-danger.pull-right {
 	background-color: #c65c39;
 	margin-right: 10px;
+}
+
+button.btn.btn-danger.pull-right:hover {
+	background-color: #eb6e44;
 }
 
 button.btn.btn-primary.pull-right.login {
@@ -801,6 +893,7 @@ select.form-control.search_form {
 
 .checkbox-inline {
 	color: #66a498;
+	margin-bottom: 10px;
 }
 
 @-webkit-viewport { width: device-width; }

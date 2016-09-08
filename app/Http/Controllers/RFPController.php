@@ -28,6 +28,14 @@ class RFPController extends Controller
 		return view('rfps.all_rfps')->with($data);
 	}
 
+	public function adminIndex()
+	{
+		$rfps = Rfp::paginate(10);
+		$paginate = 10;
+		$data = compact('rfps', 'paginate');
+		return view('admin.admin_manage_rfps')->with($data);
+	}
+
 	/**
 	 * Show the form for creating a new resource.
 	 *

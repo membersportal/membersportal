@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Event;
 use App\Company;
+use App\Industry;
 
 
 class EventsController extends Controller
@@ -25,8 +26,17 @@ class EventsController extends Controller
 		$connections = Company::find($user)->companies;
 		$connections_events = Event::dashboardEvents($connections)->get();
 		$users_events = Event::usersEvents($user)->get();
-		$data = compact('events', 'users_events', 'connections_events');
+		$industries = Industry::all();
+		$data = compact('events', 'users_events', 'connections_events', 'industries');
 		return view('events.all_events')->with($data);
+	}
+
+	public function adminIndex()
+	{
+		$events = Event::paginate(10);
+		$paginate = 10;
+		$data = compact('events', 'paginate');
+		return view('admin.admin_manage_events')->with($data);
 	}
 
 	public function show($id)
@@ -43,14 +53,26 @@ class EventsController extends Controller
 
 	public function searchEvents(Request $request)
 	{
+		if(!$request){
+			return redirect()->action('EventsController@index');
+		}
 	  $searched_info = Event::searchEvents($request);
+		if($searched_info->isEmpty()){
+			$request->session()->flash('message', 'There are no results.');
+			return redirect()->action('EventsController@index');
+		}
+		if(is_array($searched_info)){
+			dd('hi');
+		}
+		dd($searched_info->pull('id'));
 		$search_results = Event::usersEvents($searched_info->id)->get();
 
 		$user = Auth::user()->id;
 		$connections = Company::find($user)->companies;
 		$connections_events = Event::dashboardEvents($connections)->get();
 		$users_events = Event::usersEvents($user)->get();
-	  $data = compact('search_results', 'connections_events', 'users_events');
+		$industries = Industry::all();
+	  $data = compact('search_results', 'connections_events', 'users_events', 'industries');
 		return view('events.search_results')->with($data);
 	}
 
@@ -170,7 +192,7 @@ class EventsController extends Controller
 
 		$request->session()->flash('message', 'Event successfully created.');
 		if ($is_admin) {
-		  return redirect()->action('UsersController@getAdminDashboard');
+		  return redirect()->action('EventsController@editgeneral');
 		} else {
 		  return redirect()->action('EventsController@index');
 		}

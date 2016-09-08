@@ -44,7 +44,7 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
     Route::get('/admin/events/create', 'EventsController@create');
     Route::post('/admin/events', 'EventsController@store');
     Route::get('/admin/events/{event}/edit', 'EventsController@edit');
-    Route::put('/admin/events/{event}', 'EventsController@update');
+    Route::post('/admin/events/{event}', 'EventsController@update');
     Route::delete('/admin/events/{event}', 'EventsController@destroy');
 
     // Articles
@@ -52,7 +52,7 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
     Route::get('/admin/articles/create', 'ArticlesController@create');
     Route::post('/admin/articles', 'ArticlesController@store');
     Route::get('/admin/articles/{article}/edit', 'ArticlesController@edit');
-    Route::put('/admin/articles/{article}', 'ArticlesController@update');
+    Route::post('/admin/articles/{article}', 'ArticlesController@update');
     Route::delete('/admin/articles/{article}', 'ArticlesController@destroy');
 
     // Carousels
@@ -60,7 +60,7 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
     Route::get('/admin/carousels/create', 'CarouselsController@create');
     Route::post('/admin/carousels', 'CarouselsController@store');
     Route::get('/admin/carousels/{carousel}/edit', 'CarouselsController@edit');
-    Route::put('/admin/carousels/{carousel}', 'CarouselsController@update');
+    Route::post('/admin/carousels/{carousel}', 'CarouselsController@update');
     Route::delete('/admin/carousels/{carousel}', 'CarouselsController@destroy');
 
     //RFPs

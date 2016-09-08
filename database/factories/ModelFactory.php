@@ -40,7 +40,7 @@ $factory->define(App\Rfp::class, function (Faker\Generator $faker) {
         'deadline' => $faker->dateTimeThisMonth($max = 'now', $format ='Y-m-d'),
         'contact_name' => $faker->name,
         'contact_department' => $faker->words(2, true),
-        'contact_no' => $faker->phoneNumber,
+        'contact_no' => $faker->PhoneNumber,
         'project_scope' => $faker->sentences(4, true),
         'contract_from_date' => $faker->dateTimeThisMonth($max = 'now', $format ='Y-m-d'),
         'contract_to_date' => $faker->dateTimeThisMonth($max = 'now', $format ='Y-m-d'),

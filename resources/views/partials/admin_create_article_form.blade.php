@@ -1,16 +1,16 @@
 <div class="form-group">
 	<label for="heading">Heading<span class="required">*</span></label>
-	<input type="text" class="form-control" name="heading" value="{{ $article->heading }}" maxlength="250" required>
+	<input type="text" class="form-control" name="heading" value="{{ old('heading') }}" maxlength="250" required>
 	@include ('partials.error', ['value' => 'heading'])
 </div>
 <div class="form-group">
 	<label for="subheading">Subheading<span class="required">*</span></label>
-	<input type="text" class="form-control" name="title" value="{{ $article->subheading }}" maxlength="250" required>
+	<input type="text" class="form-control" name="title" value="{{ old('subheading') }}" maxlength="250" required>
 	@include ('partials.error', ['value' => 'subheading'])
 </div>
 <div class="form-group">
 	<label for="desc">Description<span class="required">*</span></label>
-	<input type="text" class="form-control" name="title" value="{{ $article->desc }}" maxlength="500" required>
+	<textarea name="desc" maxlength="500" rows="6" required>{{ old('desc') }}</textarea>
 	@include ('partials.error', ['value' => 'desc'])
 </div>
 <div class="form-group">
@@ -21,6 +21,6 @@
 </div>
 <div class="form-group">
 	<label for="url">URL<span class="required">*</span></label>
-	<input type="text" class="form-control" name="url" value="{{ $article->url }}" maxlength="250" required>
+	<input type="text" class="form-control" name="url" value="{{ old('url') }}" maxlength="250" required>
 	@include ('partials.error', ['value' => 'url'])
 </div>

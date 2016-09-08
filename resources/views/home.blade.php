@@ -79,12 +79,12 @@
 			<h3 class="text-center">City News</h3>
 			@foreach ($articles as $key => $article)
 			<div class="row">
-				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+				<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
 					<a href="{{ $article->url }}">
 						<img class="img-responsive articles" src="{{ '/img/articles/' . $article->img }}" alt="">
 					</a>
 				</div>
-				<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 col-xl-9">
+				<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
 					<h4 class="article_heading">{{ $article->heading }}<span class="article_date">&nbsp;&nbsp;//&nbsp;&nbsp;{{ $article->date }}</span></h4>
 					@if ($article->subheading)
 					<h5>{{ $article->subheading }}</h5>

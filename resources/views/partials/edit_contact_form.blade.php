@@ -34,23 +34,24 @@
 <!-- Phone, Website -->
 <div class="form-group half_width">
 	<label for="phone_no">Phone Number<span class="required">*</span></label>
-	<p class="form_label_small">Please enter numbers only; no spaces or dashes.</p>
+	<p class="form_label_small">Enter numbers only; no spaces or dashes.</p>
 	<input type="number" class="form-control" name="phone_no" value="{{ $contact->phone_no }}" placeholder="5554567890" maxlength="10" required>
 	@include ('partials.error', ['value' => 'phone_no'])
 </div>
 <div class="form-group half_width">
 	<label for="website">Website</label>
-	<p class="form_label_small">Please enter the full URL including http://</p>
+	<p class="form_label_small">Enter the full URL including http://</p>
 	<input type="url" class="form-control" name="website" value="{{ $contact->website }}" placeholder="http://www.example.com">
 	@include ('partials.error', ['value' => 'website'])
 </div>
 <div class="form-group">
 	<label for="twitter half_width">Twitter</label>
+		<p class="form_label_small">This username will be used to produce a Twitter feed.</p>
 		<input class="form-control" type="text" name="twitter" value="{{ $contact->twitter }}" maxlength="20" placeholder="Username Only">
 	</label>
 </div>
 <div class="social_media_edit">
-	<p class="blue">For Facebook, Instagram, LinkedIn and Google Plus, please enter the full URL.</p>
+	<p class="blue">For Facebook, Instagram, LinkedIn and Google Plus, enter the full URL.</p>
 	<div class="form-group half_width">
 		<label for="facebook">Facebook</label>
 		<input class="form-control" type="text" maxlength="200" name="facebook" value="{{ $contact->facebook }}">
