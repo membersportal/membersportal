@@ -115,7 +115,7 @@ class CompaniesController extends Controller
 		$feed_content = $this->buildFeed($connections);
 		$users_rfps = $company->rfps;
 		$users_events = $company->events;
-		$data = compact('feed_content', 'users_rfps', 'users_events');
+		$data = compact('feed_content', 'users_rfps', 'users_events', 'company');
 		return view('companies.companies_dashboard')->with($data);
 	}
 

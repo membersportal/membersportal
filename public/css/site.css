@@ -173,6 +173,27 @@ div.all_events {
 	margin-top: 20px;
 }
 
+div.connection_feed, div.event_feed, div.rfp_feed {
+	width: 100%;
+	padding: 10px 20px;
+	margin: 5px 0;
+}
+
+div.connection_feed {
+	/*border: 1px solid #c65c39;*/
+	background-color: #f7e7e1;
+}
+
+div.event_feed {
+	/*border: 1px solid #b7c483;*/
+	background-color: #f8f9f2;
+}
+
+div.rfp_feed {
+	/*border: 1px solid #66a498;*/
+	background-color: #eff6f4;
+}
+
 hr {
 	margin: 10px 0;
 }
@@ -301,6 +322,10 @@ h3.abbreviation {
 	margin-top: 3px;
 }
 
+h3.feed {
+	margin-top: 5px;
+}
+
 h3.text-center.sm_bottom_margin {
 	margin-bottom: 3px;
 }
@@ -309,6 +334,12 @@ h1.company_name_profile {
 	color: #c65c39;
 	font-size: 2em;
 }
+
+h3.company_name_profile {
+	color: #c65c39;
+	margin-top: 0;
+}
+
 h4.article_heading, h4.carousel_heading, h4.event_heading, h4.rfp_heading {
 	color: #7c786a;
 	margin-bottom: 3px;
