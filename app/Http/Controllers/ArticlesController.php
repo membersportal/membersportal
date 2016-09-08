@@ -85,17 +85,25 @@ class ArticlesController extends Controller
 		return redirect()->action('admin.admin_dashboard');
 	}
 
-	private function validateAndSave(Article $Article, Request $request){
-		$request->session()->flash('ERROR_MESSAGE', 'Article not created successfully.'); 
+	private function validateAndSave(Article $article, Request $request){
+		$request->session()->flash('ERROR_MESSAGE', 'Article not created successfully.');
 		$this->validate($request, Article::$rules);
 		$request->session()->forget('ERROR_MESSAGE');
 		$article->heading = $request->heading;
 		$article->subheading = $request->subheading;
 		$article->desc = $request->desc;
-		$article->img = $request->img;
+		$this->storeImage($request, $article);
 		$article->url = $request->url;
 		$article->save();
 		$request->session()->flash('message', 'Article successfully saved.');
-		return redirect()->action('admin.admin_dashboard');
+		return redirect()->action('ArticlesController@adminIndex');
+	}
+
+	private function storeImage($request, $article)
+	{
+		$file = $request->file('img')->getClientOriginalName();
+		$request->file('img')->move(public_path('img'), $request->file('img')->getClientOriginalName());
+		$file_path = public_path('img/articles') . '/' . $request->file('img')->getClientOriginalName();
+		$article->img = $file;
 	}
 }

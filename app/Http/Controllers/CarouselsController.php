@@ -63,7 +63,6 @@ class CarouselsController extends Controller
 	 */
 	public function update(Request $request, $id)
 	{
-		dd($request);
 		$carousel = Carousel::findOrFail($id);
 		return $this->validateAndSave($carousel, $request);
 	}
@@ -81,11 +80,10 @@ class CarouselsController extends Controller
 		return redirect()->action('admin.admin_dashboard');
 	}
 
-	private function validateAndSave(Carousel $Carousel, Request $request){
+	private function validateAndSave(Carousel $carousel, Request $request){
 		$request->session()->flash('ERROR_MESSAGE', 'Carousel not created successfully.');
 		$this->validate($request, Carousel::$rules);
 		$request->session()->forget('ERROR_MESSAGE');
-
 		$carousel->title = $request->title;
 		$carousel->desc = $request->desc;
 		$carousel->url = $request->url;
@@ -93,10 +91,10 @@ class CarouselsController extends Controller
 		$carousel->save();
 
 		$request->session()->flash('message', 'Carousel item successfully saved.');
-		return redirect()->action('admin.admin_dashboard');
+		return redirect()->action('CarouselsController@adminIndex');
 	}
 
-	private function storeImage($request, $event)
+	private function storeImage($request, $carousel)
 	{
 		$file = $request->file('img')->getClientOriginalName();
 		$request->file('img')->move(public_path('img'), $request->file('img')->getClientOriginalName());
