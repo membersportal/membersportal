@@ -76,7 +76,7 @@ class LeadersController extends Controller
 	{
 		$leader = Leader::findOrFail($id);
 		$leader->delete();
-		$request->session()->flash('message', 'Entry deleted.');
+		$request->session()->flash('SUCCESS_MESSAGE', 'Entry deleted.');
 		return redirect()->action('LeadersController@index');
 	}
 
@@ -93,7 +93,7 @@ class LeadersController extends Controller
 		$leader->linkedin_url = $request->linkedin_url;
 		$leader->save();
 
-		$request->session()->flash('message', 'Entry saved.');
+		$request->session()->flash('SUCCESS_MESSAGE', 'Entry saved.');
 		return redirect()->action('LeadersController@index');
 	}
 	private function storeImage($request, $leader)
