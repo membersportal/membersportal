@@ -24,8 +24,12 @@ class Event extends Model
 	public static function searchEvents($request)
 	{
 		$query = Event::orderBy('created_at');
-		if($request->search_field){
-			return Company::where('name', 'like', "%$request->search_field%")->first();
+		if($request->search_field && $request->industry_id){
+			return Company::where('name', 'like', "%$request->search_field%")->orWhere('industry_id', "$request->industry_id");
+		} elseif($request->search_field) {
+			return Company::where('name', 'like', "%$request->search_field%")->get();
+		} elseif ($request->industry_id) {
+			return Company::where('industry_id', "$request->industry_id")->get();
 		} else {
 			return $query;
 		}

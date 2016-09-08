@@ -78,6 +78,9 @@
         </div>
         @endif
       @endforeach
+      @if(!Auth::user()->is_admin)
+      <a href="{{ action('RFPController@create') }}">Create New Request</a>
+      @endif
       <a href="{{ action('RFPController@create') }}">Create New RFP</a>
       <div class="panel_green">
         <a class="green_bg" href="{{ action('RFPController@index') }}" alt="View All RFPs">See All RFPs</a>

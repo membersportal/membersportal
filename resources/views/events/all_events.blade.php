@@ -62,7 +62,9 @@
 				</div>
 				@endif
 			@endforeach
+      @if(!Auth::user()->is_admin)
       <a href="{{ action('EventsController@create') }}">Create New Event</a>
+      @endif
 			<div class="panel_green">
 				<a class="green_bg" href="{{ action('EventsController@index') }}" alt="View All Events">See All Events</a>
 			</div>
