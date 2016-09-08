@@ -11,7 +11,7 @@
 		<div class="panel_white events">
 		<div class="summary">
 			<p class="text-center"><span class="strong">Total:</span> {{ count($events) }} &nbsp;&nbsp;//&nbsp;&nbsp; <span class="strong">Last Event Added:</span> {{ $events[0]->created_at->format('F j Y') }}</p>
-			<a href="{{ action('EventsController@create') }}" class="create_button">Create New Event</a>
+			<a href="{{ action('AdminController@createEvent') }}" class="create_button">Create New Event</a>
 		</div>
 			@foreach ($events as $key => $event)
 			<div class="row">
@@ -28,8 +28,8 @@
 						<p class="event_boolean"><span class="glyphicon glyphicon-ok"></span>RSVP Required</p>
 					@endif
 					<p class="event_desc">{{ str_limit($event->desc, 300) }}</p>
-					<a href="{{ action('EventsController@edit', ['id' => $event->id]) }}" class="edit_button pull-right">Edit</a>
-					<form method="POST" action="{{ action('EventsController@destroy', ['id' => $event->id]) }}">
+					<a href="{{ action('AdminController@editEvent', ['id' => $event->id]) }}" class="edit_button pull-right">Edit</a>
+					<form method="POST" action="{{ action('AdminController@destroyEvent', ['id' => $event->id]) }}">
 						{{ method_field('DELETE') }}
 						{!! csrf_field() !!}
 						<button class="btn btn-danger pull-right" type="submit">Delete</button>
