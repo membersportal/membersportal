@@ -68,7 +68,7 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
     Route::get('/admin/rfps/create', 'AdminController@createRfp');
     Route::post('/admin/rfps', 'AdminController@storeRfp');
     Route::get('/admin/rfps/{rfp}/edit', 'AdminController@editRfp');
-    Route::post('/admin/rfps/{rfp}', 'AdminController@updateRfp');
+    Route::put('/admin/rfps/{rfp}', 'AdminController@updateRfp');
     Route::delete('/admin/rfps/{rfp}', 'AdminController@destroyRfp');
 });
 

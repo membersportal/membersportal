@@ -76,8 +76,6 @@ class User extends Model implements AuthenticatableContract,
 	public static function searchUser($request)
 	{
 		$query = User::where('email', "$request->searchField");
-		//(get_class_methods(get_class($query)));
-		// echo $query->getQuery()->toSql();
 		return $query->first();
 	}
 

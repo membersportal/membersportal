@@ -129,7 +129,7 @@ class AdminController extends Controller
 		return view('admin.admin_create_rfp');
 	}
 
-	public function storeRfp()
+	public function storeRfp(Request $request)
 	{
 		$rfp = new Rfp();
 		return $this->validateRfpAndSave($rfp, $request);
@@ -142,7 +142,7 @@ class AdminController extends Controller
 		return view('admin.admin_edit_rfp')->with($data);
 	}
 
-	public function updateRfp($id)
+	public function updateRfp(Request $request, $id)
 	{
 		$rfp = Rfp::findOrFail($id);
 		return $this->validateRfpAndSave($rfp, $request);
@@ -216,6 +216,27 @@ class AdminController extends Controller
 
 		$request->session()->flash('SUCCESS_MESSAGE', 'Event successfully created.');
 		return redirect()->action('AdminController@eventIndex');
+	}
+
+	private function validateRfpAndSave(Rfp $rfp, Request $request){
+		$request->session()->flash('ERROR_MESSAGE', 'RFP not saved.');
+		$this->validate($request, Rfp::$rules);
+		$request->session()->forget('ERROR_MESSAGE');
+
+		$rfp->company_id = Auth::user()->id;
+		$rfp->project_title = $request->project_title;
+		$rfp->deadline = $request->deadline;
+		$rfp->contact_name = $request->contact_name;
+		$rfp->contact_department = $request->contact_department;
+		$rfp->contact_no = $request->contact_no;
+		$rfp->project_scope = $request->project_scope;
+		$rfp->contract_from_date = $request->contract_from_date;
+		$rfp->contract_to_date = $request->contract_to_date;
+		$rfp->url = $request->url;
+		$rfp->save();
+
+		$request->session()->flash('SUCCESS_MESSAGE', 'RFP saved successfully.');
+		return redirect()->action('AdminController@rfpIndex');
 	}
 
 	private function storeImage($request, $event)
