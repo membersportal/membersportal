@@ -25,7 +25,9 @@ class CompaniesController extends Controller
 	 */
 	public function create()
 	{
-		return view('admin.admin_create_company');
+		$industries = Industry::all();
+		$data = compact('industries');
+		return view('admin.admin_create_company')->with($data);
 	}
 
 	/**
