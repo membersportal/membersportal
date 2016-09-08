@@ -43,7 +43,9 @@ class UsersController extends Controller
 
 	public function adminIndex()
 	{
-		return view('admin.admin_manage_users');
+		$users = User::countUsers();
+		$data = compact('users');
+		return view('admin.admin_manage_users')->with($data);
 	}
 
 	public function adminDeleteUser(Request $request)

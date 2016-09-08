@@ -61,6 +61,17 @@ class User extends Model implements AuthenticatableContract,
 		return ucwords($value);
 	}
 
+	public static function countUsers()
+	{
+		$users = User::all();
+		return $users->count();
+	}
+
+	public static function returnLastUserAdded()
+	{
+
+	}
+
 	public static function searchUser($request)
 	{
 		$query = User::where('email', "$request->searchField");
