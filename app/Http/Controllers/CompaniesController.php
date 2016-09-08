@@ -125,10 +125,13 @@ class CompaniesController extends Controller
 		$connections = Company::findOrFail($user)->companies;
 		foreach ($connections as $connection) {
 			$company_events = [];
+			$company_rfps = [];
+			$rfp = Rfp::profileRfps($connection->id)->get();
 			$event = Event::usersEvents($connection->id)->get();
+			$company_rfps[] = $rfp;
 			$company_events[] = $event;
 		}
-		$data = compact('connections', 'company_events');
+		$data = compact('connections', 'company_events', 'company_rfps');
 		return view('companies.all_connections')->with($data);
 	}
 

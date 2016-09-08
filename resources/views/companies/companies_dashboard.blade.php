@@ -45,18 +45,25 @@
 			@if($content->company1_id)
 			<div class="row">
 				<div class="connection_feed">
+					<p class="dashboard_category">Connection</p>
 					<h1>{{ $content->company1_id }}</h1>
 				</div>
 			</div>
 			@elseif($content->project_title)
 			<div class="row">
-				<div class="rfp_feed">
-					<h2>{{ $content->project_title }}</h2>
-				</div>
+					<div class="rfp_feed">
+						<p class="dashboard_category">RFP</p>
+						<a href="{{ action('RFPController@show', ['id' => $content->id]) }}" alt="{{ $content->project_title }}">
+							<h4 class="text-center">{{ $content->project_title }}</h4>
+						</a>
+						<p class="rfp_dates">Deadline: <span class="rfp_date">{{ $content->deadline }}</span></p>&nbsp;&nbsp; || &nbsp;&nbsp;
+						<p class="rfp_dates">Project Dates: <span class="rfp_date">{{ $content->contract_from_date }} - {{ $content->contract_to_date }}</span></p>
+					</div>
 			</div>
 			@elseif($content->title)
 			<div class="row">
 				<div class="event_feed">
+					<p class="dashboard_category">Event</p>
 				<h3>{{ $content->title }}</h3>
 				</div>
 			</div>
