@@ -17,6 +17,7 @@ class CreateRfpsTable extends Migration
             $table->integer('company_id')->unsigned();
             $table->string('project_title',100)->nullable();
             $table->date('deadline')->nullable();
+            $table->integer('industry_id')->unsigned();
             $table->string('contact_name', 100)->nullable();
             $table->string('contact_department', 100)->nullable();
             $table->integer('contact_no')->nullable()->unsigned();
