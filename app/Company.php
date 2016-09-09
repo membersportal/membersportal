@@ -47,7 +47,7 @@ class Company extends Model
 
 	public function companies()
 	{
-		return $this->belongsToMany(Company::class, 'connections', 'company1_id', 'company2_id')->wherePivot(Connection::getDeletedAtColumn(), null);
+		return $this->belongsToMany(Company::class, 'connections', 'company1_id', 'company2_id');
 	}
 
 	public static function newestMember()

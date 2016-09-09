@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 use App\Company;
 use App\Industry;
 use App\Rfp;
@@ -21,6 +22,9 @@ class RFPController extends Controller
 	public function index()
 	{
 		$rfps = Rfp::all();
+		$week_rfps = Rfp::grabWeekRfps()->get();
+		$month_rfps = Rfp::grabMonthRfps()->get();
+		$year_rfps = Rfp::grabYearRfps()->get();
 		$user = Auth::user()->id;
 		$industries = Industry::all();
 		$connections = Company::find($user)->companies;
