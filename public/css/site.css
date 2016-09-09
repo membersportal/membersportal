@@ -72,6 +72,14 @@ div.panel_white {
 	padding: 10px 25px 20px 25px;
 }
 
+div.panel_white.leaders {
+	padding: 30px 30px;
+}
+
+div.leader_buttons {
+	margin-top: 12px;
+}
+
 div.main_panel {
 	padding: 20px 40px 35px 40px;
 }
@@ -876,7 +884,7 @@ img.current_company_header {
 	height: auto;
 }
 
-img.current_company_profile {
+img.current_company_profile, img.current_leader_headshot {
 	margin-top: 15px;
 	margin-bottom: 15px;
 	width: 100px;
