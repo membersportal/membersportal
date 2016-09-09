@@ -25,6 +25,10 @@ class Leader extends Model
 		return ucwords($value);
 	}
 
+	public static function usersLeaders($user_id)
+	{
+		return Leader::where('company_id', $user_id);
+	}
 	public static $rules = [
      'full_name' => 'max:100',
      'title' => 'max:100',
