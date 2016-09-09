@@ -72,6 +72,14 @@ div.panel_white {
 	padding: 10px 25px 20px 25px;
 }
 
+div.panel_white.leaders {
+	padding: 30px 30px;
+}
+
+div.leader_buttons {
+	margin-top: 12px;
+}
+
 div.main_panel {
 	padding: 20px 40px 35px 40px;
 }
@@ -876,7 +884,7 @@ img.current_company_header {
 	height: auto;
 }
 
-img.current_company_profile {
+img.current_company_profile, img.current_leader_headshot {
 	margin-top: 15px;
 	margin-bottom: 15px;
 	width: 100px;
@@ -888,21 +896,21 @@ img.connections_grid {
 }
 
 div.leader_headshot {
-  position: relative;
-  width: 100px;
-  height: 100px;
-  overflow: hidden;
+	position: relative;
+	width: 100px;
+	height: 100px;
+	overflow: hidden;
 }
 
 img.leader_headshot {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  height: auto;
-  width: 100px;
-  -webkit-transform: translate(-50%,-50%);
-      -ms-transform: translate(-50%,-50%);
-          transform: translate(-50%,-50%);
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	height: auto;
+	width: 100px;
+	-webkit-transform: translate(-50%,-50%);
+			-ms-transform: translate(-50%,-50%);
+					transform: translate(-50%,-50%);
 }
 
 .glyphicon.glyphicon-ok {

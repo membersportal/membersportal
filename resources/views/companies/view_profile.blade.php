@@ -21,7 +21,7 @@
 	</div>
 
 	<h1 class="text-center company_name_profile">{{ $company->name }}</h1>
-	<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 left_home">
+	<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 left">
 		@if (!Auth::user()->is_admin && !in_array(Auth::user()->id, $connections_ids))
 		<div class="connect">
 			<form method="POST" action="{{ action('ConnectionsController@store', ['id' => $company->id]) }}">
@@ -38,6 +38,7 @@
 			</form>
 		</div> 
 		@endif
+
 		<div class="panel_white contact">
 			<h3 class="text-center">Contact</h3>
 			<ul class="contact">
@@ -49,29 +50,11 @@
 			<p><a class="red_link" href="{{ $contact->website }}" target="_blank" alt="{{ $company->name }}">{{ $company_url }}</a></p>
 		</div>
 
-		<div class="panel_white rfps">
-			<h3 class="text-center">Requests for Proposals</h3>
-				@foreach ($rfps as $key => $rfp)
-					@if ($key < 11)
-						<ul class="rfps">
-						@if ($rfp->deadline > '2015-01-01')
-							<li class="rfps">
-								<a class="red_link" href="{{ action('RFPController@show', $id = $rfp->id) }}">{{ $rfp->project_title }}</a>
-							</li>
-							<li class="small_gray"><span class="strong">Deadline:</span> {{ $rfp->deadline }}</li>
-							<li class="small_gray"><span class="strong">Contact:</span> {{ $rfp->contact_name }}</li>
-						@endif
-						</ul>
-					@endif
-			@endforeach
-			<div class="panel_green">
-				<a class="green_bg" href="{{ action('RFPController@index') }}" alt="Browse All RFPs">Browse All RFPs</a>
-			</div>
-		</div>
+		@include('partials.rfps_box', ['rfps' => $rfps])
 
 	</div>
 
-	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 center_home">
+	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 center">
 		<div class="about_panel_red">
 			<div class="row">
 				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
@@ -145,46 +128,25 @@
 
 	</div>
 
-	<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 right_home">
+	<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 right">
 		<div class="social_media panel_white text-center">
 			<h3>Follow {{ $company->name }}</h3>
 			@if ($contact->facebook)
-			<a href="http://www.facebook.com/{{ $contact->facebook }}"><img class="social_media_icon" src="/img/facebook-dreamstale25.png" alt="facebook" /></a>
+				<a href="http://www.facebook.com/{{ $contact->facebook }}"><img class="social_media_icon" src="/img/facebook-dreamstale25.png" alt="facebook" /></a>
 			@endif
 			@if ($contact->instagram)
-			<a href="http://www.instagram.com/{{ $contact->instagram }}"><img class="social_media_icon" src="/img/instagram-dreamstale43.png" alt="instagram" /></a>
+				<a href="http://www.instagram.com/{{ $contact->instagram }}"><img class="social_media_icon" src="/img/instagram-dreamstale43.png" alt="instagram" /></a>
 			@endif
 			@if ($contact->linkedin)
-			<a href="http://www.linkedin.com/in/{{ $contact->linkedin }}"><img class="social_media_icon" src="/img/linkedin-dreamstale45.png" alt="linkedin" /></a>
+				<a href="http://www.linkedin.com/in/{{ $contact->linkedin }}"><img class="social_media_icon" src="/img/linkedin-dreamstale45.png" alt="linkedin" /></a>
 			@endif
 			@if ($contact->google_plus)
-			<a href="http://plus.google.com/{{ $contact->google_plus }}"><img class="social_media_icon" src="/img/google+-dreamstale37.png" alt="google+" /></a>
+				<a href="http://plus.google.com/{{ $contact->google_plus }}"><img class="social_media_icon" src="/img/google+-dreamstale37.png" alt="google+" /></a>
 			@endif
 		</div>
-		<div class="panel_white events">
-			<h3 class="text-center">Events</h3>
-			@foreach ($events as $key => $event)
-				@if ($key < 3)
-				<div id="accordion" role="tablist" aria-multiselectable="false">
-					<div class="panel panel-default">
-						<div class="panel-heading" role="tab" id="heading{{$key+1}}">
-							<h4 class="panel-title">
-							<a data-toggle="collapse" data-parent="#accordion" href="#collapse{{$key+1}}" aria-expanded="false" aria-controls="collapse{{$key+1}}">{{ $event->title }}
-							</a>
-							</h4>
-							<p class="event_date_home">{{ $event->from_date->format('F j') }} - {{ $event->to_date->format('F j') }}</p>
-						</div>
-					<div id="collapse{{$key+1}}" class="panel-collapse collapse event_desc_home" role="tabpanel" aria-labelledby="heading{{$key+1}}">
-					{{ str_limit($event->desc, 100) }}<a href="#">see event</a>
-					</div>
-					</div>
-				</div>
-				@endif
-			@endforeach
-			<div class="panel_green">
-				<a class="green_bg" href="{{ action('EventsController@index') }}" alt="View All Events">See All Events</a>
-			</div>
-		</div>
+
+		@include ('partials.events_box', ['events' => $events])
+
 			<div class="panel_white twitter">
 				<a class="twitter-timeline" href="https://twitter.com/search?q=from%3A{{ $contact->twitter }}" data-widget-id="771057747718582272" data-screen-name="{{ $contact->twitter }}">Tweets about </a>
 					<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>

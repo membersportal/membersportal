@@ -53,7 +53,7 @@ class EventsController extends Controller
 		if(!$request){
 			return redirect()->action('EventsController@index');
 		}
-		$searched_info = Event::searchEvents($request);
+		$searched_info = Event::searchEvents($request->search_field);
 		$search_results = Event::usersEvents($searched_info->id)->get();
 
 		$user = Auth::user()->id;
