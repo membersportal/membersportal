@@ -12,11 +12,11 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
       $users = [
-        ['first_name' => 'Janice', 'last_name' =>	'Mills', 'username' =>	'jmills0', 'email' =>	'jmills0@friendfeed.com', 'password' => 'vRmMtWhx', 'is_admin' => True],
+        ['first_name' => 'Janice', 'last_name' =>	'Mills', 'username' =>	'jmills0', 'email' =>	'jmills0@dablist.com', 'password' => 'password', 'is_admin' => True],
         ['first_name' => 'Randi', 'last_name' =>	'Mays', 'username' =>	'randimays', 'email' =>	'randimays@codeup.com', 'password' => 'randimays', 'is_admin' => True],
         ['first_name' => 'Jay', 'last_name' =>	'Nichols', 'username' =>	'jaynichols', 'email' =>	'jaynichols@codeup.com', 'password' => 'jaynichols', 'is_admin' => True],
         ['first_name' => 'Anthony', 'last_name' =>	'Anthony', 'username' =>	'anthonym', 'email' =>	'anthonym@codeup.com', 'password' => 'anthonym', 'is_admin' => True],
-        ['first_name' => 'Anne', 'last_name' =>	'Alexander', 'username' =>	'aalexander4', 'email' =>	'aalexander4@hatena.ne.jp', 'password' => 'fvnFvlfIGZ', 'is_admin' => False],
+        ['first_name' => 'Anne', 'last_name' =>	'Alexander', 'username' =>	'aalexander4', 'email' =>	'frost@frost.com', 'password' => 'password', 'is_admin' => False],
         ['first_name' => 'Terry', 'last_name' =>	'Powell', 'username' =>	'tpowell5', 'email' =>	'tpowell5@zdnet.com', 'password' => 'puzQ1X', 'is_admin' => False],
         ['first_name' => 'Christopher', 'last_name' =>	'Perez', 'username' =>	'cperez6', 'email' =>	'cperez6@usa.gov', 'password' => 'UszC1x', 'is_admin' => False],
         ['first_name' => 'Ruby', 'last_name' =>	'Ellis', 'username' =>	'rellis7', 'email' =>	'rellis7@berkeley.edu', 'password' => '3CwFB9W', 'is_admin' => False],
