@@ -46,7 +46,7 @@
 				<li><a class="red_link small_caps" href="{{ 'https://www.google.com/maps/search/' . $contact->address_line_1 . '+' . $contact->city . '+' . $contact->state . '+' . $contact->zip }}" target="_blank">Directions</a></li>
 			</ul>
 			<p class="strong">{{ '(' . substr($contact->phone_no, 0, 3) . ') ' . substr($contact->phone_no, 3, 3) . '-' . substr($contact->phone_no, 6, 4) }}</p>
-			<p><a class="red_link" target="_blank" alt="{{ $company->name }}">{{ $contact->website }}</a></p>
+			<p><a class="red_link" target="_blank" alt="{{ $company->name }}">{{ $company_url }}</a></p>
 		</div>
 
 		<div class="panel_white rfps">
@@ -124,26 +124,22 @@
 			<h3 class="text-center">Leadership</h3>
 				<div class="row">
 					<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 text-center">
+					@foreach ($leaders as $leader)
 						<a href="http://www.google.com" target="_blank">
-							<img class="img-circle img-thumbnail leader_headshot center-block" src="/img/uploads/avatars/profile_photo_template.png">
+							@if ($leader->img)
+							<div class="leader_headshot">
+								<img class="img-circle img-thumbnail leader_headshot center-block" src="{{ '/img/uploads/leaders/' . $leader->img }}">
+							</div>
+							@else
+							<div class="leader_headshot">
+								<img class="img-circle img-thumbnail leader_headshot center-block" src="/img/uploads/avatars/profile_photo_template.png">
+							</div>
+							@endif
 						</a>
-						<h5 class="leader_name">Jay Nichols</h5>
-						<p class="leader_title">CEO</p>
+						<h5 class="leader_name">{{ $leader->full_name }}</h5>
+						<p class="leader_title">{{ $leader->title }}</p>
 					</div>
-					<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 text-center">
-						<a href="http://www.google.com" target="_blank">
-							<img class="img-circle img-thumbnail leader_headshot center-block" src="/img/uploads/avatars/profile_photo_template.png">
-						</a>
-						<h5 class="leader_name">Anthony Martinez</h5>
-						<p class="leader_title">CEO</p>
-					</div>
-					<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 text-center">
-						<a href="http://www.google.com" target="_blank">
-							<img class="img-circle img-thumbnail leader_headshot center-block" src="/img/uploads/avatars/profile_photo_template.png">
-						</a>
-						<h5 class="leader_name">Randi Mays</h5>
-						<p class="leader_title">CEO</p>
-					</div>
+					@endforeach
 				</div>
 		</div>
 
@@ -206,7 +202,6 @@
 						<a class="green_bg" href="{{ action('CompaniesController@viewConnections', ['id' => $company->id]) }}" alt="View All Connections">All Connections</a>
 					</div>
 			</div>
-
 		</div>
 
 </div>
