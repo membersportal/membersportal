@@ -185,17 +185,14 @@ div.connection_feed, div.event_feed, div.rfp_feed {
 }
 
 div.connection_feed {
-	/*border: 1px solid #c65c39;*/
 	background-color: #f7e7e1;
 }
 
 div.event_feed {
-	/*border: 1px solid #b7c483;*/
 	background-color: #f8f9f2;
 }
 
 div.rfp_feed {
-	/*border: 1px solid #66a498;*/
 	background-color: #eff6f4;
 }
 
@@ -291,6 +288,11 @@ body {
 	line-height: 1.25em;
 }
 
+.event_desc {
+	line-height: 1.5em;
+	font-size: .9em;
+}
+
 .event_desc_date {
 	font-size: .85em;
 }
@@ -345,10 +347,14 @@ h3.company_name_profile {
 	margin-top: 0;
 }
 
-h4.article_heading, h4.carousel_heading, h4.event_heading, h4.rfp_heading {
+h4.article_heading, h4.carousel_heading, h4.event_heading, h4.rfp_heading, h4.event_heading_dash {
 	color: #7c786a;
 	margin-bottom: 3px;
 	line-height: 1.25em;
+}
+
+h4.event_heading_dash {
+	margin-top: -3px;
 }
 
 h4.article_heading_full {
@@ -399,10 +405,18 @@ p.text-center.req {
 	margin-bottom: 20px;
 }
 
+p.project_scope {
+	margin-bottom: 35px;
+}
+
 p.event_company_name {
 	color: #eb6e44;
 	margin-bottom: 3px;
 	margin-top: 2px;
+}
+
+h3.event_owner {
+	margin-bottom: 3px;
 }
 
 h2 {
@@ -514,11 +528,15 @@ div.summary > p.text-center {
 	margin-bottom: 20px;
 }
 
-ul.rfps, ul.contact, ul.company_stats, ul.edit_account_nav {
+ul.rfps, ul.rfps_all, ul.contact, ul.company_stats, ul.edit_account_nav {
 	line-height: 1.25em;
 	padding-left: 0;
 	list-style: none;
 	margin-bottom: 10px;
+}
+
+ul.rfps_all {
+	line-height: 1.5em;
 }
 
 ul.company_stats {
@@ -645,11 +663,11 @@ ul.edit_account_nav > li > a.active {
 	background-color: #66a498;
 }
 
-h4.article_heading > a, h4.article_heading > a:visited, h4.article_heading > a:active, h4.carousel_heading > a, h4.carousel_heading > a:visited, h4.carousel_heading > a:active, h4.event_heading > a, h4.event_heading > a:visited, h4.event_heading > a:active, h4.rfp_heading > a, h4.rfp_heading > a:visited, h4.rfp_heading > a:active {
+h4.article_heading > a, h4.article_heading > a:visited, h4.article_heading > a:active, h4.carousel_heading > a, h4.carousel_heading > a:visited, h4.carousel_heading > a:active, h4.event_heading > a, h4.event_heading > a:visited, h4.event_heading > a:active, h4.rfp_heading > a, h4.rfp_heading > a:visited, h4.rfp_heading > a:active, h4.event_heading_dash > a, h4.event_heading_dash > a:visited, h4.event_heading_dash > a:active {
 	color: #7c786a;
 }
 
-h4.article_heading > a:hover, h4.carousel_heading > a:hover, h4.event_heading > a:hover, h4.rfp_heading > a:hover {
+h4.article_heading > a:hover, h4.carousel_heading > a:hover, h4.event_heading > a:hover, h4.event_heading_dash > a:hover, h4.rfp_heading > a:hover {
 	color: #514e43;
 }
 
@@ -753,7 +771,7 @@ img.company_profile {
 	width: inherit;
 }
 
-img.articles, img.articles_full, img.articles_grid, img.carousels_grid, img.events_grid {
+img.articles, img.articles_full, img.articles_grid, img.carousels_grid, img.events_grid, img.events_dash {
 	object-fit: cover;
 	border: 1px solid #7c786a;
 }
@@ -762,6 +780,11 @@ img.articles_grid, img.carousels_grid, img.events_grid {
 	max-height: 100px;
 	max-width: 100px;
 	margin: 15px auto 0 auto;
+}
+
+img.events_dash {
+	max-height: 75px;
+	max-width: 75px;
 }
 
 img.articles {

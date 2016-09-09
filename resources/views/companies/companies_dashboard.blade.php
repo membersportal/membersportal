@@ -51,20 +51,34 @@
 			</div>
 			@elseif($content->project_title)
 			<div class="row">
-					<div class="rfp_feed">
-						<p class="dashboard_category">RFP</p>
-						<a href="{{ action('RFPController@show', ['id' => $content->id]) }}" alt="{{ $content->project_title }}">
-							<h4 class="text-center">{{ $content->project_title }}</h4>
-						</a>
-						<p class="rfp_dates">Deadline: <span class="rfp_date">{{ $content->deadline }}</span></p>&nbsp;&nbsp; || &nbsp;&nbsp;
-						<p class="rfp_dates">Project Dates: <span class="rfp_date">{{ $content->contract_from_date }} - {{ $content->contract_to_date }}</span></p>
-					</div>
+				<div class="rfp_feed">
+					<p class="dashboard_category">RFP</p>
+					<a href="{{ action('RFPController@show', ['id' => $content->id]) }}" alt="{{ $content->project_title }}">
+						<h4 class="text-center">{{ $content->project_title }}</h4>
+					</a>
+					<p class="rfp_dates">Deadline: <span class="rfp_date">{{ $content->deadline }}</span></p>&nbsp;&nbsp; || &nbsp;&nbsp;
+					<p class="rfp_dates">Project Dates: <span class="rfp_date">{{ $content->contract_from_date }} - {{ $content->contract_to_date }}</span></p>
+				</div>
 			</div>
 			@elseif($content->title)
 			<div class="row">
 				<div class="event_feed">
 					<p class="dashboard_category">Event</p>
-				<h3>{{ $content->title }}</h3>
+					<div class="row">
+						<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+							<img class="img-responsive events_dash" src="http://fillmurray.com/100/100" alt="">
+						</div>
+						<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 col-xl-9">
+							<h4 class="event_heading_dash"><a href="{{ $content->url }}" target="_blank">{{ $content->title }}</a></h4>
+							<p class="event_date_home">{{ $content->from_date->format('F j') }} - {{ $content->to_date->format('F j') }}</p>
+							@if ($content->invite_only)
+								<p class="event_boolean"><span class="glyphicon glyphicon-ok"></span>Invite Only</p>
+							@endif
+							@if ($content->rsvp_required)
+								<p class="event_boolean"><span class="glyphicon glyphicon-ok"></span>RSVP Required</p>
+							@endif
+						</div>
+					</div>
 				</div>
 			</div>
 			@endif
