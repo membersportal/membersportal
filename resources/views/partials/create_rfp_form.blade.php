@@ -12,13 +12,13 @@
   <input type="text" class="form-control" name="contact_name" value="{{ old('contact_name') }}">
   @include ('partials.error', ['value' => 'contact_name'])
 </div>
-<div class="form-group">
+<div class="form-group half_width">
   <label for="contact_department">Contact Department<span class="required">*</span></label>
   <input type="text" class="form-control" name="contact_department" value="{{ old('contact_department') }}">
   @include ('partials.error', ['value' => 'contact_department'])
 </div>
-<div class="form-group">
-  <label for="contact_no">Contact Number<span class="required">*</span></label>
+<div class="form-group half_width">
+  <label for="contact_no">Contact Phone<span class="required">*</span></label>
   <input type="tel" class="form-control" name="contact_no" value="{{ old('contact_no') }}">
   @include ('partials.error', ['value' => 'contact_no'])
 </div>
