@@ -47,7 +47,7 @@ class Company extends Model
 
 	public function companies()
 	{
-		return $this->belongsToMany(Company::class, 'connections', 'company1_id', 'company2_id');
+		return $this->belongsToMany(Company::class, 'connections', 'company1_id', 'company2_id')->wherePivot(Connection::getDeletedAtColumn(), null);
 	}
 
 	public static function newestMember()
@@ -66,7 +66,7 @@ class Company extends Model
 		return Company::whereIn('company_id', $companies);
 	}
 
-	public static function returnCompanies($connections_ids){
+	public static function returnCompaniesFromIds($connections_ids){
 		$companies = [];
 
 		foreach ($connections_ids as $id) {
