@@ -41,13 +41,6 @@ class Event extends Model
 		return Event::where('company_id', $id);
 	}
 
-	public static function grabWeekEvents()
-	{
-		$week = Carbon::now()->addWeeks(1)->toDateString();
-		$now = Carbon::now()->toDateString();
-		return Event::whereBetween('from_date', ["$now", "$week"])->orderBy('from_date');
-	}
-
 	public static function grabMonthEvents()
 	{
 		$month = Carbon::now()->addWeeks(4)->toDateString();
