@@ -14,7 +14,8 @@ class LeadersController extends Controller
 
 	public function index()
 	{
-		$leaders = Leader::all();
+		$user_id = Auth::user()->id;
+		$leaders = Leader::usersLeaders($user_id)->get();
 		$data = compact('leaders');
 		return view('leaders.all_leaders')->with($data);
 	}

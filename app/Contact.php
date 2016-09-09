@@ -57,6 +57,7 @@ class Contact extends Model
 		$contacts = [];
 		foreach ($results as $company) {
 			$contact = $company->contact;
+			$contact->industry = $company->industry;
 			$contacts[] = $contact;
 		}
 		return $contacts;

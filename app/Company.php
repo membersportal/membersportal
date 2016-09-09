@@ -66,7 +66,7 @@ class Company extends Model
 		return Company::whereIn('company_id', $companies);
 	}
 
-	public static function returnCompanies($connections_ids){
+	public static function returnCompaniesFromIds($connections_ids){
 		$companies = [];
 
 		foreach ($connections_ids as $id) {

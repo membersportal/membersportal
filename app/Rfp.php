@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Company;
+use Carbon\Carbon;
 
 class Rfp extends Model
 {
@@ -49,6 +50,27 @@ class Rfp extends Model
 	public static function profileRfps($company_id)
 	{
 		return Rfp::where('company_id', $company_id)->orderBy('deadline');
+	}
+
+	public static function grabWeekRfps()
+	{
+		$constraint = Carbon::now()->toDateTimeString();
+		$week = Carbon::now()->addWeeks(1)->toDateTimeString();
+		return Rfp::whereBetween('deadline', [$constraint, $week])->orderBy('deadline');
+	}
+
+	public static function grabMonthRfps()
+	{
+		$constraint = Carbon::now()->addWeeks(1)->toDateTimeString();
+		$month = Carbon::now()->addWeeks(4)->toDateTimeString();
+		return Rfp::whereBetween('deadline', [$constraint, $month])->orderBy('deadline');
+	}
+
+	public static function grabYearRfps()
+	{
+		$constraint = Carbon::now()->addWeeks(4)->toDateTimeString();
+		$year = Carbon::now()->addWeeks(12)->toDateTimeString();
+		return Rfp::whereBetween('deadline', [$constraint, $year])->orderBy('deadline');
 	}
 
 	public static $rules = [

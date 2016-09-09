@@ -3,13 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Connection;
 use App\Company;
-
 
 class ConnectionsController extends Controller
 {
@@ -22,12 +20,11 @@ class ConnectionsController extends Controller
     public function store(Request $request, $id)
     {
       $connection = new Connection();
-      $connection->company1_id = Auth::user()->id; //can use $post->title = $request->input('title') alternatively
+      $connection->company1_id = Auth::user()->id;
       $connection->company2_id = $id;
-      $connection->save(); //save when submited
-      // Log::info('User successfully creates post', $request->all()); // create custom log when post is created
-      $request->session()->flash('SUCCESS_MESSAGE', 'New Connection!'); // flash success message when saved
-      return redirect()->action('CompaniesController@show', $id); //redirect to the index page
+      $connection->save();
+      $request->session()->flash('SUCCESS_MESSAGE', 'New Connection!');
+      return redirect()->action('CompaniesController@show', $id);
     }
 
     /**
@@ -38,6 +35,7 @@ class ConnectionsController extends Controller
      */
     public function destroy($id)
     {
+      // dd($id);
       $connection = Connection::where('id', intval($id))->first();
       if ($connection->company1_id == Auth::user()->id) {
         $company_id = $connection->company2_id;

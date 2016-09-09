@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Carbon;
+use Carbon\Carbon;
 use App\Company;
 use App\Event;
 
@@ -43,23 +43,23 @@ class Event extends Model
 
 	public static function grabWeekEvents()
 	{
-		$week = Carbon::now()->addWeeks(1)->toDateString();
-		$now = Carbon::now()->toDateString();
-		return Event::whereBetween('from_date', ["$now", "$week"])->orderBy('from_date');
+		$constraint = Carbon::now()->toDateTimeString();
+		$week = Carbon::now()->addWeeks(1)->toDateTimeString();
+		return Event::whereBetween('from_date', [$constraint, $week])->orderBy('from_date');
 	}
 
 	public static function grabMonthEvents()
 	{
-		$month = Carbon::now()->addWeeks(4)->toDateString();
-		$constraint = Carbon::now()->addWeeks(1)->toDateString();
-		return Event::whereBetween('from_date', ["$constraint", "$month"])->orderBy('from_date');
+		$constraint = Carbon::now()->addWeeks(1)->toDateTimeString();
+		$month = Carbon::now()->addWeeks(4)->toDateTimeString();
+		return Event::whereBetween('from_date', [$constraint, $month])->orderBy('from_date');
 	}
 
 	public static function grabYearEvents()
 	{
-		$year = Carbon::now()->addWeeks(12)->toDateString();
-		$contraint = Carbon::now()->addWeeks(4)->toDateString();
-		return Event::whereBetween('from_date', ["$constraint", "$year"])->orderBy('from_date');
+		$constraint = Carbon::now()->addWeeks(4)->toDateTimeString();
+		$year = Carbon::now()->addWeeks(12)->toDateTimeString();
+		return Event::whereBetween('from_date', [$constraint, $year])->orderBy('from_date');
 	}
 
 	public static function dashboardEvents($connections)

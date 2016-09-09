@@ -237,6 +237,14 @@ div.image_container {
 div.company_header_img {
 	width: 100%;
 	overflow: hidden;
+	max-height: 350px;
+	/*margin-left: -10px;*/
+	margin-right: -10px;
+}
+
+img.company_header {
+	object-fit: contain;
+	width: inherit;
 }
 
 div.company_profile_img {
@@ -807,11 +815,6 @@ a, a:hover, a:visited, a:active {
 
 .profile_photo_home {
 	margin-bottom: 5px;
-}
-
-img.company_header {
-	object-fit: contain;
-	width: inherit;
 }
 
 img.manage_users {

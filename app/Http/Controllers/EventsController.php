@@ -22,6 +22,10 @@ class EventsController extends Controller
 	 */
 	public function index()
 	{
+		$week_events = Event::grabWeekEvents()->get();
+		$month_events = Event::grabMonthEvents()->get();
+		$year_events = Event::grabYearEvents()->get();
+		$test = Event::grabMonthEvents();
 		$events = Event::all()->sortBy('from_date');
 		$user = Auth::user()->id;
 		$connections = Company::find($user)->companies;
