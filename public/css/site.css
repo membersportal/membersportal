@@ -246,6 +246,7 @@ div.company_header_img {
 	width: 100%;
 	overflow: hidden;
 	max-height: 350px;
+	border: 1px solid #514e43;
 }
 
 img.company_header {
