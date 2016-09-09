@@ -41,7 +41,7 @@ class Contact extends Model
 		return ucwords($value);
 	}
 
-	public function getViewProfileWebsite($value)
+	public static function getViewProfileWebsite($value)
 	{
 		if (substr($value, 0, 12) === 'https://www.') {
 			return substr($value, 12);
