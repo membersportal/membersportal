@@ -73,7 +73,6 @@
 		</div>
 
 		<div class="all_events">
-		{{ dd($events) }}
 		@foreach($events as $event)
 			<div class="row">
 				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
