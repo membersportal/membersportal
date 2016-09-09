@@ -43,11 +43,23 @@ class Event extends Model
 
 	public static function grabWeekEvents()
 	{
-		$week = Carbon::now()->addWeeks(1);
-		$now = Carbon::now();
-		$events = Event::where('from_date', '<', $week)->where('from_date', '>', $now)->orderBy('from_date');
-		dd($events);
-		return $events;
+		$week = Carbon::now()->addWeeks(1)->toDateString();
+		$now = Carbon::now()->toDateString();
+		return Event::whereBetween('from_date', ["$now", "$week"])->orderBy('from_date');
+	}
+
+	public static function grabMonthEvents()
+	{
+		$month = Carbon::now()->addWeeks(4)->toDateString();
+		$constraint = Carbon::now()->addWeeks(1)->toDateString();
+		return Event::whereBetween('from_date', ["$constraint", "$month"])->orderBy('from_date');
+	}
+
+	public static function grabYearEvents()
+	{
+		$year = Carbon::now()->addWeeks(12)->toDateString();
+		$contraint = Carbon::now()->addWeeks(4)->toDateString();
+		return Event::whereBetween('from_date', ["$constraint", "$year"])->orderBy('from_date');
 	}
 
 	public static function dashboardEvents($connections)

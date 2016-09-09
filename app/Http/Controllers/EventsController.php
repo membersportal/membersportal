@@ -23,7 +23,6 @@ class EventsController extends Controller
 	public function index()
 	{
 		$events = Event::all()->sortBy('from_date');
-		// dd(Carbon::now()->addWeeks(1));
 		$user = Auth::user()->id;
 		$connections = Company::find($user)->companies;
 		$connections_events = Event::dashboardEvents($connections)->get();
