@@ -21,20 +21,13 @@ class AdminController extends Controller
 	 */
 	public function index()
 	{
-		$user = User::find(Auth::user()->id);
-		$data = compact('user');
+		$users = User::countUsers();
+		$last_user_added = User::returnLastUserAdded();
+		$data = compact('users', 'last_user_added');
 		return view('admin.admin_dashboard')->with($data);
 	}
 
 	// Users ===============================================
-	public function manageUsers()
-	{
-		$users = User::countUsers();
-		$last_user_added = User::returnLastUserAdded();
-		$data = compact('users', 'last_user_added');
-		return view('admin.admin_manage_users')->with($data);
-	}
-
 	public function deleteUser(Request $request)
 	{
 		$searched_user = User::searchUser($request);
