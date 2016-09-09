@@ -60,20 +60,21 @@ class Company extends Model
 		$companies = [];
 		foreach($connections as $connection) {
 			$company = $connection->company2_id;
-			$companyies[] = $company;
+			$companies[] = $company;
 		}
 
 		return Company::whereIn('company_id', $companies);
 	}
 
-	public static function profileConnections($connections){
+	public static function returnCompanies($connections_ids){
 		$companies = [];
 
-		foreach($connections as $connection){
-			$company = $connection->company2_id;
+		foreach ($connections_ids as $id) {
+			$company = Company::where('id', $id)->get();
 			$companies[] = $company;
 		}
-		return Company::whereIn('id', $companies)->orderBy('created_at');
+
+		return $companies;
 	}
 
 	public static function searchMembers($request)
@@ -146,13 +147,13 @@ class Company extends Model
 	public static $rules = [
 		'name' => 'required|max:120',
 		'industry_id' => 'required|integer',
-		'profile_img' => 'nullable|image',
-		'header_img' => 'nullable|image',
-		'desc' => 'required|2000',
-		'size' => 'nullable|20',
-		'woman_owned' => 'nullable|boolean',
-		'family_owned' => 'nullable|boolean',
-		'contractor' => 'required|boolean',
-		'organization' => 'required|boolean'
-	];
+		'profile_img' => 'image',
+		'header_img' => 'image',
+		'desc' => 'required|max:2000',
+		'size' => 'max:20',
+		'woman_owned' => 'boolean',
+		'family_owned' => 'boolean',
+		'business_type' => 'required',
+		'date_established' => 'date_format:"Y-m-d"'
+ 	];
 }

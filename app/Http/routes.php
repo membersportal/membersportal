@@ -44,7 +44,7 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
     Route::get('/admin/events/create', 'AdminController@createEvent');
     Route::post('/admin/events', 'AdminController@storeEvent');
     Route::get('/admin/events/{event}/edit', 'AdminController@editEvent');
-    Route::post('/admin/events/{event}', 'AdminController@updateEvent');
+    Route::put('/admin/events/{event}', 'AdminController@updateEvent');
     Route::delete('/admin/events/{event}', 'AdminController@destroyEvent');
 
     // Articles
@@ -68,7 +68,7 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
     Route::get('/admin/rfps/create', 'AdminController@createRfp');
     Route::post('/admin/rfps', 'AdminController@storeRfp');
     Route::get('/admin/rfps/{rfp}/edit', 'AdminController@editRfp');
-    Route::post('/admin/rfps/{rfp}', 'AdminController@updateRfp');
+    Route::put('/admin/rfps/{rfp}', 'AdminController@updateRfp');
     Route::delete('/admin/rfps/{rfp}', 'AdminController@destroyRfp');
 });
 
@@ -103,11 +103,16 @@ Route::post('/connections/{user}', 'ConnectionsController@store');
 Route::delete('/connections/{user}', 'ConnectionsController@destroy');
 
 // Events
-Route::resource('events', 'EventsController');
 Route::get('/events/search', 'EventsController@searchEvents');
+Route::put('/events/{event}', 'EventsController@update');
+Route::resource('events', 'EventsController');
 
 // Leaders
+Route::put('/leaders/{leader}', 'LeadersController@update');
 Route::resource('leaders', 'LeadersController');
 
 // RFPs
 Route::resource('rfps', 'RFPController');
+
+// Articles
+Route::get('/articles', 'ArticlesController@index');

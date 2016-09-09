@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Carbon;
 use App\Company;
 use App\Event;
 
@@ -33,21 +34,32 @@ class Event extends Model
 		} else {
 			return $query;
 		}
-		// if($request->searchField != ''){
-		// 	(isset($query)) ? $query->where('company_id', "%$request->searchField%")->orWhere('title', 'like', "%$request->searchField%") : $query = Event::searchCompanyName($request->searchField);
-		// }
-		//
-		// if($request->option('industry_id') != 0){
-		// 	(isset($query)) ? $query->orWhere('industry_id', $request->industry_id) : $query = Event::where('industry_id', $request->industry_id);
-		// }
-
-		//var_dump(get_class_methods(get_class($query)));
-		// echo $query->getQuery()->toSql();
 	}
 
 	public static function usersEvents($id)
 	{
 		return Event::where('company_id', $id);
+	}
+
+	public static function grabWeekEvents()
+	{
+		$week = Carbon::now()->addWeeks(1)->toDateString();
+		$now = Carbon::now()->toDateString();
+		return Event::whereBetween('from_date', ["$now", "$week"])->orderBy('from_date');
+	}
+
+	public static function grabMonthEvents()
+	{
+		$month = Carbon::now()->addWeeks(4)->toDateString();
+		$constraint = Carbon::now()->addWeeks(1)->toDateString();
+		return Event::whereBetween('from_date', ["$constraint", "$month"])->orderBy('from_date');
+	}
+
+	public static function grabYearEvents()
+	{
+		$year = Carbon::now()->addWeeks(12)->toDateString();
+		$contraint = Carbon::now()->addWeeks(4)->toDateString();
+		return Event::whereBetween('from_date', ["$constraint", "$year"])->orderBy('from_date');
 	}
 
 	public static function dashboardEvents($connections)
@@ -58,6 +70,11 @@ class Event extends Model
 			$companies[] = $company;
 		}
 		return Event::whereIn('company_id', $companies)->orderBy('created_at');
+	}
+
+	public static function adminEvents()
+	{
+		return Event::whereIn('company_id', [1,2,3,4]);
 	}
 
 	protected $dates = [
@@ -75,5 +92,4 @@ class Event extends Model
 		'url' => 'required|url',
 		'img' => 'image|required'
 	];
-	//
 }

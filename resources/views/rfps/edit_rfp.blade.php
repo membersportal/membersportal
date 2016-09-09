@@ -23,6 +23,7 @@
     <h1>Edit RFP</h1>
     <form class="form-group" action="{{ action('RFPController@update', $id = $rfp->id) }}" method="post">
       {!! csrf_field() !!}
+      {{ method_field('PUT') }}
       @include('partials.edit_rfp_form')
       <button type="submit">Save</button>
     </form>

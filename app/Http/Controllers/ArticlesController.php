@@ -95,7 +95,7 @@ class ArticlesController extends Controller
 		$this->storeImage($request, $article);
 		$article->url = $request->url;
 		$article->save();
-		$request->session()->flash('message', 'Article successfully saved.');
+		$request->session()->flash('SUCCESS_MESSAGE', 'Article successfully saved.');
 		return redirect()->action('ArticlesController@adminIndex');
 	}
 

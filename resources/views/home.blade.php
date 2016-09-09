@@ -1,8 +1,11 @@
 @extends('layouts.master')
+
 @section('content')
+
 <div class="container">
 
 	<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 left_home">
+
 		<div class="panel_white">
 			<h3 class="text-center">Newest Member</h3>
 			<a href="{{ action('CompaniesController@show', $newest_member->id) }}" alt="New Member">
@@ -12,39 +15,40 @@
 			<p class="industry_name_home text-center"><span class="industry_name_home">Industry:</span> {{ $newest_member->industry->industry }}</p>
 			<p class="text-center company_desc_home">{{ $newest_member->desc }}</p>
 			<div class="panel_green">
-				<a class="green_bg" href="{{ action('CompaniesController@searchMembers') }}" alt="Find New Connections">Find New Connections</a>
+				<a class="green_bg" href="{{ action('CompaniesController@searchMembers') }}" alt="Find New Connections">Search Members</a>
 			</div>
 		</div>
-		<a href="#">
-			<div class="panel_red">
-				<h3 class="red_panel_head">We're Hiring!</h3>
-				<img class="hiring img-responsive" src="/img/hiring.jpg">
-				<p class="red_panel_text">Browse our job postings and submit your resume for consideration.</p>
-			</div>
-		</a>
+
+		<div class="panel_red">
+			<h3 class="red_panel_head">We're Hiring!</h3>
+			<img class="hiring img-responsive" src="/img/hiring.jpg">
+			<p class="red_panel_text">Browse our job postings and submit your resume for consideration.</p>
+		</div>
+
 		<div class="panel_white rfps">
 			<h3 class="text-center rfps">Requests for Proposals</h3>
 			<h3 class="text-center abbreviation">(RFPs)</h3>
-				@foreach ($admin_rfps as $key => $rfp)
-					@if ($key < 5)
-						<ul class="rfps">
-						@if ($rfp->deadline > '2015-01-01')
-							<li class="rfps">
-								<a class="red_link" href="{{ action('RFPController@show', $id = $rfp->id) }}">{{ $rfp->project_title }}</a>
-							</li>
-							<li class="small_gray"><span class="strong">Deadline:</span> {{ $rfp->deadline }}</li>
-							<li class="small_gray"><span class="strong">Contact:</span> {{ $rfp->contact_name }}</li>
-						@endif
-						</ul>
+			@foreach ($admin_rfps as $key => $rfp)
+				@if ($key < 5)
+					<ul class="rfps">
+					@if ($rfp->deadline > '2015-01-01')
+						<li class="rfps">
+							<a class="red_link" href="{{ action('RFPController@show', $id = $rfp->id) }}">{{ $rfp->project_title }}</a>
+						</li>
+						<li class="small_gray"><span class="strong">Deadline:</span> {{ $rfp->deadline }}</li>
+						<li class="small_gray"><span class="strong">Contact:</span> {{ $rfp->contact_name }}</li>
 					@endif
-				@endforeach
+					</ul>
+				@endif
+			@endforeach
 			<div class="panel_green">
-				<a class="green_bg" href="{{ action('RFPController@index') }}" alt="Browse All RFPs">Browse All RFPs</a>
+				<a class="green_bg" href="{{ action('RFPController@index') }}" alt="Browse All RFPs">See All</a>
 			</div>
 		</div>
 	</div>
 
 	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 center_home">
+
 		<div id="myCarousel" class="carousel slide" data-ride="carousel">
 			<div class="carousel-inner" role="listbox">
 				<div class="item active">
@@ -75,8 +79,10 @@
 				<span class="sr-only">Next</span>
 			</a>
 		</div>
+
 		<div class="main_panel">
-			<h3 class="text-center">City News</h3>
+			<h3 class="text-center sm_bottom_margin">City News</h3>
+			<p class="text-center"><a class="green_link" href="{{ action('ArticlesController@index') }}" alt="Read More Articles">See All</a></p>
 			@foreach ($articles as $key => $article)
 			<div class="row">
 				<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
@@ -98,9 +104,6 @@
 				<hr>
 			@endif
 			@endforeach
-			<div class="panel_green">
-				<a class="green_bg" href="{{ action('ArticlesController@index') }}" alt="Read More Articles">Read More Articles</a>
-			</div>
 		</div>
 	</div>
 
@@ -116,7 +119,7 @@
 							<a data-toggle="collapse" data-parent="#accordion" href="#collapse{{$key+1}}" aria-expanded="false" aria-controls="collapse{{$key+1}}">{{ $event->title }}
 							</a>
 							</h4>
-							<p class="event_date_home">{{ $event->from_date->format('F j') }} - {{ $event->to_date->format('F j') }}</p>
+							<p class="event_date_home">{{ $event->from_date->format('F j') }} - {{ $event->to_date->format('F j, Y') }}</p>
 						</div>
 						<div id="collapse{{$key+1}}" class="panel-collapse collapse event_desc_home" role="tabpanel" aria-labelledby="heading{{$key+1}}">
 						{{ str_limit($event->desc, 100) }}<a class="red_link" href="{{ $event->url }}" target="_blank"> see event</a>
@@ -126,7 +129,7 @@
 				@endif
 			@endforeach
 			<div class="panel_green">
-				<a class="green_bg" href="{{ action('EventsController@index') }}" alt="View All Events">See All Events</a>
+				<a class="green_bg" href="{{ action('EventsController@index') }}" alt="View All Events">See All</a>
 			</div>
 		</div>
 		<div class="panel_white social">
@@ -152,4 +155,5 @@
 		</div>
 	</div>
 </div>
+
 @stop

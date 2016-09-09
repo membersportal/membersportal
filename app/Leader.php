@@ -26,9 +26,9 @@ class Leader extends Model
 	}
 
 	public static $rules = [
-     'full_name' => 'required|max:100',
-     'title' => 'required|max:100',
-     'img' => 'required|image',
-     'linkedin_url' => 'required|url'
+     'full_name' => 'max:100',
+     'title' => 'max:100',
+     'img' => 'image|required',
+     'linkedin_url' => 'url'
    	];
 }

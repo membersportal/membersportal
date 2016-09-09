@@ -1,4 +1,4 @@
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2OJukM41NiEP_KnDGkx4mQ6HSucCuhwI"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2OJukM41NiEP_KnDGkx4mQ6HSucCuhwI"></script>
 <script>
 	(function() {
 		"use strict";
@@ -16,9 +16,11 @@
 		var markers = [];
 		var geocoder = new google.maps.Geocoder();
 		var address = "{{ $current_user_address }}";
+		var currentLocation;
 
 		geocoder.geocode( {'address': address}, function(results, status) {
 			if(status == google.maps.GeocoderStatus.OK) {
+				currentLocation = results[0].geometry.location;
 				new google.maps.Marker({
 					position: results[0].geometry.location,
 					map: map
@@ -32,6 +34,22 @@
 				marker.setMap(null);
 			});
 		}
+
+		var rad = function(x) {
+		  return x * Math.PI / 180;
+		};
+
+		var getDistance = function(p1, p2) {
+			var R = 6378137; // Earth’s mean radius in meter
+		 	var dLat = rad(p2.lat() - p1.lat());
+		 	var dLong = rad(p2.lng() - p1.lng());
+		  	var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+		  	Math.cos(rad(p1.lat())) * Math.cos(rad(p2.lat())) *
+		  	Math.sin(dLong / 2) * Math.sin(dLong / 2);
+		  	var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+		  	var d = R * c;
+		  	return d; // returns the distance in meter
+		};
 
 		function getSearchResults(){
 			$.ajax("{{ action('CompaniesController@getSearchedCompanies') }}", {
@@ -47,14 +65,14 @@
 			}).done(function(data){
 				var search_results = data.results;
 				var businesses = data.locations;
-				console.log(businesses);
 				clearMarkers();
 				markers = [];
 					businesses.forEach(function(business) {
-						console.log(business);
 						var address = business.address_line_1 + ' ' + business.city + ' ' + business.state + ' ' + business.zip;
 						geocoder.geocode({ "address": address }, function (results, status) {
+						var distanceInMiles = (getDistance(currentLocation, results[0].geometry.location) * 0.000621371).toFixed(2);
 							if (status == google.maps.GeocoderStatus.OK) {
+								
 								var marker = new google.maps.Marker({
 									position: results[0].geometry.location,
 									map: map,
@@ -62,7 +80,7 @@
 									draggable: false
 								});
 								var infoWindow = new google.maps.InfoWindow({
-									content: "<p>" + business.company.name + "</p>" + "<p>" + business.company.desc + "</p>"
+									content: "<p>" + business.company.name + "</p>" + "<p>" + business.company.desc + "</p>" + "<p>" + "Miles from you: " + distanceInMiles + "</p>"
 								});
 								marker.addListener('click', function() {
 									map.setCenter(results[0].geometry.location);
@@ -78,7 +96,7 @@
 					$('#tab_content').html("");
 
 					search_results.forEach(function(result) {
-						$('#results').append("<div class=\"col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6\"><div class=\"row user_grid\"><div class=\"col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 user_avatar_div\"><a href=\"" + result.url + "\"><img class=\"img-circle center-block img-responsive user_avatar_grid\" src=\"/img/uploads/avatars/" + result.profile_img + "\"></a></div><div class=\"col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xl-8 user_text_grid\"><p class=\"company_name\">" + result.name + "</p><p class=\"industry_name\">" + result.industry.industry + "</p><p class=\"company_desc\">Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p></div></div></div>") + $("#results");
+						$('#results').append("<div class=\"col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6\"><div class=\"row user_grid\"><div class=\"col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4\"><a href=\"" + result.url + "\"><img class=\"img-circle center-block img-responsive user_avatar_grid\" src=\"/img/uploads/avatars/" + result.profile_img + "\"></a></div><div class=\"col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xl-8\"><p class=\"company_name\">" + result.name + "</p><p class=\"industry_name\">" + result.industry_id + "</p><p class=\"company_desc\">" . result.desc.substring(0, 200)+ "...</p></div></div></div>") + $("#results");
 					});
 
 					var paginate = Math.ceil(search_results.length/10);

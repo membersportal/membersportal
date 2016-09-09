@@ -10,19 +10,26 @@
 			<img class="company_profile img-thumbnail" src="{{ '/img/uploads/avatars/' . $company->profile_img }}" alt="{{ $company->name }}">
 		</div>
 	</div>
-
 	<h1 class="text-center company_name_profile">{{ $company->name }}</h1>
-
 	<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 left_home">
-		@if (!Auth::user()->is_admin)
+		@if (!Auth::user()->is_admin && !in_array(Auth::user()->id, $connections_ids))
 		<div class="connect">
 			<form method="POST" action="{{ action('ConnectionsController@store', ['id' => $company->id]) }}">
 				{!! csrf_field() !!}
-				<button type="submit" class="btn btn-primary pull-right connect">Connect</button>
+				<button type="submit" class="btn btn-primary connect">Connect</button>
 			</form>
 		</div>
+		{{dd($connections_ids)}}
+		@elseif (in_array(Auth::user()->id, $connections_ids))
+		<div class="connect">
+			<form method="POST" action="{{ action('ConnectionsController@destroy', 12) }}">
+				{!! csrf_field() !!}
+				{!! method_field('DELETE') !!}
+				<button type="submit" class="btn btn-info connect">Remove Connection</button>
+			</form>
+		</div> 
 		@endif
-		<div class="panel_white">
+		<div class="panel_white contact">
 			<h3 class="text-center">Contact</h3>
 			<ul class="contact">
 				<li>{{ $contact->address_line_1 }}</li>
@@ -181,8 +188,10 @@
 
 			<div class="panel_white connections">
 					<h3 class="text-center">Connections</h3>
-					@foreach($profile_connections as $connection)
-						<a href="{{ action('CompaniesController@show', $connection->id) }}"><img class="img-thumbnail connection_thumb" src="{{ '/img/uploads/avatars/' . $connection->profile_img }}" alt="{{ $connection->name }}"></a>
+					@foreach($connections as $connection)
+						@foreach ($connection as $company)
+						<a href="{{ action('CompaniesController@show', $company->id) }}"><img class="img-thumbnail connection_thumb" src="{{ '/img/uploads/avatars/' . $company->profile_img }}" alt="{{ $company->name }}"></a>
+						@endforeach
 					@endforeach
 					<div class="panel_green">
 						<a class="green_bg" href="{{ action('CompaniesController@viewConnections', ['id' => $company->id]) }}" alt="View All Connections">All Connections</a>

@@ -7,8 +7,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use App\Rfp;
 use App\Company;
+use App\Industry;
+use App\Rfp;
 
 class RFPController extends Controller
 {
@@ -21,10 +22,11 @@ class RFPController extends Controller
 	{
 		$rfps = Rfp::all();
 		$user = Auth::user()->id;
+		$industries = Industry::all();
 		$connections = Company::find($user)->companies;
 		$connections_rfps = Rfp::dashboardRfps($connections)->get();
 		$users_rfps = Rfp::profileRfps($user)->get();
-		$data = compact('connections_rfps', 'users_rfps', 'rfps');
+		$data = compact('connections_rfps', 'users_rfps', 'rfps', 'industries');
 		return view('rfps.all_rfps')->with($data);
 	}
 
@@ -113,7 +115,7 @@ class RFPController extends Controller
 	{
 		$rfp = Rfp::findOrFail($id);
 		$rfp->delete();
-		$request->session()->flash('successMessage', 'RFP deleted successfully.');
+		$request->session()->flash('SUCCESS_MESSAGE', 'RFP deleted successfully.');
 		return redirect()->action('RFPController@index');
 	}
 
@@ -134,7 +136,7 @@ class RFPController extends Controller
 		$rfp->url = $request->url;
 		$rfp->save();
 
-		$request->session()->flash('message', 'RFP saved successfully.');
+		$request->session()->flash('SUCCESS_MESSAGE', 'RFP saved successfully.');
 		return redirect()->action('RFPController@index');
 	}
 }
