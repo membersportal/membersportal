@@ -123,7 +123,15 @@ class CompaniesController extends Controller
 	{
 		$user = User::find($id)->id;
 		$connections = Company::findOrFail($user)->companies;
-		$data = compact('connections');
+		foreach ($connections as $connection) {
+			$company_events = [];
+			$company_rfps = [];
+			$rfp = Rfp::profileRfps($connection->id)->get();
+			$event = Event::usersEvents($connection->id)->get();
+			$company_rfps[] = $rfp;
+			$company_events[] = $event;
+		}
+		$data = compact('connections', 'company_events', 'company_rfps');
 		return view('companies.all_connections')->with($data);
 	}
 
@@ -134,9 +142,11 @@ class CompaniesController extends Controller
 		$rfps = Rfp::profileRfps($company->id)->get();
 		$events = $company->events;
 		$leaders = $company->leaders;
-		$connections = Connection::viewConnections($id)->take(3)->get();
-		$profile_connections = Company::profileConnections($connections)->get();
-		$data = compact('company', 'contact', 'rfps', 'events', 'leaders', 'profile_connections');
+		$connections_ids = Connection::getConnectionsIds($id);
+		$existing_connection = Connection::checkForConnection($id, Auth::user()->id);
+		$connections_count = Connection::connectionsCount($id);
+		$connections = Company::returnCompanies($connections_ids);
+		$data = compact('company', 'contact', 'rfps', 'events', 'leaders', 'connections', 'connections_ids', 'connections_count', 'existing_connection');
 		return view('companies.view_profile')->with($data);
 	}
 
@@ -148,7 +158,7 @@ class CompaniesController extends Controller
 		$this->validate($request, Company::$rules);
 		$request->session()->forget('ERROR_MESSAGE');
 
-		if(Auth::user()->is_admin && (Auth::user()->id != $company->id)){
+		if(Auth::user()->is_admin){
 			$company->user_id = User::all()->last()->id;
 		}
 		$company->name = $request->name;

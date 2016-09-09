@@ -19,7 +19,7 @@
 	<input type="text" class="form-control" name="city" value="{{ old('city') }}" maxlength="50">
 	@include ('partials.error', ['value' => 'city'])
 </div>
-@include ('partials.state', ['contact' => $contact])
+@include ('partials.create_state', ['value' => 'contact'])
 <div class="form-group">
 	<label for="zip">Zip</label>
 	<input type="number" class="form-control" name="zip" value="{{ old('zip') }}" placeholder="10101" maxlength="5">
@@ -40,4 +40,4 @@
 	<input type="url" class="form-control" name="website" value="{{ old('website') }}" placeholder="http://www.example.com">
 	@include ('partials.error', ['value' => 'website'])
 </div>
-@include ('partials.social_media', ['social_media' => $social_media])
+@include ('partials.create_social_media')

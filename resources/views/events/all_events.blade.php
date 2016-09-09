@@ -73,7 +73,6 @@
 		</div>
 
 		<div class="all_events">
-		{{ dd($events) }}
 		@foreach($events as $event)
 			<div class="row">
 				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
@@ -133,7 +132,7 @@
 
 
 	<div class="panel_white">
-		<h3 class="text-center">Connection Events</h3>
+		<h3 class="text-center">Connections' Events</h3>
 		@foreach ($connections_events as $key => $event)
 			@if ($key < 3)
 			<div id="accordion" role="tablist" aria-multiselectable="false">

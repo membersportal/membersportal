@@ -118,7 +118,7 @@
 		</div>
 
 	<div class="panel_white all_rfps">
-		<h3 class="text-center">My Connection's RFPs</h3>
+		<h3 class="text-center">My Connections' RFPs</h3>
 		@foreach ($connections_rfps as $key => $rfp)
 			@if ($key < 3)
 			<div id="accordion" role="tablist" aria-multiselectable="false">

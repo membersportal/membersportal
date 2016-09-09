@@ -38,8 +38,13 @@ class ConnectionsController extends Controller
      */
     public function destroy($id)
     {
-      $connection = Connection::findOrFail($id);
+      $connection = Connection::where('id', intval($id))->first();
+      if ($connection->company1_id == Auth::user()->id) {
+        $company_id = $connection->company2_id;
+      } else {
+        $company_id = $connection->company1_id;
+      }
       $connection->delete();
-      return redirect()->action('companies.view_profile');
+      return redirect()->action('CompaniesController@show', $company_id);
     }
 }
