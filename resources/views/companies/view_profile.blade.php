@@ -5,10 +5,18 @@
 
 	<div class="image_container">
 		<div class="company_header_img">
+			@if ($company->header_img)
+			<img class="company_header" src="{{ '/img/uploads/headers/' . $company->header_img }}" alt="{{ $company->name }}">
+			@else
 			<img class="company_header" src="/img/uploads/headers/header_photo_template.jpg" alt="{{ $company->name }}">
+			@endif
 		</div>
 		<div class="company_profile_img">
+			@if ($company->profile_img)
 			<img class="company_profile img-thumbnail" src="{{ '/img/uploads/avatars/' . $company->profile_img }}" alt="{{ $company->name }}">
+			@else
+			<img class="company_profile img-thumbnail" src="/img/uploads/avatars/profile_photo_template.jpg" alt="{{ $company->name }}">
+			@endif
 		</div>
 	</div>
 
