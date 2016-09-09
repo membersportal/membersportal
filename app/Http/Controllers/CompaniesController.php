@@ -142,9 +142,11 @@ class CompaniesController extends Controller
 		$rfps = Rfp::profileRfps($company->id)->get();
 		$events = $company->events;
 		$leaders = $company->leaders;
-		$connections = Connection::viewConnections($id)->take(3)->get();
-		$profile_connections = Company::profileConnections($connections)->get();
-		$data = compact('company', 'contact', 'rfps', 'events', 'leaders', 'profile_connections');
+		$connections_ids = Connection::getConnectionsIds($id);
+		$existing_connection = Connection::checkForConnection($id, Auth::user()->id);
+		$connections_count = Connection::connectionsCount($id);
+		$connections = Company::returnCompanies($connections_ids);
+		$data = compact('company', 'contact', 'rfps', 'events', 'leaders', 'connections', 'connections_ids', 'connections_count', 'existing_connection');
 		return view('companies.view_profile')->with($data);
 	}
 

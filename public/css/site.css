@@ -606,7 +606,24 @@ span.required {
 }
 
 /*Links*/
-a.green_bg:after, a.green_bg:hover:after, ul.footer > li > a.footer_triangle:after, ul.footer > li > a.footer_triangle:hover:after, div.login > a.forgot_password:hover:after, a.forgot_password:after, div.connect > form > button.btn.btn-primary.pull-right.connect:after, div.connect > form > button.btn.btn-primary.pull-right.connect:hover:after, div.main_panel > div >  a.red_link.project:after, div.main_panel > div >  a.red_link.project:hover:after, h4.panel-title > a:hover:after, h4.panel-title > a:after, a.beige_bg:after, a.beige_bg:hover:after, a.green_link:after, a.green_link:hover:after {
+a.green_bg:after, 
+a.green_bg:hover:after, 
+ul.footer > li > a.footer_triangle:after, 
+ul.footer > li > a.footer_triangle:hover:after, 
+div.login > a.forgot_password:hover:after, 
+a.forgot_password:after, 
+div.connect > form > button.btn.btn-primary.connect:after, 
+div.connect > form > button.btn.btn-primary.connect:hover:after, 
+div.connect > form > button.btn.btn-info.connect:after, 
+div.connect > form > button.btn.btn-info.connect:hover:after, 
+div.main_panel > div >  a.red_link.project:after, 
+div.main_panel > div >  a.red_link.project:hover:after,
+h4.panel-title > a:hover:after, 
+h4.panel-title > a:after, 
+a.beige_bg:after, 
+a.beige_bg:hover:after, 
+a.green_link:after, 
+a.green_link:hover:after {
 	content: "";
 	display: inline-block;
 	height: 11px;
@@ -614,7 +631,19 @@ a.green_bg:after, a.green_bg:hover:after, ul.footer > li > a.footer_triangle:aft
 	margin-bottom: -3px;
 }
 
-div.login > a.forgot_password:after, ul.footer > li > a.footer_triangle:hover:after, div.login > a.forgot_password:hover:after, ul.footer > li > a.footer_triangle:after, ul.footer > li > a.footer_triangle:after, a.green_bg:hover:after, a.green_bg:after, a.green_bg:hover:after, div.connect > form > button.btn.btn-primary.pull-right.connect:after, div.connect > form > button.btn.btn-primary.pull-right.connect:hover:after, a.beige_bg:hover:after, a.beige_bg:after, a.green_link:after, a.green_link:hover:after {
+div.login > a.forgot_password:after, 
+ul.footer > li > a.footer_triangle:hover:after, 
+div.login > a.forgot_password:hover:after, 
+ul.footer > li > a.footer_triangle:after, 
+ul.footer > li > a.footer_triangle:after, 
+a.green_bg:hover:after, a.green_bg:after, 
+a.green_bg:hover:after, 
+a.beige_bg:hover:after, a.beige_bg:after, a.green_link:after, 
+a.green_link:hover:after,
+div.connect > form > button.btn.btn-primary.connect:after, 
+div.connect > form > button.btn.btn-info.connect:after, 
+div.connect > form > button.btn.btn-info.connect:hover:after, 
+div.connect > form > button.btn.btn-primary.connect:hover:after {
 	margin-left: 4px;
 }
 
@@ -622,7 +651,7 @@ ul.edit_account_nav > li > a:after, h4.panel-title > a:hover:after {
 	background: transparent url('/img/arrow_blue.png') no-repeat;
 }
 
-a.green_bg:after, div.connect > form > button.btn.btn-primary.pull-right.connect:after, a.green_link:hover:after {
+a.green_bg:after, div.connect > form > button.btn.btn-primary.connect:after, a.green_link:hover:after {
 	background: transparent url('/img/arrow_green.png') no-repeat;
 }
 
@@ -630,11 +659,11 @@ ul.footer > li > a.footer_triangle:after, a.green_bg:hover:after, a.beige_bg:hov
 	background: transparent url('/img/arrow_gray.png') no-repeat;
 }
 
-div.connect > form > button.btn.btn-primary.pull-right.connect:hover:after {
+div.connect > form > button.btn.btn-primary.connect:hover:after, div.connect > form > button.btn.btn-info.connect:after, {
 	background: transparent url('/img/arrow_dkblue.png') no-repeat;
 }
 
-div.main_panel > div >  a.red_link.project:after, h4.panel-title > a:after, a.green_link:after {
+div.main_panel > div >  a.red_link.project:after, h4.panel-title > a:after, a.green_link:after, div.connect > form > button.btn.btn-info.connect:hover:after {
 	background: transparent url('/img/arrow_white.png') no-repeat;
 }
 
@@ -663,7 +692,28 @@ ul.edit_account_nav > li > a.active {
 	background-color: #66a498;
 }
 
-h4.article_heading > a, h4.article_heading > a:visited, h4.article_heading > a:active, h4.carousel_heading > a, h4.carousel_heading > a:visited, h4.carousel_heading > a:active, h4.event_heading > a, h4.event_heading > a:visited, h4.event_heading > a:active, h4.rfp_heading > a, h4.rfp_heading > a:visited, h4.rfp_heading > a:active, h4.event_heading_dash > a, h4.event_heading_dash > a:visited, h4.event_heading_dash > a:active {
+h4.article_heading > a, 
+h4.article_heading > a:visited, 
+h4.article_heading > a:active, 
+h4.carousel_heading > a, 
+h4.carousel_heading > a:visited, 
+h4.carousel_heading > a:active, 
+h4.event_heading > a, 
+h4.event_heading > a:visited, 
+h4.event_heading > a:active, 
+h4.rfp_heading > a, 
+h4.rfp_heading > a:visited, 
+h4.rfp_heading > a:active, 
+h4.event_heading_dash > a, 
+h4.event_heading_dash > a:visited, 
+h4.event_heading_dash > a:active,
+a.green_bg, 
+a.green_bg:visited, 
+a.green_bg:active, 
+a.beige_bg, 
+a.beige_bg:visited, 
+a.beige_bg:hover, 
+a.beige_bg:active {
 	color: #7c786a;
 }
 
@@ -671,14 +721,16 @@ h4.article_heading > a:hover, h4.carousel_heading > a:hover, h4.event_heading > 
 	color: #514e43;
 }
 
-a.green_bg, a.green_bg:visited, a.green_bg:active, a.beige_bg, a.beige_bg:visited, a.beige_bg:hover, a.beige_bg:active {
+a.green_bg, 
+a.green_bg:visited, 
+a.green_bg:active, 
+a.beige_bg, 
+a.beige_bg:visited, 
+a.beige_bg:hover, 
+a.beige_bg:active  {
 	font-size: .95em;
 	text-transform: uppercase;
 	margin-left: 10px;
-}
-
-a.green_bg, a.green_bg:visited, a.green_bg:active, a.beige_bg, a.beige_bg:visited, a.beige_bg:hover, a.beige_bg:active {
-	color: #7c786a;
 }
 
 a.red_link {
@@ -881,7 +933,12 @@ a.edit_button:hover {
 	background-color: #d3e397;
 }
 
-button.btn.btn-primary.pull-right, button.btn.btn-primary.pull-right.login, button.btn.btn-info.pull-right, button.btn.btn-danger.pull-right {
+button.btn.btn-primary.pull-right, 
+button.btn.btn-primary.connect, 
+button.btn.btn-info.connect, 
+button.btn.btn-primary.pull-right.login, 
+button.btn.btn-info.pull-right, 
+button.btn.btn-danger.pull-right {
 	border-style: none;
 	border-radius: 0;
 	text-transform: uppercase;
@@ -913,7 +970,7 @@ button.btn.btn-primary.pull-right.login {
 	background-color: #8dcdc1;
 }
 
-button.btn.btn-primary.pull-right.login, button.btn.btn-primary.pull-right.connect {
+button.btn.btn-primary.pull-right.login, button.btn.btn-primary.connect, button.btn.btn-info.connect {
 	width: 100%;
 }
 
@@ -921,10 +978,16 @@ button.btn.btn-primary.pull-right.login:hover, button.btn.btn-primary.pull-right
 	background-color: #82bab0;
 }
 
-button.btn.btn-primary.pull-right.connect {
+button.btn.btn-primary.connect {
 	border: 1px solid #b7c483;
 	background-color: #d3e397;
 	color: #568b80;
+}
+
+button.btn.btn-info.connect {
+	border: 1px solid #8dcdc1;
+	background-color: #66a498;
+	color: #fff;
 }
 
 .cancel_button.pull-right.delete_user, .btn.btn-danger.pull-right.delete_user {
@@ -932,7 +995,6 @@ button.btn.btn-primary.pull-right.connect {
 }
 
 div.connect {
-	margin-bottom: 65px;
 	margin-top: 16px;
 }
 
