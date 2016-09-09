@@ -12,9 +12,9 @@ class LeadersTableSeeder extends Seeder
     public function run()
     {
       $leaders = [
-        ['company_id' => '2', 'full_name' =>	'Kay Jones', 'title' =>	'CEO', 'img' =>	'phillip_green_frost.jpg', 'linkedin_url' => ''],
-        ['company_id' => '2', 'full_name' =>	'Paul Bracher', 'title' =>	'Chairman, CEO', 'img' =>	'', 'linkedin_url' => ''],
-        ['company_id' => '2', 'full_name' =>	'Jerry Salinas', 'title' =>	'President, CBO', 'img' =>	'', 'linkedin_url' => ''],
+        ['company_id' => '2', 'full_name' =>	'Michael Girdley', 'title' =>	'COB/Founder', 'img' =>	'michael_girdley-codeup.jpg' => 'https://www.linkedin.com/in/michaelgirdley'],
+        ['company_id' => '2', 'full_name' =>	'Jason Straughan', 'title' =>	'Founder', 'img' =>	'jason-straughan_codeup.jpg', 'linkedin_url' => 'https://www.linkedin.com/in/jdstraughan'],
+        ['company_id' => '2', 'full_name' =>	'Chris Turner', 'title' =>	'Founder', 'img' =>	'chris_turner-codeup.jpg', 'linkedin_url' => 'https://www.linkedin.com/in/cturner80'],
       //   ['company_id' => '11', 'full_name' => 'Taylor Rhodes' , 'title' => 'CEO', 'img' => 'taylor-rhodes_rackspace.jpg', 'linkedin_url' => ''],
       //   ['company_id' => '11', 'full_name' => 'Alex Pinchev' , 'title' => 'Executive VP', 'img' => 'alex_pinchev_rackspace.jpg', 'linkedin_url' => ''],
       //   ['company_id' => '11', 'full_name' => 'Jeff Cotten' , 'title' => 'SVP, General Manager', 'img' => 'jeff_cotten_rackspace.jpg', 'linkedin_url' => ''],
