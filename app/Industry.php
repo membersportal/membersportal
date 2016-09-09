@@ -13,5 +13,10 @@ class Industry extends Model
 	{
 		return $this->hasMany(Company::class, 'industry_id');
 	}
+
+	public function rfps()
+	{
+		return $this->hasMany(Rfp::class, 'industry_id');
+	}
     //
 }

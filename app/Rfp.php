@@ -16,6 +16,11 @@ class Rfp extends Model
 		return $this->belongsTo(Company::class);
 	}
 
+	public function industry()
+	{
+		return $this->belongsTo(Company::class);
+	}
+
 	public function getProjectTitleAttribute($value)
 	{
 		return ucwords($value);
