@@ -31,7 +31,7 @@ class UsersController extends Controller
 		}
 
 		// $newest_member = Company::newestMember();
-		$newest_member = Company::find(11);
+		$newest_member = Company::find(2);
 		$admin_user = User::find(1);
 		$admin_events = $admin_user->company->events;
 		$admin_rfps = Rfp::homeRfps();
