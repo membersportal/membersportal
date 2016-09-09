@@ -11,10 +11,10 @@ class LeadersTableSeeder extends Seeder
      */
     public function run()
     {
-      // $leaders = [
-      //   ['company_id' => '5', 'full_name' =>	'Phillip D. Green', 'title' =>	'jmills0', 'img' =>	'phillip_green_frost.jpg', 'linkedin_url' => ''],
-      //   ['company_id' => '5', 'full_name' =>	'Paul Bracher', 'title' =>	'Chairman, CEO', 'img' =>	'', 'linkedin_url' => ''],
-      //   ['company_id' => '5', 'full_name' =>	'Jerry Salinas', 'title' =>	'President, CBO', 'img' =>	'', 'linkedin_url' => ''],
+      $leaders = [
+        ['company_id' => '2', 'full_name' =>	'Michael Girdley', 'title' =>	'COB/Founder', 'img' =>	'michael_girdley-codeup.jpg' => 'https://www.linkedin.com/in/michaelgirdley'],
+        ['company_id' => '2', 'full_name' =>	'Jason Straughan', 'title' =>	'Founder', 'img' =>	'jason-straughan_codeup.jpg', 'linkedin_url' => 'https://www.linkedin.com/in/jdstraughan'],
+        ['company_id' => '2', 'full_name' =>	'Chris Turner', 'title' =>	'Founder', 'img' =>	'chris_turner-codeup.jpg', 'linkedin_url' => 'https://www.linkedin.com/in/cturner80'],
       //   ['company_id' => '11', 'full_name' => 'Taylor Rhodes' , 'title' => 'CEO', 'img' => 'taylor-rhodes_rackspace.jpg', 'linkedin_url' => ''],
       //   ['company_id' => '11', 'full_name' => 'Alex Pinchev' , 'title' => 'Executive VP', 'img' => 'alex_pinchev_rackspace.jpg', 'linkedin_url' => ''],
       //   ['company_id' => '11', 'full_name' => 'Jeff Cotten' , 'title' => 'SVP, General Manager', 'img' => 'jeff_cotten_rackspace.jpg', 'linkedin_url' => ''],
@@ -25,16 +25,16 @@ class LeadersTableSeeder extends Seeder
       //   ['company_id' => '12', 'full_name' => 'James L. Burch' , 'title' => 'VP of Space, Science and Engineering', 'img' => 'burch_james_swri.jpg', 'linkedin_url' => 'https://www.linkedin.com/in/jim-burch-3558806'],
       //   ['company_id' => '12', 'full_name' => 'Alan Stern' , 'title' => 'Associate VP', 'img' => 'Alan_stern_swri.jpg', 'linkedin_url' => '']
       // ];
-      //
-      // foreach ($leaders as $leader) {
-      //     $new_leader = new App\Leader();
-      //     $new_leader->company_id = $leader['company_id'];
-      //     $new_leader->full_name = $leader['full_name'];
-      //     $new_leader->title = $leader['title'];
-      //     $new_leader->img = $leader['img'];
-      //     $new_leader->linkedin_url = $leader['linkedin_url'];
-      //
-      //     $new_leader->save();
-      // }
+      
+      foreach ($leaders as $leader) {
+          $new_leader = new App\Leader();
+          $new_leader->company_id = $leader['company_id'];
+          $new_leader->full_name = $leader['full_name'];
+          $new_leader->title = $leader['title'];
+          $new_leader->img = $leader['img'];
+          $new_leader->linkedin_url = $leader['linkedin_url'];
+      
+          $new_leader->save();
+      }
     }
 }
