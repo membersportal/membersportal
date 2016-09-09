@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="container">
+
 	<div class="image_container">
 		<div class="company_header_img">
 			<img class="company_header" src="/img/uploads/headers/header_photo_template.jpg" alt="{{ $company->name }}">
@@ -10,6 +11,7 @@
 			<img class="company_profile img-thumbnail" src="{{ '/img/uploads/avatars/' . $company->profile_img }}" alt="{{ $company->name }}">
 		</div>
 	</div>
+
 	<h1 class="text-center company_name_profile">{{ $company->name }}</h1>
 	<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 left_home">
 		@if (!Auth::user()->is_admin && !in_array(Auth::user()->id, $connections_ids))
@@ -19,10 +21,9 @@
 				<button type="submit" class="btn btn-primary connect">Connect</button>
 			</form>
 		</div>
-		{{dd($connections_ids)}}
-		@elseif (in_array(Auth::user()->id, $connections_ids))
+		@elseif ($existing_connection)
 		<div class="connect">
-			<form method="POST" action="{{ action('ConnectionsController@destroy', 12) }}">
+			<form method="POST" action="{{ action('ConnectionsController@destroy', $existing_connection) }}">
 				{!! csrf_field() !!}
 				{!! method_field('DELETE') !!}
 				<button type="submit" class="btn btn-info connect">Remove Connection</button>
