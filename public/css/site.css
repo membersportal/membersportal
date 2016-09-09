@@ -238,8 +238,6 @@ div.company_header_img {
 	width: 100%;
 	overflow: hidden;
 	max-height: 350px;
-	/*margin-left: -10px;*/
-	margin-right: -10px;
 }
 
 img.company_header {
@@ -861,13 +859,6 @@ img.hiring {
 	margin: 15px 0;
 }
 
-img.leader_headshot {
-	width: 75px;
-	height: 75px; 
-	object-fit: contain;
-	display: inline-block;
-}
-
 img.project_showcase {
 	margin-top: 16px;
 	width: 100%;
@@ -894,6 +885,24 @@ img.current_company_profile {
 
 img.connections_grid {
 	margin-top: 20px;
+}
+
+div.leader_headshot {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+}
+
+img.leader_headshot {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: auto;
+  width: 100px;
+  -webkit-transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+          transform: translate(-50%,-50%);
 }
 
 .glyphicon.glyphicon-ok {

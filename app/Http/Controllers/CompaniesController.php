@@ -146,7 +146,8 @@ class CompaniesController extends Controller
 		$existing_connection = Connection::getExistingConnectionId($id, Auth::user()->id);
 		$connections_count = Connection::connectionsCount($id);
 		$connections = Company::returnCompaniesFromIds($connections_ids);
-		$data = compact('company', 'contact', 'rfps', 'events', 'leaders', 'connections', 'connections_ids', 'connections_count', 'existing_connection');
+		$company_url = Contact::getViewProfileWebsite($contact->url);
+		$data = compact('company', 'contact', 'rfps', 'events', 'leaders', 'connections', 'connections_ids', 'connections_count', 'existing_connection', 'company_url');
 		return view('companies.view_profile')->with($data);
 	}
 

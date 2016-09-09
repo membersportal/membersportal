@@ -30,7 +30,8 @@ class UsersController extends Controller
 			return view('auth.login');
 		}
 
-		$newest_member = Company::newestMember();
+		// $newest_member = Company::newestMember();
+		$newest_member = Company::find(11);
 		$admin_user = User::find(1);
 		$admin_events = $admin_user->company->events;
 		$admin_rfps = Rfp::homeRfps();
