@@ -66,7 +66,8 @@ class Company extends Model
 		return Company::whereIn('company_id', $companies);
 	}
 
-	public static function returnCompaniesFromIds($connections_ids){
+	public static function returnCompaniesFromIds($connections_ids)
+	{
 		$companies = [];
 
 		foreach ($connections_ids as $id) {
@@ -75,6 +76,11 @@ class Company extends Model
 		}
 
 		return $companies;
+	}
+
+	public static function searchCompanyName($request)
+	{
+		return Company::where('name', 'like', "%$request->search_field%");
 	}
 
 	public static function searchMembers($request)

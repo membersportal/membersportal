@@ -112,6 +112,7 @@ Route::put('/leaders/{leader}', 'LeadersController@update');
 Route::resource('leaders', 'LeadersController');
 
 // RFPs
+Route::get('/rfps/search', 'RFPController@searchRfps');
 Route::resource('rfps', 'RFPController');
 
 // Articles
