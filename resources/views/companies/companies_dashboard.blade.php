@@ -17,7 +17,7 @@
 			<div class="row">
 				<div class="connection_feed">
 					<p class="dashboard_category">Connection</p>
-					<h1>{{ $content->company1_id }}</h1>
+					<h1>{{ $content->company1_id->name }} connected with {{ $content->company2_id->name }}</h1>
 				</div>
 			</div>
 			@elseif($content->project_title)
@@ -62,7 +62,7 @@
 	<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 right">
 		@include('partials.my_events_box', ['users_events' => $users_events])
 	</div>
-	
+
 </div>
 
 @stop
