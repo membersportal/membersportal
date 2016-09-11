@@ -1,4 +1,4 @@
-<div class="panel_white rfps">
+<div class="panel_white about">
 	<h3 class="text-center">Requests for Proposals</h3>
 		@foreach ($rfps as $key => $rfp)
 			@if ($key < 11)
