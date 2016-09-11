@@ -23,30 +23,24 @@
 				<button class="btn btn-primary pull-right" type="Submit">Search</button>
 			</form>
 		</div>
-
-		<div class="all_events">
-		@foreach($events as $event)
-			<div class="row">
-				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
-					<img class="img-responsive events_grid" src="http://fillmurray.com/100/100" alt="">
-				</div>
-				<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 col-xl-9">
-					<h4 class="event_heading"><a href="{{ action('EventsController@show', $id = $event->id) }}">{{ $event->title }}</a></h4>
-					<p class="event_date_home">{{ $event->from_date->format('F j') }} - {{ $event->to_date->format('F j') }}</p>
-					@if ($event->invite_only)
-						<p class="event_boolean"><span class="glyphicon glyphicon-ok"></span>Invite Only</p>
-					@endif
-					@if ($event->rsvp_required)
-						<p class="event_boolean"><span class="glyphicon glyphicon-ok"></span>RSVP Required</p>
-					@endif
-					<p class="event_desc">{{ $event->desc }}</p>
-				</div>
+		@if (count($week_events) != 0)
+			<div class="all_events">
+				<h3 class="text-center">This Week</h3>
+				@include('partials.events_by_date', ['events' => $week_events])
 			</div>
-			@if ($event != $events[(count($events) - 1)])
-			<hr class="wide">
-			@endif
-		@endforeach
-		</div>
+		@endif
+		@if (count($month_events) != 0)
+			<div class="all_events">
+				<h3 class="text-center">This Month</h3>
+				@include('partials.events_by_date', ['events' => $month_events])
+			</div>
+		@endif
+		@if (count($year_events) != 0)
+			<div class="all_events">
+				<h3 class="text-center">This Year</h3>
+				@include('partials.events_by_date', ['events' => $year_events])
+			</div>
+		@endif
 	</div>
 
 	<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 right">
