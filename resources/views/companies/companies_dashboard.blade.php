@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="container">
+	<a href="#top"></a>
 	<h1 class="text-center">Dashboard</h1>
 	<h3 class="text-center company_name_profile">{{ $company->name }}</h3>
 
@@ -77,12 +78,13 @@
 			@endif
 		@endforeach
 		</div>
-	</div>
+		<a class="go-top" href="#top">Back To Top</a>
+</div>
+
 
 	<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 right">
 		@include('partials.my_events_box', ['users_events' => $users_events])
 	</div>
 
 </div>
-
 @stop
