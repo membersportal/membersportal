@@ -581,6 +581,7 @@ ul.pagination > li > a, ul.pagination > li > a:visited {
 
 li.rfps {
 	margin-left: 0;
+	margin-bottom: 5px;
 }
 
 li.small_gray {
@@ -1007,6 +1008,10 @@ button.btn.btn-info.connect {
 
 div.connect {
 	margin-top: 16px;
+}
+
+.btn:focus {
+	outline: none;
 }
 
 /*Forms*/

@@ -98,7 +98,9 @@
 					$('#tab_content').html("");
 
 					search_results.forEach(function(result) {
-						$('#results').append("<div class=\"col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6\"><div class=\"row user_grid\"><div class=\"col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4\"><a href=\"" + result.url + "\"><img class=\"img-circle center-block img-responsive user_avatar_grid\" src=\"/img/uploads/avatars/" + result.profile_img + "\"></a></div><div class=\"col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xl-8\"><p class=\"company_name\">" + result.name + "</p><p class=\"industry_name\">" + result.industry_id + "</p><p class=\"company_desc\">" + result.desc.substring(0, 200)+ "...</p></div></div></div>") + $("#results");
+						if (result.id != 1) {
+							$('#results').append("<div class=\"col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6\"><div class=\"row user_grid\"><div class=\"col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4\"><a href=\"" + result.url + "\"><img class=\"img-circle center-block img-responsive user_avatar_grid\" src=\"/img/uploads/avatars/" + result.profile_img + "\"></a></div><div class=\"col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xl-8\"><p class=\"company_name\">" + result.name + "</p><p class=\"industry_name\">" + result.industry_title + "</p><p class=\"company_desc\">" + result.desc.substring(0, 100)+ "...</p></div></div></div>") + $("#results");
+						}
 					});
 
 					var paginate = Math.ceil(search_results.length/10);
