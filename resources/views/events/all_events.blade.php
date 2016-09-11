@@ -31,7 +31,7 @@
 					<img class="img-responsive events_grid" src="http://fillmurray.com/100/100" alt="">
 				</div>
 				<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 col-xl-9">
-					<h4 class="event_heading"><a href="{{ $event->url }}" target="_blank">{{ $event->title }}</a></h4>
+					<h4 class="event_heading"><a href="{{ action('EventsController@show', $id = $event->id) }}">{{ $event->title }}</a></h4>
 					<p class="event_date_home">{{ $event->from_date->format('F j') }} - {{ $event->to_date->format('F j') }}</p>
 					@if ($event->invite_only)
 						<p class="event_boolean"><span class="glyphicon glyphicon-ok"></span>Invite Only</p>
