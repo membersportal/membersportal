@@ -61,6 +61,12 @@ div.login {
 	position: relative;
 }
 
+div.events_grid_image {
+	height: 100px;
+	width: 100px;
+	overflow: hidden;
+}
+
 div.panel_white, div.main_panel {
 	width: 100%;
 	background-color: #fff;
@@ -657,6 +663,8 @@ a.green_bg:hover:after, a.green_bg:after,
 a.green_bg:hover:after, 
 a.beige_bg:hover:after, a.beige_bg:after, a.green_link:after, 
 a.green_link:hover:after,
+h4.panel-title > a:hover:after, 
+h4.panel-title > a:after, 
 div.connect > form > button.btn.btn-primary.connect:after, 
 div.connect > form > button.btn.btn-info.connect:after, 
 div.connect > form > button.btn.btn-info.connect:hover:after, 
@@ -836,13 +844,11 @@ img.company_profile {
 }
 
 img.articles, img.articles_full, img.articles_grid, img.carousels_grid, img.events_grid, img.events_dash {
-	object-fit: cover;
+	/*object-fit: cover;*/
 	border: 1px solid #7c786a;
 }
 
 img.articles_grid, img.carousels_grid, img.events_grid {
-	max-height: 100px;
-	max-width: 100px;
 	margin: 15px auto 0 auto;
 }
 
