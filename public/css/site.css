@@ -409,14 +409,11 @@ h1 {
 	font-size: 1.7em;
 	font-weight: 700;
 	margin-top: 25px;
+	margin-bottom: 45px;
 }
 
 h1.articles {
 	margin-bottom: 20px;
-}
-
-h1.space {
-	margin-bottom: 45px;
 }
 
 h1.text-center.req {

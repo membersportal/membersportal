@@ -26,7 +26,7 @@
 		</div>
 
 		<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 right">
-			@include('partials.conn_events_box_ext', ['company_events' => $company_events])
+			@include('partials.conn_events_box', ['connections_events' => $company_events])
 		</div>
 
 </div>
