@@ -27,6 +27,7 @@ class CreateRfpsTable extends Migration
             $table->string('url')->nullable();
             $table->timestamps();
             $table->foreign('company_id')->references('id')->on('companies');
+            $table->foreign('industry_id')->references('id')->on('industries');
             $table->softDeletes();
         });
     }
