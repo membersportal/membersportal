@@ -24,23 +24,25 @@
 			</form>
 		</div>
 
-		<div class="panel_white all_rfps">
-		@foreach ($rfps as $key => $rfp)
-			<div class="row">
-				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-					<h4 class="rfp_heading"><a href="{{ action('RFPController@show', $id = $rfp->id) }}">{{ $rfp->project_title }}</a></h4>
-					<p class="rfp_dates">Deadline: <span class="rfp_date">{{ $rfp->deadline }}</span></p>&nbsp;&nbsp; || &nbsp;&nbsp;
-					<p class="rfp_dates">Project Dates: <span class="rfp_date">{{ $rfp->contract_from_date }} - {{ $rfp->contract_to_date }}</span></p>
-					<p class="rfp_contact">Contact: <span class="rfp_contact_detail">{{ $rfp->contact_name }}</span>&nbsp;&nbsp; || &nbsp;&nbsp;Dept: <span class="rfp_contact_detail">{{ $rfp->contact_department }}</span>&nbsp;&nbsp; || &nbsp;&nbsp;Phone:</span> <span class="rfp_contact_detail">{{ $rfp->contact_no }}</span></p>
-					<p class="rfp_desc">{{ str_limit($rfp->project_scope, 300) }}<a class="red_link" href="{{ action('RFPController@show', ['id' => $rfp->id]) }}" alt="{{ $rfp->project_title }}">&nbsp;&nbsp;Read full RFP</a></p>
-				</div>
+		@if (count($week_rfps) != 0)
+			<div class="panel_white all_rfps">
+				<h3 class="text-center">Due This Week</h3>
+				@include('partials.rfps_by_date', ['rfps' => $week_rfps])
 			</div>
-			@if ($rfp != $rfps[(count($rfps) - 1)])
-				<hr class="wide">
-			@endif
-		@endforeach
+		@endif
+		@if (count($month_rfps) != 0)
+			<div class="panel_white all_rfps">
+			<h3 class="text-center">Due This Month</h3>
+				@include('partials.rfps_by_date', ['rfps' => $month_rfps])
+			</div>
+		@endif
+		@if (count($year_rfps) != 0)
+			<div class="panel_white all_rfps">
+			<h3 class="text-center">Due This Year</h3>
+				@include('partials.rfps_by_date', ['rfps' => $year_rfps])
+			</div>
+		@endif
 		</div>
-	</div>
 
 	<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 right">
 		@include('partials.my_rfps_box', ['users_rfps' => $users_rfps])

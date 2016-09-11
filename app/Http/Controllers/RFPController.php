@@ -30,7 +30,7 @@ class RFPController extends Controller
 		$connections = Company::find($user)->companies;
 		$connections_rfps = Rfp::dashboardRfps($connections)->get();
 		$users_rfps = Rfp::profileRfps($user)->get();
-		$data = compact('connections_rfps', 'users_rfps', 'rfps', 'industries');
+		$data = compact('connections_rfps', 'users_rfps', 'rfps', 'industries', 'week_rfps', 'month_rfps', 'year_rfps');
 		return view('rfps.all_rfps')->with($data);
 	}
 
