@@ -607,6 +607,10 @@ span.strong, .strong {
 	font-weight: bold;
 }
 
+span.strong.connection {
+	color: #c65c39;
+}
+
 .footer_text {
 	line-height: .5em;
 	color: #dad6c7;
@@ -838,13 +842,18 @@ img.manage_users {
 	margin-top: 20px;
 }
 
+img.dash_connection {
+	width: 50px;
+	height: 50px;
+}
+
 img.company_profile {
 	object-fit: contain;
 	width: inherit;
 }
 
 img.articles, img.articles_full, img.articles_grid, img.carousels_grid, img.events_grid, img.events_dash {
-	/*object-fit: cover;*/
+	object-fit: cover;
 	border: 1px solid #7c786a;
 }
 

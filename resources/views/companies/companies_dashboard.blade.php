@@ -17,7 +17,27 @@
 			<div class="row">
 				<div class="connection_feed">
 					<p class="dashboard_category">Connection</p>
-					<h1>{{ $content->company1_id->name }} connected with {{ $content->company2_id->name }}</h1>
+					<div class="row">
+						<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3 col-xs-offset-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2 col-xl-offset-2">
+							<div class="text-center">
+								<a href="{{ action('CompaniesController@show', ['id' => $content->company1_id]) }}" alt="{{ $content->company1_id->name }}">
+									<img class="img-thumbnail img-circle dash_connection" src="{{ '/img/uploads/avatars/' . $content->company1_id->profile_img }}" alt="{{ $content->company1_id->name }}">
+								</a>
+								<h4 class="text-center"><span class="strong connection">{{ $content->company1_id->name }}</span></h4>
+							</div>
+						</div>
+						<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 col-xl-1">
+							<h4><span class="glyphicon glyphicon-arrow-right"></span></h4>
+						</div>
+						<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+							<div class="text-center">
+								<a href="{{ action('CompaniesController@show', ['id' => $content->company1_id]) }}" alt="{{ $content->company1_id->name }}">
+									<img class="img-thumbnail img-circle dash_connection" src="{{ '/img/uploads/avatars/' . $content->company2_id->profile_img }}" alt="{{ $content->company2_id->name }}">
+								</a>
+								<h4><span class="strong connection">{{ $content->company2_id->name }}</span></h4>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 			@elseif($content->project_title)
@@ -37,7 +57,7 @@
 					<p class="dashboard_category">Event</p>
 					<div class="row">
 						<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
-							<img class="img-responsive events_dash" src="http://fillmurray.com/100/100" alt="">
+							<img class="img-responsive events_dash" src="{{ '/img/uploads/events/' . $content->img }}" alt="{{ $content->title }}">
 						</div>
 						<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 col-xl-9">
 							<h4 class="event_heading_dash">
