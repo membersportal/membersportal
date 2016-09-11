@@ -203,6 +203,12 @@ class CompaniesController extends Controller
 			$collection[] = $dashboard_connection;
 		}
 		$feed = collect($collection);
+		foreach($feed as $content){
+			if($content->company1_id){
+				$content->company1_id = Company::find($content->company1_id);
+				$content->company2_id = Company::find($content->company2_id);
+ 			}
+		}
 		$test = $feed->sortBy('created_at');
 		return $test;
 	}

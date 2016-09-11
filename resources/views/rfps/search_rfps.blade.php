@@ -10,7 +10,7 @@
 	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 center">
 		<div class="rfp_search">
 			<h3 class="text-center">Search RFPs</h3>
-			<form action="{{ action('RFPController@searchRfps') }}" method="GET">
+			<form action="#" method="GET">
 				<input type="text" class="form-control" name="search_field" value="{{ old('search_field') }}" placeholder="Search RFPs by company name">
 				<div class="form-group">
 					<select class="form-control event_search_form" id="industry_id" name="industry_id">

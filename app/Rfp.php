@@ -47,6 +47,17 @@ class Rfp extends Model
 		return Rfp::whereIn('company_id', $companies)->orderBy('created_at');
 	}
 
+	public static function searchRfps($request)
+	{
+		if($request->search_field && $request->industry_id){
+			return Rfp::where('company_id', $request->search_field)->orWhere('industry_id', $request->industry_id);
+		} elseif ($request->search_field) {
+			return Rfp::where('company_id', $request->search_field);
+		} else {
+			return Rfp::where('industry_id', $request->industry_id);
+		}
+	}
+
 	public static function homeRfps()
 	{
 		return Rfp::where('company_id', 1)->orderBy('deadline', 'desc')->get();

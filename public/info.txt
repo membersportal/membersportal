@@ -1,0 +1,236 @@
+Frost Bank
+
+profile_img: http://media.cmgdigital.com/shared/lt/lt_cache/thumbnail/600/img/photos/2012/09/25/47/51/frost_top_pix_1570251a.jpg
+
+header_img: http://www.sahcc.org/wp-content/uploads/frost-hz-logo-blue-RGB1.jpg
+
+
+leaders:
+
+Phillip D. Green
+	title: Chairman and Chief Executive Officer
+	img: https://photos.prnewswire.com/prnvar/20150729/248828
+
+Paul Bracher
+	title: President and Chief Banking Officer
+	img: https://photos.prnewswire.com/prnvar/20150729/248828
+
+Jerry Salinas
+	title: Group Executive Vice President and Chief Financial Officer
+	img: https://photos.prnewswire.com/prnvar/20150729/248827
+
+
+rfp:
+	project_title: T-shirt printing for corporate retreat
+	deadline: 2016-10-21
+	contact_name: Mark Baker
+	contact_department: Human Resources
+	contact_no: 2107849987
+	project_scope: Need 50 to 75 t-shirts (multiple sizes) printed with company's logo for our annual corporate retreat.
+	contract_from_date: 2016-10-01
+	contract_to_date: 2016-10-14
+
+
+events:
+	title: Halloween Fun-Run
+	desc: 5K charitable run for Leukemia/Lymphoma Association
+	from_date: 2016-10-31
+	to_date: 2016-10-31
+	invite_only: no
+	rsvp required: yes
+	url: https://www.frostbank.com/halloweenrun
+
+	title: Biannual Shred Fest
+	desc: Paper shredders will be available at Northstar Mall. Free to anyone who wishes to safely dispose of sensitive documents.
+	from_date: 2016-11-01
+	to_date: 2016-11-08
+	invite_only: no
+	rsvp required: no
+	url: https://www.frostbank.com/papershredding
+
+project showcase:
+	headline: New Frost Bank Headquarters to Change San Antonio Skyline
+	subhead: Construction scheduled to be completed by late 2018
+	description: A new addition to San Antonio's skyline is in the final stages of planning. At 23 stories, Frost Towers will be the city's first skyscraper built in 27 years.
+	img: http: //ww2.hdnux.com/photos/50/05/06/10506661/29/920x920.jpg
+	ext. url: http://www.ksat.com/news/new-office-tower-being-added-to-san-antonio-skyline
+
+
+
+------------------------------------
+
+Rackspace
+
+profile_img: http://blog.parts-people.com/wp-content/uploads/2012/11/rackspace_logo_2.jpg
+
+header_img: http://static1.squarespace.com/static/53a44db3e4b01ac00fa76c8b/5582ce8de4b0fcd52491860c/5582ce8de4b0fcd52491860b/1433512714706/MA0139_N42_medium.jpg?format=1000w
+
+leaders:
+
+Taylor Rhodes
+	title: President and CEO
+	img: http://www.siliconhillsnews.com/wp-content/uploads/2013/09/taylor-rhodes.jpg
+
+Alex Pinchev
+	title: Executive VP and President of Global Sales and Marketing
+	img: https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/2/000/0ba/025/0195a47.jpg
+
+Jeff Cotten
+	title: SVP and General Manager, Fanatical Support for AWS
+	img: https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/1/000/291/1f0/01271db.jpg
+
+rfp:
+	project_title: Parking Lot Repaving
+	deadline: 2016-12-31
+	contact_name: Erik Vandenberg
+	contact_department: Maintenance
+	contact_no: 2108747629
+	project_scope: Our parking lot needs to be repaved before the end of the year. Approx 1.2 acres in size.
+	contract_from_date: 2016-10-01
+	contract_to_date: 2016-12-31
+
+
+events:
+
+	title: Spiceworld 2016
+	desc: Come be a part of the most happenin', Texas-sized IT conference around... right smack in the heart of the Lone Star State! For our 9th year in a row, we're bringing together thousands of IT pros and tech marketers for 3 jam-packed days of how-to sessions, networking, happy hours, parties, and FUN.
+	from_date: 11-01-2016
+	to_date: 11-03-2016
+	invite_only: no
+	rsvp_required: no
+	url: https://www.spiceworks.com/spiceworld/austin/
+
+	title: Openstack Summit Barcelona
+	desc: The OpenStack Summit is the most important gathering of IT leaders, telco operators, cloud administrators, app developers and OpenStack contributors building the future of cloud computing. Hear business cases and operational experience directly from users, learn about new products in the ecosystem and participate in hands-on workshops to build your skills.
+	from_date: 2016-10-24
+	to_date: 2016-10-28
+	invite_only: no
+	rsvp_required: no
+	url: https://www.openstack.org/summit/barcelona-2016/
+
+project showcase:
+	headline: Open Cloud Academy
+	subhead: Education
+	description: The Open Cloud Academy’s unique hands-on learning approach provides students the knowledge, skills, and confidence they need to enter into the IT workforce. Taught by the best subject matter experts, this is your chance to learn tomorrow’s technology today!
+	img: http://therivardreport.com/wp-content/uploads/2013/03/DSC_0524-1024x680.jpg
+	ext. url: http://opencloudacademy.rackspace.com/
+
+
+----------------------
+
+Kinetic Concepts
+
+profile_img: http://www.apax.com/media/158393/KCI-Logo.jpg?w=181&h=130&mode=pad
+
+header_img: http://www.ttgcorp.com/wp-content/uploads/2013/08/Kinetic-Concepts-03.png
+
+leaders:
+
+James Leininger
+	title: founder
+	img: http://i.forbesimg.com/media/lists/people/james-leininger_416x416.jpg
+
+Terry Neimeyer
+	title: CEO and Chairman of the Board
+	img: https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/3/000/0d3/0c8/3bfb21d.jpg
+	linkedin URL: https://www.linkedin.com/in/terry-neimeyer-96513b15
+
+Nathan Beil
+	title: President
+	img: https://www.mdchamber.org/sites/default/files/general/photo/ec-nate.jpg
+	linkedin URL: https://www.linkedin.com/in/nate-beil-436b08a
+
+rfp:
+	project_title: Microbiological Lab Services Needed
+	deadline: 2017-04-15
+	contact_name: Carlos Ruiz
+	contact_department: Research and Development
+	contact_no: 2108739784
+	project_scope: Seeking a San Antonio laboratory to verify our new V.A.C. VeraFlo's efficacy to sterilize wounds.
+	contract_from_date: 2016-11-15
+	contract_to_date: 2017-02-15
+
+events:
+
+	title: V.A.C. Veraflow Training
+	desc: Training for our new V.A.C. Veraflow machine will be held on 11-06-2016 in the R&D lab.
+	from_date: 2016-11-06
+	to_date: 2016-11-06
+	invite_only: yes
+	rsvp required: yes
+	url: https://www.kci-medical.com/veraflowtraining
+
+	title: Open House
+	desc: We want to get to know you! Meet (and greet) our scientists as they lead you on a free tour of our facilities. Refreshments will be served afterwards. Open to the public.
+	from_date: 2016-11-11
+	to_date: 2016-11-11
+	invite_only: no
+	rsvp required: no
+	url: https://www.kci-medical.com/gettingtoknowyou
+
+project showcase:
+	headline: KCI Partners with B. Braun Medical Inc.
+	subhead:
+	description: Kinetic Concepts Inc. has struck a new distribution agreement with B. Braun Medical Inc. to be an exclusive provider of Prontosan Wound Irrigation Solution for use with V.A.C. VeraFlo Instillation Therapy in the United States.
+	img: http://media.bizj.us/view/img/3101361/vac-kci*750xx419-236-0-22.jpg
+	ext. url: http://www.bizjournals.com/sanantonio/blog/morning-edition/2014/09/kci-strikes-deal-with-wound-irrigation-company.html
+
+
+-----------------------
+
+Southwest Research Institute
+
+profile_img: http://3593f84chf852yw5d4c5emoe.wpengine.netdna-cdn.com/wp-content/uploads/2012/03/SWRI-Small.jpg
+
+header_img: http://www.swri.org/4org/program/tardec/images/Aerial874.jpg
+
+leaders:
+
+Adam Hamilton
+	title: President
+	img: https://www.biddingforgood.com/orgs/smhall/223362840/AdamHamilton.jpg
+	linkedin URL: https://www.linkedin.com/in/adam-hamilton-p-e-2639a424
+
+Alan Stern
+	title: Associate Vice President-R&D
+	img: https://upload.wikimedia.org/wikipedia/commons/7/7e/Alan_stern.jpg
+
+James L. Burch
+	title: Vice-President of Space Science and Engineering
+	img: http://honors.agu.org/files/2011/08/burch_james-150x150.jpg
+	linkedin URL: https://www.linkedin.com/in/jim-burch-3558806
+
+
+rfp:
+	project_title: Chemical Disposal Service Needed
+	deadline: 2016-12-01
+	contact_name: Sam Edwards
+	contact_department: Chemistry
+	contact_no: 2102236090
+	project_scope: We are seeking a chemical waste disposal company as our current company will be going out of business at the end of the year.
+	contract_from_date: 2016-01-01
+	contract_to_date: 2016-12-31
+
+events:
+	title: The American Society for Nondestructive Testing
+	desc: Trade show in Long Beach, California
+	from_date: 2016-10-23
+	to_date: 2016-10-27
+	invite_only: no
+	rsvp required: yes
+	url: https://www.asnt.org/
+
+	title: Transpo 2016
+	desc: Exposition for integrating from bicycles to connected vehicles
+	from_date: 2016-11-13
+	to_date: 2016-11-16
+	invite_only: no
+	rsvp required: yes
+	url: http://www.cvent.com/events/2016-transpo-conference/custom-20-ca4cfbca661f4a0a9185037d6b475e7c.aspx
+
+project showcase:
+	headline: Li'l Inventors
+	subhead: Fostering inquiry among San Antonio's youths.
+	description: A mentoring program that links our scientists with kids curious about science and technology.
+	img: https://www.google.com/search?q=southwest+research+institute&biw=1236&bih=602&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjEgYGn5oDPAhXGrB4KHVDJDU0Q_AUICCgD#tbm=isch&q=young+inventors&imgrc=L6LSgtukDYkqDM%3A
+	ext. url: https://www.swri.org/lilinventors
