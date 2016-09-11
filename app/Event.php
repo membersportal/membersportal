@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Carbon\Carbon;
 use App\Company;
 use App\Event;
+use App\Industry;
 
 class Event extends Model
 {
@@ -17,6 +18,11 @@ class Event extends Model
 		return $this->belongsTo(Company::class);
 	}
 
+	public function industry()
+	{
+		return $this->belongsTo(Industry::class);
+	}
+
 	public function getTitleAttribute($value)
 	{
 		return ucwords($value);
@@ -24,16 +30,12 @@ class Event extends Model
 
 	public static function searchEvents($request)
 	{
-		$query = Event::orderBy('created_at');
-		dd($request->industry_id);
 		if($request->search_field && $request->industry_id){
-			return Company::where('name', 'like', "%$request->search_field%")->orWhere('industry_id', "$request->industry_id");
-		} elseif($request->search_field) {
-			return Company::where('name', 'like', "%$request->search_field%")->get();
-		} elseif ($request->industry_id) {
-			return Company::where('industry_id', "$request->industry_id")->get();
+			return Event::where('company_id', $request->search_field)->orWhere('industry_id', $request->industry_id);
+		} elseif ($request->search_field){
+			return Event::where('company_id', $request->search_field);
 		} else {
-			return $query;
+			return Event::where('industry_id', $request->industry_id);
 		}
 	}
 
