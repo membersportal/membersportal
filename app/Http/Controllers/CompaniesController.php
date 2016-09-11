@@ -123,13 +123,17 @@ class CompaniesController extends Controller
 	{
 		$user = User::find($id)->id;
 		$connections = Company::findOrFail($user)->companies;
+		$company_events = [];
+		$company_rfps = [];
 		foreach ($connections as $connection) {
-			$company_events = [];
-			$company_rfps = [];
-			$rfp = Rfp::profileRfps($connection->id)->get();
-			$event = Event::usersEvents($connection->id)->get();
-			$company_rfps[] = $rfp;
-			$company_events[] = $event;
+			$rfps = Rfp::profileRfps($connection->id)->get();
+			$events = Event::usersEvents($connection->id)->get();
+			foreach($rfps as $rfp){
+				$company_rfps[] = $rfp;
+			}
+			foreach($events as $event){
+				$company_events[] = $event;
+			}
 		}
 		$data = compact('connections', 'company_events', 'company_rfps');
 		return view('companies.all_connections')->with($data);
