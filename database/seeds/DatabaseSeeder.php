@@ -13,9 +13,9 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         Model::unguard();
+        DB::table('events')->delete();
         DB::table('leaders')->delete();
         DB::table('rfps')->delete();
-        DB::table('events')->delete();
         DB::table('contacts')->delete();
         DB::table('connections')->delete();
         DB::table('companies')->delete();
@@ -30,9 +30,9 @@ class DatabaseSeeder extends Seeder
         $this->call(CompaniesTableSeeder::class);
         $this->call(ConnectionsTableSeeder::class);
         $this->call(ContactsTableSeeder::class);
-        $this->call(EventsTableSeeder::class);
         $this->call(RfpsTableSeeder::class);
         $this->call(LeadersTableSeeder::class);
+        $this->call(EventsTableSeeder::class);
 
         // $this->call(UserTableSeeder::class);
         Model::reguard();

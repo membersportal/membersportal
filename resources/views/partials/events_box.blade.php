@@ -8,7 +8,11 @@
 					<h4 class="panel-title">
 						<a data-toggle="collapse" data-parent="#accordion" href="#collapse{{$key+1}}" aria-expanded="false" aria-controls="collapse{{$key+1}}">{{ $event->title }}</a>
 					</h4>
-					<p class="event_date_home">{{ $event->from_date->format('F j') }} - {{ $event->to_date->format('F j') }}</p>
+					@if ($event->from_date != $event->to_date)
+						<p class="event_date_home">{{ $event->from_date->format('F j') }} - {{ $event->to_date->format('F j') }}</p>
+					@else
+						<p class="event_date_home">{{ $event->from_date->format('F j') }}</p>
+					@endif
 				</div>
 				<div id="collapse{{$key+1}}" class="panel-collapse collapse event_desc_home" role="tabpanel" aria-labelledby="heading{{$key+1}}">
 				{{ str_limit($event->desc, 100) }}

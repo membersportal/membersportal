@@ -15,13 +15,13 @@
 			@if ($company->profile_img)
 			<img class="company_profile img-thumbnail" src="{{ '/img/uploads/avatars/' . $company->profile_img }}" alt="{{ $company->name }}">
 			@else
-			<img class="company_profile img-thumbnail" src="/img/uploads/avatars/profile_photo_template.jpg" alt="{{ $company->name }}">
+			<img class="company_profile img-thumbnail" src="/img/uploads/avatars/profile_photo_template.png" alt="{{ $company->name }}">
 			@endif
-		</div>
-	</div>
+		</div></div>
 
 	<h1 class="text-center company_name_profile">{{ $company->name }}</h1>
 	<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 left">
+	@if (!Auth::user()->id == $company->id)
 		@if (!Auth::user()->is_admin && !in_array(Auth::user()->id, $connections_ids))
 		<div class="connect">
 			<form method="POST" action="{{ action('ConnectionsController@store', ['id' => $company->id]) }}">
@@ -38,8 +38,9 @@
 			</form>
 		</div> 
 		@endif
+	@endif
 
-		<div class="panel_white contact">
+		<div class="panel_white about">
 			<h3 class="text-center">Contact</h3>
 			<ul class="contact">
 				<li>{{ $contact->address_line_1 }}</li>
@@ -89,42 +90,34 @@
 
 		<div class="panel_white">
 			<h3 class="text-center">About</h3>
-			<p>{{ $company->desc }}</p>
+			<p>{!! nl2br(e($company->desc)) !!}</p>
 		</div>
 
-		<img class="img-responsive project_showcase" src="/img/frostbank.jpg">
+		<img class="img-responsive project_showcase" src="/img/codeup_class.jpg">
 		<div class="main_panel project_showcase">
 			<h3 class="text-center">Project Showcase</h3>
-			<h4 class="text-center project_showcase">New Building Proposed for Downtown San Antonio</h4>
-			<p>SAN ANTONIO — New renderings of the proposed Frost Bank headquarters show a vibrant, transformed area of downtown San Antonio as the city gears up to begin its review process of the design Wednesday.</p>
-			<p>Released over the weekend by the Historic and Design Review Commission, the renderings lay out where the 23-story glass skyscraper would lie amid a sea of concrete and stone buildings.</p>
+			<h4 class="text-center project_showcase">Codeup Learn to Code Workshop (HTML &amp; CSS)</h4>
+			<p>Back by popular demand, we decided to host another Learn to Code workshop in August! The Learn to Code workshop covers the basics of HTML and CSS.</p>
 			<div class="text-center">
-				<a class="red_link project" href="http://www.mysanantonio.com/business/article/City-releases-renderings-of-proposed-glass-8384186.php" alt="Read full article" target="_blank">See Full Project </a>
+				<a class="red_link project" href="http://www.meetup.com/Codeup/events/233267909/" alt="Read full project" target="_blank">See Full Project </a>
 			</div>
 		</div>
 
 		<div class="panel_white leaders">
 			<h3 class="text-center">Leadership</h3>
 				<div class="row">
-					<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 text-center">
 					@foreach ($leaders as $leader)
-						<a href="http://www.google.com" target="_blank">
-							@if ($leader->img)
+					<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 text-center">
+						<a href="{{ $leader->linkedin_url }}" target="_blank">
 							<div class="leader_headshot">
-								<img class="img-circle img-thumbnail leader_headshot center-block" src="{{ '/img/uploads/leaders/' . $leader->img }}">
+								<img class="img-circle img-thumbnail center-block" src="{{ '/img/uploads/leaders/' . $leader->img }}">
 							</div>
-							@else
-							<div class="leader_headshot">
-								<img class="img-circle img-thumbnail leader_headshot center-block" src="/img/uploads/avatars/profile_photo_template.png">
-							</div>
-							@endif
 						</a>
 						<h5 class="leader_name">{{ $leader->full_name }}</h5>
 						<p class="leader_title">{{ $leader->title }}</p>
 					</div>
 					@endforeach
 				</div>
-		</div>
 		</div>
 
 	</div>

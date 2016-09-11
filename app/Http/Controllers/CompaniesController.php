@@ -99,7 +99,7 @@ class CompaniesController extends Controller
 		$data['results'] = Company::searchMembers($request)->with('contact')->get();
 		foreach($data['results'] as &$result) {
 			$result->url = action('CompaniesController@show', $result->id);
-			$result->industry = $result->industry->industry;
+			$result->industry_title = $result->industry->industry;
 		}
 		$data['locations'] = Contact::searchLocations($data['results']);
 		foreach ($data['locations'] as &$location) {
