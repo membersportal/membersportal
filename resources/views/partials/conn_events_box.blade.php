@@ -1,4 +1,4 @@
-<div class="panel_white connections">
+<div class="panel_white">
 	<h3 class="text-center">Connections' Events</h3>
 	@foreach ($connections_events as $key => $event)
 		@if ($key < 3)

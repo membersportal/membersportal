@@ -1,7 +1,6 @@
 <div class="panel_white connections_events">
 	<h3 class="text-center">Connections' Events</h3>
-	@foreach ($company_events as $key => $company_event)
-		@foreach ($company_event as $event)
+	@foreach ($company_events as $key => $event)
 		<div id="accordion" role="tablist" aria-multiselectable="false">
 			<div class="panel panel-default">
 				<div class="panel-heading" role="tab" id="heading{{$key+1}}">
@@ -20,7 +19,6 @@
 				</div>
 			</div>
 		</div>
-		@endforeach
 	@endforeach
 	<div class="panel_green">
 		<a class="green_bg" href="{{ action('EventsController@index') }}" alt="View All Events">See All</a>
