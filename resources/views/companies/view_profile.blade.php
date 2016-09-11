@@ -21,7 +21,7 @@
 
 	<h1 class="text-center company_name_profile">{{ $company->name }}</h1>
 	<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 left">
-	@if (!Auth::user()->id == $company->id)
+	@if (Auth::user()->id != $company->id)
 		@if (!Auth::user()->is_admin && !in_array(Auth::user()->id, $connections_ids))
 		<div class="connect">
 			<form method="POST" action="{{ action('ConnectionsController@store', ['id' => $company->id]) }}">
