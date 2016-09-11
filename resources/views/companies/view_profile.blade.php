@@ -17,8 +17,7 @@
 			@else
 			<img class="company_profile img-thumbnail" src="/img/uploads/avatars/profile_photo_template.jpg" alt="{{ $company->name }}">
 			@endif
-		</div>
-	</div>
+		</div></div>
 
 	<h1 class="text-center company_name_profile">{{ $company->name }}</h1>
 	<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 left">
@@ -106,25 +105,18 @@
 		<div class="panel_white leaders">
 			<h3 class="text-center">Leadership</h3>
 				<div class="row">
-					<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 text-center">
 					@foreach ($leaders as $leader)
-						<a href="http://www.google.com" target="_blank">
-							@if ($leader->img)
+					<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 text-center">
+						<a href="{{ $leader->linkedin_url }}" target="_blank">
 							<div class="leader_headshot">
-								<img class="img-circle img-thumbnail leader_headshot center-block" src="{{ '/img/uploads/leaders/' . $leader->img }}">
+								<img class="img-circle img-thumbnail center-block" src="{{ '/img/uploads/leaders/' . $leader->img }}">
 							</div>
-							@else
-							<div class="leader_headshot">
-								<img class="img-circle img-thumbnail leader_headshot center-block" src="/img/uploads/avatars/profile_photo_template.png">
-							</div>
-							@endif
 						</a>
 						<h5 class="leader_name">{{ $leader->full_name }}</h5>
 						<p class="leader_title">{{ $leader->title }}</p>
 					</div>
 					@endforeach
 				</div>
-		</div>
 		</div>
 
 	</div>

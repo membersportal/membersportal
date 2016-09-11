@@ -84,7 +84,7 @@ div.main_panel {
 	padding: 20px 40px 35px 40px;
 }
 
-div.about, div.leaders, div.events, div.twitter, div.rfps, div.connections, div.social_media, div.social {
+div.about, div.leaders, div.twitter, div.rfps, div.connections, div.social_media, div.social {
 	margin-top: 16px;
 }
 
@@ -100,7 +100,7 @@ div.manage_users {
 	padding-bottom: 190px;
 }
 
-div.panel_white.articles, div.panel_white.carousels, div.panel_white.events, div.panel_white.rfps, div.users, div.manage_users {
+div.panel_white.articles, div.panel_white.carousels, div.panel_white.rfps, div.users, div.manage_users {
 	margin-top: 8px;
 }
 
@@ -169,6 +169,7 @@ div.project_showcase, div.edit_nav, div.connections_events {
 
 div.social_media {
 	padding-bottom: 30px;
+	margin-bottom: 16px;
 }
 
 div.social_media_edit {
@@ -535,7 +536,7 @@ span.article_date {
 p.leader_title {
 	font-family: 'Roboto Slab', serif;
 	margin-bottom: 0;
-	letter-spacing: 1px;
+	letter-spacing: .5px;
 	font-size: .95em;
 }
 
@@ -897,21 +898,10 @@ img.connections_grid {
 }
 
 div.leader_headshot {
-	position: relative;
 	width: 100px;
 	height: 100px;
 	overflow: hidden;
-}
-
-img.leader_headshot {
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	height: auto;
-	width: 100px;
-	-webkit-transform: translate(-50%,-50%);
-			-ms-transform: translate(-50%,-50%);
-					transform: translate(-50%,-50%);
+	margin: auto;
 }
 
 .glyphicon.glyphicon-ok {

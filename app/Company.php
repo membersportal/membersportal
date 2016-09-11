@@ -37,7 +37,7 @@ class Company extends Model
 
 	public function leaders()
 	{
-		return $this->hasMany(Leader::class, 'id');
+		return $this->hasMany(Leader::class, 'company_id');
 	}
 
 	public function rfps()
