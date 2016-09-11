@@ -28,11 +28,15 @@
 		@foreach($events as $event)
 			<div class="row">
 				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
-					<img class="img-responsive events_grid" src="http://fillmurray.com/100/100" alt="">
+					<img class="img-responsive events_grid" src="{{ '/img/uploads/events/' . $event->img }}" alt="{{ $event->title }}">
 				</div>
 				<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 col-xl-9">
 					<h4 class="event_heading"><a href="{{ action('EventsController@show', $id = $event->id) }}">{{ $event->title }}</a></h4>
-					<p class="event_date_home">{{ $event->from_date->format('F j') }} - {{ $event->to_date->format('F j') }}</p>
+					@if ($event->from_date != $event->to_date)
+						<p class="event_date_home">{{ $event->from_date->format('F j') }} - {{ $event->to_date->format('F j') }}</p>
+					@else
+						<p class="event_date_home">{{ $event->from_date->format('F j') }}</p>
+					@endif
 					@if ($event->invite_only)
 						<p class="event_boolean"><span class="glyphicon glyphicon-ok"></span>Invite Only</p>
 					@endif

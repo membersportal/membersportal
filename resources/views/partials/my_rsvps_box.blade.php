@@ -4,11 +4,11 @@
 		<div class="panel panel-default">
 			<div class="panel-heading" role="tab" id="heading">
 				<h4 class="panel-title">
-					<a data-toggle="collapse" data-parent="#accordion" href="#collapse" aria-expanded="false" aria-controls="collapse">Event Title</a>
+					<a data-toggle="collapse" data-parent="#accordion" href="#collapse" aria-expanded="false" aria-controls="collapse">The American Society for Nondestructive Testing</a>
 				</h4>
-				<p class="event_date_home">Dates</p>
+				<p class="event_date_home">October 23 - October 27</p>
 			</div>
-			<div id="collapse" class="panel-collapse collapse event_desc_home" role="tabpanel" aria-labelledby="heading">Description of event blah blah blah...
+			<div id="collapse" class="panel-collapse collapse event_desc_home" role="tabpanel" aria-labelledby="heading">Trade show in Long Beach, California
 				<a class="red_link" href="#" target="_blank"> see event</a>
 			</div>
 		</div>
@@ -17,11 +17,11 @@
 		<div class="panel panel-default">
 			<div class="panel-heading" role="tab" id="heading">
 				<h4 class="panel-title">
-					<a data-toggle="collapse" data-parent="#accordion" href="#collapse" aria-expanded="false" aria-controls="collapse">Event Title</a>
+					<a data-toggle="collapse" data-parent="#accordion" href="#collapse" aria-expanded="false" aria-controls="collapse">V.A.C. Veraflow Training</a>
 				</h4>
-				<p class="event_date_home">Dates</p>
+				<p class="event_date_home">November 6 - November 11</p>
 			</div>
-			<div id="collapse" class="panel-collapse collapse event_desc_home" role="tabpanel" aria-labelledby="heading">Description of event blah blah blah...
+			<div id="collapse" class="panel-collapse collapse event_desc_home" role="tabpanel" aria-labelledby="heading">Training for our new V.A.C. Veraflow machine will be held on 11-06-2016 in the R&amp;D lab.
 				<a class="red_link" href="#" target="_blank"> see event</a>
 			</div>
 		</div>
@@ -30,11 +30,11 @@
 		<div class="panel panel-default">
 			<div class="panel-heading" role="tab" id="heading">
 				<h4 class="panel-title">
-					<a data-toggle="collapse" data-parent="#accordion" href="#collapse" aria-expanded="false" aria-controls="collapse">Event Title</a>
+					<a data-toggle="collapse" data-parent="#accordion" href="#collapse" aria-expanded="false" aria-controls="collapse">Open House</a>
 				</h4>
-				<p class="event_date_home">Dates</p>
+				<p class="event_date_home">November 11</p>
 			</div>
-			<div id="collapse" class="panel-collapse collapse event_desc_home" role="tabpanel" aria-labelledby="heading">Description of event blah blah blah...
+			<div id="collapse" class="panel-collapse collapse event_desc_home" role="tabpanel" aria-labelledby="heading">We want to get to know you! Meet (and greet) our instructors as they lead you on a free tour of our classrooms. Refreshments will be served afterwards. Open to the public.
 				<a class="red_link" href="#" target="_blank"> see event</a>
 			</div>
 		</div>
