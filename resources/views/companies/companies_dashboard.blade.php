@@ -17,7 +17,7 @@
 			<div class="row">
 				<div class="connection_feed">
 					<p class="dashboard_category">Connection</p>
-					<h1>{{ $content->company1_id->name }} connected with {{ $content->company2_id->name }}</h1>
+					<h1>{{ $content->company1_id->name }} rected with {{ $content->company2_id->name }}</h1>
 				</div>
 			</div>
 			@elseif($content->project_title)
