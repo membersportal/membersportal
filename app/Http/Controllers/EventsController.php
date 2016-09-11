@@ -50,12 +50,14 @@ class EventsController extends Controller
 
 	public function searchEvents(Request $request)
 	{
-		if(!$request){
+		if($request->search_field == '' && !$request->industry_id){
 			return redirect()->action('EventsController@index');
 		}
-		$searched_info = Event::searchEvents($request->search_field);
-		$search_results = Event::usersEvents($searched_info->id)->get();
-
+		if($request->search_field == true){
+			$searched_company = Company::searchCompanyName($request)->first();
+			$request->search_field = $searched_company->id;
+		}
+		$search_results = Event::searchEvents($request)->get();
 		$user = Auth::user()->id;
 		$connections = Company::find($user)->companies;
 		$connections_events = Event::dashboardEvents($connections)->get();
