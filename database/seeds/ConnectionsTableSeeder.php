@@ -13,7 +13,7 @@ class ConnectionsTableSeeder extends Seeder
    	{
    	  $connections = [
    		['company1_id' => '2', 'company2_id' => '3'],
-   		['company1_id' => '2', 'company2_id' => '5'],
+   		['company1_id' => '2', 'company2_id' => '6'],
       ['company1_id' => '4', 'company2_id' => '2'],
    		['company1_id' => '5', 'company2_id' => '3'],
       ['company1_id' => '5', 'company2_id' => '4']

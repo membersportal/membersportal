@@ -16,7 +16,7 @@ class UsersTableSeeder extends Seeder
         ['first_name' => 'Randi', 'last_name' =>	'Mays', 'username' =>	'randimays', 'email' =>	'randimays@codeup.com', 'password' => 'password', 'is_admin' => False],
         ['first_name' => 'Jay', 'last_name' =>	'Nichols', 'username' =>	'jaynichols', 'email' =>	'jaynichols@galapa-go.com', 'password' => 'password', 'is_admin' => False],
         ['first_name' => 'Anthony', 'last_name' =>	'Martinez', 'username' =>	'anthonym', 'email' =>	'anthonym@college-go.com', 'password' => 'password', 'is_admin' => False],
-        ['first_name' => 'Jason', 'last_name' =>	'Alexander', 'username' =>	'jalexander4', 'email' =>	'jason@fitwager.com', 'password' => 'password', 'is_admin' => False],
+        ['first_name' => 'Jason', 'last_name' =>	'Alexander', 'username' =>	'jalexander4', 'email' =>	'jason@athlead.com', 'password' => 'password', 'is_admin' => False],
         ['first_name' => 'Terry', 'last_name' =>	'Powell', 'username' =>	'tpowell5', 'email' =>	'tpowell5@publishing.com', 'password' => 'password', 'is_admin' => False]
       ];
 
