@@ -16,7 +16,7 @@
 			@if($content->company1_id)
 			<div class="row">
 				<div class="connection_feed">
-					<p class="dashboard_category">Connection</p>
+					<p class="dashboard_category">Connection&nbsp;&nbsp;&nbsp;<span class="form_label_small">{{ $content->created_at->format('m\.j\.y H:ma') }}</span></p>
 					<div class="row">
 						<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3 col-xs-offset-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2 col-xl-offset-2">
 							<div class="text-center">
@@ -43,18 +43,18 @@
 			@elseif($content->project_title)
 			<div class="row">
 				<div class="rfp_feed">
-					<p class="dashboard_category">RFP</p>
+					<p class="dashboard_category">RFP&nbsp;&nbsp;&nbsp;<span class="form_label_small">{{ $content->created_at->format('m\.j\.y H:ma') }}</span></p>
 					<a href="{{ action('RFPController@show', ['id' => $content->id]) }}" alt="{{ $content->project_title }}">
 						<h4 class="text-center">{{ $content->project_title }}</h4>
 					</a>
-					<p class="rfp_dates">Deadline: <span class="rfp_date">{{ $content->deadline }}</span></p>&nbsp;&nbsp; || &nbsp;&nbsp;
-					<p class="rfp_dates">Project Dates: <span class="rfp_date">{{ $content->contract_from_date }} - {{ $content->contract_to_date }}</span></p>
+					<p class="rfp_dates text-center">Deadline: <span class="rfp_date">{{ $content->deadline->format('F j, Y') }}</span></p>
+					<p class="rfp_dates text-center">Project Dates: <span class="rfp_date">{{ $content->contract_from_date->format('F j, Y') }} - {{ $content->contract_to_date->format('F j, Y') }}</span></p>
 				</div>
 			</div>
 			@elseif($content->title)
 			<div class="row">
 				<div class="event_feed">
-					<p class="dashboard_category">Event</p>
+					<p class="dashboard_category">Event&nbsp;&nbsp;&nbsp;<span class="form_label_small">{{ $content->created_at->format('m\.j\.y H:ma')}}</span></p>
 					<div class="row">
 						<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
 							<img class="img-responsive events_dash" src="{{ '/img/uploads/events/' . $content->img }}" alt="{{ $content->title }}">
