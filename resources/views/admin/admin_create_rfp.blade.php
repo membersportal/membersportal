@@ -11,7 +11,7 @@
 		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
 			<div class="panel_form">
 				<form method="POST" action="{{ action('AdminController@storeRfp') }}" enctype="multipart/form-data">
-					{!!csrf_field()!!}
+					{!! csrf_field() !!}
 					@include ('partials.create_rfp_form')
 					<button class="btn btn-primary pull-right" type="submit">Create</button>
 				</form>

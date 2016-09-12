@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-	<h1 class="text-center space">Edit Event</h1>
+	<h1>{{ $event->title }}</h1>
 	<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 left">
 		<div class="panel_white">
 			@include('partials.my_rsvps_box')
@@ -22,6 +22,7 @@
 				{{ method_field('DELETE') }}
 				<button class="btn btn-danger pull-right" type="submit" name="button">Delete</button>
 			</form>
+			<a class="cancel_button" href="{{ action('EventsController@index') }}" alt="cancel">Cancel</a>
 		</div>
 	</div>
 

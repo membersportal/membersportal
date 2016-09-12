@@ -15,7 +15,7 @@
 			</div>
 			<div id="collapse{{$key+1}}" class="panel-collapse collapse event_desc_home" role="tabpanel" aria-labelledby="heading{{$key+1}}">
 			{{ str_limit($event->desc, 100) }}
-				<a href="#">see event</a>
+				<a class="red_link" href="{{ action('EventsController@show', ['id' => $event->id]) }}">see event ></a>
 			</div>
 		</div>
 	</div>
