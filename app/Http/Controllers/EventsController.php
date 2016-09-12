@@ -29,8 +29,8 @@ class EventsController extends Controller
 		$events = Event::all()->sortBy('from_date');
 		$user = Auth::user()->id;
 		$connections = Company::find($user)->companies;
-		$connections_events = Event::dashboardEvents($connections)->get();
-		$users_events = Event::usersEvents($user)->get();
+		$connections_events = Event::dashboardEvents($connections)->get()->sortBy('from_date');
+		$users_events = Event::usersEvents($user)->get()->sortBy('from_date');
 		$industries = Industry::all();
 		$data = compact('events', 'users_events', 'connections_events', 'industries', 'week_events', 'month_events', 'year_events');
 		return view('events.all_events')->with($data);

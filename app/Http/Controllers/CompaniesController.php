@@ -113,8 +113,8 @@ class CompaniesController extends Controller
 		$company = Company::find($id);
 		$connections = $company->companies;
 		$feed_content = $this->buildFeed($connections);
-		$users_rfps = $company->rfps;
-		$users_events = $company->events;
+		$users_rfps = $company->rfps->sortBy('deadline');
+		$users_events = $company->events->sortBy('from_date');
 		$data = compact('feed_content', 'users_rfps', 'users_events', 'company');
 		return view('companies.companies_dashboard')->with($data);
 	}
@@ -144,7 +144,7 @@ class CompaniesController extends Controller
 		$company = Company::findOrFail($id);
 		$contact = $company->contact;
 		$rfps = Rfp::profileRfps($company->id)->get();
-		$events = $company->events;
+		$events = $company->events->sortBy('from_date');
 		$leaders = $company->leaders;
 		$company_url = Contact::getViewProfileWebsite($contact->website);
 		$connections_ids = Connection::getArrayOfConnectionsIds($id);
