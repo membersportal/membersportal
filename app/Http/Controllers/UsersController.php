@@ -35,8 +35,8 @@ class UsersController extends Controller
 		$admin_user = User::find(1);
 		$user = User::find(Auth::user()->id);
 		$user_img = $user->company->profile_img;
-		$admin_events = $admin_user->company->events;
-		$admin_rfps = Rfp::homeRfps();
+		$admin_events = $admin_user->company->events->sortBy('from_date');
+		$admin_rfps = Rfp::homeRfps()->sortBy('deadline');
 		$contact = $admin_user->contact;
 		$carousels = Carousel::pullCarousels();
 		$articles = Article::homeArticles();
