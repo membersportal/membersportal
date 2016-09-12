@@ -13,7 +13,7 @@
 			</a>
 			<p class="company_name text-center">{{ $newest_member->name }}</p>
 			<p class="industry_name_home text-center"><span class="industry_name_home">Industry:</span> {{ $newest_member->industry->industry }}</p>
-			<p class="text-center company_desc_home">{{ $newest_member->desc }}</p>
+			<p class="text-center company_desc_home">{{ str_limit($newest_member->desc, 135) }}</p>
 			<div class="panel_green">
 				<a class="green_bg" href="{{ action('CompaniesController@searchMembers') }}" alt="Find New Connections">Search Members</a>
 			</div>

@@ -12,7 +12,7 @@
 					<p class="footer_text">{{ $admin->contact->address_line_3 }}</p>
 				@endif
 				<p class="footer_text">{{ $admin->contact->city . ' ' . $admin->contact->state . ' ' . $admin->contact->zip }}</p>
-				<p class="footer_text">{{ $admin->contact->phone_no }}</p>
+				<p class="footer_text">{{ '(' . substr($admin->contact->phone_no, 0, 3) . ') ' . substr($admin->contact->phone_no, 3, 3) . '-' . substr($admin->contact->phone_no, 6, 4) }}</p>
 				<a href="{{ $admin->contact->website }}" alt="Members Portal"><p class="footer_text">{{ $admin->contact->website }}</p></a>
 			</div>
 			<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
