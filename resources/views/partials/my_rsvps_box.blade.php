@@ -8,7 +8,7 @@
 			<p class="event_date_home">October 23 - October 27</p>
 		</div>
 		<div id="collapse" class="panel-collapse collapse event_desc_home" role="tabpanel" aria-labelledby="heading">Trade show in Long Beach, California
-			<a class="red_link" href="#" target="_blank"> see event</a>
+			<a class="red_link" href="{{ action('EventsController@show', ['id' => 2])}}" target="_blank"> see event</a>
 		</div>
 	</div>
 </div>
@@ -21,7 +21,7 @@
 			<p class="event_date_home">November 6 - November 11</p>
 		</div>
 		<div id="collapse" class="panel-collapse collapse event_desc_home" role="tabpanel" aria-labelledby="heading">Training for our new V.A.C. Veraflow machine will be held on 11-06-2016 in the R&amp;D lab.
-			<a class="red_link" href="#" target="_blank"> see event</a>
+			<a class="red_link" href="{{ action('EventsController@show', ['id' => 3])}}" target="_blank"> see event</a>
 		</div>
 	</div>
 </div>
@@ -34,7 +34,7 @@
 			<p class="event_date_home">November 11</p>
 		</div>
 		<div id="collapse" class="panel-collapse collapse event_desc_home" role="tabpanel" aria-labelledby="heading">We want to get to know you! Meet (and greet) our instructors as they lead you on a free tour of our classrooms. Refreshments will be served afterwards. Open to the public.
-			<a class="red_link" href="#" target="_blank"> see event</a>
+			<a class="red_link" href="{{ action('EventsController@show', ['id' => 4])}}" target="_blank"> see event</a>
 		</div>
 	</div>
 </div>
