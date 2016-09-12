@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-	<h1 class="text-center space">{{ $event->title }}</h1>
+	<h1>{{ $event->title }}</h1>
 	<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 left">
 		<div class="panel_white">
 			@include('partials.my_rsvps_box')
@@ -10,7 +10,7 @@
 	</div>
 
 	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 center">
-		<div class="panel_white">
+		<div class="panel_white {{ (Auth::user()->id == $event->company_id && !Auth::user()->is_admin) ? 'event_search' : '' }}">
 			<img class="img-responsive events" src="{{ '/img/uploads/events/' . $event->img }}" alt="{{ $event->name }}">
 			@if ($event->from_date != $event->to_date)
 				<h3 class="text-center event_owner">{{ $event->from_date->format('F j') }} - {{ $event->to_date->format('F j, Y') }}</h3>
@@ -38,6 +38,7 @@
 				</form>
 			@endif
 		</div>
+	</div>
 	</div>
 	
 	<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 right">

@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-	<h1 class="text-center">Edit Leaders</h1>
+	<h1>Edit Leaders</h1>
 	<p class="text-center"><span class="required">*</span> Required Field</p>
 	<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-sm-offset-1 col-md-offset-1 col-lg-offset-1 col-xl-offset-1 edit_nav">
 		@include('partials.edit_account_nav', ['login' => '', 'company' => '', 'contact' => '', 'leaders' => 'active'])

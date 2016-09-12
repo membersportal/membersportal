@@ -315,6 +315,10 @@ body {
 	font-size: .85em;
 }
 
+.event_desc {
+	margin-bottom: 20px;
+}
+
 .event_date_home, .rfp_date {
 	color: #8dcdc1;
 	font-size: 1.05em;

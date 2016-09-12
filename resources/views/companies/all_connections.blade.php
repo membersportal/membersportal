@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container">
-	<h1 class="text-center">My Connections</h1>
+	<h1>My Connections</h1>
 
 		<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 left">
 			<div class="panel_white">

@@ -11,7 +11,7 @@
 		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
 			<div class="panel_form">
 				<form method="POST" action="{{ action('AdminController@updateEvent', ['id' => $event->id]) }}" enctype="multipart/form-data">
-					{!!csrf_field()!!}
+					{!! csrf_field() !!}
 					{{ method_field('PUT') }}
 					@include('partials.edit_event_form')
 					<button class="btn btn-primary pull-right" type="submit">Save</button>
