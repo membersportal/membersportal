@@ -25,7 +25,6 @@
 				<button class="btn btn-primary pull-right" type="Submit">Search</button>
 			</form>
 		</div>
-
 		@if (count($week_rfps) != 0)
 			<div class="panel_white all_rfps">
 				<h3 class="text-center">Due This Week</h3>
@@ -40,7 +39,7 @@
 		@endif
 		@if (count($year_rfps) != 0)
 			<div class="panel_white all_rfps">
-			<h3 class="text-center">Due This Year</h3>
+			<h3 class="text-center">Due In The Next Year</h3>
 				@include('partials.rfps_by_date', ['rfps' => $year_rfps])
 			</div>
 		@endif

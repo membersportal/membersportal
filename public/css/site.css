@@ -302,12 +302,11 @@ body {
 	font-family: 'Source Sans Pro', sans-serif;
 }
 
-.event_desc_home, .rfp_contact_detail {
+.event_desc_home {
 	margin-top: 10px;
 	line-height: 1.25em;
 }
 
-.event_desc {
 	line-height: 1.5em;
 	font-size: .9em;
 }
@@ -316,9 +315,8 @@ body {
 	font-size: .85em;
 }
 
-.event_date_home, .rfp_date, .rfp_contact_detail {
+.event_date_home, .rfp_date {
 	color: #8dcdc1;
-	font-weight: bolder;
 	font-size: 1.05em;
 }
 
@@ -361,9 +359,9 @@ h1.company_name_profile {
 	font-size: 2em;
 }
 
-h4.article_heading, h4.carousel_heading, h4.event_heading, h4.rfp_heading, h4.event_heading_dash {
+h4.article_heading, h4.carousel_heading, h4.event_heading, h4.`, h4.event_heading_dash {
 	color: #7c786a;
-	margin-bottom: 3px;
+	margin-bottom: 5px;
 	line-height: 1.25em;
 }
 
@@ -398,17 +396,14 @@ h1, h2, h3, h4, h5 {
 }
 
 h1 {
-	font-size: 1.7em;
+	text-align: center;
+	font-size: 1.75em;
 	font-weight: 700;
 	margin-top: 25px;
 	margin-bottom: 45px;
 }
 
-h1.articles {
-	margin-bottom: 20px;
-}
-
-h1.text-center.req {
+h1.req {
 	margin-bottom: 5px;
 }
 
@@ -470,13 +465,12 @@ p.delete_user_warning {
 	font-weight: 700;
 }
 
-p.rfp_dates {
-	display: inline-block;
-	margin-right: 5px;
-}
-
 p.blue {
 	color: #66a498;
+}
+
+span.deadline {
+	color: #eb6e44;
 }
 
 p.event_boolean {
@@ -751,8 +745,12 @@ a.beige_bg:active  {
 	margin-left: 10px;
 }
 
-a.red_link {
+a.red_link, a.red_link:hover, a.red_link:visited, a.red_link:active {
 	color: #eb6e44;
+}
+
+a.blue_link, a.blue_link:hover, a.blue_link:visited, a.blue_link:active {
+	color: #66a498;
 }
 
 a.red_link.small_caps {

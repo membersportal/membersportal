@@ -74,7 +74,7 @@
 					</a>
 				</div>
 				<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
-					<h4 class="article_heading">{{ $article->heading }}<span class="article_date">&nbsp;&nbsp;//&nbsp;&nbsp;{{ $article->date }}</span></h4>
+					<h4 class="article_heading">{{ $article->heading }}<span class="article_date">&nbsp;&nbsp;//&nbsp;&nbsp;{{ $article->date->format('M j Y \a\t H:ma') }}</span></h4>
 					@if ($article->subheading)
 					<h5>{{ $article->subheading }}</h5>
 					@endif

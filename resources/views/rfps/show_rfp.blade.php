@@ -11,14 +11,16 @@
 	</div>
 
 	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 center">
-		<div class="panel_white rfp_search">
+		<div class="panel_white">
 			<h3 class="text-center">Project Details</h3>
 			<div class="row">
-				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+				<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 col-xl-5">
 					<ul class="rfps_all">
-						<li><span class="strong">Company:</span>&nbsp; <a class="red_link" href="{{ action('CompaniesController@show', $id = $rfp_owner->id) }}">{{ $rfp_owner->name }}</a></li>
-						<li><span class="strong">Deadline For Submission:</span>&nbsp; {{ $rfp->deadline }}</li>
-						<li><span class="strong">Project Dates:</span>&nbsp; {{ $rfp->contract_from_date }} - {{ $rfp->contract_to_date }}</li>
+						<li><span class="strong">Company:</span>&nbsp; <a class="blue_link" href="{{ action('CompaniesController@show', $id = $rfp_owner->id) }}">{{ $rfp_owner->name }}</a></li>
+						<li><span class="strong deadline">DEADLINE:</span>
+						{{ $rfp->deadline->format('F j, Y') }}</li>
+						<li><span class="strong">Contract:</span> 
+						{{ $rfp->contract_from_date->format('F j, Y') }} - {{ $rfp->contract_to_date->format('F j, Y') }}</li>
 					</ul>
 				</div>
 				<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1 col-xl-offset-1">
