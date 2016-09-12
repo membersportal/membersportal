@@ -47,7 +47,7 @@
 							@endif
 							<li><a href="{{ action('Auth\AuthController@getLogout') }}">Log Out</a></li>
 						</ul>
-					<li><img src="http://placekitten.com/35/35" class="user_avatar img-circle"></li>
+					<li><img src="{{ '/img/uploads/avatars/' . Auth::user()->company->profile_img }}" class="user_avatar img-circle"></li>
 					</li>
 				</ul>
 			</div><!-- /.navbar-collapse -->

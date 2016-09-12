@@ -2,12 +2,11 @@
 
 @section('content')
 <div class="container">
-	<a href="#top"></a>
 	<h1 class="text-center">Dashboard</h1>
-	<h3 class="text-center company_name_profile">{{ $company->name }}</h3>
-
 	<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 left">
-		@include('partials.my_rfps_box', ['users_rfps' => $users_rfps])
+		<div class="panel_white">
+			@include('partials.my_rfps_box', ['users_rfps' => $users_rfps])
+		</div>
 	</div>
 
 	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 center">
@@ -78,12 +77,12 @@
 			@endif
 		@endforeach
 		</div>
-		<a class="go-top" href="#top">Back To Top</a>
-</div>
-
+	</div>
 
 	<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 right">
-		@include('partials.my_events_box', ['users_events' => $users_events])
+		<div class="panel_white">
+			@include('partials.my_events_box', ['users_events' => $users_events])
+		</div>
 	</div>
 
 </div>
