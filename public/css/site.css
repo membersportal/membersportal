@@ -61,6 +61,10 @@ div.login {
 	position: relative;
 }
 
+div.leaders {
+	margin-bottom: 20px;
+}
+
 div.events_grid_image {
 	height: 100px;
 	width: 100px;
@@ -72,6 +76,7 @@ div.panel_white, div.main_panel {
 	background-color: #fff;
 	border: 1px solid #d3e397;
 	min-height: 100%;
+	margin-bottom: 15px;
 }
 
 div.panel_white {
@@ -79,7 +84,7 @@ div.panel_white {
 }
 
 div.panel_white.leaders {
-	padding: 30px 30px;
+	padding-bottom: 30px;
 }
 
 div.leader_buttons {
@@ -90,12 +95,20 @@ div.main_panel {
 	padding: 20px 40px 35px 40px;
 }
 
-div.about, div.leaders, div.twitter, div.rfps, div.connections, div.social_media, div.social {
-	margin-top: 16px;
+.bottom8 {
+	margin-bottom: 8px;
 }
 
-div.all_rfps {
-	margin-top: 16px;
+.bottom15 {
+	margin-bottom: 15px;
+}
+
+.top8 {
+	margin-top: 8px;
+}
+
+div.all_leaders {
+	padding: 30px 30px;
 }
 
 div.users {
@@ -104,10 +117,6 @@ div.users {
 
 div.manage_users {
 	padding-bottom: 190px;
-}
-
-div.panel_white.articles, div.panel_white.carousels, div.panel_white.rfps, div.users, div.manage_users {
-	margin-top: 8px;
 }
 
 div.panel_white.social {
@@ -120,12 +129,11 @@ div.panel_red, div.about_panel_red, div.panel_beige {
 	background-color: #c65c39;
 	padding: 10px 25px;
 	border: 1px solid #514e43;
-	margin-bottom: 15px;
-	margin-top: 16px;
 }
 
 div.panel_red {
 	text-align: center;
+	margin-bottom: 15px;
 }
 
 div.panel_form {
@@ -164,18 +172,8 @@ div#map {
 	border: 1px solid #d3e397;
 }
 
-div.connections_grid {
-	margin: 8px 0;
-	text-align: center;
-}
-
-div.project_showcase, div.edit_nav, div.connections_events {
-	margin-top: 8px;
-}
-
 div.social_media {
 	padding-bottom: 30px;
-	margin-bottom: 16px;
 }
 
 div.social_media_edit {
@@ -186,17 +184,16 @@ div.checkboxes {
 	margin: 10px 0;
 }
 
-div.all_events {
+/*div.all_events {
 	background-color: #fff;
 	border: 1px solid #d3e397;
 	padding: 30px;
-	margin-top: 20px;
-}
+}*/
 
 div.connection_feed, div.event_feed, div.rfp_feed {
 	width: 100%;
 	padding: 10px 20px;
-	margin: 5px 0;
+	margin: 3px 0;
 }
 
 div.connection_feed {
@@ -362,11 +359,6 @@ h3.text-center.sm_bottom_margin {
 h1.company_name_profile {
 	color: #c65c39;
 	font-size: 2em;
-}
-
-h3.company_name_profile {
-	color: #c65c39;
-	margin-top: 0;
 }
 
 h4.article_heading, h4.carousel_heading, h4.event_heading, h4.rfp_heading, h4.event_heading_dash {
@@ -854,13 +846,14 @@ img.articles, img.articles_full, img.articles_grid, img.carousels_grid, img.even
 	border: 1px solid #7c786a;
 }
 
-img.articles_grid, img.carousels_grid, img.events_grid {
+img.articles_grid, img.carousels_grid, img.events_grid, img.events {
 	margin: 15px auto 0 auto;
 }
 
-img.events_dash {
+img.events_dash, img.all_leaders {
 	max-height: 75px;
 	max-width: 75px;
+	vertical-align: middle;
 }
 
 img.articles {
@@ -1033,12 +1026,12 @@ textarea {
 	resize: none;
 }
 
-form#search_form, .event_search, .rfp_search {
+form#search_form, div.panel_white.event_search, .rfp_search {
 	background-color: #fff;
 	border: 1px solid #d3e397;
 }
 
-.event_search, .rfp_search {
+div.panel_white.event_search, .panel_white.rfp_search, .panel_white.button_space {
 	padding: 10px 30px 60px 30px;
 }
 

@@ -40,7 +40,7 @@
 		@endif
 	@endif
 
-		<div class="panel_white about">
+		<div class="panel_white">
 			<h3 class="text-center">Contact</h3>
 			<ul class="contact">
 				<li>{{ $contact->address_line_1 }}</li>
@@ -51,12 +51,14 @@
 			<p><a class="red_link" href="{{ $contact->website }}" target="_blank" alt="{{ $company->name }}">{{ $company_url }}</a></p>
 		</div>
 
-		@include('partials.rfps_box', ['rfps' => $rfps])
+		<div class="panel_white">
+			@include('partials.rfps_box', ['rfps' => $rfps])
+		</div>
 
 	</div>
 
 	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 center">
-		<div class="about_panel_red">
+		<div class="about_panel_red bottom15">
 			<div class="row">
 				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
 					<ul class="company_stats">
@@ -103,7 +105,7 @@
 			</div>
 		</div>
 
-		<div class="panel_white leaders">
+		<div class="panel_white">
 			<h3 class="text-center">Leadership</h3>
 				<div class="row">
 					@foreach ($leaders as $leader)
@@ -139,24 +141,26 @@
 			@endif
 		</div>
 
-		@include ('partials.events_box', ['events' => $events])
+		<div class="panel_white">
+			@include ('partials.events_box', ['events' => $events])
+		</div>
 
-			<div class="panel_white twitter">
+			<div class="panel_white">
 				<a class="twitter-timeline" href="https://twitter.com/search?q=from%3A{{ $contact->twitter }}" data-widget-id="771057747718582272" data-screen-name="{{ $contact->twitter }}">Tweets about </a>
 					<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 					<a href="https://twitter.com/{{ $contact->twitter }}" class=" twitter-follow-button" data-show-count="false">Follow @{{ $contact-> }}</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 			</div>
 
-			<div class="panel_white connections">
-					<h3 class="text-center">Connections</h3>
-					@foreach($connections as $connection)
-						@foreach ($connection as $company)
-						<a href="{{ action('CompaniesController@show', $company->id) }}"><img class="img-thumbnail connection_thumb" src="{{ '/img/uploads/avatars/' . $company->profile_img }}" alt="{{ $company->name }}"></a>
-						@endforeach
+			<div class="panel_white">
+				<h3 class="text-center">Connections</h3>
+				@foreach($connections as $connection)
+					@foreach ($connection as $company)
+					<a href="{{ action('CompaniesController@show', $company->id) }}"><img class="img-thumbnail connection_thumb" src="{{ '/img/uploads/avatars/' . $company->profile_img }}" alt="{{ $company->name }}"></a>
 					@endforeach
-					<div class="panel_green">
-						<a class="green_bg" href="{{ action('CompaniesController@viewConnections', ['id' => $company->id]) }}" alt="View All Connections">All Connections</a>
-					</div>
+				@endforeach
+				<div class="panel_green">
+					<a class="green_bg" href="{{ action('CompaniesController@viewConnections', ['id' => $company->id]) }}" alt="View All Connections">All Connections</a>
+				</div>
 			</div>
 		</div>
 

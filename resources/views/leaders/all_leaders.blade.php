@@ -8,7 +8,7 @@
 		@include('partials.edit_account_nav', ['login' => '', 'company' => '', 'contact' => '', 'leaders' => 'active'])
 	</div>
 	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-		<div class="panel_white users">
+		<div class="panel_white all_leaders">
 			@if (count($leaders) < 3)
 			<div class="summary">
 					<p class="text-center">You've added {{ count($leaders) }} leaders to your company's profile. You can add {{ 3 - count($leaders) }} more.</p>
@@ -16,9 +16,9 @@
 			</div>
 			@endif
 			@foreach($leaders as $leader)
-			<div class="row text-center">
+			<div class="row text-center center-block leaders">
 				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
-					<img class="img-circle img-thumbnail" src="{{ '/img/uploads/leaders/' . $leader->img }}" alt="{{ $leader->full_name }}">
+					<img class="img-circle img-thumbnail all_leaders" src="{{ '/img/uploads/leaders/' . $leader->img }}" alt="{{ $leader->full_name }}">
 				</div>
 				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
 					<h5 class="leader_name">{{ $leader->full_name }}</h5>

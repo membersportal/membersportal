@@ -3,17 +3,19 @@
 @section('content')
 
 <div class="container">
-	<h1 class="text-center space">My Connections</h1>
+	<h1 class="text-center">My Connections</h1>
 
 		<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 left">
-			@include('partials.conn_rfps_box', ['company_rfps' => $company_rfps])
+			<div class="panel_white">
+				@include('partials.conn_rfps_box', ['company_rfps' => $company_rfps])
+			</div>
 		</div>
 
 		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 center">
 			<div class="row">
 			@foreach ($connections as $connection)
 				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-					<div class="panel_white connections_grid">
+					<div class="panel_white text-center">
 						<a href="{{ action('CompaniesController@show', ['id' => $connection->id]) }}" alt="{{ $connection->name }} Profile">
 							<img class="img-circle img-thumbnail center-block img-responsive connections_grid" src="{{ '/img/uploads/avatars/' . $connection->profile_img }}">
 						</a>
@@ -26,7 +28,9 @@
 		</div>
 
 		<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 right">
-			@include('partials.conn_events_box', ['connections_events' => $company_events])
+			<div class="panel_white">
+				@include('partials.conn_events_box', ['connections_events' => $company_events])
+			</div>
 		</div>
 
 </div>

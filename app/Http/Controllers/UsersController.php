@@ -33,12 +33,14 @@ class UsersController extends Controller
 		// $newest_member = Company::newestMember();
 		$newest_member = Company::find(2);
 		$admin_user = User::find(1);
+		$user = User::find(Auth::user()->id);
+		$user_img = $user->company->profile_img;
 		$admin_events = $admin_user->company->events;
 		$admin_rfps = Rfp::homeRfps();
 		$contact = $admin_user->contact;
 		$carousels = Carousel::pullCarousels();
 		$articles = Article::homeArticles();
-		$data = compact('newest_member', 'carousels', 'admin_user', 'admin_events', 'admin_rfps', 'articles', 'contact');
+		$data = compact('newest_member', 'carousels', 'admin_user', 'admin_events', 'admin_rfps', 'articles', 'contact', 'user_img', 'user');
 		return view('home')->with($data);
 	}
 
