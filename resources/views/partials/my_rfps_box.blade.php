@@ -3,13 +3,13 @@
 	@if ($key < 3)
 	<div id="accordion" role="tablist" aria-multiselectable="false">
 		<div class="panel panel-default">
-			<div class="panel-heading" role="tab" id="heading{{$key+1}}">
+			<div class="panel-heading" role="tab" id="heading{{$key+20}}">
 				<h4 class="panel-title">
-					<a data-toggle="collapse" data-parent="#accordion" href="#collapse{{$key+1}}" aria-expanded="false" aria-controls="collapse{{$key+1}}">{{ $rfp->project_title }}</a>
+					<a data-toggle="collapse" data-parent="#accordion" href="#collapse{{$key+20}}" aria-expanded="false" aria-controls="collapse{{$key+20}}">{{ $rfp->project_title }}</a>
 				</h4>
 				<p class="event_date_home">Deadline: {{ $rfp->deadline }}</p>
 			</div>
-			<div id="collapse{{$key+1}}" class="panel-collapse collapse event_desc_home" role="tabpanel" aria-labelledby="heading{{$key+1}}">{{ str_limit($rfp->project_scope, 100) }}
+			<div id="collapse{{$key+20}}" class="panel-collapse collapse event_desc_home" role="tabpanel" aria-labelledby="heading{{$key+20}}">{{ str_limit($rfp->project_scope, 100) }}
 				<a class="red_link" href="{{ action('RFPController@show', $id = $rfp->id) }}"> see request</a>
 			</div>
 		</div>
