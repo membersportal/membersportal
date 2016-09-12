@@ -1,21 +1,13 @@
 <h3 class="text-center">My RFPs</h3>
-@foreach ($users_rfps as $key => $rfp)
-	@if ($key < 3)
-	<div id="accordion" role="tablist" aria-multiselectable="false">
-		<div class="panel panel-default">
-			<div class="panel-heading" role="tab" id="heading{{$key+20}}">
-				<h4 class="panel-title">
-					<a data-toggle="collapse" data-parent="#accordion" href="#collapse{{$key+20}}" aria-expanded="false" aria-controls="collapse{{$key+20}}">{{ $rfp->project_title }}</a>
-				</h4>
-				<p class="event_date_home">Deadline: {{ $rfp->deadline }}</p>
-			</div>
-			<div id="collapse{{$key+20}}" class="panel-collapse collapse event_desc_home" role="tabpanel" aria-labelledby="heading{{$key+20}}">{{ str_limit($rfp->project_scope, 100) }}
-				<a class="red_link" href="{{ action('RFPController@show', $id = $rfp->id) }}"> see request</a>
-			</div>
-		</div>
-	</div>
-	@endif
-@endforeach
+	@foreach ($users_rfps as $key => $rfp)
+		<ul class="rfps">
+			<li class="rfps">
+				<a class="red_link" href="{{ action('RFPController@show', $id = $rfp->id) }}">{{ $rfp->project_title }}</a>
+			</li>
+			<li class="small_gray"><span class="strong">Deadline:</span> {{ $rfp->deadline->format('F j, Y') }}</li>
+			<li class="small_gray"><span class="strong">Contact:</span> {{ $rfp->contact_name }}</li>
+		</ul>
+		@endforeach
 <div class="panel_green">
 	<a class="green_bg" href="{{ action('RFPController@index') }}" alt="View All RFPs">See All RFPs</a>
 </div>

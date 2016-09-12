@@ -8,9 +8,9 @@
 		<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 col-xl-9">
 			<h4 class="event_heading"><a href="{{ action('EventsController@show', $id = $event->id) }}">{{ $event->title }}</a></h4>
 			@if ($event->from_date != $event->to_date)
-				<p class="event_date_home">{{ $event->from_date->format('F j') }} - {{ $event->to_date->format('F j') }}</p>
+				<p class="event_date_home">{{ $event->from_date->format('F j') }} - {{ $event->to_date->format('F j, Y') }}</p>
 			@else
-				<p class="event_date_home">{{ $event->from_date->format('F j') }}</p>
+				<p class="event_date_home">{{ $event->from_date->format('F j, Y') }}</p>
 			@endif
 			@if ($event->invite_only)
 				<p class="event_boolean"><span class="glyphicon glyphicon-ok"></span>Invite Only</p>

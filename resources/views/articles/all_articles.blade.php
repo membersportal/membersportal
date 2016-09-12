@@ -11,7 +11,7 @@
 				<img class="img-responsive articles_full" src="{{ '/img/articles/' . $article->img }}" alt="{{ $article->heading }}">
 			</a>
 			<h4 class="article_heading_full">{{ $article->heading }}</h4>
-			<p><span class="article_date">Posted: {{ $article->date }}</span></p>
+			<p><span class="article_date">Posted: {{ $article->date->format('M j Y \a\t H:ma') }}</span></p>
 			@if ($article->subheading)
 			<h5>{{ $article->subheading }}</h5>
 			@endif
