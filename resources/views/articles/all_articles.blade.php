@@ -4,7 +4,7 @@
 <div class="container">
 
 	<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 col-xl-8 col-sm-offset-2 col-md-offset-2 col-lg-offset-2 col-xl-offset-2">
-		<h1 class="text-center articles">All Articles</h1>
+		<h1>All Articles</h1>
 		<div class="main_panel">
 		@foreach ($articles as $article)
 			<a href="{{ $article->url }}">

@@ -396,17 +396,14 @@ h1, h2, h3, h4, h5 {
 }
 
 h1 {
-	font-size: 1.7em;
+	text-align: center;
+	font-size: 1.75em;
 	font-weight: 700;
 	margin-top: 25px;
 	margin-bottom: 45px;
 }
 
-h1.articles {
-	margin-bottom: 20px;
-}
-
-h1.text-center.req {
+h1.req {
 	margin-bottom: 5px;
 }
 
