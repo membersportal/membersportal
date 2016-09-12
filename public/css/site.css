@@ -461,6 +461,7 @@ p.dashboard_category {
 	color: #7c786a;
 	font-size: .85em;
 	text-transform: uppercase;
+	margin-bottom: 15px;
 }
 
 p.delete_user_warning {
@@ -643,23 +644,6 @@ a.green_link:hover:after {
 	height: 11px;
 	width: 10px;
 	margin-bottom: -3px;
-}
-
-div.login > a.forgot_password:after, 
-ul.footer > li > a.footer_triangle:hover:after, 
-div.login > a.forgot_password:hover:after, 
-ul.footer > li > a.footer_triangle:after, 
-ul.footer > li > a.footer_triangle:after, 
-a.green_bg:hover:after, a.green_bg:after, 
-a.green_bg:hover:after, 
-a.beige_bg:hover:after, a.beige_bg:after, a.green_link:after, 
-a.green_link:hover:after,
-h4.panel-title > a:hover:after, 
-h4.panel-title > a:after, 
-div.connect > form > button.btn.btn-primary.connect:after, 
-div.connect > form > button.btn.btn-info.connect:after, 
-div.connect > form > button.btn.btn-info.connect:hover:after, 
-div.connect > form > button.btn.btn-primary.connect:hover:after {
 	margin-left: 4px;
 }
 
@@ -1045,6 +1029,11 @@ form#search_form {
 p.form_label_small {
 	font-size: .8em;
 	color: #66a498;
+}
+
+span.form_label_small {
+	font-size: .8em;
+	color: #7c786a;
 }
 
 label.login {
