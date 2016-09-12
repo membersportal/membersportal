@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-	<h1 class="text-center space">Edit Request for Proposal</h1>
+	<h1>{{ $rfp->project_title }}</h1>
 	<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 left">
 		<div class="panel_white">
 			@include('partials.my_sub_proposals_box')
@@ -17,7 +17,12 @@
 				@include('partials.edit_rfp_form')
 				<button class="btn btn-primary pull-right" type="submit">Save</button>
 			</form>
-			<a class="cancel_button pull-right" href="{{ action('RFPController@index') }}" alt="cancel">Cancel</a>
+			<form action="{{ action('RFPController@destroy', $id = $rfp->id) }}" method="POST">
+				{!! csrf_field() !!}
+				{{ method_field('DELETE') }}
+				<button class="btn btn-danger pull-right" type="submit" name="button">Delete</button>
+			</form>
+			<a class="cancel_button" href="{{ action('RFPController@index') }}" alt="cancel">Cancel</a>
 		</div>
 	</div>
 

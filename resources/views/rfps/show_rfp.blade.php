@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container">
-	<h1 class="text-center space">{{ $rfp->project_title }}</h1>
+	<h1>{{ $rfp->project_title }}</h1>
 	<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 left">
 		<div class="panel_white">
 			@include('partials.my_sub_proposals_box')
@@ -11,7 +11,7 @@
 	</div>
 
 	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 center">
-		<div class="panel_white">
+		<div class="panel_white {{ (Auth::user()->id == $rfp->company_id && !Auth::user()->is_admin) ? 'rfp_search' : '' }}">
 			<h3 class="text-center">Project Details</h3>
 			<div class="row">
 				<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 col-xl-5">

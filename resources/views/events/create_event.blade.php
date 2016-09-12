@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container">
-	<h1 class="text-center space">Create Event</h1>
+	<h1>Create Event</h1>
 	<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 left">
 		<div class="panel_white">
 			@include('partials.my_rsvps_box')

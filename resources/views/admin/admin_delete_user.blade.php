@@ -20,7 +20,7 @@
 				<p class="delete_user">User Name: {{ $searched_user->first_name . ' ' . $searched_user->last_name }}
 			</div>
 			<form method="POST" action="{{ action('UsersController@destroy', ['id' => $searched_user_company->id]) }}">
-				{!!csrf_field()!!}
+				{!! csrf_field() !!}
 				{{ method_field('DELETE') }}
 				<button class="btn btn-danger pull-right delete_user" type="submit">Delete</button>
 			</form>
