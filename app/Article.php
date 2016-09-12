@@ -9,6 +9,10 @@ class Article extends Model
 {
 	use SoftDeletes;
 
+	protected $dates = [
+		'date'
+	];
+
 	public static $rules = [
 		'heading' => 'required|max:250',
 		'subheading' => 'max:250',

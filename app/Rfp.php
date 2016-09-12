@@ -4,8 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Company;
 use Carbon\Carbon;
+use App\Company;
 
 class Rfp extends Model
 {
@@ -70,35 +70,41 @@ class Rfp extends Model
 
 	public static function grabWeekRfps()
 	{
-		$constraint = Carbon::now()->toDateTimeString();
+		$now = Carbon::now()->toDateTimeString();
 		$week = Carbon::now()->addWeeks(1)->toDateTimeString();
-		return Rfp::whereBetween('deadline', [$constraint, $week])->orderBy('deadline');
+		return Rfp::whereBetween('deadline', [$now, $week])->orderBy('deadline');
 	}
 
 	public static function grabMonthRfps()
 	{
-		$constraint = Carbon::now()->addWeeks(1)->toDateTimeString();
+		$now = Carbon::now()->toDateTimeString();
 		$month = Carbon::now()->addWeeks(4)->toDateTimeString();
-		return Rfp::whereBetween('deadline', [$constraint, $month])->orderBy('deadline');
+		return Rfp::whereBetween('deadline', [$now, $month])->orderBy('deadline');
 	}
 
 	public static function grabYearRfps()
 	{
-		$constraint = Carbon::now()->addWeeks(4)->toDateTimeString();
-		$year = Carbon::now()->addWeeks(12)->toDateTimeString();
-		return Rfp::whereBetween('deadline', [$constraint, $year])->orderBy('deadline');
+		$now = Carbon::now()->toDateTimeString();
+		$year = Carbon::now()->addYear();
+		return Rfp::whereBetween('deadline', [$now, $year])->orderBy('deadline');
 	}
 
+	protected $dates = [
+		'deadline',
+		'contract_from_date',
+		'contract_to_date'
+	];
+
 	public static $rules = [
-     'project_title' => 'required|max:100',
-     'deadline' => 'required|date_format:"Y-m-d"',
-     'contact_name' => 'required|max:100',
-     'contact_department' => 'required|max:100',
-     'contact_no' => 'required|integer',
-     'project_scope' => 'required|filled',
-     'contract_from_date' => 'required|date_format:"Y-m-d"',
-     'contract_to_date' => 'required|date_format:"Y-m-d"',
-     'file' => 'file',
-     'url' => 'required|url'
-   	];
+		'project_title' => 'required|max:100',
+		'deadline' => 'required|date_format:"Y-m-d"',
+		'contact_name' => 'required|max:100',
+		'contact_department' => 'required|max:100',
+		'contact_no' => 'required|integer',
+		'project_scope' => 'required|filled',
+		'contract_from_date' => 'required|date_format:"Y-m-d"',
+		'contract_to_date' => 'required|date_format:"Y-m-d"',
+		'file' => 'file',
+		'url' => 'required|url'
+	];
 }

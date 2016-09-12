@@ -43,14 +43,14 @@ class RFPController extends Controller
 			$searched_company = Company::searchCompanyName($request)->first();
 			$request->search_field = $searched_company->id;
 		}
-			$rfps = Rfp::searchRfps($request)->get();
-			$user = Auth::user()->id;
-			$industries = Industry::all();
-			$connections = Company::find($user)->companies;
-			$connections_rfps = Rfp::dashboardRfps($connections)->get();
-			$users_rfps = Rfp::profileRfps($user)->get();
-			$data = compact('rfps', 'industries', 'connections_rfps', 'users_rfps');
-			return view('rfps.search_rfps')->with($data);
+		$rfps = Rfp::searchRfps($request)->get();
+		$user = Auth::user()->id;
+		$industries = Industry::all();
+		$connections = Company::find($user)->companies;
+		$connections_rfps = Rfp::dashboardRfps($connections)->get();
+		$users_rfps = Rfp::profileRfps($user)->get();
+		$data = compact('rfps', 'industries', 'connections_rfps', 'users_rfps');
+		return view('rfps.search_rfps')->with($data);
 	}
 
 	/**
