@@ -10,7 +10,6 @@
 					@include ('partials.login')
 					<button type="submit" class="btn btn-primary pull-right login">Log In</button>
 				</form>
-				<a class="text-center forgot_password" href="#" alt="Forgot Password">Forgot Password</a>
 			</div>
 		</div>
 	</div>
