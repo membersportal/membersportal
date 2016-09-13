@@ -36,7 +36,7 @@
 				{!! method_field('DELETE') !!}
 				<button type="submit" class="btn btn-info connect">Remove Connection</button>
 			</form>
-		</div> 
+		</div>
 		@endif
 	@endif
 
@@ -151,6 +151,7 @@
 					<a href="https://twitter.com/{{ $contact->twitter }}" class=" twitter-follow-button" data-show-count="false">Follow @{{ $contact-> }}</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 			</div>
 
+			@if($company->id > 1)
 			<div class="panel_white">
 				<h3 class="text-center">Connections</h3>
 				@foreach($connections as $connection)
@@ -162,6 +163,7 @@
 					<a class="green_bg" href="{{ action('CompaniesController@viewConnections', ['id' => $company->id]) }}" alt="View All Connections">All Connections</a>
 				</div>
 			</div>
+			@endif
 		</div>
 
 </div>
