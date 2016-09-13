@@ -58,6 +58,7 @@ div#login {
 div.login {
 	background-color: #eb6e44;
 	padding: 50px 75px;
+	padding-bottom: 80px;
 	position: relative;
 }
 
@@ -656,8 +657,6 @@ a.green_bg:after,
 a.green_bg:hover:after, 
 ul.footer > li > a.footer_triangle:after, 
 ul.footer > li > a.footer_triangle:hover:after, 
-div.login > a.forgot_password:hover:after, 
-a.forgot_password:after, 
 div.connect > form > button.btn.btn-primary.connect:after, 
 div.connect > form > button.btn.btn-primary.connect:hover:after, 
 div.connect > form > button.btn.btn-info.connect:after, 
@@ -698,11 +697,11 @@ div.main_panel > div >  a.red_link.project:after, h4.panel-title > a:after, a.gr
 	background: transparent url('/img/arrow_white.png') no-repeat;
 }
 
-div.login > a.forgot_password:after, div.main_panel > div >  a.red_link.project:hover:after {
+div.main_panel > div >  a.red_link.project:hover:after {
 	background: transparent url('/img/arrow_red.png') no-repeat;
 }
 
-ul.footer > li > a.footer_triangle:hover:after, div.login > a.forgot_password:hover:after, a.beige_bg:after {
+ul.footer > li > a.footer_triangle:hover:after, a.beige_bg:after {
 	background: transparent url('/img/arrow.png') no-repeat;
 }
 
@@ -798,17 +797,6 @@ ul.edit_account_nav > li > a {
 	width: 100%;
 	display: inline-block;
 	padding: 0px 15px;
-}
-
-a.forgot_password {
-	color: #fff5c3;
-	display: block;
-	text-align: center;
-	margin-left: 10px;
-}
-
-a.forgot_password:active, a.forgot_password:visited {
-	color: #fff;
 }
 
 a, a:hover, a:visited, a:active {
