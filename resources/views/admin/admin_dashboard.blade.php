@@ -10,7 +10,7 @@
 		</div>
 
 		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-			<div class="panel_white">
+			<div class="panel_white button_space">
 				<div class="summary">
 					<p class="text-center"><span class="strong">Total:</span> {{ $users }} &nbsp;&nbsp;//&nbsp;&nbsp; <span class="strong">Last User Added:</span> {{ $last_user_added->created_at->format('F j Y') }}</p>
 					<a href="{{ action('UsersController@create') }}" class="create_button">Create New User</a>

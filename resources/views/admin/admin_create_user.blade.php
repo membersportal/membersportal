@@ -16,7 +16,7 @@
 					@include ('partials.admin_create_user_form')
 					<button class="btn btn-primary pull-right" type="submit">Create</button>
 				</form>
-				<a class="cancel_button pull-right" href="{{ action('AdminController@manageUsers') }}" alt="cancel">Cancel</a>
+				<a class="cancel_button pull-right" href="{{ action('AdminController@index') }}" alt="cancel">Cancel</a>
 			</div>
 		</div>
 	</div>

@@ -50,6 +50,7 @@
 						<hr class="wide">
 					@endif
 				@endforeach
+			</div>
 		</div>
 	</div>
 </div>

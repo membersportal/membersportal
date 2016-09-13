@@ -15,7 +15,7 @@
 					<img class="img-thumbnail manage_users center-block" src="{{ '/img/uploads/avatars/' . $searched_user_company->profile_img }}" alt="{{ $searched_user_company->name }}">
 				</div>
 				<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 col-xl-9">
-					<h3>Company Name: {{ $searched_user_company->name }}</h3>
+					<h3 class="delete_user">Company Name: {{ $searched_user_company->name }}</h3>
 					<h4 class="delete_user">Industry: {{ $searched_user_company->industry->industry }}</h4>
 					<p class="delete_user">User Email: {{ $searched_user-> email}}</p>
 					<p class="delete_user">User Name: {{ $searched_user->first_name . ' ' . $searched_user->last_name }}
@@ -25,9 +25,9 @@
 					{{ method_field('DELETE') }}
 					<button class="btn btn-danger pull-right delete_user" type="submit">Delete</button>
 				</form>
-				<a class="cancel_button pull-right delete_user" href="{{ action('AdminController@manageUsers') }}" alt="cancel">Cancel</a>
+				<a class="cancel_button pull-right delete_user" href="{{ action('AdminController@index') }}" alt="cancel">Cancel</a>
 			</div>
 		</div>
-	</p>
+	</div>
 </div>
 @stop

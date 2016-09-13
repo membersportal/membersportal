@@ -332,6 +332,11 @@ h3.social {
 	margin-bottom: 15px;
 }
 
+h3.delete_user {
+	margin-bottom: 20px;
+	text-align: left;
+}
+
 h3.rfps {
 	margin-bottom: 0;
 }
