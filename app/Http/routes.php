@@ -19,7 +19,6 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 {
   // Users
     Route::get('/admin/dashboard', 'AdminController@index');
-    Route::get('admin/users', 'AdminController@manageUsers');
     Route::get('/admin/users/create', 'UsersController@create');
     Route::post('/admin/users', 'UsersController@store');
     Route::get('/admin/users/{user}/edit', 'AdminController@editOrgLogin');
