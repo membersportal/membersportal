@@ -22,5 +22,5 @@
 	@endif
 @endforeach
 <div class="panel_green">
-	<a class="green_bg" href="{{ action('EventsController@index') }}" alt="View All Events">See All Events</a>
+		<a class="green_bg" href="{{ action('EventsController@index') }}" alt="View All Events">See All Events</a>
 </div>

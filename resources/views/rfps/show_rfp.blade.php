@@ -7,9 +7,11 @@
 	<h1>{{ $rfp->project_title }}</h1>
 	<div class="row">
 		<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 left">
+			@if(!Auth::user()->is_admin)
 			<div class="panel_white">
 				@include('partials.my_sub_proposals_box')
 			</div>
+			@endif
 		</div>
 
 		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 center">
@@ -46,18 +48,20 @@
 						<button class="btn btn-danger pull-right" type="submit">Delete</button>
 					</form>
 				@else
+					@if(!Auth::user()->is_admin)
 				<div class="panel_beige">
 					<a class="beige_bg" href="#" alt="Submit A Proposal">Submit A Proposal</a>
 				</div>
+					@endif
 				@endif
 			</div>
 		</div>
 
 		<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 right">
+			@if (!Auth::user()->is_admin)
 			<div class="panel_white">
 				@include('partials.my_rfps_box', ['users_rfps' => $users_rfps])
 			</div>
-			@if (!Auth::user()->is_admin)
 			<div class="panel_white">
 				@include('partials.conn_rfps_box', ['company_rfps' => $connections_rfps])
 			</div>
