@@ -3,6 +3,7 @@
 @section('content')
 
 <div class="container">
+	<h5><a href="{{ action('RFPController@index') }}">Back</a></h5>
 	<h1>{{ $rfp->project_title }}</h1>
 	<div class="row">
 		<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 left">
@@ -20,7 +21,7 @@
 							<li><span class="strong">Company:</span>&nbsp; <a class="blue_link" href="{{ action('CompaniesController@show', $id = $rfp_owner->id) }}">{{ $rfp_owner->name }}</a></li>
 							<li><span class="strong deadline">DEADLINE:</span>
 							{{ $rfp->deadline->format('F j, Y') }}</li>
-							<li><span class="strong">Contract:</span> 
+							<li><span class="strong">Contract:</span>
 							{{ $rfp->contract_from_date->format('F j, Y') }} - {{ $rfp->contract_to_date->format('F j, Y') }}</li>
 						</ul>
 					</div>

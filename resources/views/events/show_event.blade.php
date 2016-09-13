@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="container">
+	<h5><a href="{{ action('EventsController@index') }}">Back</a></h5>
 	<h1>{{ $event->title }}</h1>
 	<div class="row">
 		<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 left">
@@ -40,7 +41,7 @@
 				@endif
 			</div>
 		</div>
-		
+
 		<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 right">
 			<div class="panel_white">
 				@include('partials.my_events_box', ['users_events' => $users_events])
