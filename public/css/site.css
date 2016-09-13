@@ -318,6 +318,21 @@ body {
 	margin-bottom: 0;
 }
 
+#marker_name {
+	font: 1.25em 'Roboto Slab', serif;
+	color: #8dcdc1;
+	margin-bottom: 2px;
+}
+
+#marker_industry {
+	color: #c65c39;
+	margin-bottom: 2px;
+}
+
+#marker_distance {
+	color: #7c786a;
+}
+
 h3.login {
 	font: 1.25em 'Roboto Slab', serif;
 	color: #fff5c3;

@@ -36,20 +36,25 @@
 		}
 
 		var rad = function(x) {
-		  return x * Math.PI / 180;
+			return x * Math.PI / 180;
 		};
 
 		var getDistance = function(p1, p2) {
 			var R = 6378137; // Earth’s mean radius in meter
-		 	var dLat = rad(p2.lat() - p1.lat());
-		 	var dLong = rad(p2.lng() - p1.lng());
-		  	var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-		  	Math.cos(rad(p1.lat())) * Math.cos(rad(p2.lat())) *
-		  	Math.sin(dLong / 2) * Math.sin(dLong / 2);
-		  	var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-		  	var d = R * c;
-		  	return d; // returns the distance in meter
+			var dLat = rad(p2.lat() - p1.lat());
+			var dLong = rad(p2.lng() - p1.lng());
+				var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+				Math.cos(rad(p1.lat())) * Math.cos(rad(p2.lat())) *
+				Math.sin(dLong / 2) * Math.sin(dLong / 2);
+				var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+				var d = R * c;
+				return d; // returns the distance in meter
 		};
+
+		function isInfoWindowOpen(infoWindow){
+			var map = infoWindow.getMap();
+			return (map !== null && typeof map !== "undefined");
+		}	
 
 		function getSearchResults(){
 			$.ajax("{{ action('CompaniesController@getSearchedCompanies') }}", {
@@ -65,6 +70,7 @@
 			}).done(function(data){
 				var search_results = data.results;
 				var businesses = data.locations;
+				var infoWindow = new google.maps.InfoWindow();
 				clearMarkers();
 				markers = [];
 					businesses.forEach(function(business) {
@@ -82,11 +88,9 @@
 									draggable: false
 								});
 								
-								var infoWindow = new google.maps.InfoWindow({
-									content: "<p>" + business.company.name + "</p>" + "<p>" + business.industry.industry + "</p>" + "<p>" + "Miles from you: " + distanceInMiles + "</p>"
-								});
 								marker.addListener('click', function() {
 									map.setCenter(results[0].geometry.location);
+									infoWindow.setContent("<div class=\"iw_container\"><p id=\"marker_name\">" + business.company.name + "</p>" + "<p id=\"marker_industry\">" + business.industry.industry + "</p>" + "<p id=\"marker_distance\"><span class=\"strong\">" + distanceInMiles + "</span> miles from you</p></div>")
 									infoWindow.open(map, marker);
 								});
 								markers.push(marker);

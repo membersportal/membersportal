@@ -1,7 +1,7 @@
 <footer>
 	<div class="footer container">
 		<div class="row">
-			<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+			<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3">
 				<h4 class="footer">Contact Us</h4>
 				<p class="footer_head">{{ $admin->company->name }}</p>
 				<p class="footer_text">{{ $admin->contact->address_line_1 }}</p>
@@ -24,11 +24,11 @@
 					<li><a class="footer_triangle" href="#">UI/UX Designer</a></li>
 				</ul>
 			</div>
-			<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+			<div class="col-xs-12 col-sm-5 col-md-5 col-lg-5 col-xl-5">
 				<h4 class="footer">Design &amp; Development By:</h4>
 				<a href="http://randimariedesigns.com" alt="Randi Mays Developer Designer"><img class="logo randi" src="/img/R_Logo2.png" alt="Randi Mays"></a>
-				<a href="http://objectant.co" alt="Anthony the Great"><img class="logo" src="/img/Logo2.png" alt="Anthony Martinez"></a>
-				<a class="footer" href="http://jaynichols.info" alt="Jay Nichols">JayNichols</a>
+				<a href="http://objectant.co" alt="Anthony Martinez"><img class="logo" src="/img/Logo2.png" alt="Anthony Martinez"></a>
+				<a href="http://jaynichols.info" alt="Jay Nichols"><img class="logo" src="/img/JNichols_Logo.png" alt="Jay Nichols"></a>
 			</div>
 		</div>
 	</div>
