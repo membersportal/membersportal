@@ -843,8 +843,8 @@ img.company_profile {
 	width: inherit;
 }
 
-img.articles, img.articles_full, img.articles_grid, img.carousels_grid, img.events_grid, img.events_dash {
-	object-fit: contain;
+img.articles_full, img.articles_grid, img.carousels_grid, img.events_grid, img.events_dash {
+	object-fit: cover;
 	border: 1px solid #7c786a;
 }
 
@@ -859,6 +859,7 @@ img.events_dash, img.all_leaders {
 }
 
 img.articles {
+	object-fit: contain;
 	width: 90px;
 	height: 90px;
 	margin-top: 12px;

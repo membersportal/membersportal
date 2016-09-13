@@ -1,10 +1,9 @@
 @extends('layouts.master')
-
 @section('content')
 
 <div class="container">
 	<h1>My Connections</h1>
-
+	<div class="row">
 		<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 left">
 			<div class="panel_white">
 				@include('partials.conn_rfps_box', ['company_rfps' => $company_rfps])
@@ -32,6 +31,6 @@
 				@include('partials.conn_events_box', ['connections_events' => $company_events])
 			</div>
 		</div>
-
+	</div>
 </div>
 @stop
