@@ -36,7 +36,7 @@ a.navbar-brand > span.brand {
 	border-bottom: 1px solid #c65c39;
 }
 
-ul.nav.navbar-nav > li > a, ul.nav.navbar-nav > li > a:visited {
+ul.nav.navbar-nav > li > a, ul.nav.navbar-nav > li.active > a {
 	color: #fff5c3;
 	font-size: 1.1em;
 	display: inline-block;
@@ -45,8 +45,13 @@ ul.nav.navbar-nav > li > a, ul.nav.navbar-nav > li > a:visited {
 }
 
 ul.nav.navbar-nav > li.active > a,
+ul.nav.navbar-nav > li.active > a:hover,
+ul.nav.navbar-nav > li.active > a:visited,
+ul.nav.navbar-nav > li.active > a:active,
+ul.nav.navbar-nav > li > a, 
 ul.nav.navbar-nav > li > a:hover,
-ul.nav.navbar-nav > li.active > a:hover {
+ul.nav.navbar-nav > li > a:visited,
+ul.nav.navbar-nav > li > a:active {
 	background-color: #eb6e44;
 	color: #fff5c3;
 }
