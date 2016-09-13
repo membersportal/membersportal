@@ -13,12 +13,12 @@
   <input type="text" class="form-control" name="contact_name" value="{{ $rfp->contact_name }}">
   @include ('partials.error', ['value' => 'contact_name'])
 </div>
-<div class="form-group">
+<div class="form-group half_width">
   <label for="contact_department">Contact Department<span class="required">*</span></label>
   <input type="text" class="form-control" name="contact_department" value="{{ $rfp->contact_department }}">
   @include ('partials.error', ['value' => 'contact_department'])
 </div>
-<div class="form-group">
+<div class="form-group half_width">
   <label for="contact_no">Contact Phone Number<span class="required">*</span></label>
   <p class="form_label_small">Enter numbers only; no spaces or dashes.</p>
   <input type="tel" class="form-control" name="contact_no" value="{{ $rfp->contact_no }}">
@@ -38,7 +38,7 @@
 	<input type="date" class="form-control" name="contract_to_date" value="{{ $rfp->contract_to_date }}" required>
 </div>
 <div class="form-group">
-	<label for="url">External Website<span class="required">*</span></label>
+	<label for="url">External Website</label>
 	<p class="form_label_small">Enter the full URL including http:// &nbsp; Link readers to a site that will help provide more detail for the request or show examples of previous similar projects completed.</p>
 	<input type="url" class="form-control" name="url" value="{{ $rfp->url }}" placeholder="http://www.example.com">
 	@include ('partials.error', ['value' => 'url'])

@@ -5,6 +5,7 @@
 <div class="container">
 	<h1 class="req">Edit Event</h1>
 	<p class="text-center req"><span class="required">*</span> Required Field</p>
+	<div class="row">
 		<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-sm-offset-1 col-md-offset-1 col-lg-offset-1 col-xl-offset-1 edit_nav">
 			@include('partials.admin_dash_nav', ['home' => '', 'login' => '', 'contact' => '', 'articles' => '', 'carousels' => '', 'events' => 'active', 'rfps' => '', 'users' => ''] )
 		</div>
@@ -19,6 +20,7 @@
 				<a class="cancel_button pull-right" href="{{ action('AdminController@eventIndex') }}" alt="cancel">Cancel</a>
 			</div>
 		</div>
+	</div>
 </div>
 
 @stop
