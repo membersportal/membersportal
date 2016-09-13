@@ -81,8 +81,9 @@
 									animation: google.maps.Animation.DROP,
 									draggable: false
 								});
+								
 								var infoWindow = new google.maps.InfoWindow({
-									content: "<p>" + business.company.name + "</p>" + "<p>" + business.industry + "</p>" + "<p>" + "Miles from you: " + distanceInMiles + "</p>"
+									content: "<p>" + business.company.name + "</p>" + "<p>" + business.industry.industry + "</p>" + "<p>" + "Miles from you: " + distanceInMiles + "</p>"
 								});
 								marker.addListener('click', function() {
 									map.setCenter(results[0].geometry.location);
