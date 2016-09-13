@@ -11,7 +11,7 @@
 	</div>
 
 	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 center">
-		<div class="panel_white {{ (Auth::user()->id == $rfp->company_id && !Auth::user()->is_admin) ? 'rfp_search' : '' }}">
+		<div class="panel_white {{ (Auth::user()->id == $rfp->company_id && !Auth::user()->is_admin) ? 'button_space' : '' }}">
 			<h3 class="text-center">Project Details</h3>
 			<div class="row">
 				<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 col-xl-5">
