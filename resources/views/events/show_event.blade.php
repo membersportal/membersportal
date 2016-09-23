@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-	<h5><a href="{{ action('EventsController@index') }}">Back</a></h5>
+	<h5><a class="red_link" href="{{ action('EventsController@index') }}">< Back</a></h5>
 	<h1>{{ $event->title }}</h1>
 	<div class="row">
 		<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 left">
@@ -14,7 +14,7 @@
 		</div>
 
 		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 center">
-			<div class="panel_white {{ (Auth::user()->id == $event->company_id && !Auth::user()->is_admin) ? 'event_search' : '' }}">
+			<div class="panel_white {{ (Auth::user()->id == $event->company_id && !Auth::user()->is_admin) ? 'button_space' : '' }}">
 				<img class="img-responsive events" src="{{ '/img/uploads/events/' . $event->img }}" alt="{{ $event->name }}">
 				@if ($event->from_date != $event->to_date)
 					<h3 class="text-center event_owner">{{ $event->from_date->format('F j') }} - {{ $event->to_date->format('F j, Y') }}</h3>
@@ -42,6 +42,7 @@
 					</form>
 				@endif
 			</div>
+		</div>
 		</div>
 
 		<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 right">
