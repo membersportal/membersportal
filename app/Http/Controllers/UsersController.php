@@ -121,4 +121,9 @@ class UsersController extends Controller
 			return redirect()->action('UsersController@edit', Auth::user()->id);
 		}
 	}
+
+	public function about()
+	{
+		return view('about');
+	}
 }

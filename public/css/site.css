@@ -5,6 +5,32 @@
 	text-align: center;
 }
 
+/*Responsiveness*/
+@media (max-width: 991px) {
+	h3.about_page {
+		margin-top: 0;
+	}
+
+	div.about_div {
+		margin-left: 10%;
+		margin-bottom: 50px;
+	}
+}
+
+@media (min-width: 992px) {
+	h3.about_page {
+		margin-top: 115px;
+	}
+
+	h3.about_page2 {
+		margin-top: 0;
+	}
+
+	div.about_div {
+		margin-left: 50px;
+	}
+}
+
 /*Divs and Page Structure*/
 .container {
 	width: 90%;
@@ -88,12 +114,20 @@ div.panel_white.leaders {
 	padding-bottom: 30px;
 }
 
+div.panel_white.about {
+	padding: 30px 40px;
+}
+
 div.leader_buttons {
 	margin-top: 12px;
 }
 
 div.main_panel {
 	padding: 20px 40px 35px 40px;
+}
+
+div.about_page {
+	margin: 100px 0 50px 0;
 }
 
 .bottom8 {
@@ -434,6 +468,10 @@ p.text-center.req {
 	margin-bottom: 20px;
 }
 
+span.red {
+	color: #eb6e44;
+}
+
 p.project_scope {
 	margin-bottom: 35px;
 }
@@ -566,6 +604,10 @@ p.leader_title {
 	font-size: .95em;
 }
 
+p.lead.developers {
+	margin: 15px 0 7px 0;
+}
+
 div.summary > p.text-center {
 	margin-bottom: 20px;
 }
@@ -627,6 +669,12 @@ span.strong, .strong {
 	font-weight: bold;
 }
 
+h3.about_page, h3.about_page2, h3.about_page_devs, h3.accordion_headers {
+	font-weight: bold;
+	margin-bottom: 10px;
+	text-align: left;
+}
+
 span.strong.connection {
 	color: #c65c39;
 }
@@ -664,7 +712,7 @@ div.connect > form > button.btn.btn-info.connect:hover:after,
 div.main_panel > div >  a.red_link.project:after, 
 div.main_panel > div >  a.red_link.project:hover:after,
 h4.panel-title > a:hover:after, 
-h4.panel-title > a:after, 
+h4.panel-title > a:after,
 a.beige_bg:after, 
 a.beige_bg:hover:after, 
 a.green_link:after, 
@@ -716,6 +764,10 @@ h4.panel-title > a, h4.panel-title > a:hover, h4.rsvp_title {
 
 ul.edit_account_nav > li > a:hover {
 	color: #d4fdf5;
+}
+
+a.accordion_links, a.accordion_links:hover, a.accordion_links:visited, a.accordion_links:active {
+	color: #66a498;
 }
 
 ul.edit_account_nav > li > a.active {
@@ -913,6 +965,10 @@ img.current_company_profile, img.current_leader_headshot {
 
 img.connections_grid {
 	margin-top: 20px;
+}
+
+img.about {
+	margin-top: 30px;
 }
 
 div.leader_headshot {
