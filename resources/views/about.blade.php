@@ -25,6 +25,18 @@
 				<div class="panel_white about">
 					<p class="lead">Members Portal is an application designed to facilitate trusted professional connections between members of a city organization such as a chamber of commerce. The portal is also designed to serve as an invaluable resource for staffing (per-project or permanent) needs.</p>
 					<p>A common issue facing business networking organizations today is a lack of space and opportunity for members to build relationships amongst themselves. If an organization cannot provide these opportunities to its members (typically locally-owned small businesses or individual contractors), they run the risk of members outsourcing jobs to non-members. Members Portal enables members to create business relationships with one another and increase profits within the organization.</p>
+					<div id="accordion0" role="tablist" aria-multiselectable="false">
+						<div class="panel panel-default">
+							<div class="panel-heading" role="tab" id="heading0">
+								<h3 class="accordion_headers">
+									<a class="accordion_links" data-toggle="collapse" data-parent="#accordion0" href="#collapse0" aria-expanded="false" aria-controls="collapse0">Access To The Portal ></a>
+								</h3>
+							</div>
+							<div id="collapse0" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading0">
+								<p>Access to the full Members Portal application is not granted for non-members. As of September 2016, there are further plans for development to include additional features and restructuring of code on the front and back end. Please see <span class="strong">The Developers and Backstory</span> tab for contact information for the developers.</p>
+							</div>
+						</div>
+					</div>
 					<div id="accordion" role="tablist" aria-multiselectable="false">
 						<div class="panel panel-default">
 							<div class="panel-heading" role="tab" id="heading1">
@@ -34,7 +46,26 @@
 							</div>
 							<div id="collapse1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading1">
 								<p>The portal's front end was built with Twitter Bootstrap and custom CSS. The back end of the portal, built using the Laravel PHP framework, uses MySQL language to query information from the member database and populate events, requests for proposals, articles, carousels and leadership throughout the site. The application features a live Twitter feed (created from Twitter's API) for the city organization and each business that has provided their account username. Google Maps API and JavaScript, jQuery and Ajax pull data for the Search Members page to populate search results.</p>
-								<p class="strong"><span class="red">HTML, Bootstrap/CSS, JavaScript/jQuery/Ajax, PHP/Laravel, MySQL/Sequel Pro, Google Maps API, Twitter Feed API</span></p>
+								<p class="strong about_mp">Front End: &nbsp;
+									<span class="red">
+										HTML <span class="small_bullet">&nbsp;•&nbsp;</span> 
+										Bootstrap <span class="small_bullet">&nbsp;•&nbsp;</span> 
+										CSS <span class="small_bullet">&nbsp;•&nbsp;</span> 
+										JavaScript <span class="small_bullet">&nbsp;•&nbsp;</span> 
+										jQuery <span class="small_bullet">&nbsp;•&nbsp;</span> 
+										Ajax <span class="small_bullet">&nbsp;•&nbsp;</span> 
+										Google Maps API <span class="small_bullet">&nbsp;•&nbsp;</span> 
+										Twitter Feed API
+									</span>
+								</p>
+								<p class="strong about_mp">Back End: &nbsp;
+									<span class="red">
+										PHP <span class="small_bullet">&nbsp;•&nbsp;</span> 
+										Laravel <span class="small_bullet">&nbsp;•&nbsp;</span> 
+										MySQL <span class="small_bullet">&nbsp;•&nbsp;</span> 
+										Sequel Pro
+									</span>
+								</p>
 							</div>
 						</div>
 					</div>
@@ -46,7 +77,52 @@
 								</h3>
 							</div>
 							<div id="collapse2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading2">
-								<p>Anthony Martinez and Randi Mays met at Codeup, a 16-week full stack web development career accelerator in May 2016. The two happened to be standing next to one another when it was time to choose a partner for an icebreaker activity on the first day of the course.</p>
+								<div class="row">
+									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 about_developers">
+										<div class="row">
+											<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+												<div class="row">
+													<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
+														<a href="https://www.linkedin.com/in/anthony-martinez" target="_blank">
+															<div class="leader_headshot_about">
+																<img class="img-circle img-thumbnail" src="/img/anthony.jpg" alt="Anthony Martinez">
+															</div>
+														</a></div>
+													<div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 col-xl-7 about_devs">
+														<h5 class="leader_name">Anthony Martinez</h5>
+														<p class="leader_title_about">Developer</p>
+														<p class="dev_links">
+															<a class="red_link" href="/resumes/anthony_resume.pdf" download>download resume</a>
+														</p>
+														<p class="dev_links">
+															<a class="red_link" href="mailto:martab7.am@gmail.com?Subject=Members%20Portal" target="_top">contact Anthony</a>
+														</p>
+													</div>
+												</div>
+											</div>
+										<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+											<div class="row">
+												<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
+													<a href="https://www.linkedin.com/in/randimays" target="_blank">
+														<div class="leader_headshot_about">
+															<img class="img-circle img-thumbnail" src="/img/randi.jpg" alt="Randi Mays">
+														</div>
+													</a></div>
+												<div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 col-xl-7 about_devs">
+													<h5 class="leader_name">Randi Mays</h5>
+													<p class="leader_title_about">Designer/Developer</p>
+													<p class="dev_links">
+														<a class="red_link" href="/resumes/randi_resume.pdf" download>download resume</a>
+													</p>
+													<p class="dev_links">
+														<a class="red_link" href="mailto:randimays1024@gmail.com?Subject=Members%20Portal" target="_top">contact Randi</a>
+													</p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<p class="about_text">Anthony Martinez and Randi Mays met at Codeup, a 16-week full stack web development career accelerator in May 2016. The two happened to be standing next to one another when it was time to choose a partner for an icebreaker activity on the first day of the course.</p>
 								<p>Anthony previously worked with the San Antonio Hispanic Chamber of Commerce to improve member outreach and business development. His experience shed light on a large problem facing organizations like the Chamber and led him to develop the idea for the portal. He chose Randi as a partner for the project as her professional experience as a graphic designer brought valuable front end design skills to the table.</p>
 								<p>Anthony built the logic for the database queries to pull data for each page of the portal. Randi put together the visual aspects of the portal using data from Anthony's queries and ensured organized and consistent files on the back end. The two worked together to build secure routes throughout the app and write the CRUD (create, read, update, delete) functions for features like Events, Requests for Proposals and articles on the site.</p>
 							</div>
@@ -72,7 +148,7 @@
 				<img alt="Members Portal Directory" class="img-responsive" src="/img/mp_search.png">
 			</div>
 			<div class="col-xs-10 col-sm-10 col-md-3 col-lg-3 col-xl-3 about_div">
-				<h3 class="about_page">Interactive &amp; Directory</h3>
+				<h3 class="about_page">Interactive Directory</h3>
 				<p>The Search Members page, integrated with Google Maps, enables members to search for other members by industry, company name, description or characteristics.</p>
 				<a class="red_link" href="#top">Back To Top</a>
 			</div>
