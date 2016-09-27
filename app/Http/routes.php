@@ -73,6 +73,9 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 
 // ================= User and Admin Access ================= //
 
+// About
+Route::get('/about', 'UsersController@about');
+
 // Auth
 Route::get('/auth/login', 'Auth\AuthController@getLogin');
 Route::post('/auth/login', 'Auth\AuthController@postLogin');
