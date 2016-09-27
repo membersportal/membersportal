@@ -6,6 +6,12 @@
 }
 
 /*Responsiveness*/
+@media (max-width: 767px) {
+	div.about_devs {
+		margin-left: 0;
+	}
+}
+
 @media (max-width: 991px) {
 	h3.about_page {
 		margin-top: 0;
@@ -24,6 +30,10 @@
 
 	h3.about_page2 {
 		margin-top: 0;
+	}
+
+	div.about_devs {
+		margin-left: 15px;
 	}
 
 	div.about_div {
@@ -92,6 +102,10 @@ div.leaders {
 	margin-bottom: 20px;
 }
 
+div.about_developers {
+	margin: 20px 0;
+}
+
 div.events_grid_image {
 	height: 100px;
 	width: 100px;
@@ -116,6 +130,7 @@ div.panel_white.leaders {
 
 div.panel_white.about {
 	padding: 30px 40px;
+	margin-bottom: 60px;
 }
 
 div.leader_buttons {
@@ -468,8 +483,16 @@ p.text-center.req {
 	margin-bottom: 20px;
 }
 
+p.dev_links {
+	margin-bottom: 0;
+}
+
 span.red {
 	color: #eb6e44;
+}
+
+span.small_bullet {
+	font-size: .85em;
 }
 
 p.project_scope {
@@ -597,11 +620,15 @@ span.article_date {
 	color: #8dcdc1;
 }
 
-p.leader_title {
+p.leader_title, p.leader_title_about {
 	font-family: 'Roboto Slab', serif;
 	margin-bottom: 0;
 	letter-spacing: .5px;
 	font-size: .95em;
+}
+
+p.leader_title_about {
+	margin-bottom: 10px;
 }
 
 p.lead.developers {
@@ -667,6 +694,10 @@ span.industry_name_home{
 
 span.strong, .strong {
 	font-weight: bold;
+}
+
+p.strong.about_mp {
+	margin-bottom: 0;
 }
 
 h3.about_page, h3.about_page2, h3.about_page_devs, h3.accordion_headers {
@@ -971,11 +1002,15 @@ img.about {
 	margin-top: 30px;
 }
 
-div.leader_headshot {
+div.leader_headshot, div.leader_headshot_about {
 	width: 100px;
 	height: 100px;
 	overflow: hidden;
 	margin: auto;
+}
+
+div.leader_headshot_about {
+	display: inline-block;
 }
 
 .glyphicon.glyphicon-ok {

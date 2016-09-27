@@ -112,7 +112,7 @@
 					<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 text-center">
 						<a href="{{ $leader->linkedin_url }}" target="_blank">
 							<div class="leader_headshot">
-								<img class="img-circle img-thumbnail center-block" src="{{ '/img/uploads/leaders/' . $leader->img }}">
+								<img class="img-circle img-thumbnail center-block about" src="{{ '/img/uploads/leaders/' . $leader->img }}">
 							</div>
 						</a>
 						<h5 class="leader_name">{{ $leader->full_name }}</h5>
